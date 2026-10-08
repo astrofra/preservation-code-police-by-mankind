@@ -1,0 +1,1014 @@
+{
+  "zip": {
+    "crc_failure": null,
+    "files": 107,
+    "missing_or_different_extracted_files": []
+  },
+  "applet": {
+    "code": "kraycasting.class",
+    "width": "520",
+    "height": "300"
+  },
+  "script_image_declarations": 41,
+  "script_sound_declarations": 10,
+  "missing_script_files_exact_case": [],
+  "images": [
+    {
+      "path": "original/mkd_codepolice/Images/CARE.gif",
+      "format": "GIF",
+      "size": [
+        139,
+        117
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/PROTECT.gif",
+      "format": "GIF",
+      "size": [
+        135,
+        109
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/alexx01.jpg",
+      "format": "JPEG",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGB",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/alexx02.jpg",
+      "format": "JPEG",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGB",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/alexx03.jpg",
+      "format": "JPEG",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGB",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/alexx04.jpg",
+      "format": "JPEG",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGB",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/alexx05.jpg",
+      "format": "JPEG",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGB",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/badge2.gif",
+      "format": "GIF",
+      "size": [
+        123,
+        156
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/badge2blanc.gif",
+      "format": "GIF",
+      "size": [
+        123,
+        156
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/buldrk1.gif",
+      "format": "GIF",
+      "size": [
+        269,
+        118
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/buldrk2.gif",
+      "format": "GIF",
+      "size": [
+        318,
+        125
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/buldrk3.gif",
+      "format": "GIF",
+      "size": [
+        317,
+        124
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/bulras1.gif",
+      "format": "GIF",
+      "size": [
+        317,
+        124
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/bulras2.gif",
+      "format": "GIF",
+      "size": [
+        245,
+        124
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/bulras3.gif",
+      "format": "GIF",
+      "size": [
+        190,
+        183
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/dark.jpg",
+      "format": "JPEG",
+      "size": [
+        13,
+        8
+      ],
+      "mode": "RGB",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/derick.gif",
+      "format": "GIF",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/fin.gif",
+      "format": "GIF",
+      "size": [
+        200,
+        200
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/flare1.jpg",
+      "format": "JPEG",
+      "size": [
+        127,
+        128
+      ],
+      "mode": "RGB",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/flare3.jpg",
+      "format": "JPEG",
+      "size": [
+        255,
+        166
+      ],
+      "mode": "RGB",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/html_bord_bas.jpg",
+      "format": "JPEG",
+      "size": [
+        640,
+        167
+      ],
+      "mode": "RGB",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/html_bord_droit.jpg",
+      "format": "JPEG",
+      "size": [
+        55,
+        300
+      ],
+      "mode": "RGB",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/html_bord_gauche.jpg",
+      "format": "JPEG",
+      "size": [
+        65,
+        300
+      ],
+      "mode": "RGB",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/html_bord_haut.jpg",
+      "format": "JPEG",
+      "size": [
+        640,
+        13
+      ],
+      "mode": "RGB",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/html_close.gif",
+      "format": "GIF",
+      "size": [
+        15,
+        15
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/miniflare.jpg",
+      "format": "JPEG",
+      "size": [
+        16,
+        16
+      ],
+      "mode": "RGB",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/raster1.gif",
+      "format": "GIF",
+      "size": [
+        1,
+        16
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/raster2.gif",
+      "format": "GIF",
+      "size": [
+        1,
+        16
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/raster3.gif",
+      "format": "GIF",
+      "size": [
+        1,
+        16
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/space.jpg",
+      "format": "JPEG",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGB",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/speedy.jpg",
+      "format": "JPEG",
+      "size": [
+        256,
+        256
+      ],
+      "mode": "RGB",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/star1.gif",
+      "format": "GIF",
+      "size": [
+        159,
+        158
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/tero1b.gif",
+      "format": "GIF",
+      "size": [
+        200,
+        275
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/tero1d.gif",
+      "format": "GIF",
+      "size": [
+        200,
+        275
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/tero1d2.gif",
+      "format": "GIF",
+      "size": [
+        200,
+        275
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/tero4-b.gif",
+      "format": "GIF",
+      "size": [
+        181,
+        200
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/tero4.gif",
+      "format": "GIF",
+      "size": [
+        181,
+        200
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/tero5.gif",
+      "format": "GIF",
+      "size": [
+        207,
+        200
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/tero5b.gif",
+      "format": "GIF",
+      "size": [
+        207,
+        200
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/tf2.gif",
+      "format": "GIF",
+      "size": [
+        66,
+        32
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/titre.gif",
+      "format": "GIF",
+      "size": [
+        261,
+        161
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": true
+    },
+    {
+      "path": "original/mkd_codepolice/Images/titreBL.gif",
+      "format": "GIF",
+      "size": [
+        261,
+        161
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/vanloc.gif",
+      "format": "GIF",
+      "size": [
+        320,
+        240
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/vectorball.gif",
+      "format": "GIF",
+      "size": [
+        64,
+        64
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/viseur.gif",
+      "format": "GIF",
+      "size": [
+        200,
+        200
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/viseur2.gif",
+      "format": "GIF",
+      "size": [
+        200,
+        200
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/voitface.gif",
+      "format": "GIF",
+      "size": [
+        320,
+        196
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/voithaut.gif",
+      "format": "GIF",
+      "size": [
+        40,
+        100
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/voitmechan.gif",
+      "format": "GIF",
+      "size": [
+        64,
+        43
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/voitroue.gif",
+      "format": "GIF",
+      "size": [
+        320,
+        250
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/votder.gif",
+      "format": "GIF",
+      "size": [
+        320,
+        154
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/white.jpg",
+      "format": "JPEG",
+      "size": [
+        13,
+        8
+      ],
+      "mode": "RGB",
+      "frames": 1,
+      "transparency": false
+    },
+    {
+      "path": "original/mkd_codepolice/Images/zaaclog.gif",
+      "format": "GIF",
+      "size": [
+        321,
+        113
+      ],
+      "mode": "P",
+      "frames": 1,
+      "transparency": false
+    }
+  ],
+  "sounds": [
+    {
+      "path": "original/mkd_codepolice/Sounds/Chute2.au",
+      "au_magic_valid": true,
+      "au_encoding": 1,
+      "full_decode_passed": true,
+      "au_declared_payload_matches": true,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "pcm_mulaw",
+          "sample_rate": "8000",
+          "channels": 1
+        }
+      ],
+      "format": {
+        "duration": "2.144500"
+      }
+    },
+    {
+      "path": "original/mkd_codepolice/Sounds/CopSiren2.au",
+      "au_magic_valid": true,
+      "au_encoding": 1,
+      "full_decode_passed": true,
+      "au_declared_payload_matches": true,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "pcm_mulaw",
+          "sample_rate": "8000",
+          "channels": 1
+        }
+      ],
+      "format": {
+        "duration": "7.569750"
+      }
+    },
+    {
+      "path": "original/mkd_codepolice/Sounds/LaSecurit.au",
+      "au_magic_valid": true,
+      "au_encoding": 1,
+      "full_decode_passed": true,
+      "au_declared_payload_matches": true,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "pcm_mulaw",
+          "sample_rate": "8000",
+          "channels": 1
+        }
+      ],
+      "format": {
+        "duration": "5.502250"
+      }
+    },
+    {
+      "path": "original/mkd_codepolice/Sounds/MusiqueLoop2.au",
+      "au_magic_valid": true,
+      "au_encoding": 1,
+      "full_decode_passed": true,
+      "au_declared_payload_matches": true,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "pcm_mulaw",
+          "sample_rate": "8000",
+          "channels": 1
+        }
+      ],
+      "format": {
+        "duration": "21.333625"
+      }
+    },
+    {
+      "path": "original/mkd_codepolice/Sounds/MusiqueLoopAct.au",
+      "au_magic_valid": true,
+      "au_encoding": 1,
+      "full_decode_passed": true,
+      "au_declared_payload_matches": true,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "pcm_mulaw",
+          "sample_rate": "8000",
+          "channels": 1
+        }
+      ],
+      "format": {
+        "duration": "21.034875"
+      }
+    },
+    {
+      "path": "original/mkd_codepolice/Sounds/WeRules.au",
+      "au_magic_valid": true,
+      "au_encoding": 1,
+      "full_decode_passed": true,
+      "au_declared_payload_matches": true,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "pcm_mulaw",
+          "sample_rate": "8000",
+          "channels": 1
+        }
+      ],
+      "format": {
+        "duration": "0.906500"
+      }
+    },
+    {
+      "path": "original/mkd_codepolice/Sounds/freine2.au",
+      "au_magic_valid": true,
+      "au_encoding": 1,
+      "full_decode_passed": true,
+      "au_declared_payload_matches": true,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "pcm_mulaw",
+          "sample_rate": "8000",
+          "channels": 1
+        }
+      ],
+      "format": {
+        "duration": "1.520000"
+      }
+    },
+    {
+      "path": "original/mkd_codepolice/Sounds/smurph.au",
+      "au_magic_valid": true,
+      "au_encoding": 1,
+      "full_decode_passed": true,
+      "au_declared_payload_matches": true,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "pcm_mulaw",
+          "sample_rate": "8000",
+          "channels": 1
+        }
+      ],
+      "format": {
+        "duration": "8.260000"
+      }
+    },
+    {
+      "path": "original/mkd_codepolice/Sounds/vib1.AU",
+      "au_magic_valid": true,
+      "au_encoding": 1,
+      "full_decode_passed": true,
+      "au_declared_payload_matches": true,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "pcm_mulaw",
+          "sample_rate": "8000",
+          "channels": 1
+        }
+      ],
+      "format": {
+        "duration": "0.010625"
+      }
+    },
+    {
+      "path": "original/mkd_codepolice/Sounds/vib2.AU",
+      "au_magic_valid": true,
+      "au_encoding": 1,
+      "full_decode_passed": true,
+      "au_declared_payload_matches": true,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "pcm_mulaw",
+          "sample_rate": "8000",
+          "channels": 1
+        }
+      ],
+      "format": {
+        "duration": "0.010500"
+      }
+    }
+  ],
+  "reachable_application_classes": [
+    "kSound",
+    "kraycasting",
+    "kraycasting$helpfade",
+    "kraycasting$kEffectX",
+    "kraycasting$kParameterX",
+    "kraycasting$kParameterXAFF",
+    "kraycasting$kParameterXCOS",
+    "kraycasting$kParameterXCTE",
+    "kraycasting$kParameterXOB",
+    "kraycasting$kParameterXRND",
+    "kraycasting$kParameterXSIN",
+    "kraycasting$kParameterXSPLINE",
+    "kraycasting$kPartX",
+    "kraycasting$kPixel",
+    "kraycasting$kRenderContext",
+    "kraycasting$kScript",
+    "kraycasting$kSoundCommand",
+    "kraycasting$kTable",
+    "kraycasting$kTexture",
+    "kraycasting$kTimer",
+    "kraycasting$kcamera",
+    "kraycasting$kparticle",
+    "kraycasting$raycasting"
+  ],
+  "missing_reachable_application_classes": [],
+  "classes_outside_main_static_closure": [
+    "kParameterX",
+    "kParameterXAFF",
+    "kParameterXCOS",
+    "kParameterXCTE",
+    "kParameterXRND",
+    "kParameterXSIN",
+    "kParameterXSPLINE",
+    "kPartX",
+    "kPixel",
+    "kSoundCommand",
+    "kTimer",
+    "kraycasting$k2Dpos",
+    "kraycasting$kParameterXIMAGE",
+    "kraycasting$kParameterXRC",
+    "kraycasting$kSound",
+    "kraycasting$rotozoom"
+  ],
+  "parts": [
+    {
+      "index": 0,
+      "start_seconds": 0.0,
+      "duration_seconds": 4.0,
+      "local_offset_seconds": 0.0,
+      "effects": {
+        "Sprit": 41
+      }
+    },
+    {
+      "index": 1,
+      "start_seconds": 4.0,
+      "duration_seconds": 10.0,
+      "local_offset_seconds": 0.0,
+      "effects": {
+        "Sprit": 3
+      }
+    },
+    {
+      "index": 2,
+      "start_seconds": 14.0,
+      "duration_seconds": 10.0,
+      "local_offset_seconds": 0.0,
+      "effects": {
+        "SetCamTarget": 1,
+        "Ground": 1,
+        "Sprit3D": 1,
+        "Sprit": 1,
+        "Flare3D": 2
+      }
+    },
+    {
+      "index": 3,
+      "start_seconds": 24.0,
+      "duration_seconds": 10.0,
+      "local_offset_seconds": 0.0,
+      "effects": {
+        "Twirl": 1,
+        "Sprit": 1,
+        "Flare3D": 3,
+        "MotionBlur": 1,
+        "EveSound": 1
+      }
+    },
+    {
+      "index": 4,
+      "start_seconds": 34.0,
+      "duration_seconds": 5.0,
+      "local_offset_seconds": 0.0,
+      "effects": {
+        "SetCamTarget": 1,
+        "Ground": 1,
+        "Sprit": 2,
+        "Flare3D": 1,
+        "EveSound": 1
+      }
+    },
+    {
+      "index": 5,
+      "start_seconds": 39.0,
+      "duration_seconds": 3.0,
+      "local_offset_seconds": 0.0,
+      "effects": {
+        "SetCamTarget": 1,
+        "Ground": 1,
+        "Sprit": 1,
+        "Flare3D": 2
+      }
+    },
+    {
+      "index": 6,
+      "start_seconds": 42.0,
+      "duration_seconds": 20.0,
+      "local_offset_seconds": 0.0,
+      "effects": {
+        "Twirl": 1,
+        "Sprit3D": 4,
+        "EveSound": 1,
+        "Flare3D": 2,
+        "Sprit": 1
+      }
+    },
+    {
+      "index": 7,
+      "start_seconds": 62.0,
+      "duration_seconds": 16.0,
+      "local_offset_seconds": 0.0,
+      "effects": {
+        "SetCamTarget": 1,
+        "Tunnel": 1,
+        "Particle": 1,
+        "Sprit3D": 2,
+        "Sprit": 2
+      }
+    },
+    {
+      "index": 8,
+      "start_seconds": 78.0,
+      "duration_seconds": 14.0,
+      "local_offset_seconds": 0.0,
+      "effects": {
+        "EveSound": 2,
+        "SetRect": 5,
+        "SetCamTarget": 1,
+        "Ground": 1,
+        "Particle": 1,
+        "SetCamCoord": 2,
+        "Tunnel": 2,
+        "Twirl": 1,
+        "Sprit": 2
+      }
+    },
+    {
+      "index": 9,
+      "start_seconds": 92.0,
+      "duration_seconds": 16.0,
+      "local_offset_seconds": 0.0,
+      "effects": {
+        "SetCamCoord": 1,
+        "Tunnel": 1,
+        "Sprit": 5,
+        "Sprit3D": 4
+      }
+    },
+    {
+      "index": 10,
+      "start_seconds": 108.0,
+      "duration_seconds": 14.0,
+      "local_offset_seconds": 16.0,
+      "effects": {
+        "SetCamCoord": 1,
+        "Tunnel": 1,
+        "Sprit3D": 3,
+        "SetCamTarget": 1,
+        "Particle": 1,
+        "Sprit": 2
+      }
+    },
+    {
+      "index": 11,
+      "start_seconds": 122.0,
+      "duration_seconds": 100.0,
+      "local_offset_seconds": 0.0,
+      "effects": {
+        "SetCamCoord": 1,
+        "Tunnel": 1,
+        "Sprit3D": 5,
+        "EveSound": 1,
+        "Sprit": 1
+      }
+    }
+  ],
+  "nominal_cycle_seconds_from_bytecode_time_unit": 222.0,
+  "end_mode": [
+    "loop"
+  ],
+  "active_effects": {
+    "Sprit": 62,
+    "SetCamTarget": 6,
+    "Ground": 4,
+    "Sprit3D": 19,
+    "Flare3D": 10,
+    "Twirl": 3,
+    "MotionBlur": 1,
+    "EveSound": 6,
+    "Tunnel": 6,
+    "Particle": 3,
+    "SetRect": 5,
+    "SetCamCoord": 5
+  },
+  "float_or_double_to_long_to_int_sites_in_inspected_bytecode": [],
+  "limitations": [
+    "Static inspection only; no original class execution or playback.",
+    "Dependency closure does not prove runtime correctness.",
+    "Media decoding does not validate Java playback, mixing or synchronization.",
+    "The supplied Pouet snapshot is a third-party historical reference."
+  ]
+}

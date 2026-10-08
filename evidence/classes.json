@@ -1,0 +1,1299 @@
+{
+  "classes": [
+    {
+      "origin": "original/mkd_codepolice/kParameterX.class",
+      "name": "kParameterX",
+      "superclass": "java/lang/Object",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 373,
+      "sha256": "0380c719bda70bca617e1e252bf2fdbe96266d18bca7e5514b5ec2365abe0afb",
+      "class_references": [
+        "helpfade",
+        "java/lang/Object",
+        "kParameterXCTE"
+      ],
+      "descriptor_candidates": [
+        "kTable"
+      ],
+      "application_references": [
+        "helpfade",
+        "kParameterXCTE",
+        "kTable"
+      ],
+      "platform_candidates": [
+        "java/lang/Object"
+      ],
+      "strings": []
+    },
+    {
+      "origin": "original/mkd_codepolice/kParameterXAFF.class",
+      "name": "kParameterXAFF",
+      "superclass": "kParameterX",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 310,
+      "sha256": "4bb271e636f8cf889653d95c752dd7f78429df60b62d6ee6085e0a1761215599",
+      "class_references": [
+        "kParameterX",
+        "kParameterXCTE",
+        "kParameterXRND"
+      ],
+      "descriptor_candidates": [
+        "java/lang/Object"
+      ],
+      "application_references": [
+        "kParameterX",
+        "kParameterXCTE",
+        "kParameterXRND"
+      ],
+      "platform_candidates": [
+        "java/lang/Object"
+      ],
+      "strings": []
+    },
+    {
+      "origin": "original/mkd_codepolice/kParameterXCOS.class",
+      "name": "kParameterXCOS",
+      "superclass": "kParameterX",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 367,
+      "sha256": "2d6f5db249d7f4b66f6523497aecb08d4557d503cdf9ab8ebf65cf37b6424a2b",
+      "class_references": [
+        "java/lang/Math",
+        "kParameterX",
+        "kParameterXOB",
+        "kParameterXSIN"
+      ],
+      "descriptor_candidates": [
+        "java/lang/Object"
+      ],
+      "application_references": [
+        "kParameterX",
+        "kParameterXOB",
+        "kParameterXSIN"
+      ],
+      "platform_candidates": [
+        "java/lang/Math",
+        "java/lang/Object"
+      ],
+      "strings": []
+    },
+    {
+      "origin": "original/mkd_codepolice/kParameterXCTE.class",
+      "name": "kParameterXCTE",
+      "superclass": "kParameterX",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 269,
+      "sha256": "30033b90a12d4b645ac6ec816c5432fd9a4b118f5aecf956c8b4963eacae8b1f",
+      "class_references": [
+        "kParameterX",
+        "kParameterXAFF"
+      ],
+      "descriptor_candidates": [
+        "java/lang/Object"
+      ],
+      "application_references": [
+        "kParameterX",
+        "kParameterXAFF"
+      ],
+      "platform_candidates": [
+        "java/lang/Object"
+      ],
+      "strings": []
+    },
+    {
+      "origin": "original/mkd_codepolice/kParameterXRND.class",
+      "name": "kParameterXRND",
+      "superclass": "kParameterX",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 365,
+      "sha256": "53ed5e0814482c9167d4d56701fa829cd1ee4633cd7d9e252aec2135b275c9b3",
+      "class_references": [
+        "java/lang/Math",
+        "kParameterX",
+        "kParameterXAFF",
+        "kParameterXSPLINE"
+      ],
+      "descriptor_candidates": [
+        "java/lang/Object"
+      ],
+      "application_references": [
+        "kParameterX",
+        "kParameterXAFF",
+        "kParameterXSPLINE"
+      ],
+      "platform_candidates": [
+        "java/lang/Math",
+        "java/lang/Object"
+      ],
+      "strings": []
+    },
+    {
+      "origin": "original/mkd_codepolice/kParameterXSIN.class",
+      "name": "kParameterXSIN",
+      "superclass": "kParameterX",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 371,
+      "sha256": "973c45a5a54085ef4563d77d13aa4c21a73df2554f26993fb2ed45ebbab1834b",
+      "class_references": [
+        "java/lang/Math",
+        "kParameterX",
+        "kParameterXCOS",
+        "kParameterXSPLINE"
+      ],
+      "descriptor_candidates": [
+        "java/lang/Object"
+      ],
+      "application_references": [
+        "kParameterX",
+        "kParameterXCOS",
+        "kParameterXSPLINE"
+      ],
+      "platform_candidates": [
+        "java/lang/Math",
+        "java/lang/Object"
+      ],
+      "strings": []
+    },
+    {
+      "origin": "original/mkd_codepolice/kParameterXSPLINE.class",
+      "name": "kParameterXSPLINE",
+      "superclass": "kParameterX",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 364,
+      "sha256": "02191ab6b1de4b6284ccb956e8ac7d7975e57776ab8bd5753e2dd6bfdacc1a95",
+      "class_references": [
+        "kParameterX",
+        "kParameterXRND",
+        "kParameterXSIN",
+        "kTable"
+      ],
+      "descriptor_candidates": [
+        "java/lang/Object"
+      ],
+      "application_references": [
+        "kParameterX",
+        "kParameterXRND",
+        "kParameterXSIN",
+        "kTable"
+      ],
+      "platform_candidates": [
+        "java/lang/Object"
+      ],
+      "strings": []
+    },
+    {
+      "origin": "original/mkd_codepolice/kPartX.class",
+      "name": "kPartX",
+      "superclass": "java/lang/Object",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 250,
+      "sha256": "ebb5df17361bd0d781fb37d1ea10bc1971aa1bbcd48cceeeead5889a40a7d173",
+      "class_references": [
+        "java/lang/Object",
+        "kEffectX",
+        "kScript"
+      ],
+      "descriptor_candidates": [],
+      "application_references": [
+        "kEffectX",
+        "kScript"
+      ],
+      "platform_candidates": [
+        "java/lang/Object"
+      ],
+      "strings": []
+    },
+    {
+      "origin": "original/mkd_codepolice/kPixel.class",
+      "name": "kPixel",
+      "superclass": "java/lang/Object",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 368,
+      "sha256": "fb49c0d45f5374b16497b686f112677d88c80af510ab884c29bc8ee6245bf799",
+      "class_references": [
+        "helpfade",
+        "java/lang/Object",
+        "kTimer"
+      ],
+      "descriptor_candidates": [],
+      "application_references": [
+        "helpfade",
+        "kTimer"
+      ],
+      "platform_candidates": [
+        "java/lang/Object"
+      ],
+      "strings": []
+    },
+    {
+      "origin": "original/mkd_codepolice/kSound.class",
+      "name": "kSound",
+      "superclass": "java/lang/Object",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 736,
+      "sha256": "145149d9980a2ec706317979650f8d20d49549e88a186b2c1c51f7287ae293ab",
+      "class_references": [
+        "java/applet/AudioClip",
+        "java/lang/Object"
+      ],
+      "descriptor_candidates": [],
+      "application_references": [],
+      "platform_candidates": [
+        "java/applet/AudioClip",
+        "java/lang/Object"
+      ],
+      "strings": []
+    },
+    {
+      "origin": "original/mkd_codepolice/kSoundCommand.class",
+      "name": "kSoundCommand",
+      "superclass": "java/lang/Object",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 387,
+      "sha256": "fab1d0fed487367bc92c068230d68cf1ea96305a99ae77a46ae0df5bddd1a25c",
+      "class_references": [
+        "java/lang/Object",
+        "kEffectX",
+        "kPartX",
+        "kSound"
+      ],
+      "descriptor_candidates": [],
+      "application_references": [
+        "kEffectX",
+        "kPartX",
+        "kSound"
+      ],
+      "platform_candidates": [
+        "java/lang/Object"
+      ],
+      "strings": []
+    },
+    {
+      "origin": "original/mkd_codepolice/kTimer.class",
+      "name": "kTimer",
+      "superclass": "java/lang/Object",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 351,
+      "sha256": "1ac28667425f8aac4e34120c2a2805dcd17211d59307a967ab3c54e10933330c",
+      "class_references": [
+        "java/lang/Object",
+        "java/lang/System",
+        "kPixel",
+        "kTable"
+      ],
+      "descriptor_candidates": [],
+      "application_references": [
+        "kPixel",
+        "kTable"
+      ],
+      "platform_candidates": [
+        "java/lang/Object",
+        "java/lang/System"
+      ],
+      "strings": []
+    },
+    {
+      "origin": "original/mkd_codepolice/kraycasting$helpfade.class",
+      "name": "kraycasting$helpfade",
+      "superclass": "java/lang/Object",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 463,
+      "sha256": "996a8d25b862e6a187b37a487197efee043b22cc030d9c430bce04aa52326a6e",
+      "class_references": [
+        "java/lang/Object",
+        "kraycasting"
+      ],
+      "descriptor_candidates": [],
+      "application_references": [
+        "kraycasting"
+      ],
+      "platform_candidates": [
+        "java/lang/Object"
+      ],
+      "strings": []
+    },
+    {
+      "origin": "original/mkd_codepolice/kraycasting$k2Dpos.class",
+      "name": "kraycasting$k2Dpos",
+      "superclass": "java/lang/Object",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 417,
+      "sha256": "acee751721a658639ecf40aca26c0efe052e9460dbd121214b27390fbdf21f7a",
+      "class_references": [
+        "java/lang/Object",
+        "kraycasting"
+      ],
+      "descriptor_candidates": [],
+      "application_references": [
+        "kraycasting"
+      ],
+      "platform_candidates": [
+        "java/lang/Object"
+      ],
+      "strings": []
+    },
+    {
+      "origin": "original/mkd_codepolice/kraycasting$kEffectX.class",
+      "name": "kraycasting$kEffectX",
+      "superclass": "java/lang/Object",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 4553,
+      "sha256": "b358f65b1ba33bd82e653a0f84a9259b42c8cac4d80dc8a884eeae12079aeb44",
+      "class_references": [
+        "java/lang/Double",
+        "java/lang/Object",
+        "kSound",
+        "kraycasting",
+        "kraycasting$helpfade",
+        "kraycasting$kParameterX",
+        "kraycasting$kRenderContext",
+        "kraycasting$kTexture",
+        "kraycasting$kcamera",
+        "kraycasting$kparticle",
+        "kraycasting$raycasting"
+      ],
+      "descriptor_candidates": [],
+      "application_references": [
+        "kSound",
+        "kraycasting",
+        "kraycasting$helpfade",
+        "kraycasting$kParameterX",
+        "kraycasting$kRenderContext",
+        "kraycasting$kTexture",
+        "kraycasting$kcamera",
+        "kraycasting$kparticle",
+        "kraycasting$raycasting"
+      ],
+      "platform_candidates": [
+        "java/lang/Double",
+        "java/lang/Object"
+      ],
+      "strings": []
+    },
+    {
+      "origin": "original/mkd_codepolice/kraycasting$kParameterX.class",
+      "name": "kraycasting$kParameterX",
+      "superclass": "java/lang/Object",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 510,
+      "sha256": "a7430de62497516a44e914d7ce97c20c44b59fed0a87c42de6cf9d1a7f9f2ff1",
+      "class_references": [
+        "java/lang/Object",
+        "kraycasting"
+      ],
+      "descriptor_candidates": [
+        "kraycasting$kTable"
+      ],
+      "application_references": [
+        "kraycasting",
+        "kraycasting$kTable"
+      ],
+      "platform_candidates": [
+        "java/lang/Object"
+      ],
+      "strings": []
+    },
+    {
+      "origin": "original/mkd_codepolice/kraycasting$kParameterXAFF.class",
+      "name": "kraycasting$kParameterXAFF",
+      "superclass": "kraycasting$kParameterX",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 439,
+      "sha256": "0ed3edac635b388c0c71cc87448cfe9c0406f8ca9385bf5687d7b8f3e2f374a1",
+      "class_references": [
+        "kraycasting",
+        "kraycasting$kParameterX"
+      ],
+      "descriptor_candidates": [
+        "java/lang/Object"
+      ],
+      "application_references": [
+        "kraycasting",
+        "kraycasting$kParameterX"
+      ],
+      "platform_candidates": [
+        "java/lang/Object"
+      ],
+      "strings": []
+    },
+    {
+      "origin": "original/mkd_codepolice/kraycasting$kParameterXCOS.class",
+      "name": "kraycasting$kParameterXCOS",
+      "superclass": "kraycasting$kParameterX",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 497,
+      "sha256": "649dd6596157ce838dad6b4fa878c7e4efccc5c835d8078443b662676781559c",
+      "class_references": [
+        "java/lang/Math",
+        "kraycasting",
+        "kraycasting$kParameterX"
+      ],
+      "descriptor_candidates": [
+        "java/lang/Object"
+      ],
+      "application_references": [
+        "kraycasting",
+        "kraycasting$kParameterX"
+      ],
+      "platform_candidates": [
+        "java/lang/Math",
+        "java/lang/Object"
+      ],
+      "strings": []
+    },
+    {
+      "origin": "original/mkd_codepolice/kraycasting$kParameterXCTE.class",
+      "name": "kraycasting$kParameterXCTE",
+      "superclass": "kraycasting$kParameterX",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 418,
+      "sha256": "b87cb0b19822f0da7ab1116153d7ce950425c5c82a94fe6370799214accc92cb",
+      "class_references": [
+        "kraycasting",
+        "kraycasting$kParameterX"
+      ],
+      "descriptor_candidates": [
+        "java/lang/Object"
+      ],
+      "application_references": [
+        "kraycasting",
+        "kraycasting$kParameterX"
+      ],
+      "platform_candidates": [
+        "java/lang/Object"
+      ],
+      "strings": []
+    },
+    {
+      "origin": "original/mkd_codepolice/kraycasting$kParameterXIMAGE.class",
+      "name": "kraycasting$kParameterXIMAGE",
+      "superclass": "kraycasting$kParameterX",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 527,
+      "sha256": "39f8f1acddfa71c3500c9251d1289dc370b297da8e7bab0e15dd14aa69b8ce0d",
+      "class_references": [
+        "kraycasting",
+        "kraycasting$kParameterX"
+      ],
+      "descriptor_candidates": [
+        "kraycasting$kRenderContext",
+        "kraycasting$kTexture"
+      ],
+      "application_references": [
+        "kraycasting",
+        "kraycasting$kParameterX",
+        "kraycasting$kRenderContext",
+        "kraycasting$kTexture"
+      ],
+      "platform_candidates": [],
+      "strings": []
+    },
+    {
+      "origin": "original/mkd_codepolice/kraycasting$kParameterXOB.class",
+      "name": "kraycasting$kParameterXOB",
+      "superclass": "kraycasting$kParameterX",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 518,
+      "sha256": "610bdfc7f5bbb695fff29f146567cbe0293d6885c3fd60a8ad029ad2819f8ecd",
+      "class_references": [
+        "kraycasting",
+        "kraycasting$kParameterX"
+      ],
+      "descriptor_candidates": [
+        "java/lang/Object",
+        "kraycasting$kRenderContext"
+      ],
+      "application_references": [
+        "kraycasting",
+        "kraycasting$kParameterX",
+        "kraycasting$kRenderContext"
+      ],
+      "platform_candidates": [
+        "java/lang/Object"
+      ],
+      "strings": []
+    },
+    {
+      "origin": "original/mkd_codepolice/kraycasting$kParameterXRC.class",
+      "name": "kraycasting$kParameterXRC",
+      "superclass": "kraycasting$kParameterX",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 609,
+      "sha256": "58b5a8a656e6a5e7c0a6c0b82501d4694f9391fe636fc024ce6370b2523a5d57",
+      "class_references": [
+        "kraycasting",
+        "kraycasting$kParameterX"
+      ],
+      "descriptor_candidates": [
+        "kraycasting$kRenderContext",
+        "kraycasting$kTexture"
+      ],
+      "application_references": [
+        "kraycasting",
+        "kraycasting$kParameterX",
+        "kraycasting$kRenderContext",
+        "kraycasting$kTexture"
+      ],
+      "platform_candidates": [],
+      "strings": []
+    },
+    {
+      "origin": "original/mkd_codepolice/kraycasting$kParameterXRND.class",
+      "name": "kraycasting$kParameterXRND",
+      "superclass": "kraycasting$kParameterX",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 491,
+      "sha256": "881ff6a46d45e093f867b692ef94fcde8b3ed5919857bf85c9dfd085d20a2e43",
+      "class_references": [
+        "java/lang/Math",
+        "kraycasting",
+        "kraycasting$kParameterX"
+      ],
+      "descriptor_candidates": [
+        "java/lang/Object"
+      ],
+      "application_references": [
+        "kraycasting",
+        "kraycasting$kParameterX"
+      ],
+      "platform_candidates": [
+        "java/lang/Math",
+        "java/lang/Object"
+      ],
+      "strings": []
+    },
+    {
+      "origin": "original/mkd_codepolice/kraycasting$kParameterXSIN.class",
+      "name": "kraycasting$kParameterXSIN",
+      "superclass": "kraycasting$kParameterX",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 497,
+      "sha256": "bcd4ddf665c6feeff82221bad5eefdb7885423faa4d13c0d4b1a6a7041494e04",
+      "class_references": [
+        "java/lang/Math",
+        "kraycasting",
+        "kraycasting$kParameterX"
+      ],
+      "descriptor_candidates": [
+        "java/lang/Object"
+      ],
+      "application_references": [
+        "kraycasting",
+        "kraycasting$kParameterX"
+      ],
+      "platform_candidates": [
+        "java/lang/Math",
+        "java/lang/Object"
+      ],
+      "strings": []
+    },
+    {
+      "origin": "original/mkd_codepolice/kraycasting$kParameterXSPLINE.class",
+      "name": "kraycasting$kParameterXSPLINE",
+      "superclass": "kraycasting$kParameterX",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 520,
+      "sha256": "86a86b46129aa2be7705a4c1e5b52362b853fd234fe04fbd14c1e7c84f048eb8",
+      "class_references": [
+        "kraycasting",
+        "kraycasting$kParameterX",
+        "kraycasting$kTable"
+      ],
+      "descriptor_candidates": [
+        "java/lang/Object"
+      ],
+      "application_references": [
+        "kraycasting",
+        "kraycasting$kParameterX",
+        "kraycasting$kTable"
+      ],
+      "platform_candidates": [
+        "java/lang/Object"
+      ],
+      "strings": []
+    },
+    {
+      "origin": "original/mkd_codepolice/kraycasting$kPartX.class",
+      "name": "kraycasting$kPartX",
+      "superclass": "java/lang/Object",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 899,
+      "sha256": "8c4a277f57034c6283eeac75e9a92fa6759a1728f17ade268cbf3d5562d8cedb",
+      "class_references": [
+        "java/lang/Object",
+        "kraycasting",
+        "kraycasting$kEffectX",
+        "kraycasting$kScript",
+        "kraycasting$kSoundCommand"
+      ],
+      "descriptor_candidates": [],
+      "application_references": [
+        "kraycasting",
+        "kraycasting$kEffectX",
+        "kraycasting$kScript",
+        "kraycasting$kSoundCommand"
+      ],
+      "platform_candidates": [
+        "java/lang/Object"
+      ],
+      "strings": []
+    },
+    {
+      "origin": "original/mkd_codepolice/kraycasting$kPixel.class",
+      "name": "kraycasting$kPixel",
+      "superclass": "java/lang/Object",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 496,
+      "sha256": "f77524bdc8d8da1a75d5f08a37c2ce8bf088d404a8151e84413cce085b90f3e8",
+      "class_references": [
+        "java/lang/Object",
+        "kraycasting"
+      ],
+      "descriptor_candidates": [],
+      "application_references": [
+        "kraycasting"
+      ],
+      "platform_candidates": [
+        "java/lang/Object"
+      ],
+      "strings": []
+    },
+    {
+      "origin": "original/mkd_codepolice/kraycasting$kRenderContext.class",
+      "name": "kraycasting$kRenderContext",
+      "superclass": "java/lang/Object",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 3838,
+      "sha256": "ab20675d377a76a97e9b9cf8ec42011ca26325d78736a93b3152bded56284156",
+      "class_references": [
+        "java/awt/Component",
+        "java/awt/Dimension",
+        "java/awt/image/MemoryImageSource",
+        "java/lang/Object",
+        "kraycasting",
+        "kraycasting$kPixel"
+      ],
+      "descriptor_candidates": [
+        "java/applet/Applet",
+        "java/awt/Image",
+        "java/awt/image/ImageProducer",
+        "java/lang/Class"
+      ],
+      "application_references": [
+        "kraycasting",
+        "kraycasting$kPixel"
+      ],
+      "platform_candidates": [
+        "java/applet/Applet",
+        "java/awt/Component",
+        "java/awt/Dimension",
+        "java/awt/Image",
+        "java/awt/image/ImageProducer",
+        "java/awt/image/MemoryImageSource",
+        "java/lang/Class",
+        "java/lang/Object"
+      ],
+      "strings": []
+    },
+    {
+      "origin": "original/mkd_codepolice/kraycasting$kScript.class",
+      "name": "kraycasting$kScript",
+      "superclass": "java/lang/Object",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 7183,
+      "sha256": "b1bda8f6bffcc0ddc532c4833ff778811a9bbcdfeb220f35ed541126c11c2375",
+      "class_references": [
+        "java/applet/Applet",
+        "java/io/PrintStream",
+        "java/lang/Double",
+        "java/lang/Integer",
+        "java/lang/Object",
+        "java/lang/String",
+        "java/lang/StringBuffer",
+        "java/lang/System",
+        "java/util/Hashtable",
+        "kSound",
+        "kraycasting",
+        "kraycasting$kEffectX",
+        "kraycasting$kParameterX",
+        "kraycasting$kParameterXAFF",
+        "kraycasting$kParameterXCOS",
+        "kraycasting$kParameterXCTE",
+        "kraycasting$kParameterXOB",
+        "kraycasting$kParameterXRND",
+        "kraycasting$kParameterXSIN",
+        "kraycasting$kParameterXSPLINE",
+        "kraycasting$kPartX",
+        "kraycasting$kRenderContext",
+        "kraycasting$kSoundCommand",
+        "kraycasting$kTable",
+        "kraycasting$kTexture",
+        "kraycasting$kTimer",
+        "kraycasting$kcamera",
+        "kraycasting$kparticle"
+      ],
+      "descriptor_candidates": [
+        "java/applet/AudioClip",
+        "java/awt/Image",
+        "java/lang/Class",
+        "java/net/URL"
+      ],
+      "application_references": [
+        "kSound",
+        "kraycasting",
+        "kraycasting$kEffectX",
+        "kraycasting$kParameterX",
+        "kraycasting$kParameterXAFF",
+        "kraycasting$kParameterXCOS",
+        "kraycasting$kParameterXCTE",
+        "kraycasting$kParameterXOB",
+        "kraycasting$kParameterXRND",
+        "kraycasting$kParameterXSIN",
+        "kraycasting$kParameterXSPLINE",
+        "kraycasting$kPartX",
+        "kraycasting$kRenderContext",
+        "kraycasting$kSoundCommand",
+        "kraycasting$kTable",
+        "kraycasting$kTexture",
+        "kraycasting$kTimer",
+        "kraycasting$kcamera",
+        "kraycasting$kparticle"
+      ],
+      "platform_candidates": [
+        "java/applet/Applet",
+        "java/applet/AudioClip",
+        "java/awt/Image",
+        "java/io/PrintStream",
+        "java/lang/Class",
+        "java/lang/Double",
+        "java/lang/Integer",
+        "java/lang/Object",
+        "java/lang/String",
+        "java/lang/StringBuffer",
+        "java/lang/System",
+        "java/net/URL",
+        "java/util/Hashtable"
+      ],
+      "strings": [
+        " ",
+        "   Pa:",
+        ",",
+        "D",
+        "Fx",
+        "KCAM",
+        "KEND",
+        "KIMAGES",
+        "KPART",
+        "KRECT",
+        "KSCRIPT",
+        "KSOUNDS",
+        "KTABLE",
+        "KTICLE",
+        "Pa",
+        "S",
+        "aff",
+        "cam",
+        "camera",
+        "cos",
+        "cte",
+        "evesound",
+        "flare3d",
+        "ground",
+        "ima",
+        "image",
+        "loop",
+        "motionblur",
+        "par",
+        "particl",
+        "particle",
+        "play",
+        "rec",
+        "rect",
+        "rnd",
+        "setcamcoord",
+        "setcamtarget",
+        "setrect",
+        "sin",
+        "snd",
+        "sound",
+        "spl",
+        "sprit",
+        "sprit3d",
+        "table",
+        "tunnel",
+        "twirl",
+        "|"
+      ]
+    },
+    {
+      "origin": "original/mkd_codepolice/kraycasting$kSound.class",
+      "name": "kraycasting$kSound",
+      "superclass": "java/lang/Object",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 808,
+      "sha256": "22337b57801dd2f0599f7068c050a36fcc8bb939923f9d797147a66604eefcc6",
+      "class_references": [
+        "java/applet/Applet",
+        "java/applet/AudioClip",
+        "java/lang/Object",
+        "kraycasting"
+      ],
+      "descriptor_candidates": [
+        "java/lang/String",
+        "java/net/URL"
+      ],
+      "application_references": [
+        "kraycasting"
+      ],
+      "platform_candidates": [
+        "java/applet/Applet",
+        "java/applet/AudioClip",
+        "java/lang/Object",
+        "java/lang/String",
+        "java/net/URL"
+      ],
+      "strings": []
+    },
+    {
+      "origin": "original/mkd_codepolice/kraycasting$kSoundCommand.class",
+      "name": "kraycasting$kSoundCommand",
+      "superclass": "java/lang/Object",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 522,
+      "sha256": "c9702121d55dafd4f64693e332f1029e82e6dc6a5de6f06b8f3ad3fe35b2cef6",
+      "class_references": [
+        "java/lang/Object",
+        "kSound",
+        "kraycasting"
+      ],
+      "descriptor_candidates": [],
+      "application_references": [
+        "kSound",
+        "kraycasting"
+      ],
+      "platform_candidates": [
+        "java/lang/Object"
+      ],
+      "strings": []
+    },
+    {
+      "origin": "original/mkd_codepolice/kraycasting$kTable.class",
+      "name": "kraycasting$kTable",
+      "superclass": "java/lang/Object",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 1282,
+      "sha256": "b9adfd40851f4a5c91d9ccc2843994de36dcf51ce348dfb7999bbde000a61728",
+      "class_references": [
+        "java/lang/Double",
+        "java/lang/Object",
+        "java/lang/String",
+        "kraycasting"
+      ],
+      "descriptor_candidates": [],
+      "application_references": [
+        "kraycasting"
+      ],
+      "platform_candidates": [
+        "java/lang/Double",
+        "java/lang/Object",
+        "java/lang/String"
+      ],
+      "strings": [
+        ",",
+        "|"
+      ]
+    },
+    {
+      "origin": "original/mkd_codepolice/kraycasting$kTexture.class",
+      "name": "kraycasting$kTexture",
+      "superclass": "java/lang/Object",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 707,
+      "sha256": "937c0f3450fa7495df9d7fd2948190a8539a9f5f343dfac4e14753dca75913a8",
+      "class_references": [
+        "java/awt/Image",
+        "java/awt/image/PixelGrabber",
+        "java/lang/InterruptedException",
+        "java/lang/Object",
+        "kraycasting"
+      ],
+      "descriptor_candidates": [
+        "java/awt/image/ImageObserver"
+      ],
+      "application_references": [
+        "kraycasting"
+      ],
+      "platform_candidates": [
+        "java/awt/Image",
+        "java/awt/image/ImageObserver",
+        "java/awt/image/PixelGrabber",
+        "java/lang/InterruptedException",
+        "java/lang/Object"
+      ],
+      "strings": []
+    },
+    {
+      "origin": "original/mkd_codepolice/kraycasting$kTimer.class",
+      "name": "kraycasting$kTimer",
+      "superclass": "java/lang/Object",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 481,
+      "sha256": "7f1e116a92b6993fe03a8e08e9d09e9b77783c1ef4d6929f7c11b6cf1b8b1ca9",
+      "class_references": [
+        "java/lang/Object",
+        "java/lang/System",
+        "kraycasting"
+      ],
+      "descriptor_candidates": [],
+      "application_references": [
+        "kraycasting"
+      ],
+      "platform_candidates": [
+        "java/lang/Object",
+        "java/lang/System"
+      ],
+      "strings": []
+    },
+    {
+      "origin": "original/mkd_codepolice/kraycasting$kcamera.class",
+      "name": "kraycasting$kcamera",
+      "superclass": "java/lang/Object",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 895,
+      "sha256": "61863a3da5c6e213392cb7d15ba7a8daffa9b3524e868adea3e762b4eb544ed7",
+      "class_references": [
+        "java/lang/Math",
+        "java/lang/Object",
+        "kraycasting"
+      ],
+      "descriptor_candidates": [],
+      "application_references": [
+        "kraycasting"
+      ],
+      "platform_candidates": [
+        "java/lang/Math",
+        "java/lang/Object"
+      ],
+      "strings": []
+    },
+    {
+      "origin": "original/mkd_codepolice/kraycasting$kparticle.class",
+      "name": "kraycasting$kparticle",
+      "superclass": "java/lang/Object",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 2899,
+      "sha256": "ecac51da265dcf1ef963048fc54e7618b35df35c34aaf3de9f5e181971ba5dab",
+      "class_references": [
+        "java/lang/Math",
+        "java/lang/Object",
+        "kraycasting",
+        "kraycasting$kcamera",
+        "kraycasting$raycasting"
+      ],
+      "descriptor_candidates": [
+        "kraycasting$kRenderContext",
+        "kraycasting$kTexture"
+      ],
+      "application_references": [
+        "kraycasting",
+        "kraycasting$kRenderContext",
+        "kraycasting$kTexture",
+        "kraycasting$kcamera",
+        "kraycasting$raycasting"
+      ],
+      "platform_candidates": [
+        "java/lang/Math",
+        "java/lang/Object"
+      ],
+      "strings": []
+    },
+    {
+      "origin": "original/mkd_codepolice/kraycasting$raycasting.class",
+      "name": "kraycasting$raycasting",
+      "superclass": "java/lang/Object",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 10387,
+      "sha256": "e5eb52c2c3df1ae5b3006834db39cf97ac5700196058a809b89baac2c252bcbe",
+      "class_references": [
+        "java/lang/Math",
+        "java/lang/Object",
+        "kraycasting",
+        "kraycasting$helpfade",
+        "kraycasting$kPixel",
+        "kraycasting$kRenderContext",
+        "kraycasting$kTexture"
+      ],
+      "descriptor_candidates": [
+        "java/lang/Class"
+      ],
+      "application_references": [
+        "kraycasting",
+        "kraycasting$helpfade",
+        "kraycasting$kPixel",
+        "kraycasting$kRenderContext",
+        "kraycasting$kTexture"
+      ],
+      "platform_candidates": [
+        "java/lang/Class",
+        "java/lang/Math",
+        "java/lang/Object"
+      ],
+      "strings": []
+    },
+    {
+      "origin": "original/mkd_codepolice/kraycasting$rotozoom.class",
+      "name": "kraycasting$rotozoom",
+      "superclass": "java/lang/Object",
+      "interfaces": [],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 1085,
+      "sha256": "46b43e78c1ad445d880a9e45a7e5c4ecda91ff2852e29f74e4ebfa33836725ae",
+      "class_references": [
+        "java/lang/Math",
+        "java/lang/Object",
+        "kraycasting",
+        "kraycasting$k2Dpos",
+        "kraycasting$kRenderContext",
+        "kraycasting$kTexture"
+      ],
+      "descriptor_candidates": [],
+      "application_references": [
+        "kraycasting",
+        "kraycasting$k2Dpos",
+        "kraycasting$kRenderContext",
+        "kraycasting$kTexture"
+      ],
+      "platform_candidates": [
+        "java/lang/Math",
+        "java/lang/Object"
+      ],
+      "strings": []
+    },
+    {
+      "origin": "original/mkd_codepolice/kraycasting.class",
+      "name": "kraycasting",
+      "superclass": "java/applet/Applet",
+      "interfaces": [
+        "java/lang/Runnable"
+      ],
+      "major_version": 45,
+      "minor_version": 3,
+      "bytes": 5285,
+      "sha256": "18061b6250db1dc828d882e275ca0d0d68649c8d270daa5317a3152445d5c88f",
+      "class_references": [
+        "java/applet/Applet",
+        "java/awt/Component",
+        "java/awt/Graphics",
+        "java/lang/Integer",
+        "java/lang/InterruptedException",
+        "java/lang/Runnable",
+        "java/lang/String",
+        "java/lang/StringBuffer",
+        "java/lang/Thread",
+        "kSound",
+        "kraycasting$helpfade",
+        "kraycasting$kEffectX",
+        "kraycasting$kParameterX",
+        "kraycasting$kParameterXAFF",
+        "kraycasting$kParameterXCOS",
+        "kraycasting$kParameterXCTE",
+        "kraycasting$kParameterXOB",
+        "kraycasting$kParameterXRND",
+        "kraycasting$kParameterXSIN",
+        "kraycasting$kParameterXSPLINE",
+        "kraycasting$kPartX",
+        "kraycasting$kPixel",
+        "kraycasting$kRenderContext",
+        "kraycasting$kScript",
+        "kraycasting$kSoundCommand",
+        "kraycasting$kTable",
+        "kraycasting$kTexture",
+        "kraycasting$kTimer",
+        "kraycasting$kcamera",
+        "kraycasting$kparticle",
+        "kraycasting$raycasting"
+      ],
+      "descriptor_candidates": [
+        "java/awt/Image",
+        "java/awt/image/ImageObserver",
+        "java/util/Hashtable"
+      ],
+      "application_references": [
+        "kSound",
+        "kraycasting$helpfade",
+        "kraycasting$kEffectX",
+        "kraycasting$kParameterX",
+        "kraycasting$kParameterXAFF",
+        "kraycasting$kParameterXCOS",
+        "kraycasting$kParameterXCTE",
+        "kraycasting$kParameterXOB",
+        "kraycasting$kParameterXRND",
+        "kraycasting$kParameterXSIN",
+        "kraycasting$kParameterXSPLINE",
+        "kraycasting$kPartX",
+        "kraycasting$kPixel",
+        "kraycasting$kRenderContext",
+        "kraycasting$kScript",
+        "kraycasting$kSoundCommand",
+        "kraycasting$kTable",
+        "kraycasting$kTexture",
+        "kraycasting$kTimer",
+        "kraycasting$kcamera",
+        "kraycasting$kparticle",
+        "kraycasting$raycasting"
+      ],
+      "platform_candidates": [
+        "java/applet/Applet",
+        "java/awt/Component",
+        "java/awt/Graphics",
+        "java/awt/Image",
+        "java/awt/image/ImageObserver",
+        "java/lang/Integer",
+        "java/lang/InterruptedException",
+        "java/lang/Runnable",
+        "java/lang/String",
+        "java/lang/StringBuffer",
+        "java/lang/Thread",
+        "java/util/Hashtable"
+      ],
+      "strings": [
+        "<",
+        "</",
+        ">",
+        "SCRIPT"
+      ]
+    }
+  ],
+  "defined_classes": [
+    "kParameterX",
+    "kParameterXAFF",
+    "kParameterXCOS",
+    "kParameterXCTE",
+    "kParameterXRND",
+    "kParameterXSIN",
+    "kParameterXSPLINE",
+    "kPartX",
+    "kPixel",
+    "kSound",
+    "kSoundCommand",
+    "kTimer",
+    "kraycasting",
+    "kraycasting$helpfade",
+    "kraycasting$k2Dpos",
+    "kraycasting$kEffectX",
+    "kraycasting$kParameterX",
+    "kraycasting$kParameterXAFF",
+    "kraycasting$kParameterXCOS",
+    "kraycasting$kParameterXCTE",
+    "kraycasting$kParameterXIMAGE",
+    "kraycasting$kParameterXOB",
+    "kraycasting$kParameterXRC",
+    "kraycasting$kParameterXRND",
+    "kraycasting$kParameterXSIN",
+    "kraycasting$kParameterXSPLINE",
+    "kraycasting$kPartX",
+    "kraycasting$kPixel",
+    "kraycasting$kRenderContext",
+    "kraycasting$kScript",
+    "kraycasting$kSound",
+    "kraycasting$kSoundCommand",
+    "kraycasting$kTable",
+    "kraycasting$kTexture",
+    "kraycasting$kTimer",
+    "kraycasting$kcamera",
+    "kraycasting$kparticle",
+    "kraycasting$raycasting",
+    "kraycasting$rotozoom"
+  ],
+  "unresolved_application_references": [
+    "helpfade",
+    "kEffectX",
+    "kParameterXOB",
+    "kScript",
+    "kTable"
+  ],
+  "duplicate_class_names": {},
+  "errors": [],
+  "limitations": [
+    "Descriptor candidates are hints, not guaranteed dependencies; inspect bytecode/source.",
+    "Platform prefixes are heuristic; verify javax and legacy extensions against the target JDK.",
+    "Computed paths and reflection may require further inspection.",
+    "Outer class structure is checked, but bytecode and nested attribute payloads are not verified.",
+    "JAR variants retain their entry origin; duplicate names need classpath/multi-release analysis."
+  ]
+}

@@ -1,0 +1,32 @@
+ TRES IMPORTANT: COMMENT LANCER CETTE DEMO JAVA:
+
+decompresser le zip, puis:
+
+ passer la resolution de windows en 640*480 (idéalement)
+car la page a été pensé pour cete résolution.
+(java ne peut pas changer la resolution lui-même.)
+
+Il faut lancer le index.html avec IExplorer uniquement (dans cette version.)
+ au bout de 20secondes maxi, ça demarre !
+ne laissez pas la souris au milieu de l'ecran svp!
+
+ 
+ Pour quitter, ATTENTION: le boutton graphique marche pas !
+ il faut faire: Alt+F4. :-)
+
+ et hop ! vous pouvez remettre votre resolution originale aprés.
+ 
+-----------------
+-- CODE POLICE --
+-----------------
+
+ Une courte demo trés particuliére de MANKIND codé en java,
+ avec un humour particulier. MKD invente "la demo de genre."
+ Attention! les personnes non-"Aware" peuvent être choqués.
+
+ Code	Krabob
+ Gfx	zaac,alexx ,myke,krabob
+ Sons	Leviathan,Tex 
+ 
+ 
+ 
