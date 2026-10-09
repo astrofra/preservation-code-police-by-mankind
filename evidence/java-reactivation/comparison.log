@@ -1,0 +1,442 @@
+
+> Task :compileJava
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:119: warning: [removal] Integer(int) in Integer has been deprecated and marked for removal
+                n = new Integer(n2 * (n3 + 1) >> 6);
+                    ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:129: warning: [removal] Integer(int) in Integer has been deprecated and marked for removal
+                n = new Integer(n2 + ((63 - n2) * (n3 - 64) >> 6));
+                    ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:666: warning: [removal] Double(String) in Double has been deprecated and marked for removal
+                this.floattable[n] = new Double(kraycasting.this.FindInto(string2, 1, ",").trim());
+                                     ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:667: warning: [removal] Double(String) in Double has been deprecated and marked for removal
+                this.datetable[n] = new Double(kraycasting.this.FindInto(string2, 0, ",").trim());
+                                    ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:888: warning: [removal] Double(double) in Double has been deprecated and marked for removal
+            double d2 = new Double(n);
+                        ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:1071: warning: [removal] Integer(String) in Integer has been deprecated and marked for removal
+                hashtable.put(string4, kraycasting5.new kparticle(new Integer(kraycasting.this.FindInto(stringArray6[n3], 1, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 2, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 3, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 4, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 5, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 6, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 7, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 8, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 9, "|").trim())));
+                                                                  ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:1071: warning: [removal] Double(String) in Double has been deprecated and marked for removal
+                hashtable.put(string4, kraycasting5.new kparticle(new Integer(kraycasting.this.FindInto(stringArray6[n3], 1, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 2, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 3, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 4, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 5, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 6, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 7, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 8, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 9, "|").trim())));
+                                                                                                                                           ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:1071: warning: [removal] Double(String) in Double has been deprecated and marked for removal
+                hashtable.put(string4, kraycasting5.new kparticle(new Integer(kraycasting.this.FindInto(stringArray6[n3], 1, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 2, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 3, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 4, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 5, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 6, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 7, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 8, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 9, "|").trim())));
+                                                                                                                                                                                                                   ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:1071: warning: [removal] Double(String) in Double has been deprecated and marked for removal
+                hashtable.put(string4, kraycasting5.new kparticle(new Integer(kraycasting.this.FindInto(stringArray6[n3], 1, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 2, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 3, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 4, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 5, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 6, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 7, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 8, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 9, "|").trim())));
+                                                                                                                                                                                                                                                                                           ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:1071: warning: [removal] Double(String) in Double has been deprecated and marked for removal
+                hashtable.put(string4, kraycasting5.new kparticle(new Integer(kraycasting.this.FindInto(stringArray6[n3], 1, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 2, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 3, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 4, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 5, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 6, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 7, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 8, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 9, "|").trim())));
+                                                                                                                                                                                                                                                                                                                                                                   ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:1071: warning: [removal] Double(String) in Double has been deprecated and marked for removal
+                hashtable.put(string4, kraycasting5.new kparticle(new Integer(kraycasting.this.FindInto(stringArray6[n3], 1, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 2, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 3, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 4, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 5, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 6, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 7, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 8, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 9, "|").trim())));
+                                                                                                                                                                                                                                                                                                                                                                                                                                           ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:1071: warning: [removal] Double(String) in Double has been deprecated and marked for removal
+                hashtable.put(string4, kraycasting5.new kparticle(new Integer(kraycasting.this.FindInto(stringArray6[n3], 1, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 2, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 3, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 4, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 5, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 6, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 7, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 8, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 9, "|").trim())));
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:1071: warning: [removal] Double(String) in Double has been deprecated and marked for removal
+                hashtable.put(string4, kraycasting5.new kparticle(new Integer(kraycasting.this.FindInto(stringArray6[n3], 1, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 2, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 3, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 4, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 5, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 6, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 7, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 8, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 9, "|").trim())));
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:1071: warning: [removal] Double(String) in Double has been deprecated and marked for removal
+                hashtable.put(string4, kraycasting5.new kparticle(new Integer(kraycasting.this.FindInto(stringArray6[n3], 1, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 2, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 3, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 4, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 5, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 6, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 7, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 8, "|").trim()), new Double(kraycasting.this.FindInto(stringArray6[n3], 9, "|").trim())));
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:1082: warning: [removal] Integer(String) in Integer has been deprecated and marked for removal
+                hashtable.put(string5, kraycasting6.new kcamera(new Integer(kraycasting.this.FindInto(stringArray7[n3], 1, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 2, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 3, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 4, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 5, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 6, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 7, "|").trim()).intValue()));
+                                                                ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:1082: warning: [removal] Integer(String) in Integer has been deprecated and marked for removal
+                hashtable.put(string5, kraycasting6.new kcamera(new Integer(kraycasting.this.FindInto(stringArray7[n3], 1, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 2, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 3, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 4, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 5, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 6, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 7, "|").trim()).intValue()));
+                                                                                                                                                    ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:1082: warning: [removal] Integer(String) in Integer has been deprecated and marked for removal
+                hashtable.put(string5, kraycasting6.new kcamera(new Integer(kraycasting.this.FindInto(stringArray7[n3], 1, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 2, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 3, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 4, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 5, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 6, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 7, "|").trim()).intValue()));
+                                                                                                                                                                                                                                        ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:1082: warning: [removal] Integer(String) in Integer has been deprecated and marked for removal
+                hashtable.put(string5, kraycasting6.new kcamera(new Integer(kraycasting.this.FindInto(stringArray7[n3], 1, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 2, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 3, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 4, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 5, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 6, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 7, "|").trim()).intValue()));
+                                                                                                                                                                                                                                                                                                                            ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:1082: warning: [removal] Integer(String) in Integer has been deprecated and marked for removal
+                hashtable.put(string5, kraycasting6.new kcamera(new Integer(kraycasting.this.FindInto(stringArray7[n3], 1, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 2, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 3, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 4, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 5, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 6, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 7, "|").trim()).intValue()));
+                                                                                                                                                                                                                                                                                                                                                                                                                ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:1082: warning: [removal] Integer(String) in Integer has been deprecated and marked for removal
+                hashtable.put(string5, kraycasting6.new kcamera(new Integer(kraycasting.this.FindInto(stringArray7[n3], 1, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 2, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 3, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 4, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 5, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 6, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 7, "|").trim()).intValue()));
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:1082: warning: [removal] Integer(String) in Integer has been deprecated and marked for removal
+                hashtable.put(string5, kraycasting6.new kcamera(new Integer(kraycasting.this.FindInto(stringArray7[n3], 1, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 2, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 3, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 4, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 5, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 6, "|").trim()).intValue(), new Integer(kraycasting.this.FindInto(stringArray7[n3], 7, "|").trim()).intValue()));
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:1093: warning: [removal] Double(String) in Double has been deprecated and marked for removal
+                hashtable.put(string6, kraycasting7.new kRenderContext(kraycasting.this.RenderContext, new Double(kraycasting.this.FindInto(stringArray3[n3], 1, "|").trim()), new Double(kraycasting.this.FindInto(stringArray3[n3], 2, "|").trim()), new Double(kraycasting.this.FindInto(stringArray3[n3], 3, "|").trim()), new Double(kraycasting.this.FindInto(stringArray3[n3], 4, "|").trim())));
+                                                                                                       ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:1093: warning: [removal] Double(String) in Double has been deprecated and marked for removal
+                hashtable.put(string6, kraycasting7.new kRenderContext(kraycasting.this.RenderContext, new Double(kraycasting.this.FindInto(stringArray3[n3], 1, "|").trim()), new Double(kraycasting.this.FindInto(stringArray3[n3], 2, "|").trim()), new Double(kraycasting.this.FindInto(stringArray3[n3], 3, "|").trim()), new Double(kraycasting.this.FindInto(stringArray3[n3], 4, "|").trim())));
+                                                                                                                                                                               ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:1093: warning: [removal] Double(String) in Double has been deprecated and marked for removal
+                hashtable.put(string6, kraycasting7.new kRenderContext(kraycasting.this.RenderContext, new Double(kraycasting.this.FindInto(stringArray3[n3], 1, "|").trim()), new Double(kraycasting.this.FindInto(stringArray3[n3], 2, "|").trim()), new Double(kraycasting.this.FindInto(stringArray3[n3], 3, "|").trim()), new Double(kraycasting.this.FindInto(stringArray3[n3], 4, "|").trim())));
+                                                                                                                                                                                                                                                       ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:1093: warning: [removal] Double(String) in Double has been deprecated and marked for removal
+                hashtable.put(string6, kraycasting7.new kRenderContext(kraycasting.this.RenderContext, new Double(kraycasting.this.FindInto(stringArray3[n3], 1, "|").trim()), new Double(kraycasting.this.FindInto(stringArray3[n3], 2, "|").trim()), new Double(kraycasting.this.FindInto(stringArray3[n3], 3, "|").trim()), new Double(kraycasting.this.FindInto(stringArray3[n3], 4, "|").trim())));
+                                                                                                                                                                                                                                                                                                                               ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:1136: warning: [removal] Integer(String) in Integer has been deprecated and marked for removal
+                this.kPartXscript[n4].TimeLength = new Integer(kraycasting.this.FindInto(stringArray9[0], 0, ",").trim());
+                                                   ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:1137: warning: [removal] Integer(String) in Integer has been deprecated and marked for removal
+                this.kPartXscript[n4].TimeStart = new Integer(kraycasting.this.FindInto(stringArray9[0], 1, ",").trim());
+                                                  ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:1201: warning: [removal] Double(String) in Double has been deprecated and marked for removal
+                            kParameterX2.a = new Double(kraycasting.this.FindInto(stringArray12[n3], 1, "|"));
+                                             ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:1202: warning: [removal] Double(String) in Double has been deprecated and marked for removal
+                            kParameterX2.b = new Double(kraycasting.this.FindInto(stringArray12[n3], 2, "|"));
+                                             ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:1203: warning: [removal] Double(String) in Double has been deprecated and marked for removal
+                            kParameterX2.c = new Double(kraycasting.this.FindInto(stringArray12[n3], 3, "|"));
+                                             ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:1209: warning: [removal] Double(String) in Double has been deprecated and marked for removal
+                            kParameterX2.a = new Double(kraycasting.this.FindInto(stringArray12[n3], 1, "|"));
+                                             ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:1210: warning: [removal] Double(String) in Double has been deprecated and marked for removal
+                            kParameterX2.b = new Double(kraycasting.this.FindInto(stringArray12[n3], 2, "|"));
+                                             ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:1211: warning: [removal] Double(String) in Double has been deprecated and marked for removal
+                            kParameterX2.c = new Double(kraycasting.this.FindInto(stringArray12[n3], 3, "|"));
+                                             ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:1217: warning: [removal] Double(String) in Double has been deprecated and marked for removal
+                            kParameterX2.a = new Double(kraycasting.this.FindInto(stringArray12[n3], 1, "|"));
+                                             ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:1223: warning: [removal] Double(String) in Double has been deprecated and marked for removal
+                            kParameterX2.a = new Double(kraycasting.this.FindInto(stringArray12[n3], 1, "|"));
+                                             ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:1224: warning: [removal] Double(String) in Double has been deprecated and marked for removal
+                            kParameterX2.b = new Double(kraycasting.this.FindInto(stringArray12[n3], 2, "|"));
+                                             ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:1231: warning: [removal] Double(String) in Double has been deprecated and marked for removal
+                            kParameterX2.a = new Double(kraycasting.this.FindInto(stringArray12[n3], 2, "|"));
+                                             ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:1237: warning: [removal] Double(String) in Double has been deprecated and marked for removal
+                            kParameterX2.a = new Double(kraycasting.this.FindInto(stringArray12[n3], 1, "|"));
+                                             ^
+/Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java:1238: warning: [removal] Double(String) in Double has been deprecated and marked for removal
+                            kParameterX2.b = new Double(kraycasting.this.FindInto(stringArray12[n3], 2, "|"));
+                                             ^
+Note: /Users/fra/dev/preservation-code-police-by-mankind/java-desktop/src/main/java/kraycasting.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+39 warnings
+
+> Task :processResources NO-SOURCE
+> Task :classes
+> Task :compileTestJava UP-TO-DATE
+> Task :processTestResources NO-SOURCE
+> Task :testClasses UP-TO-DATE
+> Task :test SKIPPED
+> Task :prepareAssets UP-TO-DATE
+
+> Task :verifyPreservation
+PASS: 53 AWT images, 10 Java Sound decodes, original tag semantics, 12 parts / 222 seconds
+
+> Task :check
+> Task :compileReferenceJava
+> Task :processReferenceResources NO-SOURCE
+> Task :referenceClasses
+
+> Task :compareOriginal
+table
+image
+particl
+camera
+rect
+sound
+ 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:rnd   Pa:rnd   Pa:rnd   Pa:rnd   Pa:rec   Pa:spl 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:spl 
+   Pa:cam   Pa:sin   Pa:sin   Pa:aff   Pa:cte   Pa:cte   Pa:aff   Pa:cte   Pa:sin 
+   Pa:cam   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte   Pa:cte   Pa:cte   Pa:sin   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte 
+   Pa:sin   Pa:cte   Pa:sin   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte 
+   Pa:ima   Pa:rnd   Pa:rnd   Pa:rnd   Pa:cte   Pa:rec   Pa:cte 
+   Pa:sin   Pa:cte   Pa:cte   Pa:sin   Pa:sin   Pa:cte   Pa:ima   Pa:rec 
+   Pa:sin   Pa:cte   Pa:cte   Pa:cos   Pa:cos   Pa:cte   Pa:ima   Pa:rec 
+   Pa:aff   Pa:aff   Pa:cte   Pa:cte   Pa:cte   Pa:aff   Pa:cte   Pa:cte   Pa:ima   Pa:rec 
+   Pa:ima   Pa:rnd   Pa:rnd   Pa:rnd   Pa:rnd   Pa:rec   Pa:cte 
+   Pa:sin   Pa:cos   Pa:sin   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec 
+   Pa:sin   Pa:cos   Pa:sin   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec 
+   Pa:sin   Pa:cos   Pa:sin   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec 
+   Pa:rec 
+   Pa:snd   Pa:cte 
+   Pa:cam   Pa:aff   Pa:sin   Pa:aff   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:sin 
+   Pa:cam   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte   Pa:cte   Pa:cte   Pa:sin   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte 
+   Pa:ima   Pa:rnd   Pa:rnd   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:cte   Pa:cte   Pa:cte   Pa:rnd   Pa:rnd   Pa:cte   Pa:ima   Pa:rec 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:spl 
+   Pa:snd   Pa:cte 
+   Pa:cam   Pa:aff   Pa:sin   Pa:aff   Pa:cte   Pa:cte   Pa:aff   Pa:cte   Pa:sin 
+   Pa:cam   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte   Pa:cte   Pa:cte   Pa:sin   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte 
+   Pa:ima   Pa:rnd   Pa:rnd   Pa:rnd   Pa:cte   Pa:rec   Pa:cte 
+   Pa:sin   Pa:cte   Pa:cte   Pa:sin   Pa:sin   Pa:cte   Pa:ima   Pa:rec 
+   Pa:sin   Pa:cte   Pa:cte   Pa:cos   Pa:cos   Pa:cte   Pa:ima   Pa:rec 
+   Pa:aff   Pa:aff   Pa:cte   Pa:cte   Pa:cte   Pa:aff   Pa:cte   Pa:cte   Pa:ima   Pa:rec 
+   Pa:cte   Pa:cte   Pa:spl   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:spl 
+   Pa:cte   Pa:cte   Pa:spl   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:spl 
+   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:spl 
+   Pa:snd   Pa:cte 
+   Pa:sin   Pa:cos   Pa:sin   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec 
+   Pa:sin   Pa:cos   Pa:sin   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec 
+   Pa:cte   Pa:cte   Pa:spl   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:spl 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:spl 
+   Pa:cam   Pa:cte   Pa:cte   Pa:cos   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:sin 
+   Pa:cam   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:sin   Pa:cte   Pa:cte 
+   Pa:par   Pa:rec   Pa:ima   Pa:ima   Pa:cte   Pa:cte   Pa:cam   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte 
+   Pa:cte   Pa:cte   Pa:cte   Pa:spl   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:spl 
+   Pa:cte   Pa:cte   Pa:cte   Pa:spl   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:spl 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:spl 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:spl 
+   Pa:snd   Pa:cte 
+   Pa:snd   Pa:cte 
+   Pa:rec   Pa:cte   Pa:cte   Pa:spl   Pa:spl 
+   Pa:rec   Pa:spl   Pa:cte   Pa:cte   Pa:spl 
+   Pa:rec   Pa:cte   Pa:spl   Pa:spl   Pa:cte 
+   Pa:rec   Pa:spl   Pa:spl   Pa:cte   Pa:cte 
+   Pa:cam   Pa:sin   Pa:sin   Pa:cos   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:sin 
+   Pa:cam   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte 
+   Pa:par   Pa:rec   Pa:ima   Pa:ima   Pa:cte   Pa:cte   Pa:cam   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte 
+   Pa:cam   Pa:cte   Pa:cte   Pa:aff   Pa:aff   Pa:sin   Pa:cos   Pa:cte 
+   Pa:cam   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte   Pa:cte   Pa:sin   Pa:cte   Pa:cte   Pa:cte   Pa:sin   Pa:cte   Pa:cte   Pa:sin   Pa:sin   Pa:cte 
+   Pa:cam   Pa:cte   Pa:cte   Pa:aff   Pa:aff   Pa:sin   Pa:cos   Pa:cte 
+   Pa:cam   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte   Pa:cte   Pa:sin   Pa:cte   Pa:cte   Pa:cte   Pa:sin   Pa:cte   Pa:cte   Pa:sin   Pa:sin   Pa:cte 
+   Pa:aff   Pa:aff   Pa:aff   Pa:cte   Pa:cos   Pa:aff   Pa:cte   Pa:cte   Pa:ima   Pa:rec 
+   Pa:rec   Pa:spl   Pa:cte   Pa:spl   Pa:cte 
+   Pa:ima   Pa:sin   Pa:cte   Pa:sin   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:sin   Pa:cte   Pa:sin   Pa:cte   Pa:rec   Pa:cos 
+   Pa:cam   Pa:cte   Pa:cte   Pa:aff   Pa:cte   Pa:spl   Pa:spl   Pa:spl 
+   Pa:cam   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:sin   Pa:cte   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cos   Pa:cte   Pa:cos   Pa:rec   Pa:spl 
+   Pa:ima   Pa:cte   Pa:sin   Pa:cte   Pa:sin   Pa:rec   Pa:spl 
+   Pa:ima   Pa:cte   Pa:cos   Pa:cte   Pa:cos   Pa:rec   Pa:spl 
+   Pa:spl   Pa:cte   Pa:rnd   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte 
+   Pa:spl   Pa:cte   Pa:spl   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte 
+   Pa:spl   Pa:spl   Pa:spl   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte 
+   Pa:spl   Pa:spl   Pa:spl   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:spl 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:spl 
+   Pa:cam   Pa:cte   Pa:cte   Pa:aff   Pa:cte   Pa:spl   Pa:spl   Pa:spl 
+   Pa:cam   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:sin   Pa:cte   Pa:cte 
+   Pa:cte   Pa:spl   Pa:spl   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:spl 
+   Pa:cam   Pa:cte   Pa:cte   Pa:cte   Pa:spl   Pa:cte   Pa:cte   Pa:cte   Pa:cte 
+   Pa:par   Pa:rec   Pa:ima   Pa:ima   Pa:cte   Pa:cte   Pa:cam   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte 
+   Pa:spl   Pa:spl   Pa:spl   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte 
+   Pa:spl   Pa:spl   Pa:spl   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:spl 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:spl 
+   Pa:cam   Pa:sin   Pa:sin   Pa:aff   Pa:cte   Pa:cte   Pa:spl   Pa:cte 
+   Pa:cam   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:sin   Pa:cte   Pa:cte 
+   Pa:spl   Pa:cte   Pa:spl   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte 
+   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:spl 
+   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:spl 
+   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:spl 
+   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:spl 
+   Pa:snd   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:spltable
+image
+particl
+camera
+rect
+sound
+ 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:rnd   Pa:rnd   Pa:rnd   Pa:rnd   Pa:rec   Pa:spl 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:spl 
+   Pa:cam   Pa:sin   Pa:sin   Pa:aff   Pa:cte   Pa:cte   Pa:aff   Pa:cte   Pa:sin 
+   Pa:cam   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte   Pa:cte   Pa:cte   Pa:sin   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte 
+   Pa:sin   Pa:cte   Pa:sin   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte 
+   Pa:ima   Pa:rnd   Pa:rnd   Pa:rnd   Pa:cte   Pa:rec   Pa:cte 
+   Pa:sin   Pa:cte   Pa:cte   Pa:sin   Pa:sin   Pa:cte   Pa:ima   Pa:rec 
+   Pa:sin   Pa:cte   Pa:cte   Pa:cos   Pa:cos   Pa:cte   Pa:ima   Pa:rec 
+   Pa:aff   Pa:aff   Pa:cte   Pa:cte   Pa:cte   Pa:aff   Pa:cte   Pa:cte   Pa:ima   Pa:rec 
+   Pa:ima   Pa:rnd   Pa:rnd   Pa:rnd   Pa:rnd   Pa:rec   Pa:cte 
+   Pa:sin   Pa:cos   Pa:sin   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec 
+   Pa:sin   Pa:cos   Pa:sin   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec 
+   Pa:sin   Pa:cos   Pa:sin   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec 
+   Pa:rec 
+   Pa:snd   Pa:cte 
+   Pa:cam   Pa:aff   Pa:sin   Pa:aff   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:sin 
+   Pa:cam   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte   Pa:cte   Pa:cte   Pa:sin   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte 
+   Pa:ima   Pa:rnd   Pa:rnd   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:cte   Pa:cte   Pa:cte   Pa:rnd   Pa:rnd   Pa:cte   Pa:ima   Pa:rec 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:spl 
+   Pa:snd   Pa:cte 
+   Pa:cam   Pa:aff   Pa:sin   Pa:aff   Pa:cte   Pa:cte   Pa:aff   Pa:cte   Pa:sin 
+   Pa:cam   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte   Pa:cte   Pa:cte   Pa:sin   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte 
+   Pa:ima   Pa:rnd   Pa:rnd   Pa:rnd   Pa:cte   Pa:rec   Pa:cte 
+   Pa:sin   Pa:cte   Pa:cte   Pa:sin   Pa:sin   Pa:cte   Pa:ima   Pa:rec 
+   Pa:sin   Pa:cte   Pa:cte   Pa:cos   Pa:cos   Pa:cte   Pa:ima   Pa:rec 
+   Pa:aff   Pa:aff   Pa:cte   Pa:cte   Pa:cte   Pa:aff   Pa:cte   Pa:cte   Pa:ima   Pa:rec 
+   Pa:cte   Pa:cte   Pa:spl   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:spl 
+   Pa:cte   Pa:cte   Pa:spl   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:spl 
+   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:spl 
+   Pa:snd   Pa:cte 
+   Pa:sin   Pa:cos   Pa:sin   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec 
+   Pa:sin   Pa:cos   Pa:sin   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec 
+   Pa:cte   Pa:cte   Pa:spl   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:spl 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:spl 
+   Pa:cam   Pa:cte   Pa:cte   Pa:cos   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:sin 
+   Pa:cam   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:sin   Pa:cte   Pa:cte 
+   Pa:par   Pa:rec   Pa:ima   Pa:ima   Pa:cte   Pa:cte   Pa:cam   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte 
+   Pa:cte   Pa:cte   Pa:cte   Pa:spl   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:spl 
+   Pa:cte   Pa:cte   Pa:cte   Pa:spl   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:spl 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:spl 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:spl 
+   Pa:snd   Pa:cte 
+   Pa:snd   Pa:cte 
+   Pa:rec   Pa:cte   Pa:cte   Pa:spl   Pa:spl 
+   Pa:rec   Pa:spl   Pa:cte   Pa:cte   Pa:spl 
+   Pa:rec   Pa:cte   Pa:spl   Pa:spl   Pa:cte 
+   Pa:rec   Pa:spl   Pa:spl   Pa:cte   Pa:cte 
+   Pa:cam   Pa:sin   Pa:sin   Pa:cos   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:sin 
+   Pa:cam   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte 
+   Pa:par   Pa:rec   Pa:ima   Pa:ima   Pa:cte   Pa:cte   Pa:cam   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte 
+   Pa:cam   Pa:cte   Pa:cte   Pa:aff   Pa:aff   Pa:sin   Pa:cos   Pa:cte 
+   Pa:cam   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte   Pa:cte   Pa:sin   Pa:cte   Pa:cte   Pa:cte   Pa:sin   Pa:cte   Pa:cte   Pa:sin   Pa:sin   Pa:cte 
+   Pa:cam   Pa:cte   Pa:cte   Pa:aff   Pa:aff   Pa:sin   Pa:cos   Pa:cte 
+   Pa:cam   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte   Pa:cte   Pa:sin   Pa:cte   Pa:cte   Pa:cte   Pa:sin   Pa:cte   Pa:cte   Pa:sin   Pa:sin   Pa:cte 
+   Pa:aff   Pa:aff   Pa:aff   Pa:cte   Pa:cos   Pa:aff   Pa:cte   Pa:cte   Pa:ima   Pa:rec 
+   Pa:rec   Pa:spl   Pa:cte   Pa:spl   Pa:cte 
+   Pa:ima   Pa:sin   Pa:cte   Pa:sin   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:sin   Pa:cte   Pa:sin   Pa:cte   Pa:rec   Pa:cos 
+   Pa:cam   Pa:cte   Pa:cte   Pa:aff   Pa:cte   Pa:spl   Pa:spl   Pa:spl 
+   Pa:cam   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:sin   Pa:cte   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cos   Pa:cte   Pa:cos   Pa:rec   Pa:spl 
+   Pa:ima   Pa:cte   Pa:sin   Pa:cte   Pa:sin   Pa:rec   Pa:spl 
+   Pa:ima   Pa:cte   Pa:cos   Pa:cte   Pa:cos   Pa:rec   Pa:spl 
+   Pa:spl   Pa:cte   Pa:rnd   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte 
+   Pa:spl   Pa:cte   Pa:spl   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte 
+   Pa:spl   Pa:spl   Pa:spl   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte 
+   Pa:spl   Pa:spl   Pa:spl   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:spl 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:spl 
+   Pa:cam   Pa:cte   Pa:cte   Pa:aff   Pa:cte   Pa:spl   Pa:spl   Pa:spl 
+   Pa:cam   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:sin   Pa:cte   Pa:cte 
+   Pa:cte   Pa:spl   Pa:spl   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:spl 
+   Pa:cam   Pa:cte   Pa:cte   Pa:cte   Pa:spl   Pa:cte   Pa:cte   Pa:cte   Pa:cte 
+   Pa:par   Pa:rec   Pa:ima   Pa:ima   Pa:cte   Pa:cte   Pa:cam   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte 
+   Pa:spl   Pa:spl   Pa:spl   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte 
+   Pa:spl   Pa:spl   Pa:spl   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:spl 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:spl 
+   Pa:cam   Pa:sin   Pa:sin   Pa:aff   Pa:cte   Pa:cte   Pa:spl   Pa:cte 
+   Pa:cam   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:sin   Pa:cte   Pa:cte 
+   Pa:spl   Pa:cte   Pa:spl   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte 
+   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:spl 
+   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:spl 
+   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:spl 
+   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:spl 
+   Pa:snd   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:splPASS tick 0: pixels, camera, particles and sound commands
+PASS tick 1000: pixels, camera, particles and sound commands
+PASS tick 2000: pixels, camera, particles and sound commands
+PASS tick 3000: pixels, camera, particles and sound commands
+PASS tick 4000: pixels, camera, particles and sound commands
+PASS tick 5000: pixels, camera, particles and sound commands
+PASS tick 6000: pixels, camera, particles and sound commands
+PASS tick 7000: pixels, camera, particles and sound commands
+PASS tick 8000: pixels, camera, particles and sound commands
+PASS tick 9000: pixels, camera, particles and sound commands
+PASS tick 10000: pixels, camera, particles and sound commands
+PASS tick 11000: pixels, camera, particles and sound commands
+PASS tick 12000: pixels, camera, particles and sound commands
+PASS tick 13000: pixels, camera, particles and sound commands
+PASS tick 14000: pixels, camera, particles and sound commands
+PASS tick 15000: pixels, camera, particles and sound commands
+PASS tick 16000: pixels, camera, particles and sound commands
+PASS tick 17000: pixels, camera, particles and sound commands
+PASS tick 18000: pixels, camera, particles and sound commands
+PASS tick 19000: pixels, camera, particles and sound commands
+PASS tick 20000: pixels, camera, particles and sound commands
+PASS tick 21000: pixels, camera, particles and sound commands
+PASS tick 22000: pixels, camera, particles and sound commands
+PASS: 11101 sequential frames matched the original classes exactly; 38 sound commands.
+
+[Incubating] Problems report is available at: file:///Users/fra/dev/preservation-code-police-by-mankind/java-desktop/build/reports/problems/problems-report.html
+
+BUILD SUCCESSFUL in 21s
+6 actionable tasks: 4 executed, 2 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.4.0/userguide/configuration_cache_enabling.html

@@ -1,0 +1,153 @@
+> Task :compileJava
+> Task :processResources NO-SOURCE
+> Task :classes
+> Task :compileReferenceJava
+> Task :prepareAssets UP-TO-DATE
+> Task :processReferenceResources NO-SOURCE
+> Task :referenceClasses
+
+> Task :verifyWindow
+table
+image
+particl
+camera
+rect
+sound
+ 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:rnd   Pa:rnd   Pa:rnd   Pa:rnd   Pa:rec   Pa:spl 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:spl 
+   Pa:cam   Pa:sin   Pa:sin   Pa:aff   Pa:cte   Pa:cte   Pa:aff   Pa:cte   Pa:sin 
+   Pa:cam   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte   Pa:cte   Pa:cte   Pa:sin   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte 
+   Pa:sin   Pa:cte   Pa:sin   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte 
+   Pa:ima   Pa:rnd   Pa:rnd   Pa:rnd   Pa:cte   Pa:rec   Pa:cte 
+   Pa:sin   Pa:cte   Pa:cte   Pa:sin   Pa:sin   Pa:cte   Pa:ima   Pa:rec 
+   Pa:sin   Pa:cte   Pa:cte   Pa:cos   Pa:cos   Pa:cte   Pa:ima   Pa:rec 
+   Pa:aff   Pa:aff   Pa:cte   Pa:cte   Pa:cte   Pa:aff   Pa:cte   Pa:cte   Pa:ima   Pa:rec 
+   Pa:ima   Pa:rnd   Pa:rnd   Pa:rnd   Pa:rnd   Pa:rec   Pa:cte 
+   Pa:sin   Pa:cos   Pa:sin   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec 
+   Pa:sin   Pa:cos   Pa:sin   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec 
+   Pa:sin   Pa:cos   Pa:sin   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec 
+   Pa:rec 
+   Pa:snd   Pa:cte 
+   Pa:cam   Pa:aff   Pa:sin   Pa:aff   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:sin 
+   Pa:cam   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte   Pa:cte   Pa:cte   Pa:sin   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte 
+   Pa:ima   Pa:rnd   Pa:rnd   Pa:cte   Pa:cte   Pa:rec   Pa:cte 
+   Pa:cte   Pa:cte   Pa:cte   Pa:rnd   Pa:rnd   Pa:cte   Pa:ima   Pa:rec 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:spl 
+   Pa:snd   Pa:cte 
+   Pa:cam   Pa:aff   Pa:sin   Pa:aff   Pa:cte   Pa:cte   Pa:aff   Pa:cte   Pa:sin 
+   Pa:cam   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte   Pa:cte   Pa:cte   Pa:sin   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte 
+   Pa:ima   Pa:rnd   Pa:rnd   Pa:rnd   Pa:cte   Pa:rec   Pa:cte 
+   Pa:sin   Pa:cte   Pa:cte   Pa:sin   Pa:sin   Pa:cte   Pa:ima   Pa:rec 
+   Pa:sin   Pa:cte   Pa:cte   Pa:cos   Pa:cos   Pa:cte   Pa:ima   Pa:rec 
+   Pa:aff   Pa:aff   Pa:cte   Pa:cte   Pa:cte   Pa:aff   Pa:cte   Pa:cte   Pa:ima   Pa:rec 
+   Pa:cte   Pa:cte   Pa:spl   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:spl 
+   Pa:cte   Pa:cte   Pa:spl   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:spl 
+   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:spl 
+   Pa:snd   Pa:cte 
+   Pa:sin   Pa:cos   Pa:sin   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec 
+   Pa:sin   Pa:cos   Pa:sin   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec 
+   Pa:cte   Pa:cte   Pa:spl   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:spl 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:spl 
+   Pa:cam   Pa:cte   Pa:cte   Pa:cos   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:sin 
+   Pa:cam   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:sin   Pa:cte   Pa:cte 
+   Pa:par   Pa:rec   Pa:ima   Pa:ima   Pa:cte   Pa:cte   Pa:cam   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte 
+   Pa:cte   Pa:cte   Pa:cte   Pa:spl   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:spl 
+   Pa:cte   Pa:cte   Pa:cte   Pa:spl   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:spl 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:spl 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:spl 
+   Pa:snd   Pa:cte 
+   Pa:snd   Pa:cte 
+   Pa:rec   Pa:cte   Pa:cte   Pa:spl   Pa:spl 
+   Pa:rec   Pa:spl   Pa:cte   Pa:cte   Pa:spl 
+   Pa:rec   Pa:cte   Pa:spl   Pa:spl   Pa:cte 
+   Pa:rec   Pa:spl   Pa:spl   Pa:cte   Pa:cte 
+   Pa:cam   Pa:sin   Pa:sin   Pa:cos   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:sin 
+   Pa:cam   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte 
+   Pa:par   Pa:rec   Pa:ima   Pa:ima   Pa:cte   Pa:cte   Pa:cam   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte 
+   Pa:cam   Pa:cte   Pa:cte   Pa:aff   Pa:aff   Pa:sin   Pa:cos   Pa:cte 
+   Pa:cam   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte   Pa:cte   Pa:sin   Pa:cte   Pa:cte   Pa:cte   Pa:sin   Pa:cte   Pa:cte   Pa:sin   Pa:sin   Pa:cte 
+   Pa:cam   Pa:cte   Pa:cte   Pa:aff   Pa:aff   Pa:sin   Pa:cos   Pa:cte 
+   Pa:cam   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte   Pa:cte   Pa:sin   Pa:cte   Pa:cte   Pa:cte   Pa:sin   Pa:cte   Pa:cte   Pa:sin   Pa:sin   Pa:cte 
+   Pa:aff   Pa:aff   Pa:aff   Pa:cte   Pa:cos   Pa:aff   Pa:cte   Pa:cte   Pa:ima   Pa:rec 
+   Pa:rec   Pa:spl   Pa:cte   Pa:spl   Pa:cte 
+   Pa:ima   Pa:sin   Pa:cte   Pa:sin   Pa:cte   Pa:rec   Pa:cte 
+   Pa:ima   Pa:sin   Pa:cte   Pa:sin   Pa:cte   Pa:rec   Pa:cos 
+   Pa:cam   Pa:cte   Pa:cte   Pa:aff   Pa:cte   Pa:spl   Pa:spl   Pa:spl 
+   Pa:cam   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:sin   Pa:cte   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cos   Pa:cte   Pa:cos   Pa:rec   Pa:spl 
+   Pa:ima   Pa:cte   Pa:sin   Pa:cte   Pa:sin   Pa:rec   Pa:spl 
+   Pa:ima   Pa:cte   Pa:cos   Pa:cte   Pa:cos   Pa:rec   Pa:spl 
+   Pa:spl   Pa:cte   Pa:rnd   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte 
+   Pa:spl   Pa:cte   Pa:spl   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte 
+   Pa:spl   Pa:spl   Pa:spl   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte 
+   Pa:spl   Pa:spl   Pa:spl   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:spl 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:spl 
+   Pa:cam   Pa:cte   Pa:cte   Pa:aff   Pa:cte   Pa:spl   Pa:spl   Pa:spl 
+   Pa:cam   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:sin   Pa:cte   Pa:cte 
+   Pa:cte   Pa:spl   Pa:spl   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:spl 
+   Pa:cam   Pa:cte   Pa:cte   Pa:cte   Pa:spl   Pa:cte   Pa:cte   Pa:cte   Pa:cte 
+   Pa:par   Pa:rec   Pa:ima   Pa:ima   Pa:cte   Pa:cte   Pa:cam   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte 
+   Pa:spl   Pa:spl   Pa:spl   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte 
+   Pa:spl   Pa:spl   Pa:spl   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:spl 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:spl 
+   Pa:cam   Pa:sin   Pa:sin   Pa:aff   Pa:cte   Pa:cte   Pa:spl   Pa:cte 
+   Pa:cam   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:sin   Pa:cte   Pa:cte 
+   Pa:spl   Pa:cte   Pa:spl   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:cte 
+   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:spl 
+   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:spl 
+   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:spl 
+   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:ima   Pa:rec   Pa:spl 
+   Pa:snd   Pa:cte 
+   Pa:ima   Pa:cte   Pa:cte   Pa:cte   Pa:cte   Pa:rec   Pa:splsecond=1 partStartTick=12200
+second=13 partStartTick=0
+second=17 partStartTick=400
+PASS: visible window, 22 seconds, initial timeline offset=210 seconds, live audio device, loop=true, minimize/restore, pointer events and clean close. Physical listening not assessed.
+
+BUILD SUCCESSFUL in 31s
+4 actionable tasks: 3 executed, 1 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.4.0/userguide/configuration_cache_enabling.html

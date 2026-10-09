@@ -1,0 +1,13 @@
+> Task :compileJava UP-TO-DATE
+> Task :processResources NO-SOURCE
+> Task :classes UP-TO-DATE
+> Task :jar
+> Task :prepareAssets UP-TO-DATE
+> Task :startScripts
+> Task :installDist
+
+BUILD SUCCESSFUL in 325ms
+5 actionable tasks: 3 executed, 2 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.4.0/userguide/configuration_cache_enabling.html
+Packaged: /Users/fra/dev/preservation-code-police-by-mankind/dist/java/macos-arm64/Code Police.app
+Original media/script copies verified: 64

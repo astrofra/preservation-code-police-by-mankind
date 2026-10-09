@@ -1,0 +1,116 @@
+--- reverse/cfr/kraycasting.java
++++ java-desktop/src/main/java/kraycasting.java
+@@ -1,7 +1,8 @@
+ /*
+- * Decompiled with CFR 0.152.
++ * Reconstructed with CFR 0.152; desktop platform changes are documented
++ * in documentation/java-reactivation.md. This is not original Java source.
+  */
+-import java.applet.Applet;
++
+ import java.awt.Graphics;
+ import java.awt.Image;
+ import java.awt.image.MemoryImageSource;
+@@ -9,14 +10,14 @@
+ import java.util.Hashtable;
+ 
+ public class kraycasting
+-extends Applet
++extends DesktopSurface
+ implements Runnable {
+     private kScript THEkScript;
+     private kRenderContext RenderContext;
+     private raycasting rcs;
+-    private Image applet_image;
++    private volatile Image applet_image;
+     private Thread mainthread = null;
+-    private boolean boolend = false;
++    private volatile boolean boolend = false;
+     private kTimer kTime;
+     private byte[] ct;
+     private Hashtable partcHash;
+@@ -148,14 +149,31 @@
+         }
+     }
+ 
+-    public void start() {
+-        this.mainthread = new Thread(this);
++    public synchronized void start() {
++        if (this.mainthread != null && this.mainthread.isAlive()) return;
++        this.boolend = false;
++        this.mainthread = new Thread(this, "code-police-engine");
+         this.mainthread.start();
+     }
+ 
+     public void stop() {
++        this.boolend = true;
++        Thread worker = this.mainthread;
++        if (worker != null && worker != Thread.currentThread()) {
++            try { worker.join(3000L); }
++            catch (InterruptedException exception) { Thread.currentThread().interrupt(); }
++            if (worker.isAlive()) throw new IllegalStateException("Render thread did not stop");
++        }
+         kSound.StopAll();
+-        this.boolend = true;
++    }
++
++    @Override
++    public void paint(Graphics graphics) {
++        update(graphics);
++    }
++
++    public boolean isRunning() {
++        return this.mainthread != null && this.mainthread.isAlive();
+     }
+ 
+     public void update(Graphics graphics) {
+@@ -189,7 +207,7 @@
+         int Height;
+         int[] Chunk2;
+         int[] CurrentChunk;
+-        Applet app;
++        DesktopSurface app;
+         private MemoryImageSource RC_imageMIS1;
+         private MemoryImageSource RC_imageMIS2;
+         private kRenderContext RC_RootContext;
+@@ -210,7 +228,7 @@
+         private double ceiling;
+         private boolean drawable;
+ 
+-        public kRenderContext(Applet applet) {
++        public kRenderContext(DesktopSurface applet) {
+             int n = 0;
+             int n2 = 0;
+             int n3 = 0;
+@@ -2097,4 +2115,3 @@
+         }
+     }
+ }
+-
+--- reverse/cfr/kSound.java
++++ java-desktop/src/main/java/kSound.java
+@@ -1,16 +1,16 @@
+ /*
+  * Decompiled with CFR 0.152.
+  */
+-import java.applet.AudioClip;
++
+ 
+ public class kSound {
+-    private AudioClip OurAudio;
++    private DemoAudio OurAudio;
+     public boolean soundIsOn;
+     public boolean playedonce;
+     static kSound firstkSound = null;
+     private kSound nextkSound = null;
+ 
+-    public kSound(AudioClip audioClip) {
++    public kSound(DemoAudio audioClip) {
+         this.OurAudio = audioClip;
+         this.soundIsOn = false;
+         this.nextkSound = firstkSound;
+@@ -47,4 +47,3 @@
+         }
+     }
+ }
+-

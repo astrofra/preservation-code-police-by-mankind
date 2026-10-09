@@ -1,0 +1,62 @@
+plugins { id 'application' }
+
+version = '1.0.0'
+java { toolchain { languageVersion = JavaLanguageVersion.of(25) } }
+tasks.withType(JavaCompile).configureEach {
+    options.release = 17
+    options.encoding = 'UTF-8'
+}
+application { mainClass = 'CodePoliceDesktop' }
+jar { manifest { attributes 'Main-Class': application.mainClass.get() } }
+
+tasks.register('prepareAssets', Sync) {
+    from('../original/mkd_codepolice') {
+        include 'page.html', 'Images/**', 'Sounds/**'
+        exclude '**/.DS_Store'
+    }
+    into layout.projectDirectory.dir('assets')
+}
+tasks.named('run') {
+    dependsOn 'prepareAssets'
+    systemProperty 'codepolice.assets', file('assets').absolutePath
+}
+distributions { main { contents { from('assets') { into 'assets' } } } }
+tasks.named('installDist') { dependsOn 'prepareAssets' }
+tasks.named('distZip') { dependsOn 'prepareAssets' }
+tasks.named('distTar') { dependsOn 'prepareAssets' }
+
+sourceSets {
+    reference {
+        java.srcDir 'tools'
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.output
+    }
+}
+tasks.register('verifyPreservation', JavaExec) {
+    dependsOn 'testClasses', 'prepareAssets'
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'PreservationChecks'
+    args file('assets').absolutePath
+    systemProperty 'java.awt.headless', 'true'
+}
+tasks.named('check') { dependsOn 'verifyPreservation' }
+tasks.named('test') { enabled = false }
+tasks.register('compareOriginal', JavaExec) {
+    dependsOn 'referenceClasses', 'prepareAssets'
+    classpath = sourceSets.reference.runtimeClasspath
+    mainClass = 'CompareOriginal'
+    args projectDir.parentFile.absolutePath
+    jvmArgs '--add-opens=java.base/java.lang=ALL-UNNAMED'
+}
+tasks.register('runOriginal', JavaExec) {
+    dependsOn 'referenceClasses', 'prepareAssets'
+    classpath = sourceSets.reference.runtimeClasspath
+    mainClass = 'OriginalHost'
+    args projectDir.parentFile.absolutePath
+}
+tasks.register('verifyWindow', JavaExec) {
+    dependsOn 'referenceClasses', 'prepareAssets'
+    classpath = sourceSets.reference.runtimeClasspath
+    mainClass = 'DesktopWindowChecks'
+    args projectDir.parentFile.absolutePath, (findProperty('duration') ?: '226').toString(), (findProperty('offset') ?: '0').toString()
+}

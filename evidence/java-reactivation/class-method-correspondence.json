@@ -1,0 +1,1141 @@
+[
+  {
+    "original_class": "kParameterX",
+    "original_methods": [
+      [
+        "kParameterX",
+        "()V"
+      ],
+      [
+        "Out",
+        "()Ljava/lang/Object;"
+      ],
+      [
+        "doubleout",
+        "(D)D"
+      ]
+    ],
+    "status": "archived_only",
+    "reason": "Outside the applet entry-point static closure; both independent reconstructions retained. Not linked into the active desktop engine."
+  },
+  {
+    "original_class": "kParameterXAFF",
+    "original_methods": [
+      [
+        "kParameterXAFF",
+        "()V"
+      ],
+      [
+        "Out",
+        "()Ljava/lang/Object;"
+      ],
+      [
+        "doubleout",
+        "(D)D"
+      ]
+    ],
+    "status": "archived_only",
+    "reason": "Outside the applet entry-point static closure; both independent reconstructions retained. Not linked into the active desktop engine."
+  },
+  {
+    "original_class": "kParameterXCOS",
+    "original_methods": [
+      [
+        "kParameterXCOS",
+        "()V"
+      ],
+      [
+        "Out",
+        "()Ljava/lang/Object;"
+      ],
+      [
+        "doubleout",
+        "(D)D"
+      ]
+    ],
+    "status": "archived_only",
+    "reason": "Outside the applet entry-point static closure; both independent reconstructions retained. Not linked into the active desktop engine."
+  },
+  {
+    "original_class": "kParameterXCTE",
+    "original_methods": [
+      [
+        "kParameterXCTE",
+        "()V"
+      ],
+      [
+        "Out",
+        "()Ljava/lang/Object;"
+      ],
+      [
+        "doubleout",
+        "(D)D"
+      ]
+    ],
+    "status": "archived_only",
+    "reason": "Outside the applet entry-point static closure; both independent reconstructions retained. Not linked into the active desktop engine."
+  },
+  {
+    "original_class": "kParameterXRND",
+    "original_methods": [
+      [
+        "kParameterXRND",
+        "()V"
+      ],
+      [
+        "Out",
+        "()Ljava/lang/Object;"
+      ],
+      [
+        "doubleout",
+        "(D)D"
+      ]
+    ],
+    "status": "archived_only",
+    "reason": "Outside the applet entry-point static closure; both independent reconstructions retained. Not linked into the active desktop engine."
+  },
+  {
+    "original_class": "kParameterXSIN",
+    "original_methods": [
+      [
+        "kParameterXSIN",
+        "()V"
+      ],
+      [
+        "Out",
+        "()Ljava/lang/Object;"
+      ],
+      [
+        "doubleout",
+        "(D)D"
+      ]
+    ],
+    "status": "archived_only",
+    "reason": "Outside the applet entry-point static closure; both independent reconstructions retained. Not linked into the active desktop engine."
+  },
+  {
+    "original_class": "kParameterXSPLINE",
+    "original_methods": [
+      [
+        "kParameterXSPLINE",
+        "()V"
+      ],
+      [
+        "Out",
+        "()Ljava/lang/Object;"
+      ],
+      [
+        "doubleout",
+        "(D)D"
+      ]
+    ],
+    "status": "archived_only",
+    "reason": "Outside the applet entry-point static closure; both independent reconstructions retained. Not linked into the active desktop engine."
+  },
+  {
+    "original_class": "kPartX",
+    "original_methods": [
+      [
+        "kPartX",
+        "()V"
+      ]
+    ],
+    "status": "archived_only",
+    "reason": "Outside the applet entry-point static closure; both independent reconstructions retained. Not linked into the active desktop engine."
+  },
+  {
+    "original_class": "kPixel",
+    "original_methods": [
+      [
+        "kPixel",
+        "()V"
+      ]
+    ],
+    "status": "archived_only",
+    "reason": "Outside the applet entry-point static closure; both independent reconstructions retained. Not linked into the active desktop engine."
+  },
+  {
+    "original_class": "kSound",
+    "original_methods": [
+      [
+        "kSound",
+        "(Ljava/applet/AudioClip;)V"
+      ],
+      [
+        "LoopOne",
+        "()V"
+      ],
+      [
+        "PlayOne",
+        "()V"
+      ],
+      [
+        "StopAll",
+        "()V"
+      ],
+      [
+        "StopOne",
+        "()V"
+      ]
+    ],
+    "status": "restored",
+    "counterpart": "kSound",
+    "missing_non_synthetic_methods": [],
+    "added_methods": [],
+    "compiler_accessors": []
+  },
+  {
+    "original_class": "kSoundCommand",
+    "original_methods": [
+      [
+        "kSoundCommand",
+        "()V"
+      ],
+      [
+        "MakeSoundCommand",
+        "()V"
+      ]
+    ],
+    "status": "archived_only",
+    "reason": "Outside the applet entry-point static closure; both independent reconstructions retained. Not linked into the active desktop engine."
+  },
+  {
+    "original_class": "kTimer",
+    "original_methods": [
+      [
+        "kTimer",
+        "()V"
+      ],
+      [
+        "getTime",
+        "()I"
+      ],
+      [
+        "reset",
+        "()V"
+      ]
+    ],
+    "status": "archived_only",
+    "reason": "Outside the applet entry-point static closure; both independent reconstructions retained. Not linked into the active desktop engine."
+  },
+  {
+    "original_class": "kraycasting$helpfade",
+    "original_methods": [
+      [
+        "kraycasting$helpfade",
+        "(Lkraycasting;)V"
+      ]
+    ],
+    "status": "restored",
+    "counterpart": "kraycasting$helpfade",
+    "missing_non_synthetic_methods": [],
+    "added_methods": [],
+    "compiler_accessors": []
+  },
+  {
+    "original_class": "kraycasting$k2Dpos",
+    "original_methods": [
+      [
+        "kraycasting$k2Dpos",
+        "(Lkraycasting;)V"
+      ]
+    ],
+    "status": "archived_only",
+    "reason": "Outside the applet entry-point static closure; both independent reconstructions retained. Not linked into the active desktop engine."
+  },
+  {
+    "original_class": "kraycasting$kEffectX",
+    "original_methods": [
+      [
+        "kraycasting$kEffectX",
+        "(Lkraycasting;)V"
+      ],
+      [
+        "access$0",
+        "(Lkraycasting$kEffectX;)[Lkraycasting$kParameterX;"
+      ],
+      [
+        "access$1",
+        "(Lkraycasting$kEffectX;[Lkraycasting$kParameterX;)V"
+      ],
+      [
+        "rendah",
+        "(I)V"
+      ]
+    ],
+    "status": "restored",
+    "counterpart": "kraycasting$kEffectX",
+    "missing_non_synthetic_methods": [],
+    "added_methods": [],
+    "compiler_accessors": [
+      [
+        "access$0",
+        "(Lkraycasting$kEffectX;)[Lkraycasting$kParameterX;"
+      ],
+      [
+        "access$1",
+        "(Lkraycasting$kEffectX;[Lkraycasting$kParameterX;)V"
+      ]
+    ]
+  },
+  {
+    "original_class": "kraycasting$kParameterX",
+    "original_methods": [
+      [
+        "kraycasting$kParameterX",
+        "(Lkraycasting;)V"
+      ],
+      [
+        "Out",
+        "()Ljava/lang/Object;"
+      ],
+      [
+        "doubleout",
+        "(D)D"
+      ]
+    ],
+    "status": "restored",
+    "counterpart": "kraycasting$kParameterX",
+    "missing_non_synthetic_methods": [],
+    "added_methods": [],
+    "compiler_accessors": []
+  },
+  {
+    "original_class": "kraycasting$kParameterXAFF",
+    "original_methods": [
+      [
+        "kraycasting$kParameterXAFF",
+        "(Lkraycasting;)V"
+      ],
+      [
+        "Out",
+        "()Ljava/lang/Object;"
+      ],
+      [
+        "doubleout",
+        "(D)D"
+      ]
+    ],
+    "status": "restored",
+    "counterpart": "kraycasting$kParameterXAFF",
+    "missing_non_synthetic_methods": [],
+    "added_methods": [],
+    "compiler_accessors": []
+  },
+  {
+    "original_class": "kraycasting$kParameterXCOS",
+    "original_methods": [
+      [
+        "kraycasting$kParameterXCOS",
+        "(Lkraycasting;)V"
+      ],
+      [
+        "Out",
+        "()Ljava/lang/Object;"
+      ],
+      [
+        "doubleout",
+        "(D)D"
+      ]
+    ],
+    "status": "restored",
+    "counterpart": "kraycasting$kParameterXCOS",
+    "missing_non_synthetic_methods": [],
+    "added_methods": [],
+    "compiler_accessors": []
+  },
+  {
+    "original_class": "kraycasting$kParameterXCTE",
+    "original_methods": [
+      [
+        "kraycasting$kParameterXCTE",
+        "(Lkraycasting;)V"
+      ],
+      [
+        "Out",
+        "()Ljava/lang/Object;"
+      ],
+      [
+        "doubleout",
+        "(D)D"
+      ]
+    ],
+    "status": "restored",
+    "counterpart": "kraycasting$kParameterXCTE",
+    "missing_non_synthetic_methods": [],
+    "added_methods": [],
+    "compiler_accessors": []
+  },
+  {
+    "original_class": "kraycasting$kParameterXIMAGE",
+    "original_methods": [
+      [
+        "kraycasting$kParameterXIMAGE",
+        "(Lkraycasting;)V"
+      ],
+      [
+        "RecOut",
+        "()Lkraycasting$kRenderContext;"
+      ],
+      [
+        "TextureOut",
+        "()Lkraycasting$kTexture;"
+      ],
+      [
+        "doubleout",
+        "(D)D"
+      ]
+    ],
+    "status": "archived_only",
+    "reason": "Outside the applet entry-point static closure; both independent reconstructions retained. Not linked into the active desktop engine."
+  },
+  {
+    "original_class": "kraycasting$kParameterXOB",
+    "original_methods": [
+      [
+        "kraycasting$kParameterXOB",
+        "(Lkraycasting;)V"
+      ],
+      [
+        "Out",
+        "()Ljava/lang/Object;"
+      ],
+      [
+        "doubleout",
+        "(D)D"
+      ]
+    ],
+    "status": "restored",
+    "counterpart": "kraycasting$kParameterXOB",
+    "missing_non_synthetic_methods": [],
+    "added_methods": [],
+    "compiler_accessors": []
+  },
+  {
+    "original_class": "kraycasting$kParameterXRC",
+    "original_methods": [
+      [
+        "kraycasting$kParameterXRC",
+        "(Lkraycasting;)V"
+      ],
+      [
+        "RecOut",
+        "()Lkraycasting$kRenderContext;"
+      ],
+      [
+        "TextureOut",
+        "()Lkraycasting$kTexture;"
+      ],
+      [
+        "doubleout",
+        "(D)D"
+      ]
+    ],
+    "status": "archived_only",
+    "reason": "Outside the applet entry-point static closure; both independent reconstructions retained. Not linked into the active desktop engine."
+  },
+  {
+    "original_class": "kraycasting$kParameterXRND",
+    "original_methods": [
+      [
+        "kraycasting$kParameterXRND",
+        "(Lkraycasting;)V"
+      ],
+      [
+        "Out",
+        "()Ljava/lang/Object;"
+      ],
+      [
+        "doubleout",
+        "(D)D"
+      ]
+    ],
+    "status": "restored",
+    "counterpart": "kraycasting$kParameterXRND",
+    "missing_non_synthetic_methods": [],
+    "added_methods": [],
+    "compiler_accessors": []
+  },
+  {
+    "original_class": "kraycasting$kParameterXSIN",
+    "original_methods": [
+      [
+        "kraycasting$kParameterXSIN",
+        "(Lkraycasting;)V"
+      ],
+      [
+        "Out",
+        "()Ljava/lang/Object;"
+      ],
+      [
+        "doubleout",
+        "(D)D"
+      ]
+    ],
+    "status": "restored",
+    "counterpart": "kraycasting$kParameterXSIN",
+    "missing_non_synthetic_methods": [],
+    "added_methods": [],
+    "compiler_accessors": []
+  },
+  {
+    "original_class": "kraycasting$kParameterXSPLINE",
+    "original_methods": [
+      [
+        "kraycasting$kParameterXSPLINE",
+        "(Lkraycasting;)V"
+      ],
+      [
+        "Out",
+        "()Ljava/lang/Object;"
+      ],
+      [
+        "doubleout",
+        "(D)D"
+      ]
+    ],
+    "status": "restored",
+    "counterpart": "kraycasting$kParameterXSPLINE",
+    "missing_non_synthetic_methods": [],
+    "added_methods": [],
+    "compiler_accessors": []
+  },
+  {
+    "original_class": "kraycasting$kPartX",
+    "original_methods": [
+      [
+        "kraycasting$kPartX",
+        "(Lkraycasting;)V"
+      ],
+      [
+        "rendah",
+        "(I)V"
+      ]
+    ],
+    "status": "restored",
+    "counterpart": "kraycasting$kPartX",
+    "missing_non_synthetic_methods": [],
+    "added_methods": [],
+    "compiler_accessors": []
+  },
+  {
+    "original_class": "kraycasting$kPixel",
+    "original_methods": [
+      [
+        "kraycasting$kPixel",
+        "(Lkraycasting;)V"
+      ]
+    ],
+    "status": "restored",
+    "counterpart": "kraycasting$kPixel",
+    "missing_non_synthetic_methods": [],
+    "added_methods": [],
+    "compiler_accessors": []
+  },
+  {
+    "original_class": "kraycasting$kRenderContext",
+    "original_methods": [
+      [
+        "kraycasting$kRenderContext",
+        "(Lkraycasting;Ljava/applet/Applet;)V"
+      ],
+      [
+        "kraycasting$kRenderContext",
+        "(Lkraycasting;Lkraycasting$kRenderContext;)V"
+      ],
+      [
+        "kraycasting$kRenderContext",
+        "(Lkraycasting;Lkraycasting$kRenderContext;DDDD)V"
+      ],
+      [
+        "SetRect",
+        "(Lkraycasting$kRenderContext;DDDD)V"
+      ],
+      [
+        "SetSub",
+        "(Lkraycasting$kRenderContext;IIII)V"
+      ],
+      [
+        "access$0",
+        "(Lkraycasting$kRenderContext;)Z"
+      ],
+      [
+        "access$1",
+        "(Lkraycasting$kRenderContext;)D"
+      ],
+      [
+        "access$10",
+        "(Lkraycasting$kRenderContext;)Lkraycasting$kRenderContext;"
+      ],
+      [
+        "access$2",
+        "(Lkraycasting$kRenderContext;D)V"
+      ],
+      [
+        "access$3",
+        "(Lkraycasting$kRenderContext;)D"
+      ],
+      [
+        "access$4",
+        "(Lkraycasting$kRenderContext;D)V"
+      ],
+      [
+        "access$5",
+        "(Lkraycasting$kRenderContext;)D"
+      ],
+      [
+        "access$6",
+        "(Lkraycasting$kRenderContext;D)V"
+      ],
+      [
+        "access$7",
+        "(Lkraycasting$kRenderContext;)I"
+      ],
+      [
+        "access$8",
+        "(Lkraycasting$kRenderContext;)I"
+      ],
+      [
+        "access$9",
+        "(Lkraycasting$kRenderContext;)[[Lkraycasting$kPixel;"
+      ],
+      [
+        "createImage",
+        "()Ljava/awt/Image;"
+      ]
+    ],
+    "status": "restored",
+    "counterpart": "kraycasting$kRenderContext",
+    "missing_non_synthetic_methods": [],
+    "added_methods": [],
+    "compiler_accessors": [
+      [
+        "access$0",
+        "(Lkraycasting$kRenderContext;)Z"
+      ],
+      [
+        "access$1",
+        "(Lkraycasting$kRenderContext;)D"
+      ],
+      [
+        "access$10",
+        "(Lkraycasting$kRenderContext;)Lkraycasting$kRenderContext;"
+      ],
+      [
+        "access$2",
+        "(Lkraycasting$kRenderContext;D)V"
+      ],
+      [
+        "access$3",
+        "(Lkraycasting$kRenderContext;)D"
+      ],
+      [
+        "access$4",
+        "(Lkraycasting$kRenderContext;D)V"
+      ],
+      [
+        "access$5",
+        "(Lkraycasting$kRenderContext;)D"
+      ],
+      [
+        "access$6",
+        "(Lkraycasting$kRenderContext;D)V"
+      ],
+      [
+        "access$7",
+        "(Lkraycasting$kRenderContext;)I"
+      ],
+      [
+        "access$8",
+        "(Lkraycasting$kRenderContext;)I"
+      ],
+      [
+        "access$9",
+        "(Lkraycasting$kRenderContext;)[[Lkraycasting$kPixel;"
+      ]
+    ]
+  },
+  {
+    "original_class": "kraycasting$kScript",
+    "original_methods": [
+      [
+        "kraycasting$kScript",
+        "(Lkraycasting;Ljava/lang/String;)V"
+      ],
+      [
+        "part",
+        "(I)Lkraycasting$kPartX;"
+      ]
+    ],
+    "status": "restored",
+    "counterpart": "kraycasting$kScript",
+    "missing_non_synthetic_methods": [],
+    "added_methods": [],
+    "compiler_accessors": []
+  },
+  {
+    "original_class": "kraycasting$kSound",
+    "original_methods": [
+      [
+        "kraycasting$kSound",
+        "(Lkraycasting;Ljava/lang/String;)V"
+      ],
+      [
+        "LoopOne",
+        "()V"
+      ],
+      [
+        "PlayOne",
+        "()V"
+      ],
+      [
+        "StopOne",
+        "()V"
+      ]
+    ],
+    "status": "archived_only",
+    "reason": "Outside the applet entry-point static closure; both independent reconstructions retained. Not linked into the active desktop engine."
+  },
+  {
+    "original_class": "kraycasting$kSoundCommand",
+    "original_methods": [
+      [
+        "kraycasting$kSoundCommand",
+        "(Lkraycasting;)V"
+      ],
+      [
+        "MakeSoundCommand",
+        "()V"
+      ]
+    ],
+    "status": "restored",
+    "counterpart": "kraycasting$kSoundCommand",
+    "missing_non_synthetic_methods": [],
+    "added_methods": [],
+    "compiler_accessors": []
+  },
+  {
+    "original_class": "kraycasting$kTable",
+    "original_methods": [
+      [
+        "kraycasting$kTable",
+        "(Lkraycasting;Ljava/lang/String;)V"
+      ],
+      [
+        "spline",
+        "(D)D"
+      ]
+    ],
+    "status": "restored",
+    "counterpart": "kraycasting$kTable",
+    "missing_non_synthetic_methods": [],
+    "added_methods": [],
+    "compiler_accessors": []
+  },
+  {
+    "original_class": "kraycasting$kTexture",
+    "original_methods": [
+      [
+        "kraycasting$kTexture",
+        "(Lkraycasting;Ljava/awt/Image;)V"
+      ]
+    ],
+    "status": "restored",
+    "counterpart": "kraycasting$kTexture",
+    "missing_non_synthetic_methods": [],
+    "added_methods": [],
+    "compiler_accessors": []
+  },
+  {
+    "original_class": "kraycasting$kTimer",
+    "original_methods": [
+      [
+        "kraycasting$kTimer",
+        "(Lkraycasting;)V"
+      ],
+      [
+        "getTime",
+        "()I"
+      ],
+      [
+        "reset",
+        "()V"
+      ]
+    ],
+    "status": "restored",
+    "counterpart": "kraycasting$kTimer",
+    "missing_non_synthetic_methods": [],
+    "added_methods": [],
+    "compiler_accessors": []
+  },
+  {
+    "original_class": "kraycasting$kcamera",
+    "original_methods": [
+      [
+        "kraycasting$kcamera",
+        "(Lkraycasting;DDDDDDD)V"
+      ],
+      [
+        "set",
+        "(DDDDDDD)V"
+      ],
+      [
+        "target",
+        "(DDDDDDDD)V"
+      ]
+    ],
+    "status": "restored",
+    "counterpart": "kraycasting$kcamera",
+    "missing_non_synthetic_methods": [],
+    "added_methods": [],
+    "compiler_accessors": []
+  },
+  {
+    "original_class": "kraycasting$kparticle",
+    "original_methods": [
+      [
+        "kraycasting$kparticle",
+        "(Lkraycasting;IDDDDDDDD)V"
+      ],
+      [
+        "drawflare",
+        "(Lkraycasting$kcamera;Lkraycasting$kTexture;Lkraycasting$kRenderContext;DD)V"
+      ],
+      [
+        "drawsprit",
+        "(Lkraycasting$kcamera;Lkraycasting$kTexture;Lkraycasting$kRenderContext;DD)V"
+      ],
+      [
+        "move",
+        "()V"
+      ],
+      [
+        "mvtfloor",
+        "(DDDD)V"
+      ],
+      [
+        "mvtgalax",
+        "()V"
+      ],
+      [
+        "reset",
+        "(DDDDDDDD)V"
+      ]
+    ],
+    "status": "restored",
+    "counterpart": "kraycasting$kparticle",
+    "missing_non_synthetic_methods": [],
+    "added_methods": [],
+    "compiler_accessors": []
+  },
+  {
+    "original_class": "kraycasting$raycasting",
+    "original_methods": [
+      [
+        "kraycasting$raycasting",
+        "(Lkraycasting;Lkraycasting$kRenderContext;)V"
+      ],
+      [
+        "MotionBlur",
+        "(Lkraycasting$kRenderContext;)V"
+      ],
+      [
+        "Position3D",
+        "(DDDDDDDLkraycasting$kRenderContext;)V"
+      ],
+      [
+        "Setzoom3D",
+        "(DDDDDDLkraycasting$kRenderContext;Lkraycasting$kTexture;D)V"
+      ],
+      [
+        "SetzoomP",
+        "(DDDDLkraycasting$kRenderContext;Lkraycasting$kTexture;D)V"
+      ],
+      [
+        "access$0",
+        "(Lkraycasting$raycasting;DDDDDDLkraycasting$kRenderContext;)V"
+      ],
+      [
+        "access$1",
+        "(Lkraycasting$raycasting;DDLkraycasting$kRenderContext;Lkraycasting$helpfade;)V"
+      ],
+      [
+        "colorclip",
+        "(Lkraycasting$helpfade;Lkraycasting$kPixel;D)V"
+      ],
+      [
+        "draw",
+        "(Lkraycasting$kTexture;Lkraycasting$kRenderContext;)V"
+      ],
+      [
+        "drawrecUV",
+        "(Lkraycasting$kTexture;Lkraycasting$kRenderContext;Lkraycasting$kPixel;Lkraycasting$kPixel;Lkraycasting$kPixel;Lkraycasting$kPixel;)V"
+      ],
+      [
+        "drawrecUVL",
+        "(Lkraycasting$kTexture;Lkraycasting$kRenderContext;Lkraycasting$kPixel;Lkraycasting$kPixel;Lkraycasting$kPixel;Lkraycasting$kPixel;)V"
+      ],
+      [
+        "drawrecUVM",
+        "(Lkraycasting$kTexture;Lkraycasting$kRenderContext;Lkraycasting$kPixel;Lkraycasting$kPixel;Lkraycasting$kPixel;Lkraycasting$kPixel;)V"
+      ],
+      [
+        "drawrecUVRGB",
+        "(Lkraycasting$kTexture;Lkraycasting$kRenderContext;Lkraycasting$kPixel;Lkraycasting$kPixel;Lkraycasting$kPixel;Lkraycasting$kPixel;)V"
+      ],
+      [
+        "drawrecUVS",
+        "(Lkraycasting$kTexture;Lkraycasting$kRenderContext;Lkraycasting$kPixel;Lkraycasting$kPixel;Lkraycasting$kPixel;Lkraycasting$kPixel;)V"
+      ],
+      [
+        "drawrecUVSA",
+        "(Lkraycasting$kTexture;Lkraycasting$kRenderContext;Lkraycasting$kPixel;Lkraycasting$kPixel;Lkraycasting$kPixel;Lkraycasting$kPixel;I)V"
+      ],
+      [
+        "findfloor",
+        "(DDDDLkraycasting$kRenderContext;Lkraycasting$helpfade;)V"
+      ],
+      [
+        "findtunnel",
+        "(DDLkraycasting$kRenderContext;Lkraycasting$helpfade;)V"
+      ],
+      [
+        "findtwirl",
+        "(DDDDDDLkraycasting$kRenderContext;)V"
+      ],
+      [
+        "flare3D",
+        "(DDDDDDLkraycasting$kRenderContext;Lkraycasting$kTexture;)V"
+      ]
+    ],
+    "status": "restored",
+    "counterpart": "kraycasting$raycasting",
+    "missing_non_synthetic_methods": [],
+    "added_methods": [],
+    "compiler_accessors": [
+      [
+        "access$0",
+        "(Lkraycasting$raycasting;DDDDDDLkraycasting$kRenderContext;)V"
+      ],
+      [
+        "access$1",
+        "(Lkraycasting$raycasting;DDLkraycasting$kRenderContext;Lkraycasting$helpfade;)V"
+      ]
+    ]
+  },
+  {
+    "original_class": "kraycasting$rotozoom",
+    "original_methods": [
+      [
+        "kraycasting$rotozoom",
+        "(Lkraycasting;)V"
+      ],
+      [
+        "draw",
+        "(Lkraycasting$kTexture;Lkraycasting$kRenderContext;Lkraycasting$k2Dpos;)V"
+      ]
+    ],
+    "status": "archived_only",
+    "reason": "Outside the applet entry-point static closure; both independent reconstructions retained. Not linked into the active desktop engine."
+  },
+  {
+    "original_class": "kraycasting",
+    "original_methods": [
+      [
+        "kraycasting",
+        "()V"
+      ],
+      [
+        "FindHowMany",
+        "(Ljava/lang/String;Ljava/lang/String;)I"
+      ],
+      [
+        "FindInto",
+        "(Ljava/lang/String;ILjava/lang/String;)Ljava/lang/String;"
+      ],
+      [
+        "SplitSTag",
+        "(Ljava/lang/String;Ljava/lang/String;)[Ljava/lang/String;"
+      ],
+      [
+        "access$0",
+        "(Lkraycasting;)Lkraycasting$raycasting;"
+      ],
+      [
+        "access$1",
+        "(Lkraycasting;)Lkraycasting$kRenderContext;"
+      ],
+      [
+        "access$10",
+        "(Lkraycasting;Ljava/util/Hashtable;)V"
+      ],
+      [
+        "access$11",
+        "(Lkraycasting;)Ljava/util/Hashtable;"
+      ],
+      [
+        "access$12",
+        "(Lkraycasting;Ljava/util/Hashtable;)V"
+      ],
+      [
+        "access$13",
+        "(Lkraycasting;)Ljava/util/Hashtable;"
+      ],
+      [
+        "access$14",
+        "(Lkraycasting;Ljava/util/Hashtable;)V"
+      ],
+      [
+        "access$15",
+        "(Lkraycasting;)Lkraycasting$kTimer;"
+      ],
+      [
+        "access$16",
+        "(Lkraycasting;)Z"
+      ],
+      [
+        "access$17",
+        "(Lkraycasting;Z)V"
+      ],
+      [
+        "access$2",
+        "(Lkraycasting;)Lkraycasting$kScript;"
+      ],
+      [
+        "access$3",
+        "(Lkraycasting;)Ljava/util/Hashtable;"
+      ],
+      [
+        "access$4",
+        "(Lkraycasting;Ljava/util/Hashtable;)V"
+      ],
+      [
+        "access$5",
+        "(Lkraycasting;)Ljava/util/Hashtable;"
+      ],
+      [
+        "access$6",
+        "(Lkraycasting;Ljava/util/Hashtable;)V"
+      ],
+      [
+        "access$7",
+        "(Lkraycasting;)Ljava/util/Hashtable;"
+      ],
+      [
+        "access$8",
+        "(Lkraycasting;Ljava/util/Hashtable;)V"
+      ],
+      [
+        "access$9",
+        "(Lkraycasting;)Ljava/util/Hashtable;"
+      ],
+      [
+        "init",
+        "()V"
+      ],
+      [
+        "run",
+        "()V"
+      ],
+      [
+        "start",
+        "()V"
+      ],
+      [
+        "stop",
+        "()V"
+      ],
+      [
+        "update",
+        "(Ljava/awt/Graphics;)V"
+      ]
+    ],
+    "status": "restored",
+    "counterpart": "kraycasting",
+    "missing_non_synthetic_methods": [],
+    "added_methods": [
+      [
+        "isRunning",
+        "()Z"
+      ],
+      [
+        "paint",
+        "(Ljava/awt/Graphics;)V"
+      ]
+    ],
+    "compiler_accessors": [
+      [
+        "access$0",
+        "(Lkraycasting;)Lkraycasting$raycasting;"
+      ],
+      [
+        "access$1",
+        "(Lkraycasting;)Lkraycasting$kRenderContext;"
+      ],
+      [
+        "access$10",
+        "(Lkraycasting;Ljava/util/Hashtable;)V"
+      ],
+      [
+        "access$11",
+        "(Lkraycasting;)Ljava/util/Hashtable;"
+      ],
+      [
+        "access$12",
+        "(Lkraycasting;Ljava/util/Hashtable;)V"
+      ],
+      [
+        "access$13",
+        "(Lkraycasting;)Ljava/util/Hashtable;"
+      ],
+      [
+        "access$14",
+        "(Lkraycasting;Ljava/util/Hashtable;)V"
+      ],
+      [
+        "access$15",
+        "(Lkraycasting;)Lkraycasting$kTimer;"
+      ],
+      [
+        "access$16",
+        "(Lkraycasting;)Z"
+      ],
+      [
+        "access$17",
+        "(Lkraycasting;Z)V"
+      ],
+      [
+        "access$2",
+        "(Lkraycasting;)Lkraycasting$kScript;"
+      ],
+      [
+        "access$3",
+        "(Lkraycasting;)Ljava/util/Hashtable;"
+      ],
+      [
+        "access$4",
+        "(Lkraycasting;Ljava/util/Hashtable;)V"
+      ],
+      [
+        "access$5",
+        "(Lkraycasting;)Ljava/util/Hashtable;"
+      ],
+      [
+        "access$6",
+        "(Lkraycasting;Ljava/util/Hashtable;)V"
+      ],
+      [
+        "access$7",
+        "(Lkraycasting;)Ljava/util/Hashtable;"
+      ],
+      [
+        "access$8",
+        "(Lkraycasting;Ljava/util/Hashtable;)V"
+      ],
+      [
+        "access$9",
+        "(Lkraycasting;)Ljava/util/Hashtable;"
+      ]
+    ]
+  }
+]

@@ -75,3 +75,50 @@ Procyon reconstructs `SplitSTag` incorrectly: substring assignment runs after
 the terminal search result. The original bytecode condition and CFR agree.
 The active CFR reconstruction was therefore selected without modifying either
 decompiler's output. `reverse/README.md` describes coverage and reproducibility.
+
+### Desktop and validation milestone
+
+The active CFR-derived engine now runs through a small Canvas/resource adapter
+and Java Sound clip wrapper. The original script, rendering arithmetic, timing
+reads, 20 ms post-render sleep, class/method names and external assets are retained.
+The four original cinema-frame images and close button are presented in a fixed
+640 × 480 window; the artwork remains 520 × 300. The close button, Escape and
+window close stop the worker and audio cleanly. The explicit platform deviations
+and all 39 class dispositions are recorded in `java-reactivation.md` and
+`evidence/java-reactivation/`.
+
+An initial Java image check exposed asynchronous Toolkit dimensions after a
+PixelGrabber-only preload. AWT MediaTracker now finishes preparation before the
+engine uses the image; all 53 images then pass the actual Java decoder check.
+All 10 original AU files decode through Java Sound. No original bytes changed.
+
+The full deterministic comparison executes the unchanged archived classes through
+an isolated test Applet stub. All 11,101 sequential frames from ticks 0–22,200
+match the desktop output exactly, along with camera and particle state and all
+38 audio commands. Test-only random seeding is not part of normal playback.
+Method inventory confirms every non-synthetic original method in the 23 active
+classes; all 16 inactive classes remain archived and independently decompiled.
+
+The first real-time test reached every scene, including the final scene at
+123 seconds, then observed a stopped engine at 175 seconds without a recorded
+worker exception. Its interruption cause was not established, and it is retained
+as an incomplete run rather than reported as a full-cycle pass. The follow-up
+live test starts at a test-only timeline offset of 210 seconds and successfully
+crosses the loop boundary, exercises pointer events and minimize/restore, observes
+active audio playback and verifies clean window/thread/audio shutdown after
+22 seconds. No historical acoustic equivalence or human listening is claimed.
+
+The complete Gradle 9.4.0 Wrapper builds Java 17 bytecode with JDK 25. A macOS
+ARM64 application was packaged with Homebrew OpenJDK 25.0.2 and original assets
+outside its JAR. All 64 distributed script/media files match the archive.
+The application was copied to a temporary path containing spaces and an accented
+character, launched from that directory with JAVA_HOME unset and a PATH without
+the development JDK, and run under a macOS sandbox denying network access.
+Its eight-second GUI/animation/audio/close smoke test passed. The bundled app
+also passed `codesign --verify --deep --strict`; this is local signing, not
+notarization. `jdeps -s` reports only java.base and java.desktop dependencies.
+
+Retained screen captures were visually inspected. Reference images and provenance
+are in `reference/`; originals still match all 130 manifest hashes. Final Gradle
+checks pass. macOS ARM64 is the tested target; Windows, Linux and Intel macOS
+remain untested. No repository push or other port was performed.

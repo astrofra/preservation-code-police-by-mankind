@@ -1,0 +1,17 @@
+> Task :compileJava UP-TO-DATE
+> Task :processResources NO-SOURCE
+> Task :classes UP-TO-DATE
+> Task :compileTestJava UP-TO-DATE
+> Task :processTestResources NO-SOURCE
+> Task :testClasses UP-TO-DATE
+> Task :test SKIPPED
+> Task :prepareAssets UP-TO-DATE
+
+> Task :verifyPreservation
+PASS: 53 AWT images, 10 Java Sound decodes, original tag semantics, 12 parts / 222 seconds
+
+> Task :check
+
+BUILD SUCCESSFUL in 759ms
+4 actionable tasks: 1 executed, 3 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.4.0/userguide/configuration_cache_enabling.html

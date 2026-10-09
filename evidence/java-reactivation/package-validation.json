@@ -1,0 +1,10 @@
+{
+  "exit_code": 0,
+  "working_directory": "/var/folders/p0/3_fxh5610r5b7z_gbvnkf_hr0000gn/T/Code Police offline \u00e9 ro2bf31a",
+  "path": "/usr/bin:/bin",
+  "java_home_unset": true,
+  "network": "denied by macOS sandbox-exec",
+  "unicode_and_spaces_in_path": true,
+  "bundled_runtime_release": "JAVA_VERSION=\"25.0.2\"\nMODULES=\"java.base java.datatransfer java.xml java.prefs java.desktop\"\n",
+  "smoke_pass_message": true
+}

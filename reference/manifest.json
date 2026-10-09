@@ -1,0 +1,66 @@
+[
+  {
+    "path": "reference/java-bytecode/tick-01500.png",
+    "sha256": "c542811e90b590055b7e1af8e5d4247caa4f948f88fbf0797ffc4a923923c253"
+  },
+  {
+    "path": "reference/java-bytecode/tick-02500.png",
+    "sha256": "3f66ea663bafa7a11df24bf3b97f4134d9b77ced3c94f2ae711a9fbf671909aa"
+  },
+  {
+    "path": "reference/java-bytecode/tick-04500.png",
+    "sha256": "7da042583bda1c4c69738de1c75f0790b87a6bf1cdec85ef782f34d7c468f240"
+  },
+  {
+    "path": "reference/java-bytecode/tick-08000.png",
+    "sha256": "192ed642ab97292e02ec3cefa590561e042b6ac2d9c035816a851905ef107341"
+  },
+  {
+    "path": "reference/java-bytecode/tick-11000.png",
+    "sha256": "5f19da58ebf090229e81f070f274cbca8a9df574f6dc877959ff0cc6860f29f1"
+  },
+  {
+    "path": "reference/java-bytecode/tick-13000.png",
+    "sha256": "24a3cebf19334b3086e5c5e9b2e00c2ded15d4cb53b59ca19eac4fd3f58c71b3"
+  },
+  {
+    "path": "reference/java-desktop/screen-117s.png",
+    "sha256": "3f9b40e0a115decdaa4d1dc36f99d5f52f176b1d04062c10e051a84fd371d7c8"
+  },
+  {
+    "path": "reference/java-desktop/screen-137s.png",
+    "sha256": "093291e2f0dc477eabdac7d6557284bdf6f0d62a1439b873e14c0674a74fae80"
+  },
+  {
+    "path": "reference/java-desktop/screen-27s.png",
+    "sha256": "5c12886a38689b9b9cb9bcb632ab3f2d2708f4dd0dbcfd09bf4700b183ea8092"
+  },
+  {
+    "path": "reference/java-desktop/screen-47s.png",
+    "sha256": "e320c018c981a2942b14ee547e351de6596b3e25dd6cf6b9dfac4469fa731ec9"
+  },
+  {
+    "path": "reference/java-desktop/tick-01500.png",
+    "sha256": "c542811e90b590055b7e1af8e5d4247caa4f948f88fbf0797ffc4a923923c253"
+  },
+  {
+    "path": "reference/java-desktop/tick-02500.png",
+    "sha256": "3f66ea663bafa7a11df24bf3b97f4134d9b77ced3c94f2ae711a9fbf671909aa"
+  },
+  {
+    "path": "reference/java-desktop/tick-04500.png",
+    "sha256": "7da042583bda1c4c69738de1c75f0790b87a6bf1cdec85ef782f34d7c468f240"
+  },
+  {
+    "path": "reference/java-desktop/tick-08000.png",
+    "sha256": "192ed642ab97292e02ec3cefa590561e042b6ac2d9c035816a851905ef107341"
+  },
+  {
+    "path": "reference/java-desktop/tick-11000.png",
+    "sha256": "5f19da58ebf090229e81f070f274cbca8a9df574f6dc877959ff0cc6860f29f1"
+  },
+  {
+    "path": "reference/java-desktop/tick-13000.png",
+    "sha256": "24a3cebf19334b3086e5c5e9b2e00c2ded15d4cb53b59ca19eac4fd3f58c71b3"
+  }
+]
