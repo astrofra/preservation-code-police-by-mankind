@@ -381,3 +381,53 @@ separately in the final ZIP tests. Reports/captures are under `evidence/wasm/` a
 `reference/wasm/`. The root builder also ran successfully from `/tmp`. The static
 ZIP and ready-to-upload directory are under `dist/wasm/`. No upload or push was
 performed. This completes the requested browser port and launch page milestone.
+
+## 2026-10-09 — Browser loading repair and English navy interface
+
+The user reports `assets/scene.txt : taille incorrecte`, and requests removing
+the two introductory sentences, switching the complete HTML GUI to English,
+using “CODE POLICE by Mankind”, and replacing the green UI palette with navy blue.
+The local source, packaged file and HTTP preview all contain the expected 44,195
+bytes and matching SHA-256. The script contains 1,488 original CRLF line endings;
+conversion to LF during text-mode transfer would produce 42,707 bytes and trigger
+the reported check. This is a reproducible hypothesis, not yet a confirmed cause
+on the user's host; its URL has been requested. Also address stale cached files
+without weakening the media integrity checks. Preserve original resource bytes
+and the existing engine while adapting the browser loader and new GUI only.
+
+The user provided https://demoports.emucamp.com/code-police/ . Direct HTTP reads
+confirm the hypothesis: the hosted manifest requires 44,195 bytes, while its
+script has 42,707 bytes, zero CRLFs and 1,488 LFs. Restoring CRLF yields exactly
+the original file and its SHA-256. Recorded the byte counts and hashes in
+`evidence/wasm/hosted-loading-diagnosis.json`; the original loader also reproduces
+the reported error with that same LF transformation. The repaired loader inserts
+only missing CR bytes and then retains the original length/checksum checks.
+It also requests fresh manifests and versioned resources; packaging versions the
+GUI JS/CSS links so an updated page does not reuse the older interface.
+
+The new HTML interface is entirely English, reads “CODE POLICE” / “by Mankind”,
+omits both introductory sentences and uses navy-blue surfaces with blue accents.
+Credits remain sourced from the TXT, with English role labels. Original cinema
+artwork, archived release, Java/native engine and runtime resource files are
+unchanged. New screenshots are kept in `reference/wasm/navy-en/`, preserving the
+earlier GUI captures as a separate version.
+
+A read-only browser check against the host also encountered HTTP 429
+responses during parallel downloads; individual file requests succeeded. Reduced
+media concurrency from six to two and added at most two retries, respecting the
+server's `Retry-After` delay. Versioned assets can use the normal HTTP cache;
+only the manifest is forcibly revalidated. The regression check simulates both
+a recoverable 429 followed by LF script bytes and a persistent 429, as well as
+truncated and genuinely changed scripts. The fullscreen test now waits for the
+actual restored canvas dimensions after the asynchronous browser transition.
+
+The hosted browser check identifies the 429 page as the host's Tiger Protect
+security response. It blocks this automated live-page check, including cinema
+images, despite successful individual HTTP reads; it is not evidence of successful
+remote deployment. The server has not been modified. The full extracted-ZIP tests
+pass on Chrome and Firefox: both recover from an LF script and an initial 429,
+restore exactly the original bytes in MEMFS, launch the demo, reject truncated
+or altered scripts, and still match all 11,101 reference frames. English controls,
+new captures, source hashes and the rebuilt ZIP are verified. Earlier GUI captures
+remain intact. The local preview is updated; the user must replace the hosted
+site contents with the new package to apply the changes online.

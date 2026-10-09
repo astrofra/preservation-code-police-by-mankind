@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#10110e">
-  <title>Code Police — Mankind</title>
+  <meta name="theme-color" content="#080f20">
+  <title>CODE POLICE by Mankind</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -12,42 +12,41 @@
   <main id="home">
     <article class="ticket">
       <header>
-        <p class="eyebrow">Mankind présente</p>
         <h1>CODE <span>POLICE</span></h1>
-        <p class="intro">Une courte démo très particulière.<br>Mankind invente « la démo de genre ».</p>
+        <p class="byline">by Mankind</p>
       </header>
       <dl class="credits">
         <!-- CREDITS -->
       </dl>
       <form id="launch">
         <div class="settings">
-          <label for="resolution">Résolution de l’image
+          <label for="resolution">Display resolution
             <select id="resolution" name="resolution">
-              <option value="520x300">520 × 300 — originale</option>
+              <option value="520x300">520 × 300 — original</option>
               <option value="1040x600" selected>1040 × 600 — ×2</option>
               <option value="1280x720">1280 × 720</option>
               <option value="1920x1080">1920 × 1080</option>
-              <option value="custom">Personnalisée…</option>
+              <option value="custom">Custom…</option>
             </select>
           </label>
           <div id="custom-size" hidden>
-            <label>Largeur <input id="width" type="number" min="1" max="16384" value="1280" step="1"></label>
+            <label>Width <input id="width" type="number" min="1" max="16384" value="1280" step="1"></label>
             <span aria-hidden="true">×</span>
-            <label>Hauteur <input id="height" type="number" min="1" max="16384" value="720" step="1"></label>
+            <label>Height <input id="height" type="number" min="1" max="16384" value="720" step="1"></label>
           </div>
-          <label class="check"><input id="decor" type="checkbox" checked> Décor cinéma d’origine</label>
-          <label class="check"><input id="fullscreen" type="checkbox"> Plein écran</label>
-          <label class="check"><input id="sound" type="checkbox" checked> Son</label>
+          <label class="check"><input id="decor" type="checkbox" checked> Original cinema surround</label>
+          <label class="check"><input id="fullscreen" type="checkbox"> Fullscreen</label>
+          <label class="check"><input id="sound" type="checkbox" checked> Sound</label>
         </div>
         <p id="size-note" class="note"></p>
         <button id="start" class="start" type="submit" disabled>Start <span aria-hidden="true">▶</span></button>
-        <p id="status" role="status" aria-live="polite">Chargement de la démo…</p>
+        <p id="status" role="status" aria-live="polite">Loading the demo…</p>
       </form>
       <footer>
-        <nav aria-label="À propos de la démo">
+        <nav aria-label="About the demo">
           <a href="https://www.pouet.net/prod.php?which=1788" target="_blank" rel="noopener noreferrer">Pouët ↗</a>
           <a href="https://github.com/astrofra/preservation-code-police-by-mankind" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-          <a href="MKD_CodePOlice.txt">TXT original</a>
+          <a href="MKD_CodePOlice.txt">Original TXT</a>
         </nav>
         <p>Code Police · Mankind · 2001</p>
       </footer>
@@ -58,19 +57,19 @@
       <div id="composition">
         <!-- CINEMA -->
       </div>
-      <button id="close" aria-label="Retour à l’accueil" title="Retour à l’accueil (Échap)"><img src="Images/html_close.gif" width="15" height="15" alt=""></button>
+      <button id="close" aria-label="Back to home" title="Back to home (Escape)"><img src="Images/html_close.gif" width="15" height="15" alt=""></button>
     </div>
     <div class="player-controls">
-      <button id="back" type="button">Accueil</button>
-      <button id="toggle-decor" type="button" aria-pressed="true">Décor cinéma</button>
-      <button id="toggle-fullscreen" type="button">Plein écran</button>
+      <button id="back" type="button">Home</button>
+      <button id="toggle-decor" type="button" aria-pressed="true">Cinema surround</button>
+      <button id="toggle-fullscreen" type="button">Fullscreen</button>
     </div>
     <p id="player-status" role="status" aria-live="polite"></p>
   </section>
   <!-- SDL's software surface stays 520 × 300. The visible screen is drawn at
        device-pixel size without smoothing, including fractional scale factors. -->
   <canvas id="canvas" width="520" height="300" hidden></canvas>
-  <noscript>Activez JavaScript pour lancer Code Police.</noscript>
+  <noscript>Enable JavaScript to launch Code Police.</noscript>
   <script type="module" src="bootstrap.js"></script>
 </body>
 </html>

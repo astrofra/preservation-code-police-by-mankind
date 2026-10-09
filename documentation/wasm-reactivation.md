@@ -23,6 +23,10 @@ the previously discussed ID 12562 identifies Karate, not this production.
 GitHub points to this repository's existing origin. No external fonts, images
 or API requests are used. Links are ordinary user navigation.
 
+The revised landing page uses an English GUI, a navy-blue palette and the title
+“CODE POLICE by Mankind”. The user requested removal of the two introductory
+sentences; the original TXT and artwork remain unchanged.
+
 The requested resolution is an upper bound on artwork dimensions. Both dimensions
 use the smaller scale factor and round to the nearest pixel, as in the desktop
 hosts. The whole composition also fits within the available viewport. Fullscreen
@@ -76,6 +80,17 @@ Emscripten **4.0.23**, its SDL2 **2.32.8** port and the existing vendored STB
 explicit original evaluation order are retained. JavaScript is readable and
 WASM retains function names. Static assets are fetched first, then copied into
 MEMFS through `preRun`; no `.data` resource bundle or media arrays are generated.
+
+The first hosted upload exposed text-mode CRLF-to-LF conversion: its `scene.txt`
+was 42,707 bytes while the original and manifest require 44,195 bytes. Direct
+reads from the user's host confirmed that restoring the 1,488 CR bytes produces
+the exact original hash. The loader now performs only that newline restoration,
+then applies the original size/checksum checks before writing MEMFS. Truncated
+or otherwise altered scripts still fail. Packaging retains original bytes.
+Manifest requests are revalidated; runtime resource URLs and GUI JS/CSS links
+are versioned. Only two media downloads run concurrently. Temporary HTTP 429
+responses receive at most two retries, respecting `Retry-After`; larger delays
+ask the user to try later. These changes address observed hosting failures.
 
 The build records its base Git commit plus hashes of all compilation/packaging
 sources, including changes made after that commit. Library notices and the exact

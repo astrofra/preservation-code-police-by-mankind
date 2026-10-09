@@ -13,8 +13,13 @@ Then open http://localhost:8000/ .
 Choose the artwork size, optional original cinema surround, fullscreen and sound,
 then click Start. Return to the landing page to change resolution or sound and
 restart. The cinema toggle is also available during playback. Escape exits
-browser fullscreen first; Escape in the page or Accueil returns to the menu.
+browser fullscreen first; Escape in the page or Home returns to the menu.
 The original close image also returns to the menu. Hidden tabs pause the demo.
+
+Upload files in binary mode to preserve their bytes. The loader can restore
+scene.txt line endings if a text-mode transfer converted CRLF to LF, while still
+checking the original size/checksum. Reload the page after replacing the site;
+GUI files and runtime resources have versioned URLs to avoid stale cached files.
 
 The artwork is always calculated at 520x300 and enlarged with nearest neighbour.
 Windowed sizes fit within the requested bounds and available browser space.

@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-09",
+  "source": "Captures from the revised WebAssembly GUI, not historical screenshots",
+  "package_sha256": "06036b5c4e6900722e70dca2cd1cefdfb8829cb78a08bb25cb6ccba9a10816eb",
+  "source_base_commit": "66d41aea687dd8f6210672701723b29555b3360f",
+  "platform": "macOS 14.1 ARM64",
+  "logical_dimensions": [
+    520,
+    300
+  ],
+  "captures": [
+    {
+      "file": "chromium-home.png",
+      "browser": "chromium",
+      "version": "154.0.8037.98",
+      "state": "Idle English/navy landing page"
+    },
+    {
+      "file": "chromium-cinema.png",
+      "browser": "chromium",
+      "version": "154.0.8037.98",
+      "state": "Deterministic tick 4500; init seed 888; sequential ticks 0..4500 step 2, per-frame seed 100000+tick"
+    },
+    {
+      "file": "chromium-fullscreen.png",
+      "browser": "chromium",
+      "version": "154.0.8037.98",
+      "state": "Deterministic tick 4500; init seed 888; sequential ticks 0..4500 step 2, per-frame seed 100000+tick"
+    },
+    {
+      "file": "chromium-touch-2x.png",
+      "browser": "chromium",
+      "version": "154.0.8037.98",
+      "state": "Live opening, touch viewport 390x844, device scale 2; seed/time uncontrolled"
+    },
+    {
+      "file": "firefox-home.png",
+      "browser": "firefox",
+      "version": "155.0",
+      "state": "Idle English/navy landing page"
+    },
+    {
+      "file": "firefox-cinema.png",
+      "browser": "firefox",
+      "version": "155.0",
+      "state": "Deterministic tick 4500; init seed 888; sequential ticks 0..4500 step 2, per-frame seed 100000+tick"
+    },
+    {
+      "file": "firefox-fullscreen.png",
+      "browser": "firefox",
+      "version": "155.0",
+      "state": "Deterministic tick 4500; init seed 888; sequential ticks 0..4500 step 2, per-frame seed 100000+tick"
+    },
+    {
+      "file": "firefox-touch-2x.png",
+      "browser": "firefox",
+      "version": "155.0",
+      "state": "Live opening, touch viewport 390x844, device scale 2; seed/time uncontrolled"
+    }
+  ]
+}

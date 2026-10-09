@@ -24,7 +24,7 @@ def page():
     source = (ORIGINAL / 'page.html').read_text(encoding='latin-1')
     source, count = re.subn(r'<APPLET\b.*?</APPLET>',
         '<canvas id="screen" width="520" height="300" tabindex="0" '
-        'aria-label="Code Police par Mankind">Activez JavaScript pour voir la démo.</canvas>',
+        'aria-label="Code Police by Mankind">Enable JavaScript to watch the demo.</canvas>',
         source, flags=re.I | re.S)
     assert count == 1, 'Expected the original applet'
     cinema = re.search(r'<TABLE\b[^>]*WIDTH="640".*?</TABLE>', source, re.I | re.S).group()
@@ -37,11 +37,13 @@ def page():
     cinema = re.sub(r'(<IMG\b)', r'\1 alt=""', cinema, flags=re.I)
     txt = (ORIGINAL / 'MKD_CodePOlice.txt').read_text(encoding='latin-1')
     credits = []
-    for key, label in [('Code', 'Code'), ('Gfx', 'Graphismes'), ('Sons', 'Sons')]:
+    for key, label in [('Code', 'Code'), ('Gfx', 'Graphics'), ('Sons', 'Sound')]:
         value = re.search(r'^\s*' + key + r'\s+([^\n]+)', txt, re.M).group(1).strip()
         value = ', '.join(part.strip() for part in value.split(','))
         credits.append(f'<dt>{label}</dt><dd>{html.escape(value)}</dd>')
     template = (ROOT / 'wasm/web/index.template.html').read_text()
+    for name in ['bootstrap.js', 'style.css']:
+        template = template.replace(f'"{name}"', f'"{name}?v={sha(ROOT / "wasm/web" / name)[:16]}"')
     return template.replace('<!-- CINEMA -->', cinema).replace('<!-- CREDITS -->', '\n        '.join(credits))
 
 
@@ -100,10 +102,12 @@ def main():
             adaptations=[
                 'Cinema table generated from page.html, applet replaced with a canvas; 640x480 layout and original JPG/GIF borders',
                 'New landing page, settings and Start gesture; credits parsed from original TXT',
+                'English GUI headed CODE POLICE by Mankind; navy-blue palette; introductory prose removed by user request',
                 'Popup/frameset replaced by an in-page player; broken close link returns to home',
                 'Cinema optional; requested size fits inside bounds; fullscreen retains monitor mode',
                 'Fixed 520x300 SDL software canvas, visible device-pixel canvas with smoothing disabled',
                 'External Java-decoded PNG derivatives and unchanged AU/script bytes, as in native distribution',
+                'Loader restores missing CR bytes in LF-transferred scene.txt before integrity checks; versioned URLs avoid stale cached resources',
                 'Render then schedule 20 ms timeout, elapsed original 10 ms ticks; no catch-up simulation',
                 'Hidden tabs pause both clock and audio; return resumes without skipped scenes',
                 'Browser user gesture required for audio; source JS readable, C++ sources included'])

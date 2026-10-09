@@ -1,0 +1,17 @@
+{
+  "url": "https://demoports.emucamp.com/code-police/",
+  "method": "Read-only browser test with only bootstrap.js substituted locally; index, all media and WASM fetched from the public host; nothing uploaded",
+  "browser": "154.0.8037.98",
+  "state": "error",
+  "message": "Unable to start the demo: resources.json (HTTP 429)",
+  "failed": [
+    {
+      "url": "https://demoports.emucamp.com/code-police/Images/html_bord_gauche.jpg",
+      "status": 429
+    },
+    {
+      "url": "https://demoports.emucamp.com/code-police/Images/html_bord_droit.jpg",
+      "status": 429
+    }
+  ]
+}

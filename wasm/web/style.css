@@ -1,26 +1,25 @@
-:root { color-scheme: dark; font-family: system-ui, sans-serif; background: #10110e; color: #e5e6da; }
+:root { color-scheme: dark; font-family: system-ui, sans-serif; background: #080f20; color: #e5edf9; }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
 body { margin: 0; }
 button, input, select { font: inherit; }
-button, select, input { accent-color: #bdd757; }
-button, select, input[type=number] { background: #20231a; color: inherit; border: 1px solid #575c46; border-radius: 3px; }
+button, select, input { accent-color: #79a9f5; }
+button, select, input[type=number] { background: #14243f; color: inherit; border: 1px solid #435d83; border-radius: 3px; }
 button, select { cursor: pointer; }
-button:hover, select:hover { border-color: #bdd757; }
-:focus-visible { outline: 2px solid #cce85c; outline-offset: 4px; }
+button:hover, select:hover { border-color: #79a9f5; }
+:focus-visible { outline: 2px solid #92baff; outline-offset: 4px; }
 button:disabled { opacity: .45; cursor: wait; }
-a { color: #c8d99a; text-underline-offset: 4px; }
-a:hover { color: #f0ffcd; }
+a { color: #adcaff; text-underline-offset: 4px; }
+a:hover { color: #e2edff; }
 #home { min-height: 100svh; display: grid; place-items: center; padding: 36px 20px; }
-.ticket { width: min(100%, 530px); padding: 34px 40px 22px; background: #191c15; border: 1px solid #424936; border-top: 4px solid #bdd757; box-shadow: 0 20px 80px #0007; }
-.eyebrow { color: #bdd757; text-transform: uppercase; letter-spacing: .21em; font-size: .72rem; margin: 0 0 10px; }
+.ticket { width: min(100%, 530px); padding: 34px 40px 22px; background: #101d34; border: 1px solid #304a70; border-top: 4px solid #79a9f5; box-shadow: 0 20px 80px #0007; }
 h1 { font-size: clamp(2.5rem, 9vw, 3.5rem); letter-spacing: -.045em; line-height: 1; margin: 0; font-weight: 900; }
-h1 span { color: #bdd757; }
-.intro { color: #b8bba9; font-size: .95rem; line-height: 1.6; margin: 18px 0 24px; }
+h1 span { color: #79a9f5; }
+.byline { color: #b2c7e8; font-size: 1rem; line-height: 1.6; margin: 9px 0 28px; }
 .credits { display: grid; grid-template-columns: 95px 1fr; gap: 7px 12px; margin: 0 0 25px; font-size: .9rem; }
-.credits dt { color: #a3aa92; }
+.credits dt { color: #a2b7d8; }
 .credits dd { margin: 0; }
-.settings { border-top: 1px solid #424936; padding-top: 22px; display: grid; gap: 12px; font-size: .9rem; }
+.settings { border-top: 1px solid #304a70; padding-top: 22px; display: grid; gap: 12px; font-size: .9rem; }
 select { display: block; padding: 10px; margin-top: 8px; width: 100%; }
 .check { display: flex; align-items: center; gap: 8px; }
 .check input { width: 17px; height: 17px; margin: 0; }
@@ -28,14 +27,14 @@ select { display: block; padding: 10px; margin-top: 8px; width: 100%; }
 #custom-size label { flex: 1; min-width: 0; }
 #custom-size input { display: block; width: 100%; padding: 8px; margin-top: 6px; }
 #custom-size > span { padding-bottom: 8px; }
-.note, #status, #player-status { color: #b0b69e; font-size: .8rem; line-height: 1.5; }
+.note, #status, #player-status { color: #a7bcda; font-size: .8rem; line-height: 1.5; }
 .note { min-height: 2.9em; margin: 14px 0; }
-.start { display: flex; justify-content: space-between; width: 100%; padding: 13px 17px; background: #bdd757; color: #14180c; border-color: #bdd757; font-weight: 750; font-size: 1.15rem; }
-.start:hover { background: #d2e885; }
+.start { display: flex; justify-content: space-between; width: 100%; padding: 13px 17px; background: #23477c; color: #f0f5ff; border-color: #628fcf; font-weight: 750; font-size: 1.15rem; }
+.start:hover { background: #2c5795; }
 #status { margin: 10px 0 20px; min-height: 1.5em; }
-footer { border-top: 1px solid #424936; padding-top: 20px; }
+footer { border-top: 1px solid #304a70; padding-top: 20px; }
 nav { display: flex; gap: 25px; font-size: .85rem; }
-footer p { font-size: .72rem; color: #8d947f; margin: 18px 0 0; }
+footer p { font-size: .72rem; color: #97accb; margin: 18px 0 0; }
 body.playing { background: #000; }
 #player { min-height: 100svh; background: #000; }
 #stage { position: relative; display: grid; place-items: center; min-height: calc(100svh - 70px); overflow: hidden; background: #000; }

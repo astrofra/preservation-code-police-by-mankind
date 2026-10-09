@@ -14,7 +14,7 @@ const scratch = await mkdtemp(path.join(tmpdir(), 'Code Police été '));
 const site = path.join(scratch, 'démos', 'Code Police été');
 const zip = path.join(root, 'dist/wasm/code-police-web.zip');
 const output = path.join(root, 'evidence/wasm');
-const captures = path.join(root, 'reference/wasm');
+const captures = path.join(root, 'reference/wasm', process.env.CODEPOLICE_CAPTURE_SET || 'navy-en');
 await mkdir(site, {recursive: true});
 await mkdir(output, {recursive: true});
 await mkdir(captures, {recursive: true});
@@ -23,6 +23,7 @@ execFileSync('python3', [path.join(root, 'wasm/prepare-reference.py')]);
 const reference = JSON.parse(await readFile(path.join(root, 'wasm/build/reference.json')));
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 const report = {package: 'dist/wasm/code-police-web.zip', sha256: hash(await readFile(zip)),
+  captures: path.relative(root,captures),
   platform: `${process.platform}/${process.arch}`, browsers: [], untested: ['Physical Safari', 'Physical mobile devices'],
   unavailable: ['Playwright WebKit mac14 ARM64 build 2251: bus error at browser launch before page load on macOS 14.1; see webkit-launch.txt']};
 let files = 0;
@@ -94,7 +95,7 @@ async function capturePresentation(page,engine,label) {
   await writeFile(path.join(dir,`${engine}-${label}.png`),Buffer.from(png,'base64'));
   await writeFile(path.join(dir,`${engine}-${label}.json`),JSON.stringify(g));
   await page.screenshot({path:path.join(captures,`${engine}-${label}.png`)});
-  return JSON.parse(execFileSync('python3',[path.join(root,'wasm/check-presentation.py'),engine,label],{encoding:'utf8'}));
+  return JSON.parse(execFileSync('python3',[path.join(root,'wasm/check-presentation.py'),engine,label,captures],{encoding:'utf8'}));
 }
 try {
   for (const engine of (process.env.CODEPOLICE_BROWSERS || 'chromium,firefox').split(',')) {
@@ -114,8 +115,12 @@ try {
       page.on('pageerror', e=>errors.push(e.message));
       page.on('response', r=>{if(r.status()>=400)bad.push(r.url());});
       await ready(page);
-      assert.equal(await page.locator('title').textContent(),'Code Police — Mankind');
-      assert.equal(await page.locator('.credits').innerText(),'Code\nKrabob\nGraphismes\nzaac, alexx, myke, krabob\nSons\nLeviathan, Tex');
+      assert.equal(await page.locator('title').textContent(),'CODE POLICE by Mankind');
+      assert.equal(await page.locator('html').getAttribute('lang'),'en');
+      assert.equal(await page.locator('h1').innerText(),'CODE POLICE');
+      assert.equal(await page.locator('.byline').innerText(),'by Mankind');
+      assert.equal(await page.locator('.intro').count(),0);
+      assert.equal(await page.locator('.credits').innerText(),'Code\nKrabob\nGraphics\nzaac, alexx, myke, krabob\nSound\nLeviathan, Tex');
       assert.match(await page.locator('a', {hasText:'Pouët'}).getAttribute('href'), /which=1788$/);
       assert.match(await page.locator('a', {hasText:'GitHub'}).getAttribute('href'), /astrofra\/preservation-code-police-by-mankind$/);
       await page.screenshot({path:path.join(captures, `${engine}-home.png`)});
@@ -209,6 +214,7 @@ try {
       result.presentation.push(await capturePresentation(page,engine,'fullscreen'));
       await page.evaluate(()=>document.exitFullscreen());
       await page.waitForFunction(()=>!document.fullscreenElement);
+      await page.waitForFunction(()=>document.getElementById('screen').getBoundingClientRect().width===1040);
       assert.equal((await geometry(page)).width,1040);
       await page.click('#back');
       await page.selectOption('#resolution','1280x720');
@@ -237,12 +243,39 @@ try {
       await touch.fill('#width','0');await touch.tap('#start');assert.equal((await status(touch)).running,0);
       result.checks.push('Touch Start once; original close returns home; HiDPI 2x; responsive cinema; custom size validation');
       await mobile.close();
+      // Text-mode uploads can change CRLF to LF. Both must restore the same
+      // original bytes in MEMFS; stale responses must be revalidated/versioned.
+      const script=await readFile(path.join(site,'assets/scene.txt'));
+      const lf=Buffer.from(script.toString('utf8').replace(/\r\n/g,'\n'));
+      const newlinePage=await browser.newPage();
+      let scriptVersion, scriptRequests=0;
+      await newlinePage.route(u=>u.pathname.endsWith('/assets/scene.txt'),route=>{
+        scriptVersion=new URL(route.request().url()).searchParams.get('v');
+        if(++scriptRequests===1) return route.fulfill({status:429,headers:{'Retry-After':'0'},body:'Server busy'});
+        return route.fulfill({status:200,body:lf});
+      });
+      await ready(newlinePage);
+      const restored=await newlinePage.evaluate(()=>Array.from(codePolice.FS.readFile('/assets/scene.txt')));
+      assert.deepEqual(Buffer.from(restored),script);
+      assert.equal(scriptVersion,hash(script));
+      assert.equal(scriptRequests,2);
+      await newlinePage.click('#start');
+      await newlinePage.waitForFunction(()=>JSON.parse(codePolice.UTF8ToString(codePolice._cp_status())).frames>=20);
+      await newlinePage.close();
+      result.loading={originalScriptBytes:script.length,lfBytes:lf.length,restoredBytesExact:true,resourceVersion:scriptVersion,rateLimitRecovered:true};
       // Missing/corrupt external media and missing WASM must name the resource.
-      for(const fault of ['missing','corrupt','wasm']){
+      for(const fault of ['missing','corrupt','wasm','script-truncated','script-corrupt','script-busy']){
         const broken=await browser.newPage();
-        const resource=fault==='wasm'?'code-police.wasm':'assets/Images/flare1.jpg.png';
-        await broken.route('**/'+resource,async route=>{
-          if(fault==='corrupt'){
+        const resource=fault==='wasm'?'code-police.wasm':fault.startsWith('script-')?'assets/scene.txt':'assets/Images/flare1.jpg.png';
+        await broken.route(u=>u.pathname.endsWith('/'+resource),async route=>{
+          if(fault==='script-busy'){
+            await route.fulfill({status:429,headers:{'Retry-After':'0'},body:'Server busy'});
+          } else if(fault==='script-truncated'){
+            await route.fulfill({status:200,body:lf.subarray(0,1000)});
+          } else if(fault==='script-corrupt'){
+            const bytes=Buffer.from(lf);bytes[100]^=1;
+            await route.fulfill({status:200,body:bytes});
+          } else if(fault==='corrupt'){
             const bytes=Buffer.from(await readFile(path.join(site,resource)));bytes[100]^=255;
             await route.fulfill({status:200,body:bytes});
           } else await route.fulfill({status:404,body:'Missing test resource'});
@@ -250,9 +283,12 @@ try {
         await broken.goto(url);
         await broken.waitForFunction(()=>document.documentElement.dataset.state==='error',null,{timeout:30000});
         assert((await broken.locator('#status').innerText()).includes(resource), await broken.locator('#status').innerText());
+        if(fault==='script-corrupt') assert.match(await broken.locator('#status').innerText(),/checksum mismatch/);
+        if(fault==='script-truncated') assert.match(await broken.locator('#status').innerText(),/expected 44195 bytes, received 1000/);
         assert(await broken.locator('#start').isDisabled());await broken.close();
       }
       result.checks.push('Missing/corrupt media and missing WASM errors name resource; local-only HTTP requests; all original/package hashes');
+      result.checks.push('LF-uploaded script restored byte-exactly; hash-versioned resource URL; truncated and altered scripts rejected; English launch page');
       report.browsers.push(result);
       await writeFile(path.join(output,'validation.json'),JSON.stringify(report,null,2)+'\n');
     } finally {await browser.close();}

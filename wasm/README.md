@@ -3,6 +3,7 @@
 This port compiles the existing C++11 engine to WebAssembly. The landing page
 has a **Start** button, credits read from the original TXT, Pouët/GitHub links,
 resolution selection, optional original cinema borders, sound and fullscreen.
+The English interface uses a navy-blue palette and “CODE POLICE by Mankind”.
 The cinema is on by default. Start is the user gesture that enables browser audio.
 
 From any working directory, run the repository's scripts:
@@ -35,7 +36,7 @@ if the browser is smaller. Fullscreen maximizes the selected presentation:
 the full cinema when enabled, otherwise the 520:300 image. Black fills the
 remaining area; no monitor mode change occurs. Return to the landing page to
 change resolution/sound and restart. Cinema can also be toggled during playback.
-The original close image or **Accueil** returns to the landing page; Escape
+The original close image or **Home** returns to the landing page; Escape
 first leaves browser fullscreen, then returns to the landing page. Hidden tabs
 pause both animation time and audio and resume without skipping scenes.
 
@@ -54,6 +55,15 @@ SHA-256, and writes their unchanged bytes into MEMFS before `main`. The PNGs are
 the already verified Java-decoded GIF/JPEG derivatives; all ten AU files and the
 KarateScript are unchanged. The independent original cinema JPG/GIF images are
 copied to `Images/`. Errors identify the missing or corrupt resource.
+
+The loader restores the original CRLF line endings if a text-mode upload has
+changed `scene.txt` to LF, then applies the same size/checksum checks. It does
+not accept a truncated or otherwise altered script. Resources use hash-versioned
+URLs, the manifest is revalidated, and GUI scripts/styles have versioned links
+to avoid mixing cached files between packages. Use binary transfer mode when
+uploading the site to preserve every original file exactly.
+Downloads run two at a time, with bounded retries that respect the server's
+`Retry-After` header when it responds with HTTP 429.
 
 `package.py` generates the cinema table from a copy of original `page.html`.
 The new page replaces popup/frameset navigation, the applet and the historically

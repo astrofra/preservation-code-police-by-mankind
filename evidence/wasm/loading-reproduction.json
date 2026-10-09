@@ -1,0 +1,8 @@
+{
+  "originalBytes": 44195,
+  "lfBytes": 42707,
+  "message": "Impossible de lancer la d\u00e9mo : assets/scene.txt : taille incorrecte",
+  "method": "Original packaged loader, replacing only CRLF with LF in the HTTP scene.txt response",
+  "userHostConfirmed": true,
+  "hostEvidence": "hosted-loading-diagnosis.json"
+}

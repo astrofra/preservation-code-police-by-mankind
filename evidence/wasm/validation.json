@@ -1,6 +1,7 @@
 {
   "package": "dist/wasm/code-police-web.zip",
-  "sha256": "43264232e4545fde688425d0a9fbefa9c7d255ddb0920baec989112b2107037e",
+  "sha256": "06036b5c4e6900722e70dca2cd1cefdfb8829cb78a08bb25cb6ccba9a10816eb",
+  "captures": "reference/wasm/navy-en",
   "platform": "darwin/arm64",
   "browsers": [
     {
@@ -10,7 +11,8 @@
         "Start on release exactly once; live clock/frame progression; SDL audio device",
         "Optional cinema; 1280x720 -> 1248x720; fullscreen/restoration; simulated hidden-tab pause/resume",
         "Touch Start once; original close returns home; HiDPI 2x; responsive cinema; custom size validation",
-        "Missing/corrupt media and missing WASM errors name resource; local-only HTTP requests; all original/package hashes"
+        "Missing/corrupt media and missing WASM errors name resource; local-only HTTP requests; all original/package hashes",
+        "LF-uploaded script restored byte-exactly; hash-versioned resource URL; truncated and altered scripts rejected; English launch page"
       ],
       "geometries": [
         {
@@ -128,15 +130,15 @@
           "running": 1,
           "suspended": 0,
           "frames": 20,
-          "tick": 56,
+          "tick": 55,
           "starts": 1,
           "audio": 1
         },
         "after": {
           "running": 1,
           "suspended": 0,
-          "frames": 42,
-          "tick": 108,
+          "frames": 43,
+          "tick": 106,
           "starts": 1,
           "audio": 1
         }
@@ -164,7 +166,14 @@
           "original_2x_exact": false,
           "fullscreen_bands_black": true
         }
-      ]
+      ],
+      "loading": {
+        "originalScriptBytes": 44195,
+        "lfBytes": 42707,
+        "restoredBytesExact": true,
+        "resourceVersion": "1b6841c2b8cad0932f55464c976107bf5f4366886fcb36289acf252def287d40",
+        "rateLimitRecovered": true
+      }
     },
     {
       "engine": "firefox",
@@ -173,7 +182,8 @@
         "Start on release exactly once; live clock/frame progression; SDL audio device",
         "Optional cinema; 1280x720 -> 1248x720; fullscreen/restoration; simulated hidden-tab pause/resume",
         "Touch Start once; original close returns home; HiDPI 2x; responsive cinema; custom size validation",
-        "Missing/corrupt media and missing WASM errors name resource; local-only HTTP requests; all original/package hashes"
+        "Missing/corrupt media and missing WASM errors name resource; local-only HTTP requests; all original/package hashes",
+        "LF-uploaded script restored byte-exactly; hash-versioned resource URL; truncated and altered scripts rejected; English launch page"
       ],
       "geometries": [
         {
@@ -284,7 +294,7 @@
       ],
       "audio": {
         "peak": 0.29682618379592896,
-        "callbacks": 188
+        "callbacks": 190
       },
       "live": {
         "before": {
@@ -298,7 +308,7 @@
         "after": {
           "running": 1,
           "suspended": 0,
-          "frames": 37,
+          "frames": 40,
           "tick": 102,
           "starts": 1,
           "audio": 1
@@ -327,7 +337,14 @@
           "original_2x_exact": false,
           "fullscreen_bands_black": true
         }
-      ]
+      ],
+      "loading": {
+        "originalScriptBytes": 44195,
+        "lfBytes": 42707,
+        "restoredBytesExact": true,
+        "resourceVersion": "1b6841c2b8cad0932f55464c976107bf5f4366886fcb36289acf252def287d40",
+        "rateLimitRecovered": true
+      }
     }
   ],
   "untested": [

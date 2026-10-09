@@ -13,7 +13,7 @@ const fit = (w, h, bw = 520, bh = 300) => {
 function error(message) {
   if (failed) return; // Preserve the first, filename-bearing error from onAbort.
   failed = true;
-  $('status').textContent = `Impossible de lancer la démo : ${message}`;
+  $('status').textContent = `Unable to start the demo: ${message}`;
   $('player-status').textContent = $('status').textContent;
   $('start').disabled = true;
   document.documentElement.dataset.state = 'error';
@@ -26,7 +26,7 @@ function readSize() {
   const values = custom ? [Number($('width').value), Number($('height').value)] : $('resolution').value.split('x').map(Number);
   if (values.some(n => !Number.isInteger(n) || n < 1 || n > 16384)) return false;
   requested = fit(...values);
-  $('size-note').textContent = `Image : ${requested.width} × ${requested.height}. Proportions conservées ; ajustée à l’espace disponible.`;
+  $('size-note').textContent = `Image: ${requested.width} × ${requested.height}. Aspect ratio preserved; scaled to fit the available space.`;
   return true;
 }
 function present() {
@@ -65,11 +65,11 @@ function layout() {
 }
 async function enterFullscreen() {
   if (!$('stage').requestFullscreen) {
-    $('player-status').textContent = 'Le plein écran n’est pas disponible dans ce navigateur.';
+    $('player-status').textContent = 'Fullscreen is not available in this browser.';
     return;
   }
   try { await $('stage').requestFullscreen(); }
-  catch { $('player-status').textContent = 'Le navigateur n’a pas autorisé le plein écran. Vous pouvez continuer dans la page.'; }
+  catch { $('player-status').textContent = 'The browser did not allow fullscreen. You can keep watching in this page.'; }
   layout();
 }
 function start(event) {
@@ -115,41 +115,74 @@ document.addEventListener('visibilitychange', () => {
 window.addEventListener('pagehide', () => { if (runtime) runtime._cp_stop(); });
 readSize();
 
-async function fetchFile(path) {
-  const response = await fetch(new URL(path, base), {signal: AbortSignal.timeout(30000)});
-  if (!response.ok) throw new Error(`${path} (HTTP ${response.status})`);
-  return new Uint8Array(await response.arrayBuffer());
+async function fetchFile(path, version) {
+  const url = new URL(path, base);
+  if (version) url.searchParams.set('v', version);
+  for (let attempt = 0; attempt < 3; ++attempt) {
+    const response = await fetch(url, {cache: version ? 'default' : 'no-cache', signal: AbortSignal.timeout(30000)});
+    if (response.status === 429 && attempt < 2) {
+      const retry = response.headers.get('Retry-After');
+      let delay = 1000 * 2 ** attempt;
+      if (retry !== null) {
+        const parsed = /^\d+$/.test(retry) ? Number(retry) * 1000 : Date.parse(retry) - Date.now();
+        if (Number.isFinite(parsed)) delay = Math.max(0, parsed);
+      }
+      // Respect server throttling; never retry sooner than Retry-After.
+      if (delay > 30000) throw new Error(`${path} (HTTP 429: server busy; please try again later)`);
+      await response.arrayBuffer();
+      await new Promise(resolve => setTimeout(resolve, delay));
+      continue;
+    }
+    if (!response.ok) throw new Error(`${path} (HTTP ${response.status})`);
+    return new Uint8Array(await response.arrayBuffer());
+  }
+}
+function restoreScriptNewlines(bytes) {
+  // Some text-mode uploads convert the original CRLF script to LF. Restore
+  // only missing CR bytes; the normal size/hash checks still apply afterwards.
+  let missing = 0;
+  for (let i = 0; i < bytes.length; ++i) if (bytes[i] === 10 && bytes[i - 1] !== 13) ++missing;
+  if (!missing) return bytes;
+  const restored = new Uint8Array(bytes.length + missing);
+  let offset = 0;
+  for (let i = 0; i < bytes.length; ++i) {
+    if (bytes[i] === 10 && bytes[i - 1] !== 13) restored[offset++] = 13;
+    restored[offset++] = bytes[i];
+  }
+  return restored;
 }
 async function prepare() {
-  if (location.protocol === 'file:') throw new Error('utilisez le serveur local preview-wasm.sh ou un hébergement HTTP(S).');
+  if (location.protocol === 'file:') throw new Error('use the preview-wasm.sh local server or an HTTP(S) host.');
   const manifest = JSON.parse(new TextDecoder().decode(await fetchFile('resources.json')));
   let completed = 0;
   const resources = new Map();
   const pending = [...manifest];
-  await Promise.all(Array.from({length: 6}, async () => {
+  await Promise.all(Array.from({length: 2}, async () => {
     while (pending.length) {
       const item = pending.shift();
       try {
-        const bytes = await fetchFile(item.path);
-        if (bytes.length !== item.bytes) throw new Error('taille incorrecte');
+        let bytes = await fetchFile(item.path, item.sha256);
+        const received = bytes.length;
+        if (item.path === 'assets/scene.txt') bytes = restoreScriptNewlines(bytes);
+        if (bytes.length !== item.bytes) throw new Error(`size mismatch (expected ${item.bytes} bytes, received ${received})`);
         if (globalThis.crypto?.subtle) {
           const digest = await crypto.subtle.digest('SHA-256', bytes);
           const hash = [...new Uint8Array(digest)].map(n => n.toString(16).padStart(2, '0')).join('');
-          if (hash !== item.sha256) throw new Error('fichier corrompu (SHA-256)');
+          if (hash !== item.sha256) throw new Error('file checksum mismatch (SHA-256)');
         }
         resources.set(item.path, bytes);
-        if (!failed) $('status').textContent = `Chargement de la démo… ${++completed}/${manifest.length}`;
-      } catch (cause) { throw new Error(`${item.path} : ${cause.message}`); }
+        if (!failed) $('status').textContent = `Loading the demo… ${++completed}/${manifest.length}`;
+      } catch (cause) { throw new Error(`${item.path}: ${cause.message}`); }
     }
   }));
   let createCodePolice;
   try { ({default: createCodePolice} = await import('./code-police.js')); }
-  catch (cause) { throw new Error(`code-police.js : ${cause.message}`); }
+  catch (cause) { throw new Error(`code-police.js: ${cause.message}`); }
   runtime = await createCodePolice({
     canvas: source,
     locateFile: path => new URL(path, base).href,
     print: message => console.info(message), printErr: message => console.warn(message),
-    onAbort: message => error(`code-police.wasm : ${message}`),
+    onAbort: message => error(`code-police.wasm: ${message}`),
     onDemoError: error, onDemoFrame: present,
     preRun: [module => {
       module.FS.mkdirTree('/assets/Images'); module.FS.mkdirTree('/assets/Sounds');
@@ -158,9 +191,9 @@ async function prepare() {
   });
   // Exposed for reproducible diagnostics; the normal UI uses only the host API.
   window.codePolice = runtime;
-  document.title = 'Code Police — Mankind';
+  document.title = 'CODE POLICE by Mankind';
   if (failed) return;
-  $('status').textContent = 'Prêt. Start lance la démo avec vos réglages.';
+  $('status').textContent = 'Ready. Press Start to launch the demo.';
   $('start').disabled = false;
   document.documentElement.dataset.state = 'ready';
 }

@@ -1,0 +1,23 @@
+{
+  "url": "https://demoports.emucamp.com/code-police/",
+  "resources.json": {
+    "bytes": 9994,
+    "sha256": "12afe52483abd787d9b1062b290530f6a5ffe5336814da0b8bfd67863f93d786",
+    "crlf": 0,
+    "lf": 327,
+    "content_type": "application/json"
+  },
+  "expected_script": {
+    "path": "assets/scene.txt",
+    "bytes": 44195,
+    "sha256": "1b6841c2b8cad0932f55464c976107bf5f4366886fcb36289acf252def287d40"
+  },
+  "assets/scene.txt": {
+    "bytes": 42707,
+    "sha256": "ef2b6ab518c68939600be01bc728a9963ab2fe2ae2557530f64bcdd8e27d94ac",
+    "crlf": 0,
+    "lf": 1488,
+    "content_type": "text/plain"
+  },
+  "matches_original_after_crlf_restoration": true
+}

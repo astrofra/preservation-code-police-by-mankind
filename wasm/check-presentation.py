@@ -8,7 +8,8 @@ from PIL import Image, ImageChops, ImageDraw
 ROOT = Path(__file__).resolve().parents[1]
 name = '-'.join(sys.argv[1:3])
 g = json.loads((ROOT / f'wasm/build/presentation/{name}.json').read_text())
-shot = Image.open(ROOT / f'reference/wasm/{name}.png').convert('RGB')
+captures = Path(sys.argv[3]) if len(sys.argv) > 3 else ROOT / 'reference/wasm'
+shot = Image.open(captures / f'{name}.png').convert('RGB')
 canvas = Image.open(ROOT / f'wasm/build/presentation/{name}.png').convert('RGB')
 dpr = g['dpr']
 x, y, w, h = [round(g[n] * dpr) for n in ('x', 'y', 'width', 'height')]
