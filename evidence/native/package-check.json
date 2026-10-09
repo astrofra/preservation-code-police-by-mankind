@@ -1,7 +1,7 @@
 {
   "platform": "macOS-14.1-arm64-arm-64bit-Mach-O",
   "architecture": "arm64",
-  "archive_sha256": "6c7915a93a00abc3e9a40450066b15fb94d02cf44448bf883b028198a0188ba3",
+  "archive_sha256": "704ef12289aff955930138701a00d4b8cf9699bd70a8c02634683abe4b8d3004",
   "resources_verified": 65,
   "system_dependencies_only": true,
   "signature_valid": true,
@@ -11,7 +11,7 @@
   "java_and_homebrew_removed_from_path": true,
   "network_denied_for_shell_launch": true,
   "live_audio": true,
-  "shell_smoke_log": "520x300 framebuffer; 10 external sounds; 8 kHz mono audio active; cycle 222 seconds. Escape to quit.\nStopped cleanly after 115 frames in 4.03262 seconds; 0 timeline loops; requested duration; minimize, restore, resize, pointer and Escape exercised.\n",
+  "shell_smoke_log": "520x300 framebuffer; 10 external sounds; 8 kHz mono audio active; cycle 222 seconds. Escape to quit.\nWindow size 1040x600; fullscreen=0; nearest neighbour; monitor resolution unchanged.\nStopped cleanly after 66 frames in 4.03946 seconds; 0 timeline loops; requested duration; minimize, restore, resize, pointer, F11 twice and Escape exercised; monitor mode unchanged; nearest neighbour verified.\n",
   "shell_stderr": "",
   "launchservices_capture": true
 }

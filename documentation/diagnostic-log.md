@@ -249,3 +249,62 @@ log, sanitizer smoke log and system dependency audit under `evidence/native/`.
 No original Java source, bytecode or release file was changed. No remote upload
 or push was performed. macOS 14.1 ARM64 is the tested runtime; other desktop
 targets and WASM remain explicitly untested.
+
+## 2026-10-09 — Display resolution and fullscreen options
+
+The user requested equivalent display-resolution/fullscreen CLI options for the
+Java and C++ versions, using nearest-neighbour interpolation. They clarified
+that fullscreen must keep the monitor's existing resolution and enlarge the
+520x300 framebuffer as far as the aspect ratio permits. Their subsequent
+suggestion to use the smaller dimension was adopted as the smaller *scale
+factor*: fit inside the requested window bounds, rounding to the nearest pixel,
+with no windowed bars. Examples: 1280x720 -> 1248x720; 800x600 -> 800x462.
+Fullscreen retains the full screen surface and centers the maximal image with
+black letterbox/pillarbox bands.
+
+Added shared Java presentation classes and corresponding C++ geometry helpers;
+new options are `--resolution WIDTHxHEIGHT`, `--fullscreen` and `--scale 1..4`.
+F11 restores the last corrected window size; Escape exits. Both render engines
+remain fixed at 520x300. The original Java host calls the unchanged applet's
+`update` through scaled graphics, with presentation polling on the AWT thread;
+its original worker and timing remain independent. The restored Java launcher
+also accepts these options for an undecorated-artwork presentation, while its
+existing no-option cinema presentation remains available. No original class or
+engine arithmetic was edited.
+
+Java live checks already pass for seven reference geometries, malformed options,
+exact 2x nearest-neighbour pixels, fullscreen bars, unchanged monitor mode,
+F11 entry/exit and window-size restoration, constrained manual resizing, and
+scaled playback of the original bytecode with its fixed 520x300 buffer. C++
+geometry checks pass the same examples plus fitting/idempotence across a grid
+of requested dimensions. Native readback and package checks are in progress.
+
+Native readback validation found two platform-specific test issues before
+completion: macOS fullscreen Space transitions could delay processing of the
+second F11 event past the smoke-test timeout, and the notch/menu safe area means
+the drawable need not equal the raw monitor bounds. Disabled SDL fullscreen
+Spaces, made the smoke test wait for both actual toggles, and fit to the actual
+drawable. The test also verifies the real fullscreen flag and unchanged display
+mode. These changes do not switch the monitor resolution.
+
+Both the installed SDL2-compatible development build and the pinned SDL2 release
+passed actual presentation readback checks. Window 1280x720 becomes 1248x720
+(2496x1440 HiDPI output); window 800x600 becomes 800x462 (1600x924 output).
+Fullscreen readback confirmed a centered aspect-preserving image, black bands,
+no newly interpolated colours, two F11 transitions and unchanged monitor mode.
+The native distribution was rebuilt, extracted and checked offline, including
+the assertion that the original window size is restored after F11.
+
+Rebuilt the original Java ZIP and the Java desktop application. The extracted
+Java ZIP passes with live audio in fullscreen on Java 25 and windowed 800x462 on
+Java 21, from `/tmp` with network denied and an accented/spaced package path.
+All 107 packaged original files and all 130 archived repository files remain
+byte-identical. Reports are in `evidence/native/display-checks.json`,
+`evidence/native/package-check.json` and
+`evidence/java-original-package/display-checks.json`. Only the presentation/host
+layer changed; the previously validated renderer arithmetic was not modified.
+
+The rebuilt bundled-runtime Java desktop app also passed its 800x462 display
+smoke check with animation, live audio and clean shutdown. The final native ZIP
+passed its offline extraction/LaunchServices check, including actual F11 window
+size restoration. Documentation and all three generated deliverables are updated.

@@ -151,3 +151,30 @@ SDL platform details follow the official documentation for
 [application-relative resources](https://wiki.libsdl.org/SDL2/SDL_GetBasePath)
 and [audio device/callback setup](https://wiki.libsdl.org/SDL2/SDL_OpenAudioDevice).
 In a macOS bundle, SDL's default base directory is `Contents/Resources`.
+
+## Display options (2026-10-09)
+
+The native and Java launchers now share `--resolution WIDTHxHEIGHT`,
+`--scale 1..4` and `--fullscreen`. The final user-requested window policy uses
+the smaller of width/520 and height/300: fit entirely inside the requested
+bounds, round to the nearest pixel, and resize the window to that aspect ratio.
+For example, 1280x720 becomes 1248x720, and 800x600 becomes 800x462. The visible
+window contains only the artwork. Dimensions are OS logical content units;
+HiDPI drawables may contain more physical pixels.
+
+Fullscreen uses the existing display mode and the actual SDL drawable size,
+maximizing the image and centering black letterbox/pillarbox bands. No
+`SDL_SetWindowDisplayMode` call is made. F11 restores the prior corrected
+window size; Escape closes. The macOS
+[fullscreen Spaces hint](https://wiki.libsdl.org/SDL2/SDL_HINT_VIDEO_MAC_FULLSCREEN_SPACES)
+is disabled so fullscreen uses the desktop directly. The OS may reserve its
+notch/menu safe area; fitting uses the drawable, rather than assumed monitor
+bounds. The texture explicitly selects `SDL_ScaleModeNearest`.
+
+The render engine, assets, original 520x300 buffer, timer and update cadence are
+unchanged. CTest checks seven reference geometries, invalid CLI values and
+fit/idempotence across many sizes. `tools/check_display.py` validates actual
+HiDPI output captures against the source framebuffer, rejects any newly
+interpolated colours, and checks black bands. The smoke check now actually
+processes both F11 events before quitting, even if OS transitions delay a frame,
+and asserts the monitor mode and nearest filter are unchanged.

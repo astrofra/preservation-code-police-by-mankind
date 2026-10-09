@@ -140,3 +140,35 @@ directory containing spaces and an accented character, with `JAVA_HOME` unset,
 The test therefore used its bundled runtime and installation-relative assets.
 All 64 packaged script/media files match the original archive. Local code-signature
 verification also passed; the application has not been notarized.
+
+## Resolution and fullscreen presentation (2026-10-09)
+
+The original-bytecode host and the reconstructed Java launcher now accept
+`--resolution WIDTHxHEIGHT`, `--scale 1..4` and `--fullscreen`. The native port
+uses the same options and geometry. Windowed mode fits the 520:300 artwork
+inside the requested dimensions, rounding to pixels (1280x720 -> 1248x720;
+800x600 -> 800x462), with no bands. Fullscreen keeps the current monitor mode,
+maximizes the image and centers black letterbox/pillarbox bands. F11 toggles and
+restores the prior corrected window size; Escape closes. Nearest neighbour is
+explicitly selected in Java2D. Window sizes are OS logical content dimensions.
+
+`DisplayOptions` contains CLI/geometry, and `DemoWindow` owns only presentation.
+The original applet remains an offscreen 520x300 component with its original
+worker. An independent AWT repaint timer presents its existing `update()` output
+through scaled graphics. The reconstructed engine uses the same presentation
+adapter when display options are supplied. Its existing no-option cinema host
+remains available; invoke display options to use the bare artwork view:
+
+```sh
+./java-desktop/gradlew -p java-desktop run --args='--resolution 1280x720 --fullscreen'
+```
+
+No `GraphicsDevice.setDisplayMode` call is made. The fullscreen window uses the
+current graphics device, and the tests check that its resolution, bit depth and
+refresh rate are unchanged across entry/exit. The engine size, double buffers,
+script, rendering expressions and sound/timing logic are unchanged.
+
+Run `./java-desktop/gradlew -p java-desktop verifyDisplay` for live geometry,
+nearest-neighbour pattern, black-band, F11/window-size restoration, manual resize,
+and original-bytecode presentation checks. The CLI Java distribution includes
+the two presentation classes without including the reconstructed demo engine.

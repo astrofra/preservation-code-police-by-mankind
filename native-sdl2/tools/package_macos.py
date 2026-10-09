@@ -99,7 +99,12 @@ Open Code Police.app, or run ./run-code-police.sh
 macOS {arch}; deployment target macOS 11+. Tested on the build host only.
 No Java, Homebrew or network needed. Keep the complete application bundle.
 The 520 x 300 artwork is displayed at 2x by default, without the cinema surround.
-Escape or close: quit. F11: fullscreen. --scale 1: original pixel size.
+Escape or close: quit. F11: toggle fullscreen and restore the window size.
+--resolution WIDTHxHEIGHT: fit the 520:300 image inside the requested window bounds.
+Example: --resolution 1280x720 gives a 1248x720 content area.
+--fullscreen: maximize the image on the current monitor, with black bands.
+The monitor resolution never changes. Scaling is nearest neighbour.
+--scale 1: original window size (520x300 OS logical units).
 Optional --mute. Use --help for diagnostics.
 
 Original demo/code/art/audio credits are in the application Resources directory.

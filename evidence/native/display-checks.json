@@ -1,0 +1,50 @@
+[
+  {
+    "case": "window-720",
+    "output": [
+      2496,
+      1440
+    ],
+    "viewport": [
+      0,
+      0,
+      2496,
+      1440
+    ],
+    "no_interpolated_colours": true,
+    "black_bands": true,
+    "log": "520x300 framebuffer; 10 external sounds; 8 kHz mono audio active; cycle 222 seconds. Escape to quit.\nWindow size 1248x720; fullscreen=0; nearest neighbour; monitor resolution unchanged.\nDisplay capture 2496x1440; viewport=0,0,2496,1440\nStopped cleanly after 40 frames in 1.06282 seconds; 0 timeline loops; requested duration.\n"
+  },
+  {
+    "case": "window-600",
+    "output": [
+      1600,
+      924
+    ],
+    "viewport": [
+      0,
+      0,
+      1600,
+      924
+    ],
+    "no_interpolated_colours": true,
+    "black_bands": true,
+    "log": "520x300 framebuffer; 10 external sounds; 8 kHz mono audio active; cycle 222 seconds. Escape to quit.\nWindow size 800x462; fullscreen=0; nearest neighbour; monitor resolution unchanged.\nDisplay capture 1600x924; viewport=0,0,1600,924\nStopped cleanly after 41 frames in 1.07348 seconds; 0 timeline loops; requested duration.\n"
+  },
+  {
+    "case": "fullscreen",
+    "output": [
+      3600,
+      2252
+    ],
+    "viewport": [
+      0,
+      87,
+      3600,
+      2077
+    ],
+    "no_interpolated_colours": true,
+    "black_bands": true,
+    "log": "520x300 framebuffer; 10 external sounds; 8 kHz mono audio active; cycle 222 seconds. Escape to quit.\nWindow size 800x462; fullscreen=1; nearest neighbour; monitor resolution unchanged.\nDisplay capture 3600x2252; viewport=0,87,3600,2077\nStopped cleanly after 112 frames in 4.11058 seconds; 0 timeline loops; requested duration; minimize, restore, resize, pointer, F11 twice and Escape exercised; monitor mode unchanged; nearest neighbour verified.\n"
+  }
+]

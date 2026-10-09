@@ -33,6 +33,8 @@ mkdir -p "$PACKAGE_STAGE/classes" "$PACKAGE_DIR/lib" "$PACKAGE_DIR/original/mkd_
 "$JAVAC_CMD" --release 17 -encoding UTF-8 -d "$PACKAGE_STAGE/classes" \
     "$REPOSITORY_DIR/java-desktop/src/main/java/SceneAssets.java" \
     "$REPOSITORY_DIR/java-desktop/src/main/java/DemoAudio.java" \
+    "$REPOSITORY_DIR/java-desktop/src/main/java/DisplayOptions.java" \
+    "$REPOSITORY_DIR/java-desktop/src/main/java/DemoWindow.java" \
     "$REPOSITORY_DIR/java-desktop/tools/ReferenceSupport.java" \
     "$REPOSITORY_DIR/java-desktop/tools/OriginalHost.java"
 "$JAR_CMD" --create --file "$PACKAGE_DIR/lib/code-police-launcher.jar" \

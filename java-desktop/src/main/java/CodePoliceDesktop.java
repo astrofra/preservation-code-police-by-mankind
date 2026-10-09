@@ -74,24 +74,31 @@ public final class CodePoliceDesktop {
         }
     }
 
+    public static Session open(SceneAssets assets, DisplayOptions options) {
+        if (!EventQueue.isDispatchThread()) throw new IllegalStateException("Use the AWT event thread");
+        kraycasting demo = new kraycasting();
+        demo.configure(assets, options.mute, null);
+        demo.init();
+        DemoWindow display = new DemoWindow("Code Police — Mankind (Java)", options, demo::update,
+            () -> { try { demo.stop(); } finally { demo.close(); } });
+        display.show(options.fullscreen);
+        demo.start();
+        return new Session(display.frame, demo);
+    }
+
     public static void main(String[] args) throws Exception {
-        boolean silent = false;
-        boolean smokeTest = false;
-        for (String arg : args) {
-            if (arg.equals("--mute")) silent = true;
-            else if (arg.equals("--smoke-test")) smokeTest = true;
-            else throw new IllegalArgumentException("Usage: CodePoliceDesktop [--mute] [--smoke-test]");
-        }
+        DisplayOptions options = DisplayOptions.parse(args, 0, 1);
+        if (options.help) { System.out.println("Usage: CodePoliceDesktop " + DisplayOptions.help()); return; }
         SceneAssets assets = SceneAssets.installed();
-        boolean mute = silent;
-        boolean probe = smokeTest;
+        boolean mute = options.mute;
+        boolean probe = options.smokeTest;
         Thread.setDefaultUncaughtExceptionHandler((thread, error) -> {
             error.printStackTrace();
             EventQueue.invokeLater(() -> JOptionPane.showMessageDialog(null,
                     error.toString(), "Code Police", JOptionPane.ERROR_MESSAGE));
         });
         EventQueue.invokeLater(() -> {
-            Session session = open(assets, mute);
+            Session session = options.explicitDisplay ? open(assets, options) : open(assets, mute);
             if (probe) {
                 javax.swing.Timer timer = new javax.swing.Timer(8000, event -> {
                     boolean running = session.demo().isRunning();

@@ -1,0 +1,1 @@
+PASS: packaged GUI, animation, audio and clean shutdown; assets=/Users/fra/dev/preservation-code-police-by-mankind/dist/java/macos-arm64/Code Police.app/Contents/app/assets

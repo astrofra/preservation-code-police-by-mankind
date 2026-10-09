@@ -60,3 +60,9 @@ tasks.register('verifyWindow', JavaExec) {
     mainClass = 'DesktopWindowChecks'
     args projectDir.parentFile.absolutePath, (findProperty('duration') ?: '226').toString(), (findProperty('offset') ?: '0').toString()
 }
+tasks.register('verifyDisplay', JavaExec) {
+    dependsOn 'referenceClasses'
+    classpath = sourceSets.reference.runtimeClasspath
+    mainClass = 'DisplayWindowChecks'
+    args projectDir.parentFile.absolutePath
+}

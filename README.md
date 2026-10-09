@@ -12,6 +12,7 @@ prepare a later WebAssembly port.
 ```sh
 ./native-sdl2/build.sh
 ./native-sdl2/run.sh
+./native-sdl2/run.sh --resolution 1280x720 --fullscreen
 ```
 
 On Apple Silicon macOS, `./native-sdl2/package.sh` builds
@@ -57,6 +58,17 @@ Recipients extract the ZIP and run `./run-code-police.sh`. The package includes
 the launcher JAR and unchanged original release, requires installed Java 17–25,
 and has been tested with Java 21 and 25 on macOS ARM64. It does not require
 Gradle or a compiler at runtime. See [packaging instructions](java-original/README.md).
+
+Both native and original-Java launchers accept `--resolution WIDTHxHEIGHT` and
+`--fullscreen`. For example, `--resolution 1280x720` opens a 1248 × 720 content
+area, fitting the original 520:300 ratio inside the requested bounds. Fullscreen
+maximizes the artwork on the current monitor with black bars and **does not
+change its resolution**. Scaling is nearest neighbour; F11 toggles modes and
+Escape quits. After extracting the Java ZIP:
+
+```sh
+./run-code-police.sh --resolution 1280x720 --fullscreen
+```
 
 See [Java reactivation](documentation/java-reactivation.md) for build/package
 commands, preservation correspondence, validation and remaining limitations.

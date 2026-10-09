@@ -4,14 +4,12 @@ set -eu
 
 PACKAGE_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 if [ "${1:-}" = '--help' ] || [ "${1:-}" = '-h' ]; then
-    echo 'Usage: ./run-code-police.sh [--smoke-test]'
-    echo 'Runs Code Police in a 520 x 300 window without the cinema frame.'
+    echo 'Usage: ./run-code-police.sh [--resolution WIDTHxHEIGHT] [--scale 1..4] [--fullscreen] [--mute] [--smoke-test]'
+    echo 'Fits the 520:300 artwork inside the requested window size, with nearest-neighbour scaling.'
+    echo 'Fullscreen fills the current monitor with black bars; monitor resolution is unchanged.'
+    echo 'Escape: quit. F11: toggle fullscreen.'
     echo 'Requires Java 17 through 25 (Java 21 or 25 recommended). Set JAVA_HOME to select Java.'
     exit 0
-fi
-if [ "$#" -gt 1 ] || { [ "$#" -eq 1 ] && [ "$1" != '--smoke-test' ]; }; then
-    echo 'Usage: ./run-code-police.sh [--smoke-test]' >&2
-    exit 1
 fi
 if [ -n "${JAVA_HOME:-}" ]; then
     JAVA_CMD="$JAVA_HOME/bin/java"

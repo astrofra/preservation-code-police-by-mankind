@@ -1,0 +1,28 @@
+{
+  "archive_sha256": "5af167f52d5d68d2ae16116c9f002d8dc58e6fe0872be020ba186001d09605ba",
+  "tests": [
+    {
+      "runtime": "Java 25",
+      "arguments": [
+        "--resolution",
+        "1280x720",
+        "--fullscreen"
+      ],
+      "result": "Original 520x300 buffer; display=1800x1169; fullscreen=true; nearest neighbour; monitor resolution unchanged.\nPASS: original bytecode, fixed 520x300 buffer, scaled display and clean shutdown",
+      "stderr": "",
+      "network_denied": true,
+      "original_files_verified": 107
+    },
+    {
+      "runtime": "Java 21",
+      "arguments": [
+        "--resolution",
+        "800x600"
+      ],
+      "result": "Original 520x300 buffer; display=800x462; fullscreen=false; nearest neighbour; monitor resolution unchanged.\nPASS: original bytecode, fixed 520x300 buffer, scaled display and clean shutdown",
+      "stderr": "",
+      "network_denied": true,
+      "original_files_verified": 107
+    }
+  ]
+}

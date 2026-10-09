@@ -1,0 +1,1 @@
+PASS: CLI parsing, seven geometries, exact nearest-neighbour pixels, fullscreen black bands, unchanged monitor mode, F11 round trip, resize, original 520x300 engine and scaled playback.
