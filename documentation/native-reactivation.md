@@ -121,3 +121,33 @@ adding explicit instrumentation, a 210-second initial offset plus 22.0386 second
 of real playback produced 877 frames, one logged timeline loop and an automatic
 duration-triggered exit. Offset testing exercises the live loop boundary, not
 the particle history preceding that offset.
+
+## Native package verification
+
+`native-sdl2/package.sh` produces `dist/native/macos-arm64/Code Police.app`, its
+shell launcher, and a roughly 2.6 MB ZIP. The builder downloads and verifies
+[upstream SDL2 2.32.10](https://github.com/libsdl-org/SDL/releases/tag/release-2.32.10),
+then links it statically. The locally installed SDL2 is `sdl2-compat`, whose
+hidden SDL3 runtime dependency is absent from the distribution.
+The archive includes SDL/stb licenses and the unchanged original credits.
+
+The unpacked ZIP was tested from `/tmp`, in a path containing spaces and accents,
+with Java/Homebrew removed from `PATH` and network access denied by macOS
+`sandbox-exec`. Audio and the four-second window smoke test passed. A separate
+LaunchServices launch of the extracted `.app` also produced its expected capture
+and exited automatically. All 65 external resources and the signed executable
+match the package manifest; `otool` reports system dependencies only, and
+`codesign --verify --deep --strict` passes.
+
+Reproduce this distribution check after packaging with
+`python3 native-sdl2/tools/check_package.py`. The recorded report is
+[`evidence/native/package-check.json`](../evidence/native/package-check.json).
+The final shutdown path also passed a fresh ASan/UBSan window/audio smoke check.
+Validation host: macOS 14.1 ARM64, Apple Clang 15; deployment target macOS 11.
+Other OS versions, Intel Macs, Linux, Windows and browsers have not been tested.
+The bundle is ad-hoc signed locally, not notarized by Apple.
+
+SDL platform details follow the official documentation for
+[application-relative resources](https://wiki.libsdl.org/SDL2/SDL_GetBasePath)
+and [audio device/callback setup](https://wiki.libsdl.org/SDL2/SDL_OpenAudioDevice).
+In a macOS bundle, SDL's default base directory is `Contents/Resources`.

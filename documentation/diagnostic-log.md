@@ -229,3 +229,23 @@ the builder instead pins upstream SDL2 2.32.10, checks its archive hash and link
 it statically. `otool` confirms the result depends only on macOS system libraries
 and frameworks. The native archive and `.app` are now being validated outside
 the repository; browser compilation remains future work.
+
+## 2026-10-09 — Native distribution verified
+
+Completed the reproducible `.sh` package builder and distributable shell
+launcher. The approximately 2.6 MB macOS ARM64 ZIP includes the application,
+external script/images/audio, original credits, dependency licenses and a
+resource/executable hash manifest. SDL2 is statically linked; only macOS system
+libraries/frameworks remain. The local `.app` signature verifies successfully.
+
+`tools/check_package.py` extracted the actual ZIP into a temporary path with
+spaces and accents, then ran its shell launcher from `/tmp` with a minimal
+system PATH and denied network access. Live audio, rendering, minimize/restore,
+resize, pointer and Escape passed, ending at the requested 4.03262 seconds.
+LaunchServices also opened the extracted `.app`, wrote a framebuffer capture,
+and exited after the requested duration. All 65 packaged external resources and
+the final signed executable matched their hashes. Saved the report, loop-boundary
+log, sanitizer smoke log and system dependency audit under `evidence/native/`.
+No original Java source, bytecode or release file was changed. No remote upload
+or push was performed. macOS 14.1 ARM64 is the tested runtime; other desktop
+targets and WASM remain explicitly untested.

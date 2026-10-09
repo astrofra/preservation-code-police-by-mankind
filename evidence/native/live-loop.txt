@@ -1,0 +1,3 @@
+520x300 framebuffer; 10 external sounds; 8 kHz mono audio active; cycle 222 seconds. Escape to quit.
+Timeline loop 1
+Stopped cleanly after 877 frames in 22.0386 seconds; 1 timeline loops; requested duration.
