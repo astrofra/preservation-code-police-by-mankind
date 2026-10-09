@@ -1,2 +1,6 @@
 .DS_Store
 __pycache__/
+java-desktop/.gradle/
+java-desktop/build/
+java-desktop/assets/
+dist/

@@ -1,0 +1,20 @@
+reverse/cfr/kraycasting.java:12: warning: [removal] Applet in java.applet has been deprecated and marked for removal
+extends Applet
+        ^
+reverse/cfr/kraycasting.java:192: warning: [removal] Applet in java.applet has been deprecated and marked for removal
+        Applet app;
+        ^
+reverse/cfr/kraycasting.java:213: warning: [removal] Applet in java.applet has been deprecated and marked for removal
+        public kRenderContext(Applet applet) {
+                              ^
+reverse/cfr/kSound.java:7: warning: [removal] AudioClip in java.applet has been deprecated and marked for removal
+    private AudioClip OurAudio;
+            ^
+reverse/cfr/kSound.java:13: warning: [removal] AudioClip in java.applet has been deprecated and marked for removal
+    public kSound(AudioClip audioClip) {
+                  ^
+Note: reverse/cfr/kraycasting.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: reverse/cfr/kraycasting.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+5 warnings

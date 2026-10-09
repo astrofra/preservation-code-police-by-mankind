@@ -52,3 +52,26 @@ No live playback has been attempted.
 
 See [quick-diagnosis.md](quick-diagnosis.md) for evidence links, reproduction
 commands, restoration priorities and the explicit limits of this inspection.
+
+## 2026-10-09 — Java reactivation requested
+
+The user requested the next stage: make the demo run again in Java. The repository
+starts this stage clean at `717343a`. The implementation will preserve the
+original engine structure, scene script and external media, retain independent
+decompilations, establish an original-bytecode reference host, and isolate the
+desktop platform replacements. Java playback, audio, lifecycle and packaging
+will be checked on the available macOS host. No native or browser port is in scope.
+
+### Independent reconstruction milestone
+
+CFR 0.152 and Procyon 0.6.0 were already installed locally. Both were run against
+a generated JAR containing all 39 unchanged class files. CFR's main applet and
+active top-level sound class compile. Five unreferenced nested classes omitted
+by CFR's JAR-mode output were also decompiled individually; Procyon includes
+them in its main file. Eleven unreferenced top-level classes remain documented
+outside the active build, including their missing alternate dependencies.
+
+Procyon reconstructs `SplitSTag` incorrectly: substring assignment runs after
+the terminal search result. The original bytecode condition and CFR agree.
+The active CFR reconstruction was therefore selected without modifying either
+decompiler's output. `reverse/README.md` describes coverage and reproducibility.
