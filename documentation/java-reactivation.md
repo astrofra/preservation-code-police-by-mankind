@@ -20,6 +20,21 @@ java-desktop/build/install/code-police/bin/code-police
 python3 java-desktop/tools/package_macos.py
 ```
 
+For direct `java` playback of the original bytecode **without the cinema frame**:
+
+```sh
+./java-desktop/gradlew -p java-desktop referenceClasses
+java -cp 'java-desktop/build/classes/java/main:java-desktop/build/classes/java/reference' OriginalHost "$PWD"
+```
+
+Run these from the repository root. The first command builds the existing host
+and only needs repeating after source changes. `OriginalHost` opens a plain
+520 × 300 applet surface and loads `original/mkd_codepolice/*.class` through an
+isolated classloader; it does not run the reconstructed desktop engine or the
+macOS package. It uses the original applet audio API. `page.html` is read only
+to recover the `SCRIPT` parameter; no HTML decoration is displayed. This route
+is tested on Java 25 and requires the legacy Applet API. Close its window to quit.
+
 Gradle Wrapper 9.4.0 is complete and pins the distribution checksum. The compiler
 toolchain is Java 25; application bytecode targets Java 17. The macOS application
 bundles Homebrew OpenJDK 25.0.2 (ARM64), linked from `java.base` and
@@ -113,6 +128,11 @@ The application supports `--smoke-test` for package validation: it opens normall
 checks that rendering and audio remain active, and closes after eight seconds.
 This opt-in test flag has no effect on ordinary launches. See the retained
 validation records under `evidence/java-reactivation/` for the final results.
+
+The direct original-bytecode host was also launched with `java`, observed at
+eight seconds, checked for its 520 × 300 applet-only content, captured and
+closed through its window listener. This was a short launch/close check; the
+longer reconstruction comparisons are described above.
 
 The packaged application passed this smoke test from a separate temporary
 directory containing spaces and an accented character, with `JAVA_HOME` unset,

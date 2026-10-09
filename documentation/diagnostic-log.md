@@ -122,3 +122,18 @@ Retained screen captures were visually inspected. Reference images and provenanc
 are in `reference/`; originals still match all 130 manifest hashes. Final Gradle
 checks pass. macOS ARM64 is the tested target; Windows, Linux and Intel macOS
 remain untested. No repository push or other port was performed.
+
+## 2026-10-09 — Direct Java launch requested
+
+The user asked for command-line playback without the HTML/cinema frame, then
+clarified that they want to invoke `java`, rather than use the desktop package.
+The existing original-bytecode reference host already provides a bare 520 × 300
+window. Its direct invocation is being checked before choosing the final launcher.
+No desktop presentation change has been made in this stage.
+
+Direct invocation of the existing `OriginalHost` passed on Java 25.0.2. An
+eight-second probe checked the original `kraycasting` component's 520 × 300
+dimensions, captured its visible output and closed the window; the process
+exited normally. The captured image was visually inspected and contains only
+the applet. No new launcher or desktop option was needed. README and the Java
+guide now give the direct command and its one-time host compilation prerequisite.

@@ -18,6 +18,18 @@ To build/run from source with JDK 25:
 ./java-desktop/gradlew -p java-desktop run
 ```
 
+To run the **original classes directly with `java`, without the cinema frame**,
+use the reference host from the repository root (tested with Java 25):
+
+```sh
+./java-desktop/gradlew -p java-desktop referenceClasses
+java -cp 'java-desktop/build/classes/java/main:java-desktop/build/classes/java/reference' OriginalHost "$PWD"
+```
+
+The first command builds the host once. The second opens only the 520 × 300
+applet with its original audio. It uses the unchanged files in `original/`.
+The reference host requires an Applet-capable JVM; use the tested Java 25.
+
 See [Java reactivation](documentation/java-reactivation.md) for build/package
 commands, preservation correspondence, validation and remaining limitations.
 
