@@ -6,3 +6,5 @@ java-desktop/assets/
 java-original/build/
 dist/
 native-sdl2/build*/
+wasm/build/
+wasm/node_modules/

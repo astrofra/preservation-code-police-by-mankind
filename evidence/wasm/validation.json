@@ -1,0 +1,345 @@
+{
+  "package": "dist/wasm/code-police-web.zip",
+  "sha256": "43264232e4545fde688425d0a9fbefa9c7d255ddb0920baec989112b2107037e",
+  "platform": "darwin/arm64",
+  "browsers": [
+    {
+      "engine": "chromium",
+      "version": "154.0.8037.98",
+      "checks": [
+        "Start on release exactly once; live clock/frame progression; SDL audio device",
+        "Optional cinema; 1280x720 -> 1248x720; fullscreen/restoration; simulated hidden-tab pause/resume",
+        "Touch Start once; original close returns home; HiDPI 2x; responsive cinema; custom size validation",
+        "Missing/corrupt media and missing WASM errors name resource; local-only HTTP requests; all original/package hashes"
+      ],
+      "geometries": [
+        {
+          "width": 1040,
+          "height": 600,
+          "x": 290,
+          "y": 71,
+          "buffer": [
+            1040,
+            600
+          ],
+          "source": [
+            520,
+            300
+          ],
+          "composition": {
+            "width": 1280,
+            "height": 960
+          },
+          "dpr": 1,
+          "interpolated": 0,
+          "fullscreen": false
+        },
+        {
+          "width": 1040,
+          "height": 600,
+          "x": 280,
+          "y": 225,
+          "buffer": [
+            1040,
+            600
+          ],
+          "source": [
+            520,
+            300
+          ],
+          "composition": {
+            "width": 1040,
+            "height": 600
+          },
+          "dpr": 1,
+          "interpolated": 0,
+          "fullscreen": false
+        },
+        {
+          "width": 1600,
+          "height": 923,
+          "x": 0,
+          "y": 99,
+          "buffer": [
+            1600,
+            923
+          ],
+          "source": [
+            520,
+            300
+          ],
+          "composition": {
+            "width": 1600,
+            "height": 923
+          },
+          "dpr": 1,
+          "interpolated": 0,
+          "fullscreen": true
+        },
+        {
+          "width": 1248,
+          "height": 720,
+          "x": 176,
+          "y": 165,
+          "buffer": [
+            1248,
+            720
+          ],
+          "source": [
+            520,
+            300
+          ],
+          "composition": {
+            "width": 1248,
+            "height": 720
+          },
+          "dpr": 1,
+          "interpolated": 0,
+          "fullscreen": false
+        },
+        {
+          "width": 317,
+          "height": 183,
+          "x": 39.5,
+          "y": 249,
+          "buffer": [
+            634,
+            366
+          ],
+          "source": [
+            520,
+            300
+          ],
+          "composition": {
+            "width": 390,
+            "height": 292.5
+          },
+          "dpr": 2,
+          "interpolated": 0,
+          "fullscreen": false
+        }
+      ],
+      "audio": {
+        "peak": 0.29682618379592896,
+        "callbacks": 186
+      },
+      "live": {
+        "before": {
+          "running": 1,
+          "suspended": 0,
+          "frames": 20,
+          "tick": 56,
+          "starts": 1,
+          "audio": 1
+        },
+        "after": {
+          "running": 1,
+          "suspended": 0,
+          "frames": 42,
+          "tick": 108,
+          "starts": 1,
+          "audio": 1
+        }
+      },
+      "comparison": {
+        "frames": 11101,
+        "captured": 16,
+        "commands": 38,
+        "pcm": 10,
+        "maxRelativeStateError": 4.7808978997920804e-14,
+        "timezone": "Pacific/Honolulu"
+      },
+      "presentation": [
+        {
+          "screenshot": "chromium-cinema.png",
+          "exact_visible_canvas": true,
+          "interpolated_pixels": 0,
+          "original_2x_exact": true,
+          "fullscreen_bands_black": false
+        },
+        {
+          "screenshot": "chromium-fullscreen.png",
+          "exact_visible_canvas": true,
+          "interpolated_pixels": 0,
+          "original_2x_exact": false,
+          "fullscreen_bands_black": true
+        }
+      ]
+    },
+    {
+      "engine": "firefox",
+      "version": "155.0",
+      "checks": [
+        "Start on release exactly once; live clock/frame progression; SDL audio device",
+        "Optional cinema; 1280x720 -> 1248x720; fullscreen/restoration; simulated hidden-tab pause/resume",
+        "Touch Start once; original close returns home; HiDPI 2x; responsive cinema; custom size validation",
+        "Missing/corrupt media and missing WASM errors name resource; local-only HTTP requests; all original/package hashes"
+      ],
+      "geometries": [
+        {
+          "width": 1040,
+          "height": 600,
+          "x": 290,
+          "y": 71,
+          "buffer": [
+            1040,
+            600
+          ],
+          "source": [
+            520,
+            300
+          ],
+          "composition": {
+            "width": 1280,
+            "height": 960
+          },
+          "dpr": 1,
+          "interpolated": 0,
+          "fullscreen": false
+        },
+        {
+          "width": 1040,
+          "height": 600,
+          "x": 280,
+          "y": 225,
+          "buffer": [
+            1040,
+            600
+          ],
+          "source": [
+            520,
+            300
+          ],
+          "composition": {
+            "width": 1040,
+            "height": 600
+          },
+          "dpr": 1,
+          "interpolated": 0,
+          "fullscreen": false
+        },
+        {
+          "width": 1331,
+          "height": 768,
+          "x": 18,
+          "y": 0,
+          "buffer": [
+            1331,
+            768
+          ],
+          "source": [
+            520,
+            300
+          ],
+          "composition": {
+            "width": 1331,
+            "height": 768
+          },
+          "dpr": 1,
+          "interpolated": 0,
+          "fullscreen": true
+        },
+        {
+          "width": 1248,
+          "height": 720,
+          "x": 176,
+          "y": 165,
+          "buffer": [
+            1248,
+            720
+          ],
+          "source": [
+            520,
+            300
+          ],
+          "composition": {
+            "width": 1248,
+            "height": 720
+          },
+          "dpr": 1,
+          "interpolated": 0,
+          "fullscreen": false
+        },
+        {
+          "width": 317,
+          "height": 183,
+          "x": 39.5,
+          "y": 249,
+          "buffer": [
+            634,
+            366
+          ],
+          "source": [
+            520,
+            300
+          ],
+          "composition": {
+            "width": 390,
+            "height": 292.5
+          },
+          "dpr": 2,
+          "interpolated": 0,
+          "fullscreen": false
+        }
+      ],
+      "audio": {
+        "peak": 0.29682618379592896,
+        "callbacks": 188
+      },
+      "live": {
+        "before": {
+          "running": 1,
+          "suspended": 0,
+          "frames": 20,
+          "tick": 53,
+          "starts": 1,
+          "audio": 1
+        },
+        "after": {
+          "running": 1,
+          "suspended": 0,
+          "frames": 37,
+          "tick": 102,
+          "starts": 1,
+          "audio": 1
+        }
+      },
+      "comparison": {
+        "frames": 11101,
+        "captured": 16,
+        "commands": 38,
+        "pcm": 10,
+        "maxRelativeStateError": 4.7808978997920804e-14,
+        "timezone": "Pacific/Honolulu"
+      },
+      "presentation": [
+        {
+          "screenshot": "firefox-cinema.png",
+          "exact_visible_canvas": true,
+          "interpolated_pixels": 0,
+          "original_2x_exact": true,
+          "fullscreen_bands_black": false
+        },
+        {
+          "screenshot": "firefox-fullscreen.png",
+          "exact_visible_canvas": true,
+          "interpolated_pixels": 0,
+          "original_2x_exact": false,
+          "fullscreen_bands_black": true
+        }
+      ]
+    }
+  ],
+  "untested": [
+    "Physical Safari",
+    "Physical mobile devices"
+  ],
+  "unavailable": [
+    "Playwright WebKit mac14 ARM64 build 2251: bus error at browser launch before page load on macOS 14.1; see webkit-launch.txt"
+  ],
+  "integrity": {
+    "files": 219,
+    "originalsPreserved": 107,
+    "repositoryOriginals": 130
+  }
+}

@@ -1,0 +1,42 @@
+2026-10-09; macOS 14.1 ARM64; Playwright 1.63.0
+WebKit failed before any page was loaded.
+
+browserType.launch: Target page, context or browser has been closed
+Browser logs:
+
+<launching> /Users/fra/Library/Caches/ms-playwright/webkit_mac14_arm64_special-2251/pw_run.sh --inspector-pipe --headless --no-startup-window
+<launched> pid=30362
+[pid=30362][err] bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8): No such file or directory
+[pid=30362][err] /Users/fra/Library/Caches/ms-playwright/webkit_mac14_arm64_special-2251/pw_run.sh: line 7: 30368 Bus error: 10              DYLD_FRAMEWORK_PATH="$DYLIB_PATH" DYLD_LIBRARY_PATH="$DYLIB_PATH" "$PLAYWRIGHT" "$@"
+Call log:
+[2m  - <launching> /Users/fra/Library/Caches/ms-playwright/webkit_mac14_arm64_special-2251/pw_run.sh --inspector-pipe --headless --no-startup-window[22m
+[2m  - <launched> pid=30362[22m
+[2m  - [pid=30362][err] bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8): No such file or directory[22m
+[2m  - [pid=30362][err] /Users/fra/Library/Caches/ms-playwright/webkit_mac14_arm64_special-2251/pw_run.sh: line 7: 30368 Bus error: 10              DYLD_FRAMEWORK_PATH="$DYLIB_PATH" DYLD_LIBRARY_PATH="$DYLIB_PATH" "$PLAYWRIGHT" "$@"[22m
+[2m  - [pid=30362] <gracefully close start>[22m
+[2m  - [pid=30362] <kill>[22m
+[2m  - [pid=30362] <will force kill>[22m
+[2m  - [pid=30362] exception while trying to kill process: Error: kill EPERM[22m
+[2m  - [pid=30362] <process did exit: exitCode=138, signal=null>[22m
+[2m  - [pid=30362] starting temporary directories cleanup[22m
+[2m  - [pid=30362] finished temporary directories cleanup[22m
+[2m  - [pid=30362] <gracefully close end>[22m
+
+    at /Users/fra/dev/preservation-code-police-by-mankind/wasm/validate.mjs:84:61 {
+  log: [
+    '  - <launching> /Users/fra/Library/Caches/ms-playwright/webkit_mac14_arm64_special-2251/pw_run.sh --inspector-pipe --headless --no-startup-window',
+    '  - <launched> pid=30362',
+    '  - [pid=30362][err] bash: warning: setlocale: LC_ALL: cannot change locale (C.UTF-8): No such file or directory',
+    '  - [pid=30362][err] /Users/fra/Library/Caches/ms-playwright/webkit_mac14_arm64_special-2251/pw_run.sh: line 7: 30368 Bus error: 10              DYLD_FRAMEWORK_PATH="$DYLIB_PATH" DYLD_LIBRARY_PATH="$DYLIB_PATH" "$PLAYWRIGHT" "$@"',
+    '  - [pid=30362] <gracefully close start>',
+    '  - [pid=30362] <kill>',
+    '  - [pid=30362] <will force kill>',
+    '  - [pid=30362] exception while trying to kill process: Error: kill EPERM',
+    '  - [pid=30362] <process did exit: exitCode=138, signal=null>',
+    '  - [pid=30362] starting temporary directories cleanup',
+    '  - [pid=30362] finished temporary directories cleanup',
+    '  - [pid=30362] <gracefully close end>'
+  ]
+}
+
+Node.js v26.0.0

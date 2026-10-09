@@ -1,0 +1,7 @@
+{
+  "name": "code-police-browser-validation",
+  "private": true,
+  "type": "module",
+  "scripts": {"test": "node validate.mjs"},
+  "devDependencies": {"playwright": "1.63.0"}
+}

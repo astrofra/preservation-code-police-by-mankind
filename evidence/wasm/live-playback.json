@@ -1,0 +1,2011 @@
+{
+  "browser": "154.0.8037.98",
+  "elapsed_ms": 221996,
+  "loop": true,
+  "audio": {
+    "peak": 1.2872081995010376,
+    "callbacks": 10402
+  },
+  "errors": [],
+  "stopped": {
+    "running": 0,
+    "suspended": 0,
+    "frames": 9407,
+    "tick": 15,
+    "starts": 1,
+    "audio": 1
+  },
+  "samples": [
+    {
+      "elapsed_ms": 1006,
+      "running": 1,
+      "suspended": 0,
+      "frames": 48,
+      "tick": 116,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 2012,
+      "running": 1,
+      "suspended": 0,
+      "frames": 94,
+      "tick": 216,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 3015,
+      "running": 1,
+      "suspended": 0,
+      "frames": 137,
+      "tick": 316,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 4018,
+      "running": 1,
+      "suspended": 0,
+      "frames": 181,
+      "tick": 417,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 5024,
+      "running": 1,
+      "suspended": 0,
+      "frames": 223,
+      "tick": 517,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 6025,
+      "running": 1,
+      "suspended": 0,
+      "frames": 268,
+      "tick": 617,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 7029,
+      "running": 1,
+      "suspended": 0,
+      "frames": 315,
+      "tick": 717,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 8032,
+      "running": 1,
+      "suspended": 0,
+      "frames": 362,
+      "tick": 818,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 9035,
+      "running": 1,
+      "suspended": 0,
+      "frames": 409,
+      "tick": 918,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 10038,
+      "running": 1,
+      "suspended": 0,
+      "frames": 456,
+      "tick": 1018,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 11041,
+      "running": 1,
+      "suspended": 0,
+      "frames": 503,
+      "tick": 1118,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 12044,
+      "running": 1,
+      "suspended": 0,
+      "frames": 550,
+      "tick": 1219,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 13047,
+      "running": 1,
+      "suspended": 0,
+      "frames": 597,
+      "tick": 1319,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 14050,
+      "running": 1,
+      "suspended": 0,
+      "frames": 644,
+      "tick": 1420,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 15053,
+      "running": 1,
+      "suspended": 0,
+      "frames": 690,
+      "tick": 1520,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 16056,
+      "running": 1,
+      "suspended": 0,
+      "frames": 737,
+      "tick": 1620,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 17059,
+      "running": 1,
+      "suspended": 0,
+      "frames": 784,
+      "tick": 1720,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 18062,
+      "running": 1,
+      "suspended": 0,
+      "frames": 831,
+      "tick": 1820,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 19064,
+      "running": 1,
+      "suspended": 0,
+      "frames": 878,
+      "tick": 1921,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 20067,
+      "running": 1,
+      "suspended": 0,
+      "frames": 925,
+      "tick": 2021,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 21071,
+      "running": 1,
+      "suspended": 0,
+      "frames": 972,
+      "tick": 2121,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 22075,
+      "running": 1,
+      "suspended": 0,
+      "frames": 1018,
+      "tick": 2222,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 23077,
+      "running": 1,
+      "suspended": 0,
+      "frames": 1061,
+      "tick": 2322,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 24079,
+      "running": 1,
+      "suspended": 0,
+      "frames": 1106,
+      "tick": 2423,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 25082,
+      "running": 1,
+      "suspended": 0,
+      "frames": 1151,
+      "tick": 2522,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 26086,
+      "running": 1,
+      "suspended": 0,
+      "frames": 1194,
+      "tick": 2624,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 27090,
+      "running": 1,
+      "suspended": 0,
+      "frames": 1235,
+      "tick": 2724,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 28094,
+      "running": 1,
+      "suspended": 0,
+      "frames": 1277,
+      "tick": 2825,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 29098,
+      "running": 1,
+      "suspended": 0,
+      "frames": 1318,
+      "tick": 2924,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 30102,
+      "running": 1,
+      "suspended": 0,
+      "frames": 1364,
+      "tick": 3026,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 31105,
+      "running": 1,
+      "suspended": 0,
+      "frames": 1410,
+      "tick": 3126,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 32108,
+      "running": 1,
+      "suspended": 0,
+      "frames": 1457,
+      "tick": 3226,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 33111,
+      "running": 1,
+      "suspended": 0,
+      "frames": 1504,
+      "tick": 3326,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 34113,
+      "running": 1,
+      "suspended": 0,
+      "frames": 1550,
+      "tick": 3427,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 35116,
+      "running": 1,
+      "suspended": 0,
+      "frames": 1594,
+      "tick": 3527,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 36118,
+      "running": 1,
+      "suspended": 0,
+      "frames": 1641,
+      "tick": 3628,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 37120,
+      "running": 1,
+      "suspended": 0,
+      "frames": 1687,
+      "tick": 3728,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 38123,
+      "running": 1,
+      "suspended": 0,
+      "frames": 1734,
+      "tick": 3828,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 39126,
+      "running": 1,
+      "suspended": 0,
+      "frames": 1781,
+      "tick": 3928,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 40129,
+      "running": 1,
+      "suspended": 0,
+      "frames": 1828,
+      "tick": 4028,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 41133,
+      "running": 1,
+      "suspended": 0,
+      "frames": 1875,
+      "tick": 4129,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 42134,
+      "running": 1,
+      "suspended": 0,
+      "frames": 1922,
+      "tick": 4229,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 43137,
+      "running": 1,
+      "suspended": 0,
+      "frames": 1969,
+      "tick": 4329,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 44139,
+      "running": 1,
+      "suspended": 0,
+      "frames": 2015,
+      "tick": 4429,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 45142,
+      "running": 1,
+      "suspended": 0,
+      "frames": 2060,
+      "tick": 4529,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 46142,
+      "running": 1,
+      "suspended": 0,
+      "frames": 2107,
+      "tick": 4630,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 47145,
+      "running": 1,
+      "suspended": 0,
+      "frames": 2151,
+      "tick": 4730,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 48148,
+      "running": 1,
+      "suspended": 0,
+      "frames": 2195,
+      "tick": 4829,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 49150,
+      "running": 1,
+      "suspended": 0,
+      "frames": 2240,
+      "tick": 4929,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 50153,
+      "running": 1,
+      "suspended": 0,
+      "frames": 2284,
+      "tick": 5030,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 51155,
+      "running": 1,
+      "suspended": 0,
+      "frames": 2329,
+      "tick": 5131,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 52158,
+      "running": 1,
+      "suspended": 0,
+      "frames": 2373,
+      "tick": 5231,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 53161,
+      "running": 1,
+      "suspended": 0,
+      "frames": 2415,
+      "tick": 5332,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 54164,
+      "running": 1,
+      "suspended": 0,
+      "frames": 2457,
+      "tick": 5430,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 55169,
+      "running": 1,
+      "suspended": 0,
+      "frames": 2498,
+      "tick": 5530,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 56171,
+      "running": 1,
+      "suspended": 0,
+      "frames": 2537,
+      "tick": 5633,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 57177,
+      "running": 1,
+      "suspended": 0,
+      "frames": 2576,
+      "tick": 5731,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 58182,
+      "running": 1,
+      "suspended": 0,
+      "frames": 2615,
+      "tick": 5832,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 59187,
+      "running": 1,
+      "suspended": 0,
+      "frames": 2656,
+      "tick": 5933,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 60191,
+      "running": 1,
+      "suspended": 0,
+      "frames": 2696,
+      "tick": 6033,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 61195,
+      "running": 1,
+      "suspended": 0,
+      "frames": 2735,
+      "tick": 6134,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 62199,
+      "running": 1,
+      "suspended": 0,
+      "frames": 2777,
+      "tick": 6235,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 63205,
+      "running": 1,
+      "suspended": 0,
+      "frames": 2817,
+      "tick": 6334,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 64208,
+      "running": 1,
+      "suspended": 0,
+      "frames": 2858,
+      "tick": 6436,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 65212,
+      "running": 1,
+      "suspended": 0,
+      "frames": 2898,
+      "tick": 6537,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 66214,
+      "running": 1,
+      "suspended": 0,
+      "frames": 2937,
+      "tick": 6636,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 67220,
+      "running": 1,
+      "suspended": 0,
+      "frames": 2977,
+      "tick": 6736,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 68222,
+      "running": 1,
+      "suspended": 0,
+      "frames": 3019,
+      "tick": 6836,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 69226,
+      "running": 1,
+      "suspended": 0,
+      "frames": 3062,
+      "tick": 6937,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 70232,
+      "running": 1,
+      "suspended": 0,
+      "frames": 3102,
+      "tick": 7037,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 71236,
+      "running": 1,
+      "suspended": 0,
+      "frames": 3141,
+      "tick": 7138,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 72240,
+      "running": 1,
+      "suspended": 0,
+      "frames": 3181,
+      "tick": 7238,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 73245,
+      "running": 1,
+      "suspended": 0,
+      "frames": 3222,
+      "tick": 7338,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 74254,
+      "running": 1,
+      "suspended": 0,
+      "frames": 3262,
+      "tick": 7441,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 75265,
+      "running": 1,
+      "suspended": 0,
+      "frames": 3302,
+      "tick": 7542,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 76268,
+      "running": 1,
+      "suspended": 0,
+      "frames": 3344,
+      "tick": 7642,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 77272,
+      "running": 1,
+      "suspended": 0,
+      "frames": 3384,
+      "tick": 7742,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 78278,
+      "running": 1,
+      "suspended": 0,
+      "frames": 3424,
+      "tick": 7843,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 79284,
+      "running": 1,
+      "suspended": 0,
+      "frames": 3463,
+      "tick": 7943,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 80289,
+      "running": 1,
+      "suspended": 0,
+      "frames": 3503,
+      "tick": 8045,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 81293,
+      "running": 1,
+      "suspended": 0,
+      "frames": 3544,
+      "tick": 8145,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 82298,
+      "running": 1,
+      "suspended": 0,
+      "frames": 3584,
+      "tick": 8245,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 83306,
+      "running": 1,
+      "suspended": 0,
+      "frames": 3624,
+      "tick": 8346,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 84309,
+      "running": 1,
+      "suspended": 0,
+      "frames": 3663,
+      "tick": 8446,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 85313,
+      "running": 1,
+      "suspended": 0,
+      "frames": 3704,
+      "tick": 8547,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 86317,
+      "running": 1,
+      "suspended": 0,
+      "frames": 3745,
+      "tick": 8647,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 87322,
+      "running": 1,
+      "suspended": 0,
+      "frames": 3785,
+      "tick": 8748,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 88328,
+      "running": 1,
+      "suspended": 0,
+      "frames": 3824,
+      "tick": 8846,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 89334,
+      "running": 1,
+      "suspended": 0,
+      "frames": 3865,
+      "tick": 8948,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 90338,
+      "running": 1,
+      "suspended": 0,
+      "frames": 3905,
+      "tick": 9049,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 91342,
+      "running": 1,
+      "suspended": 0,
+      "frames": 3944,
+      "tick": 9148,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 92347,
+      "running": 1,
+      "suspended": 0,
+      "frames": 3985,
+      "tick": 9249,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 93353,
+      "running": 1,
+      "suspended": 0,
+      "frames": 4027,
+      "tick": 9350,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 94359,
+      "running": 1,
+      "suspended": 0,
+      "frames": 4068,
+      "tick": 9451,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 95363,
+      "running": 1,
+      "suspended": 0,
+      "frames": 4107,
+      "tick": 9551,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 96366,
+      "running": 1,
+      "suspended": 0,
+      "frames": 4148,
+      "tick": 9652,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 97371,
+      "running": 1,
+      "suspended": 0,
+      "frames": 4189,
+      "tick": 9752,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 98378,
+      "running": 1,
+      "suspended": 0,
+      "frames": 4229,
+      "tick": 9853,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 99384,
+      "running": 1,
+      "suspended": 0,
+      "frames": 4269,
+      "tick": 9952,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 100389,
+      "running": 1,
+      "suspended": 0,
+      "frames": 4310,
+      "tick": 10053,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 101394,
+      "running": 1,
+      "suspended": 0,
+      "frames": 4351,
+      "tick": 10153,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 102400,
+      "running": 1,
+      "suspended": 0,
+      "frames": 4392,
+      "tick": 10256,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 103406,
+      "running": 1,
+      "suspended": 0,
+      "frames": 4431,
+      "tick": 10356,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 104409,
+      "running": 1,
+      "suspended": 0,
+      "frames": 4472,
+      "tick": 10456,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 105418,
+      "running": 1,
+      "suspended": 0,
+      "frames": 4512,
+      "tick": 10556,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 106424,
+      "running": 1,
+      "suspended": 0,
+      "frames": 4553,
+      "tick": 10656,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 107432,
+      "running": 1,
+      "suspended": 0,
+      "frames": 4593,
+      "tick": 10757,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 108436,
+      "running": 1,
+      "suspended": 0,
+      "frames": 4634,
+      "tick": 10858,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 109441,
+      "running": 1,
+      "suspended": 0,
+      "frames": 4674,
+      "tick": 10958,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 110444,
+      "running": 1,
+      "suspended": 0,
+      "frames": 4713,
+      "tick": 11059,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 111449,
+      "running": 1,
+      "suspended": 0,
+      "frames": 4753,
+      "tick": 11160,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 112457,
+      "running": 1,
+      "suspended": 0,
+      "frames": 4794,
+      "tick": 11261,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 113462,
+      "running": 1,
+      "suspended": 0,
+      "frames": 4834,
+      "tick": 11361,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 114467,
+      "running": 1,
+      "suspended": 0,
+      "frames": 4874,
+      "tick": 11461,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 115472,
+      "running": 1,
+      "suspended": 0,
+      "frames": 4913,
+      "tick": 11561,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 116477,
+      "running": 1,
+      "suspended": 0,
+      "frames": 4955,
+      "tick": 11663,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 117482,
+      "running": 1,
+      "suspended": 0,
+      "frames": 4995,
+      "tick": 11762,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 118486,
+      "running": 1,
+      "suspended": 0,
+      "frames": 5035,
+      "tick": 11862,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 119489,
+      "running": 1,
+      "suspended": 0,
+      "frames": 5076,
+      "tick": 11964,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 120494,
+      "running": 1,
+      "suspended": 0,
+      "frames": 5118,
+      "tick": 12065,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 121499,
+      "running": 1,
+      "suspended": 0,
+      "frames": 5158,
+      "tick": 12164,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 122501,
+      "running": 1,
+      "suspended": 0,
+      "frames": 5200,
+      "tick": 12266,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 123504,
+      "running": 1,
+      "suspended": 0,
+      "frames": 5246,
+      "tick": 12366,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 124510,
+      "running": 1,
+      "suspended": 0,
+      "frames": 5288,
+      "tick": 12466,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 125519,
+      "running": 1,
+      "suspended": 0,
+      "frames": 5329,
+      "tick": 12567,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 126526,
+      "running": 1,
+      "suspended": 0,
+      "frames": 5371,
+      "tick": 12668,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 127531,
+      "running": 1,
+      "suspended": 0,
+      "frames": 5412,
+      "tick": 12767,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 128535,
+      "running": 1,
+      "suspended": 0,
+      "frames": 5454,
+      "tick": 12869,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 129539,
+      "running": 1,
+      "suspended": 0,
+      "frames": 5495,
+      "tick": 12969,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 130545,
+      "running": 1,
+      "suspended": 0,
+      "frames": 5536,
+      "tick": 13068,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 131551,
+      "running": 1,
+      "suspended": 0,
+      "frames": 5578,
+      "tick": 13170,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 132557,
+      "running": 1,
+      "suspended": 0,
+      "frames": 5618,
+      "tick": 13270,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 133560,
+      "running": 1,
+      "suspended": 0,
+      "frames": 5659,
+      "tick": 13370,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 134565,
+      "running": 1,
+      "suspended": 0,
+      "frames": 5700,
+      "tick": 13471,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 135570,
+      "running": 1,
+      "suspended": 0,
+      "frames": 5740,
+      "tick": 13572,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 136576,
+      "running": 1,
+      "suspended": 0,
+      "frames": 5781,
+      "tick": 13672,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 137579,
+      "running": 1,
+      "suspended": 0,
+      "frames": 5825,
+      "tick": 13774,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 138582,
+      "running": 1,
+      "suspended": 0,
+      "frames": 5872,
+      "tick": 13874,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 139585,
+      "running": 1,
+      "suspended": 0,
+      "frames": 5919,
+      "tick": 13974,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 140589,
+      "running": 1,
+      "suspended": 0,
+      "frames": 5966,
+      "tick": 14074,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 141590,
+      "running": 1,
+      "suspended": 0,
+      "frames": 6010,
+      "tick": 14174,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 142593,
+      "running": 1,
+      "suspended": 0,
+      "frames": 6057,
+      "tick": 14275,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 143596,
+      "running": 1,
+      "suspended": 0,
+      "frames": 6104,
+      "tick": 14375,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 144599,
+      "running": 1,
+      "suspended": 0,
+      "frames": 6151,
+      "tick": 14475,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 145602,
+      "running": 1,
+      "suspended": 0,
+      "frames": 6198,
+      "tick": 14576,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 146604,
+      "running": 1,
+      "suspended": 0,
+      "frames": 6243,
+      "tick": 14676,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 147612,
+      "running": 1,
+      "suspended": 0,
+      "frames": 6284,
+      "tick": 14777,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 148615,
+      "running": 1,
+      "suspended": 0,
+      "frames": 6323,
+      "tick": 14876,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 149620,
+      "running": 1,
+      "suspended": 0,
+      "frames": 6364,
+      "tick": 14977,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 150625,
+      "running": 1,
+      "suspended": 0,
+      "frames": 6406,
+      "tick": 15077,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 151632,
+      "running": 1,
+      "suspended": 0,
+      "frames": 6448,
+      "tick": 15178,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 152638,
+      "running": 1,
+      "suspended": 0,
+      "frames": 6488,
+      "tick": 15279,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 153643,
+      "running": 1,
+      "suspended": 0,
+      "frames": 6527,
+      "tick": 15379,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 154648,
+      "running": 1,
+      "suspended": 0,
+      "frames": 6568,
+      "tick": 15480,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 155654,
+      "running": 1,
+      "suspended": 0,
+      "frames": 6608,
+      "tick": 15580,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 156658,
+      "running": 1,
+      "suspended": 0,
+      "frames": 6649,
+      "tick": 15680,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 157664,
+      "running": 1,
+      "suspended": 0,
+      "frames": 6690,
+      "tick": 15781,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 158670,
+      "running": 1,
+      "suspended": 0,
+      "frames": 6731,
+      "tick": 15881,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 159674,
+      "running": 1,
+      "suspended": 0,
+      "frames": 6772,
+      "tick": 15983,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 160679,
+      "running": 1,
+      "suspended": 0,
+      "frames": 6811,
+      "tick": 16083,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 161685,
+      "running": 1,
+      "suspended": 0,
+      "frames": 6852,
+      "tick": 16184,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 162689,
+      "running": 1,
+      "suspended": 0,
+      "frames": 6893,
+      "tick": 16284,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 163694,
+      "running": 1,
+      "suspended": 0,
+      "frames": 6934,
+      "tick": 16385,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 164702,
+      "running": 1,
+      "suspended": 0,
+      "frames": 6973,
+      "tick": 16486,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 165708,
+      "running": 1,
+      "suspended": 0,
+      "frames": 7012,
+      "tick": 16586,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 166713,
+      "running": 1,
+      "suspended": 0,
+      "frames": 7053,
+      "tick": 16686,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 167720,
+      "running": 1,
+      "suspended": 0,
+      "frames": 7094,
+      "tick": 16788,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 168726,
+      "running": 1,
+      "suspended": 0,
+      "frames": 7133,
+      "tick": 16887,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 169730,
+      "running": 1,
+      "suspended": 0,
+      "frames": 7172,
+      "tick": 16987,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 170738,
+      "running": 1,
+      "suspended": 0,
+      "frames": 7214,
+      "tick": 17089,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 171742,
+      "running": 1,
+      "suspended": 0,
+      "frames": 7255,
+      "tick": 17189,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 172747,
+      "running": 1,
+      "suspended": 0,
+      "frames": 7296,
+      "tick": 17290,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 173752,
+      "running": 1,
+      "suspended": 0,
+      "frames": 7337,
+      "tick": 17389,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 174759,
+      "running": 1,
+      "suspended": 0,
+      "frames": 7379,
+      "tick": 17491,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 175765,
+      "running": 1,
+      "suspended": 0,
+      "frames": 7418,
+      "tick": 17591,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 176770,
+      "running": 1,
+      "suspended": 0,
+      "frames": 7460,
+      "tick": 17693,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 177773,
+      "running": 1,
+      "suspended": 0,
+      "frames": 7500,
+      "tick": 17792,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 178778,
+      "running": 1,
+      "suspended": 0,
+      "frames": 7541,
+      "tick": 17892,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 179783,
+      "running": 1,
+      "suspended": 0,
+      "frames": 7582,
+      "tick": 17993,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 180787,
+      "running": 1,
+      "suspended": 0,
+      "frames": 7622,
+      "tick": 18092,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 181792,
+      "running": 1,
+      "suspended": 0,
+      "frames": 7665,
+      "tick": 18194,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 182799,
+      "running": 1,
+      "suspended": 0,
+      "frames": 7707,
+      "tick": 18296,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 183805,
+      "running": 1,
+      "suspended": 0,
+      "frames": 7746,
+      "tick": 18394,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 184810,
+      "running": 1,
+      "suspended": 0,
+      "frames": 7786,
+      "tick": 18497,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 185812,
+      "running": 1,
+      "suspended": 0,
+      "frames": 7827,
+      "tick": 18596,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 186818,
+      "running": 1,
+      "suspended": 0,
+      "frames": 7869,
+      "tick": 18696,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 187824,
+      "running": 1,
+      "suspended": 0,
+      "frames": 7909,
+      "tick": 18797,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 188830,
+      "running": 1,
+      "suspended": 0,
+      "frames": 7949,
+      "tick": 18898,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 189835,
+      "running": 1,
+      "suspended": 0,
+      "frames": 7989,
+      "tick": 18998,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 190840,
+      "running": 1,
+      "suspended": 0,
+      "frames": 8030,
+      "tick": 19098,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 191846,
+      "running": 1,
+      "suspended": 0,
+      "frames": 8072,
+      "tick": 19200,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 192852,
+      "running": 1,
+      "suspended": 0,
+      "frames": 8112,
+      "tick": 19299,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 193858,
+      "running": 1,
+      "suspended": 0,
+      "frames": 8153,
+      "tick": 19400,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 194864,
+      "running": 1,
+      "suspended": 0,
+      "frames": 8195,
+      "tick": 19502,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 195871,
+      "running": 1,
+      "suspended": 0,
+      "frames": 8236,
+      "tick": 19603,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 196878,
+      "running": 1,
+      "suspended": 0,
+      "frames": 8277,
+      "tick": 19701,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 197883,
+      "running": 1,
+      "suspended": 0,
+      "frames": 8318,
+      "tick": 19804,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 198889,
+      "running": 1,
+      "suspended": 0,
+      "frames": 8359,
+      "tick": 19903,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 199893,
+      "running": 1,
+      "suspended": 0,
+      "frames": 8400,
+      "tick": 20003,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 200899,
+      "running": 1,
+      "suspended": 0,
+      "frames": 8441,
+      "tick": 20105,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 201903,
+      "running": 1,
+      "suspended": 0,
+      "frames": 8484,
+      "tick": 20206,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 202905,
+      "running": 1,
+      "suspended": 0,
+      "frames": 8531,
+      "tick": 20306,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 203908,
+      "running": 1,
+      "suspended": 0,
+      "frames": 8578,
+      "tick": 20406,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 204912,
+      "running": 1,
+      "suspended": 0,
+      "frames": 8620,
+      "tick": 20506,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 205916,
+      "running": 1,
+      "suspended": 0,
+      "frames": 8663,
+      "tick": 20606,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 206920,
+      "running": 1,
+      "suspended": 0,
+      "frames": 8705,
+      "tick": 20706,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 207921,
+      "running": 1,
+      "suspended": 0,
+      "frames": 8747,
+      "tick": 20806,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 208924,
+      "running": 1,
+      "suspended": 0,
+      "frames": 8794,
+      "tick": 20907,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 209927,
+      "running": 1,
+      "suspended": 0,
+      "frames": 8841,
+      "tick": 21008,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 210929,
+      "running": 1,
+      "suspended": 0,
+      "frames": 8888,
+      "tick": 21108,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 211932,
+      "running": 1,
+      "suspended": 0,
+      "frames": 8935,
+      "tick": 21208,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 212935,
+      "running": 1,
+      "suspended": 0,
+      "frames": 8982,
+      "tick": 21308,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 213937,
+      "running": 1,
+      "suspended": 0,
+      "frames": 9029,
+      "tick": 21409,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 214940,
+      "running": 1,
+      "suspended": 0,
+      "frames": 9076,
+      "tick": 21509,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 215942,
+      "running": 1,
+      "suspended": 0,
+      "frames": 9123,
+      "tick": 21609,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 216945,
+      "running": 1,
+      "suspended": 0,
+      "frames": 9170,
+      "tick": 21710,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 217946,
+      "running": 1,
+      "suspended": 0,
+      "frames": 9217,
+      "tick": 21810,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 218949,
+      "running": 1,
+      "suspended": 0,
+      "frames": 9264,
+      "tick": 21910,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 219952,
+      "running": 1,
+      "suspended": 0,
+      "frames": 9311,
+      "tick": 22010,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 220954,
+      "running": 1,
+      "suspended": 0,
+      "frames": 9358,
+      "tick": 22110,
+      "starts": 1,
+      "audio": 1
+    },
+    {
+      "elapsed_ms": 221957,
+      "running": 1,
+      "suspended": 0,
+      "frames": 9405,
+      "tick": 10,
+      "starts": 1,
+      "audio": 1
+    }
+  ],
+  "engine_sha256": "932c065529370d3cc79a4fbcc700c65262d0bcda34af35c27f223c7353da0efb",
+  "presentation_note": "Same engine binary as the final package. CSS centering was revised during this live run; final presentation is independently checked in validation.json."
+}

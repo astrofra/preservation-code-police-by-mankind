@@ -79,7 +79,7 @@ including the 85-sample vibration loops. Overlapping voices are summed and
 saturated; historical JVM audio-device mixing and resampling are not claimed
 to be sample-identical to modern SDL output.
 
-## Timing and future WebAssembly boundary
+## Timing and WebAssembly boundary
 
 The original script clock is elapsed wall time divided by 10 ms. The run loop
 renders once then sleeps 20 ms. Particles also evolve once per render call.
@@ -92,9 +92,10 @@ original timing is machine-dependent and this remains a preservation limit.
 `engine.cpp` has no SDL, window, event, filesystem or thread calls. `Platform`
 supplies resources, time and audio commands; `frame()` returns a software buffer.
 `main.cpp` owns native polling/presentation/sleep, and `assets.cpp` owns external
-file decoding and mixing. This prepares reuse with a browser frame callback,
-virtual resource filesystem and user-activated audio. No WASM build or browser
-runtime is implemented or claimed tested at this stage.
+file decoding and mixing. The subsequent [WebAssembly port](wasm-reactivation.md)
+reuses this engine with a browser callback, virtual resource filesystem and
+user-activated audio. Its browser-specific behavior and checks are recorded
+separately; the native host keeps the policy described above.
 
 ## Verification so far
 
@@ -144,7 +145,8 @@ Reproduce this distribution check after packaging with
 [`evidence/native/package-check.json`](../evidence/native/package-check.json).
 The final shutdown path also passed a fresh ASan/UBSan window/audio smoke check.
 Validation host: macOS 14.1 ARM64, Apple Clang 15; deployment target macOS 11.
-Other OS versions, Intel Macs, Linux, Windows and browsers have not been tested.
+Other native OS versions, Intel Macs, Linux and Windows have not been tested.
+Browser validation is recorded in the [WebAssembly notes](wasm-reactivation.md).
 The bundle is ad-hoc signed locally, not notarized by Apple.
 
 SDL platform details follow the official documentation for

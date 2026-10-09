@@ -1,0 +1,70 @@
+{
+  "date": "2026-10-09",
+  "source": "Captures from the WebAssembly port, not historical screenshots",
+  "package_sha256": "43264232e4545fde688425d0a9fbefa9c7d255ddb0920baec989112b2107037e",
+  "source_base_commit": "1b161fbece0c2c796d6c2cca49fee22f7c40e5a6",
+  "build_identity": "dist/wasm/code-police/build-info.json contains exact source hashes",
+  "platform": "macOS 14.1 ARM64",
+  "logical_dimensions": [
+    520,
+    300
+  ],
+  "captures": [
+    {
+      "file": "chromium-home.png",
+      "browser": "chromium",
+      "version": "154.0.8037.98",
+      "state": "Idle landing page",
+      "note": "Playwright headless screenshot; Firefox fullscreen area may be smaller than the screenshot viewport. See exact geometry in validation.json."
+    },
+    {
+      "file": "chromium-cinema.png",
+      "browser": "chromium",
+      "version": "154.0.8037.98",
+      "state": "Deterministic tick 4500; seed 888; sequential ticks 0..4500 step 2, reseeded 100000+tick",
+      "note": "Playwright headless screenshot; Firefox fullscreen area may be smaller than the screenshot viewport. See exact geometry in validation.json."
+    },
+    {
+      "file": "chromium-fullscreen.png",
+      "browser": "chromium",
+      "version": "154.0.8037.98",
+      "state": "Deterministic tick 4500; seed 888; sequential ticks 0..4500 step 2, reseeded 100000+tick",
+      "note": "Playwright headless screenshot; Firefox fullscreen area may be smaller than the screenshot viewport. See exact geometry in validation.json."
+    },
+    {
+      "file": "chromium-touch-2x.png",
+      "browser": "chromium",
+      "version": "154.0.8037.98",
+      "state": "Live opening, touch viewport 390x844, device scale 2; seed/time uncontrolled",
+      "note": "Playwright headless screenshot; Firefox fullscreen area may be smaller than the screenshot viewport. See exact geometry in validation.json."
+    },
+    {
+      "file": "firefox-home.png",
+      "browser": "firefox",
+      "version": "155.0",
+      "state": "Idle landing page",
+      "note": "Playwright headless screenshot; Firefox fullscreen area may be smaller than the screenshot viewport. See exact geometry in validation.json."
+    },
+    {
+      "file": "firefox-cinema.png",
+      "browser": "firefox",
+      "version": "155.0",
+      "state": "Deterministic tick 4500; seed 888; sequential ticks 0..4500 step 2, reseeded 100000+tick",
+      "note": "Playwright headless screenshot; Firefox fullscreen area may be smaller than the screenshot viewport. See exact geometry in validation.json."
+    },
+    {
+      "file": "firefox-fullscreen.png",
+      "browser": "firefox",
+      "version": "155.0",
+      "state": "Deterministic tick 4500; seed 888; sequential ticks 0..4500 step 2, reseeded 100000+tick",
+      "note": "Playwright headless screenshot; Firefox fullscreen area may be smaller than the screenshot viewport. See exact geometry in validation.json."
+    },
+    {
+      "file": "firefox-touch-2x.png",
+      "browser": "firefox",
+      "version": "155.0",
+      "state": "Live opening, touch viewport 390x844, device scale 2; seed/time uncontrolled",
+      "note": "Playwright headless screenshot; Firefox fullscreen area may be smaller than the screenshot viewport. See exact geometry in validation.json."
+    }
+  ]
+}

@@ -90,7 +90,7 @@ and fullscreen bands. `ctest --test-dir native-sdl2/build --output-on-failure`
 checks the geometry; `python3 native-sdl2/tools/check_display.py` additionally
 checks real display readbacks (requires Pillow).
 
-The engine and `Platform` boundary are prepared for later WebAssembly reuse.
-No browser port has been made yet. See the detailed
+The same engine and `Platform` boundary now power the
+[WebAssembly browser port](../wasm/README.md). See the detailed
 [preservation notes](../documentation/native-reactivation.md) for class/method
 correspondence, arithmetic, resource conversion, timing and validation limits.

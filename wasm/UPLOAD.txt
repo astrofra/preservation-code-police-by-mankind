@@ -1,0 +1,31 @@
+Code Police / Mankind — browser preservation
+
+Upload ALL contents of this ZIP, preserving case and subdirectories, to any
+static HTTP(S) host. Open index.html through HTTP(S), not file://. Subdirectories
+and paths with spaces/Unicode are supported. No Java, CDN, PHP, remote media,
+SharedArrayBuffer, COOP or COEP configuration is needed.
+
+Serve .wasm as application/wasm and .js as text/javascript. The launch page is
+UTF-8. Keep original/MKD_CodePOlice.txt (ISO-8859-1 bytes) unchanged.
+For local preview after extraction: python3 -m http.server 8000 --bind 127.0.0.1
+Then open http://localhost:8000/ .
+
+Choose the artwork size, optional original cinema surround, fullscreen and sound,
+then click Start. Return to the landing page to change resolution or sound and
+restart. The cinema toggle is also available during playback. Escape exits
+browser fullscreen first; Escape in the page or Accueil returns to the menu.
+The original close image also returns to the menu. Hidden tabs pause the demo.
+
+The artwork is always calculated at 520x300 and enlarged with nearest neighbour.
+Windowed sizes fit within the requested bounds and available browser space.
+Fullscreen maximizes the chosen presentation (whole cinema if enabled, otherwise
+the image), centered on black, without changing monitor resolution.
+
+Credits from the original release: Code Krabob; Gfx zaac, alexx, myke, krabob;
+Sons Leviathan, Tex. The historical HTML/classes/media and TXT remain archived
+under original/. Library notices are in licenses/. No new license is asserted
+over Mankind's artwork. provenance.json, resources.json, build-info.json and
+SHA256SUMS record origin, adaptations, versions and exact file identities.
+Readable adapter/engine sources are under sources/; the complete build repository:
+https://github.com/astrofra/preservation-code-police-by-mankind
+https://www.pouet.net/prod.php?which=1788

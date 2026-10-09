@@ -1,0 +1,21 @@
+cmake_minimum_required(VERSION 3.16)
+project(CodePoliceWeb LANGUAGES CXX)
+if(NOT EMSCRIPTEN)
+    message(FATAL_ERROR "Use ../build-wasm.sh")
+endif()
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(native "${CMAKE_CURRENT_SOURCE_DIR}/../native-sdl2")
+add_executable(code-police src/main.cpp "${native}/src/engine.cpp" "${native}/src/assets.cpp")
+target_include_directories(code-police PRIVATE "${native}/src")
+target_include_directories(code-police SYSTEM PRIVATE "${native}/vendor/stb")
+target_compile_definitions(code-police PRIVATE SDL_MAIN_HANDLED)
+target_compile_options(code-police PRIVATE -O2 -g2 -ffp-contract=off -fexceptions -sUSE_SDL=2)
+set_source_files_properties("${native}/src/engine.cpp" PROPERTIES COMPILE_OPTIONS "-Wno-parentheses-equality")
+target_link_options(code-police PRIVATE -O2 -g2 -fexceptions -sUSE_SDL=2
+    -sMODULARIZE=1 -sEXPORT_ES6=1 -sEXPORT_NAME=createCodePolice -sENVIRONMENT=web
+    -sALLOW_MEMORY_GROWTH=1 -sFORCE_FILESYSTEM=1 -sEXIT_RUNTIME=0 -sASSERTIONS=1
+    "-sEXPORTED_RUNTIME_METHODS=['FS','UTF8ToString','HEAPU8']")
+set_target_properties(code-police PROPERTIES SUFFIX ".js")

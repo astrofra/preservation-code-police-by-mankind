@@ -4,10 +4,23 @@ Preservation and study of **Code Police**, a Java demo by **Mankind**, coded by
 Krabob. The supplied Pouët snapshot records a February 2001 release and second
 place in the PC demo competition at Synthesis Party 2001.
 
-The demo now also runs as **native C++11/SDL2**, with the original 520 × 300
+The demo runs in the **browser through WebAssembly**, with a Start page, original
+credits, optional cinema surround, selectable resolution, sound and fullscreen.
+The original 520 × 300 buffer is enlarged with nearest-neighbour interpolation.
+
+```sh
+./build-wasm.sh
+./preview-wasm.sh
+# Open http://localhost:8000/
+```
+
+Upload `dist/wasm/code-police/` or extract `dist/wasm/code-police-web.zip` onto
+a static HTTP(S) host. See [browser build and controls](wasm/README.md) and
+[preservation notes](documentation/wasm-reactivation.md).
+
+The demo also runs as **native C++11/SDL2**, with the original 520 × 300
 artwork and audio, **without the cinema surround or Java**. Its Karate script
-and media are external files; the engine is separated from the SDL host to
-prepare a later WebAssembly port.
+and media are external files; the engine is shared with the WebAssembly port.
 
 ```sh
 ./native-sdl2/build.sh
@@ -82,9 +95,11 @@ commands, preservation correspondence, validation and remaining limitations.
 - `java-desktop/`: desktop source, complete Gradle Wrapper and validation tools.
 - `java-original/`: `.sh` package builder and distributable `.sh` launcher template.
 - `native-sdl2/`: C++11 engine, SDL2 desktop host, external assets and native packaging.
+- `wasm/`: browser host, original HTML adaptation, static packaging and browser checks.
 - `reference/`: documented captures from the original-bytecode host and restoration.
 - `dist/java/`: generated applications with bundled Java runtimes (not committed).
 - `dist/native/`: generated native applications and distribution ZIPs (not committed).
+- `dist/wasm/`: generated complete static website and upload ZIP (not committed).
 
 See the [quick diagnosis](documentation/quick-diagnosis.md) for verification
 commands and the distinction between original bytecode and future reconstructions.

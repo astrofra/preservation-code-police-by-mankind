@@ -308,3 +308,76 @@ The rebuilt bundled-runtime Java desktop app also passed its 800x462 display
 smoke check with animation, live audio and clean shutdown. The final native ZIP
 passed its offline extraction/LaunchServices check, including actual F11 window
 size restoration. Documentation and all three generated deliverables are updated.
+
+## 2026-10-09 — WebAssembly and optional original cinema presentation
+
+The user requested the browser port, an optional reconstruction of the original
+HTML cinema surround, and selectable display resolution. They then specified a
+landing page with a Start button, credits from the release TXT, and links to
+Pouët and the GitHub repository. The established 520x300 logical buffer,
+nearest-neighbour scaling, fit-inside sizing and fullscreen without a monitor
+mode change remain the presentation requirements.
+
+Implementation decisions: reuse the validated C++11 engine and external PNG/AU
+resources unchanged; isolate browser scheduling and presentation in `wasm/`.
+The Start gesture will unlock audio. Generate the cinema markup from the
+archived `page.html`, retaining its 640x480 table and original border images;
+replace the applet with a canvas. Preserve all three historical HTML files in
+the package. Replace popup/frame navigation and the broken close link with an
+in-page player and return-to-home action, and document those adaptations.
+Build a self-contained static site and ZIP with root build/preview scripts;
+validate the extracted archive over HTTP before delivery. No upload is requested.
+
+The first browser build now runs with Emscripten 4.0.23 / SDL2 2.32.8. The native
+engine, Java host and existing assets remain unmodified. The package contains
+the full unchanged original release, standalone runtime resources, readable JS,
+WASM names, shared source copies, dependency notices and hashes. The landing
+page parses credits from the release TXT and uses Code Police's archived Pouët
+ID 1788 plus the repository's existing GitHub origin.
+
+Initial Chrome comparison completed all 11,101 controlled reference frames,
+16 actual-canvas captures/numeric states and 10 decoded PCM buffers without
+differences outside the native numerical tolerance. Live playback and an active
+Web Audio context also work. The missing-WASM test found that a later rejected
+promise overwrote the filename-bearing error; the loader now preserves the first
+error. Validation of the corrected extracted ZIP and additional browser engines
+is continuing. The visible canvas uses physical device dimensions and disabled
+smoothing to retain nearest-neighbour output at fractional sizes; the cinema
+table has explicit original column widths to avoid modern fixed-table inference.
+
+Chrome and Firefox completed the extracted-package comparison. Web Audio output
+is also sampled after the intentionally silent four-second opening; actual
+nonzero output is confirmed. The test now compares audio commands on every frame,
+including frames expected to contain none. Resource packaging additionally checks
+all AU files and the extracted script directly against the original bytes.
+
+A screenshot-level check found fractional CSS compositor filtering that was not
+visible in Canvas2D readback alone. Replaced the centering transform with absolute
+pixel-aligned layout, and made the close button's larger touch target transparent.
+Added screenshot-versus-canvas comparisons and black-band checks to prevent this
+regression. This changes only browser presentation. The native geometry CTest
+still passes and the shared renderer/Java sources have no differences.
+
+The installed Playwright WebKit build 2251 crashes with a bus error before loading
+a page on macOS 14.1 ARM64. Its launch failure is retained in
+`evidence/wasm/webkit-launch.txt`; no Safari/WebKit compatibility is claimed from
+this attempt. Final checks target actual Chrome 154.0.8037.98 and Playwright
+Firefox 155.0, with physical mobile devices explicitly untested.
+
+Final extracted-ZIP checks pass on both browsers: 11,101 original-Java frame
+hashes each, 16 numeric-state/actual-source-canvas captures, all 38 sound commands
+with no unexpected commands on other frames, ten PCM hashes, live nonzero
+Web Audio output, landing credits/links, mouse-release Start, touch Start once,
+HiDPI 2x, custom-size validation, optional cinema, fullscreen/restoration,
+hidden/resume, and missing/corrupt resource errors. Actual screenshots equal the
+visible canvas, 2x cinema pixels equal the Java reference and fullscreen bands
+are black, with no interpolated colours. All 219 final package files, 107 included
+original release files and 130 archived repository files pass hash verification.
+
+The separate live run observed the full 222-second script loop after 9,407
+rendered frames, with audio and clean stop. It used the same engine binary as
+the final package; CSS centering was corrected during that long run and verified
+separately in the final ZIP tests. Reports/captures are under `evidence/wasm/` and
+`reference/wasm/`. The root builder also ran successfully from `/tmp`. The static
+ZIP and ready-to-upload directory are under `dist/wasm/`. No upload or push was
+performed. This completes the requested browser port and launch page milestone.
