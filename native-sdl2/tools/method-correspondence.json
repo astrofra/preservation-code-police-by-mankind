@@ -1,0 +1,476 @@
+[
+  {
+    "class": "kraycasting",
+    "method": "FindHowMany",
+    "line_java": 30,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kraycasting",
+    "method": "FindInto",
+    "line_java": 44,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kraycasting",
+    "method": "SplitSTag",
+    "line_java": 71,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kraycasting",
+    "method": "init",
+    "line_java": 107,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kTexture",
+    "method": "kTexture",
+    "line_java": 188,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kRenderContext",
+    "method": "kRenderContext",
+    "line_java": 286,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kRenderContext",
+    "method": "kRenderContext",
+    "line_java": 286,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kRenderContext",
+    "method": "kRenderContext",
+    "line_java": 299,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kRenderContext",
+    "method": "SetRect",
+    "line_java": 305,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kRenderContext",
+    "method": "SetSub",
+    "line_java": 372,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kRenderContext",
+    "method": "createImage",
+    "line_java": 381,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kcamera",
+    "method": "kcamera",
+    "line_java": 401,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kcamera",
+    "method": "set",
+    "line_java": 411,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kcamera",
+    "method": "target",
+    "line_java": 421,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kparticle",
+    "method": "kparticle",
+    "line_java": 467,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kparticle",
+    "method": "drawflare",
+    "line_java": 485,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kparticle",
+    "method": "drawsprit",
+    "line_java": 511,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kparticle",
+    "method": "move",
+    "line_java": 537,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kparticle",
+    "method": "mvtfloor",
+    "line_java": 566,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kparticle",
+    "method": "mvtgalax",
+    "line_java": 599,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kparticle",
+    "method": "reset",
+    "line_java": 617,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kTable",
+    "method": "kTable",
+    "line_java": 658,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kTable",
+    "method": "spline",
+    "line_java": 672,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kTimer",
+    "method": "getTime",
+    "line_java": 720,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kTimer",
+    "method": "reset",
+    "line_java": 724,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kParameterX",
+    "method": "kParameterX",
+    "line_java": 767,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kParameterX",
+    "method": "Out",
+    "line_java": 770,
+    "native": "src/engine.hpp"
+  },
+  {
+    "class": "kParameterX",
+    "method": "doubleout",
+    "line_java": 772,
+    "native": "src/engine.hpp"
+  },
+  {
+    "class": "kParameterXCTE",
+    "method": "kParameterXCTE",
+    "line_java": 777,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kParameterXCTE",
+    "method": "Out",
+    "line_java": 780,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kParameterXCTE",
+    "method": "doubleout",
+    "line_java": 784,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kParameterXAFF",
+    "method": "kParameterXAFF",
+    "line_java": 791,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kParameterXAFF",
+    "method": "Out",
+    "line_java": 794,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kParameterXAFF",
+    "method": "doubleout",
+    "line_java": 798,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kParameterXRND",
+    "method": "kParameterXRND",
+    "line_java": 805,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kParameterXRND",
+    "method": "Out",
+    "line_java": 808,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kParameterXRND",
+    "method": "doubleout",
+    "line_java": 812,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kParameterXSPLINE",
+    "method": "kParameterXSPLINE",
+    "line_java": 819,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kParameterXSPLINE",
+    "method": "Out",
+    "line_java": 822,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kParameterXSPLINE",
+    "method": "doubleout",
+    "line_java": 826,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kParameterXSIN",
+    "method": "kParameterXSIN",
+    "line_java": 833,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kParameterXSIN",
+    "method": "Out",
+    "line_java": 836,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kParameterXSIN",
+    "method": "doubleout",
+    "line_java": 840,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kParameterXCOS",
+    "method": "kParameterXCOS",
+    "line_java": 847,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kParameterXCOS",
+    "method": "Out",
+    "line_java": 850,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kParameterXCOS",
+    "method": "doubleout",
+    "line_java": 854,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kParameterXOB",
+    "method": "kParameterXOB",
+    "line_java": 861,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kParameterXOB",
+    "method": "Out",
+    "line_java": 864,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kParameterXOB",
+    "method": "doubleout",
+    "line_java": 871,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kEffectX",
+    "method": "kEffectX",
+    "line_java": 882,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kEffectX",
+    "method": "rendah",
+    "line_java": 886,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kSoundCommand",
+    "method": "kSoundCommand",
+    "line_java": 979,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kSoundCommand",
+    "method": "MakeSoundCommand",
+    "line_java": 982,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kPartX",
+    "method": "kPartX",
+    "line_java": 1003,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kPartX",
+    "method": "rendah",
+    "line_java": 1006,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kScript",
+    "method": "kScript",
+    "line_java": 1031,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kScript",
+    "method": "part",
+    "line_java": 1284,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "raycasting",
+    "method": "raycasting",
+    "line_java": 1308,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "raycasting",
+    "method": "MotionBlur",
+    "line_java": 1315,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "raycasting",
+    "method": "Position3D",
+    "line_java": 1343,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "raycasting",
+    "method": "Setzoom3D",
+    "line_java": 1377,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "raycasting",
+    "method": "SetzoomP",
+    "line_java": 1448,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "raycasting",
+    "method": "colorclip",
+    "line_java": 1503,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "raycasting",
+    "method": "draw",
+    "line_java": 1524,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "raycasting",
+    "method": "drawrecUV",
+    "line_java": 1546,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "raycasting",
+    "method": "drawrecUVL",
+    "line_java": 1584,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "raycasting",
+    "method": "drawrecUVM",
+    "line_java": 1653,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "raycasting",
+    "method": "drawrecUVRGB",
+    "line_java": 1714,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "raycasting",
+    "method": "drawrecUVS",
+    "line_java": 1803,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "raycasting",
+    "method": "drawrecUVSA",
+    "line_java": 1852,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "raycasting",
+    "method": "findfloor",
+    "line_java": 1919,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "raycasting",
+    "method": "findtunnel",
+    "line_java": 1970,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "raycasting",
+    "method": "findtwirl",
+    "line_java": 2009,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "raycasting",
+    "method": "flare3D",
+    "line_java": 2046,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kSound",
+    "method": "kSound",
+    "line_java": 13,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kSound",
+    "method": "LoopOne",
+    "line_java": 20,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kSound",
+    "method": "PlayOne",
+    "line_java": 27,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kSound",
+    "method": "StopAll",
+    "line_java": 35,
+    "native": "src/engine.cpp"
+  },
+  {
+    "class": "kSound",
+    "method": "StopOne",
+    "line_java": 43,
+    "native": "src/engine.cpp"
+  }
+]

@@ -5,3 +5,4 @@ java-desktop/build/
 java-desktop/assets/
 java-original/build/
 dist/
+native-sdl2/build*/

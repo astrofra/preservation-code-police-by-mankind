@@ -1,0 +1,2 @@
+# Preserve the HTML parameter exactly, including CRLF, spacing and final lines.
+native-sdl2/assets/scene.txt -text -whitespace

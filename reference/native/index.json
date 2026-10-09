@@ -1,0 +1,36 @@
+{
+  "dimensions": [
+    520,
+    300
+  ],
+  "seed_init": 888,
+  "seed_per_frame": "100000 + tick",
+  "cadence": "controlled ticks 0..22200, step 2; not live/historical FPS",
+  "captures": [
+    {
+      "tick": 2500,
+      "original": "original-2500.png",
+      "native": "native-2500.png",
+      "differing_rgb_pixels": 0
+    },
+    {
+      "tick": 4500,
+      "original": "original-4500.png",
+      "native": "native-4500.png",
+      "differing_rgb_pixels": 0
+    },
+    {
+      "tick": 8000,
+      "original": "original-8000.png",
+      "native": "native-8000.png",
+      "differing_rgb_pixels": 0
+    },
+    {
+      "tick": 13000,
+      "original": "original-13000.png",
+      "native": "native-13000.png",
+      "differing_rgb_pixels": 0
+    }
+  ],
+  "reference": "Archived original .class files executed using ReferenceSupport and ExportNative; native PNGs converted from verifier PPM files with Pillow."
+}

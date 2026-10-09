@@ -165,3 +165,67 @@ while macOS sandbox-exec denied network access. A simulated Java 26 command was
 correctly rejected before launch. Results are under `evidence/java-original-package/`.
 Linux, Windows and Java 17 playback remain untested. The finished archive is
 approximately 1.2 MB; no upload or push was requested or performed.
+
+## 2026-10-09 — C++11/SDL desktop port requested
+
+The user requested a C++11/SDL desktop port without the cinema frame, with a
+future WebAssembly port as a major design constraint. The repository starts
+this stage clean at `34d43c4`. SDL2 is selected according to the preservation
+skill. The current task implements and validates the native port; the browser
+build remains a later stage, as requested.
+
+The planned boundaries are an SDL-independent translation of the recovered
+classes and methods, external original/faithfully converted assets, a platform
+clock/resource/audio interface, and a thin SDL presentation/event loop. The
+validated Java reconstruction and archived bytecode remain comparison references.
+No renderer redesign, frame-based-to-fixed-step rewrite or embedded media arrays
+are planned. The available host is Apple Silicon macOS with SDL2 2.32.70.
+
+## 2026-10-09 — Native engine and numerical correspondence verified
+
+Implemented the 23 active classes in strict C++11, retaining 79 explicit
+method/constructor declarations and bodies plus the Java default constructors.
+The SDL-independent engine keeps original parsing, rendering, buffer swaps,
+camera/particle calculations and audio command logic. Explicit integer and
+random-number semantics and ordered effect arguments avoid C++11 differences.
+The translation tool and method map are retained as evidence; ordinary builds
+use checked-in C++ and require no Java or translator.
+
+All 53 images were converted through Java Toolkit/PixelGrabber to external PNGs;
+all decoded ARGB arrays round-trip exactly, with a per-file hash manifest. The
+script was extracted byte-for-byte (UTF-8 representation, original line endings)
+and all ten AU files were copied unchanged, preserving filename case. A direct
+hash audit confirms all 130 original files remain unchanged.
+
+During implementation the user identified KScript as Krabob's Karate language,
+and supplied a local KarateScript 1.2 tutorial and its Pouët entry. Inspection
+confirmed that the actual launcher references `.txt` scripts, with related
+`KCAM`/`KSCRIPT`/`KPART` tags. Adopted `scene.txt`, documented the relationship,
+and kept the exact earlier Code Police parser rather than importing later
+Amiga-language extensions. No tutorial files were modified or bundled.
+
+The original bytecode and C++ engine agree on all 11,101 full-frame RGB hashes
+across controlled ticks 0..22200 at step 2, and on every pixel of 16 selected
+captures. Every camera/particle primitive and array was checked per frame;
+the largest relative numerical difference is 5.4706239538404589e-14. All 38
+sound commands agree at their issue frames, and all ten AU PCM decodes equal
+Java's sample for sample. The full comparison also passes ASan/UBSan. Reports
+are in `evidence/native/`; paired captures are in `reference/native/`.
+
+The native host opens only the 520x300 demo, with nearest-neighbour resizing,
+audio and clean shutdown. A four-second smoke run exercises minimize, restore,
+resize, pointer movement and Escape. A longer run requested 226 seconds and
+closed after 6,039 frames, but its final capture still shows the last scene and
+the earlier host log did not record elapsed time or the shutdown cause. It is
+therefore not evidence of an uninterrupted full loop. Added elapsed-time,
+loop-count and quit-reason logging. A subsequent offset-210-second test ran
+for 22.0386 seconds / 877 frames, explicitly recorded one timeline reset, and
+exited because the requested duration elapsed. This validates the live loop
+boundary separately from the exhaustive controlled-state run.
+
+Packaging inspection revealed the installed SDL2 2.32.70 is actually
+`sdl2-compat`, which dynamically loads SDL3. For a self-contained native package,
+the builder instead pins upstream SDL2 2.32.10, checks its archive hash and links
+it statically. `otool` confirms the result depends only on macOS system libraries
+and frameworks. The native archive and `.app` are now being validated outside
+the repository; browser compilation remains future work.

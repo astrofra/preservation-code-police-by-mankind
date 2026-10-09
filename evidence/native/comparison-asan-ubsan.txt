@@ -1,0 +1,17 @@
+Capture 0: 0 differing pixels
+Capture 500: 0 differing pixels
+Capture 1500: 0 differing pixels
+Capture 2500: 0 differing pixels
+Capture 3550: 0 differing pixels
+Capture 4050: 0 differing pixels
+Capture 4500: 0 differing pixels
+Capture 6500: 0 differing pixels
+Capture 8000: 0 differing pixels
+Capture 9500: 0 differing pixels
+Capture 11000: 0 differing pixels
+Capture 13000: 0 differing pixels
+Capture 17000: 0 differing pixels
+Capture 20000: 0 differing pixels
+Capture 21900: 0 differing pixels
+Capture 22200: 0 differing pixels
+11101 frames; 0 differing hashes; 0 significant state differences; max relative state error 5.4706239538404589e-14; 38 exact sound commands; 10 exact PCM decodes.
