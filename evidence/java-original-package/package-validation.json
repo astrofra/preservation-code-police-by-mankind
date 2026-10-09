@@ -1,0 +1,36 @@
+{
+  "archive": "dist/code-police-java-original.zip",
+  "sha256": "9650f5c6509c10f2b95105166daa90542c6b058c7190d5d195a8f15ad05b7c91",
+  "bytes": 1208752,
+  "original_files_identical": 107,
+  "launcher_executable_after_unzip": true,
+  "host_jar_entries": [
+    "META-INF/",
+    "META-INF/MANIFEST.MF",
+    "DemoAudio$Event.class",
+    "DemoAudio.class",
+    "OriginalHost$1.class",
+    "OriginalHost.class",
+    "ReferenceSupport.class",
+    "SceneAssets.class"
+  ],
+  "tests": [
+    {
+      "java": "jdk25",
+      "exit_code": 0,
+      "passed": true,
+      "network": "denied",
+      "cwd": "/tmp",
+      "package_path": "temporary path with spaces and accented character"
+    },
+    {
+      "java": "jdk21",
+      "exit_code": 0,
+      "passed": true,
+      "network": "denied",
+      "cwd": "/tmp",
+      "package_path": "temporary path with spaces and accented character"
+    }
+  ],
+  "rejects_java26": true
+}

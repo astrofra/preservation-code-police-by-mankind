@@ -137,3 +137,31 @@ dimensions, captured its visible output and closed the window; the process
 exited normally. The captured image was visually inspected and contains only
 the applet. No new launcher or desktop option was needed. README and the Java
 guide now give the direct command and its one-time host compilation prerequisite.
+
+## 2026-10-09 — Distributable original-bytecode Java package requested
+
+The user requested a distributable package, specifically a `.sh` that prepares
+the package and a second `.sh` inside it that launches the demo. This continues
+the direct `java`, original-bytecode, no-cinema-frame workflow. The packaging
+script will compile only the existing host/support classes into a small launcher
+JAR and copy the unchanged original release alongside it. The runtime package
+will require an installed compatible Java, with no Gradle or compiler needed
+by recipients. The existing desktop application is not the deliverable here.
+
+The builder is `java-original/package.sh`; it uses `javac --release 17`, `jar`
+and `zip` directly. It creates `dist/code-police-java-original.zip` plus its
+unpacked directory, containing `run-code-police.sh`, a small host-only JAR,
+instructions and all 107 original release files. No JVM, Gradle or reconstructed
+engine is bundled. The launcher locates resources relative to its own path,
+honors JAVA_HOME, checks the Java 17–25 requirement and rejects Java 26 explicitly.
+
+The existing OriginalHost gained argument validation, a fixed 520 × 300 window
+and an opt-in eight-second smoke-test mode that verifies the worker and clean
+shutdown. Original class files are unchanged. The extracted archive passed its
+CRC check, retained launcher executable permissions and matched every original
+release file byte for byte. Launch/close smoke checks passed with Homebrew Java
+21 and 25 from `/tmp`, in an extraction path with spaces and an accented character,
+while macOS sandbox-exec denied network access. A simulated Java 26 command was
+correctly rejected before launch. Results are under `evidence/java-original-package/`.
+Linux, Windows and Java 17 playback remain untested. The finished archive is
+approximately 1.2 MB; no upload or push was requested or performed.

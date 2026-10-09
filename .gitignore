@@ -3,4 +3,5 @@ __pycache__/
 java-desktop/.gradle/
 java-desktop/build/
 java-desktop/assets/
+java-original/build/
 dist/
