@@ -466,3 +466,31 @@ assumed, so the honest planning figure is nearer 60 fps on the cycle model than
 Nothing was installed for this step and no toolchain was built. The next steps in
 the plan (the ASM raster core, then C2P) still require vasm and an AmigaOS C++
 cross-compiler, which remain absent.
+
+## 2026-10-12 — Amiga AGA feasibility, colour-path enumeration (new step 2)
+
+The study's §9 risk list had made "enumerate every write to `kPixel->r/g/b` and
+to the pixel buffer before starting" a prerequisite for the port. It was carried
+out statically against `native-sdl2/src/engine.cpp`, and it corrected the study's
+colour model. It is now a formal step 2 of the plan, before any assembly.
+
+Finding: the two per-pixel operators the first draft of §4.1 relied on,
+`drawrecUV` and `drawrecUVL`, are declared but **never called anywhere** in the
+engine. The operators that actually run are `drawrecUVRGB` (sprites, additive),
+`drawrecUVSA`/`drawrecUVS` (ground and tunnel, alpha then opaque copy) and
+`drawrecUVM` (particles and flares, additive). `MotionBlur` and the per-block
+`findtwirl` shading are as first described.
+
+Consequence: the study had both the wrong operators and the wrong economy. Every
+reachable per-pixel operator does reduce to a small pair table over palette
+indices — because in the indexed model both operands are 16-valued indices — so
+the indexed design holds. But those tables are palette-dependent and must be
+rebuilt when the scene palette changes, not merely when a fade level changes, and
+the specific `drawrecUVL` "ramp" win the first draft advertised does not exist
+because that method is dead code. The study's §2, §4.1, §6, §7, §9 and §10 were
+updated, and a new §15 records the enumeration. The ASM raster core now has a
+closed set of four loops to implement.
+
+This changes the step list: the colour-path enumeration is now step 2, the ASM
+raster core is step 3 and is the first step that needs vasm and an AmigaOS C++
+cross-compiler, still absent.

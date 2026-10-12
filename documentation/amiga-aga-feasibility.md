@@ -47,7 +47,7 @@ Facts taken from this repository.
 | Source pixel format | 32-bit ARGB, `0xFF000000 \| rgb` | `native-sdl2/src/engine.cpp` |
 | Framebuffer model | double buffer, swapped by pointer | `kRenderContext::createImage` |
 | Rasterisation unit | axis-aligned 16×16 blocks, affine UV | `raycasting::draw` |
-| Mapping arithmetic | 16.16 fixed point, shift/mask texel lookup | `drawrecUV`, `drawrecUVL` |
+| Mapping arithmetic | 16.16 fixed point, shift/mask texel lookup | `drawrecUVRGB`, `drawrecUVSA` |
 | Per-block 3D maths | `sqrt`/`atan2`/`sin`/`cos` per 16×16 block | `findfloor`, `findtunnel`, `findtwirl` |
 | Textures | 53 images, 1.89 Mpix total | `evidence/diagnostic.json` |
 | Particles | three systems of 300, 300 and 32 | `assets/scene.txt` (`KTICLE`) |
@@ -100,26 +100,56 @@ The engine computes true-colour ARGB per pixel and blends in RGB. Converting
 ARGB to an index at present time would cost a lookup — and a nearest-colour
 search — for every one of the 64,000 pixels, which is the expensive option.
 
-Instead the port should **make the renderer indexed**: textures are converted to
-palette indices once at load, and the blend loops operate on indices through
-small tables. Concretely, every per-pixel colour operation in the engine maps to
-a precomputed table:
+The port should still **make the renderer indexed**: textures are converted to
+palette indices once at load, and the common opaque path becomes `dst[i] =
+tex[uv]`. But an earlier revision of this section listed the wrong operators.
+The table below was rebuilt by enumerating every function that writes the
+framebuffer and every site that calls one, **which the §9 risk list made a
+prerequisite for the port**. Two methods the first draft relied on,
+`drawrecUV` and `drawrecUVL`, are declared but **never called anywhere** in the
+engine; the paths that actually run are `drawrecUVRGB`, `drawrecUVSA` (which
+falls through to `drawrecUVS`) and `drawrecUVM`.
 
-| Engine operation | Current ARGB code | Indexed equivalent |
-| --- | --- | --- |
-| `drawrecUV` | texel copy | `dst[i] = tex[uv]` |
-| `drawrecUVL` | add scalar `n` to R, G, B, clamp each | `dst[i] = ramp[level][tex[uv]]`, 32 × 16 bytes |
-| `MotionBlur` | `(a & 0xFCFCFF + b & 0xFCFCFF) >> 1` | `dst[i] = mix[a][b]`, 16 × 16 bytes |
-| `findtwirl` colour | per-block `r = n*26` etc. | quantise per block (627 blocks/frame) |
-| `colorclip` fade | interpolate RGB by distance | palette animation, §4.3 |
+| Engine operation | Called by | Current ARGB code | Indexed equivalent |
+| --- | --- | --- | --- |
+| `drawrecUVS` | `drawrecUVSA` (alpha 255) | opaque texel copy, index −1 transparent | `dst[i] = tex[uv]`, one compare |
+| `drawrecUVSA` | `Setzoom3D`, `SetzoomP` | alpha `n`/255 then `drawrecUVS`: `(dst*(255−n) + src*n) >> 8` per channel | `dst[i] = blend[src][dst]` per call |
+| `drawrecUVRGB` | `draw()` (Sprit, Sprit3D) | `clamp(tex_ch + dst_ch)` per channel, clamped 0–255 | `dst[i] = add[src][dst]`, palette-dependent |
+| `drawrecUVM` | `flare3D()` (particles, flares) | `clamp(tex_ch + dst_ch)`, clamped 255 only | `dst[i] = add255[src][dst]`, palette-dependent |
+| `findtwirl` colour | `findtwirl()` (twirl scenes) | per block `r = n*26`, `g = n*24`, `b = n*23` into `kPixel` | quantise once per 16×16 block |
+| `MotionBlur` | `MotionBlur` effect | `((a & 0xFCFCFF) + (b & 0xFCFCFF)) >> 1` | `dst[i] = mix[a][b]`, palette-dependent |
+| `drawrecUV` | — **never called** | texel copy | not required |
+| `drawrecUVL` | — **never called** | add scalar to R,G,B, clamp | not required |
 
-The `drawrecUVL` row is the important one: three channel adds, three clamps and
-three conditional moves per pixel become **one byte lookup**. The shaded paths
-get *faster* at 16 colours, not slower. This is the single largest performance
-win in the whole study, and it is a direct consequence of the 16-colour target.
+`findtwirl` is the odd one out: it does not touch the framebuffer at all. It
+writes a shading colour into each `kPixel` of a render context, and that colour
+is later consumed by `drawrecUVRGB` as the additive source. In the indexed model
+its three multiplications become one quantisation per 16×16 block, and the
+result is a palette index feeding the pair table below.
 
-The two lookup tables are trivial in size (512 B and 256 B) and can be rebuilt
-in vblank when a scene's fade level changes.
+**What actually changed from the first draft.** The first draft's headline win
+was `drawrecUVL`'s "ramp" table, replacing a scalar add and three clamps with one
+byte lookup. That method is **dead code**, so that specific win does not exist.
+What replaces it is better in coverage and the same in kind: every reachable
+per-pixel colour operator reduces to a small pair table over palette indices,
+because in the indexed model **both operands are 16-valued palette indices** —
+the framebuffer holds indices, and textures are quantised to the same palette.
+`drawrecUVSA`'s blend is such a table for the call's constant alpha; `MotionBlur`,
+`drawrecUVRGB` and `drawrecUVM` are pair tables of `clamp(a + b)`, 256 bytes each.
+`drawrecUVS` needs no table at all, just a copy and a transparent-index compare.
+
+So the indexed design holds for all four loops. The correction is not that it
+fails, but that the three pair tables are **palette-dependent**: they must be
+rebuilt whenever a scene's palette changes, not merely when a fade level changes
+as the first draft said. Twelve rebuilds per cycle of 256-byte tables is nothing,
+and each fits inside one vblank. `drawrecUVSA`'s alpha `n` is constant across a
+call, so one 256-byte table per call suffices; there is no need for a
+256 × 16 × 16 table across all alpha levels.
+
+The residual caution is fidelity, not performance. The pair tables quantise
+`clamp(palette[i] + palette[j])` back to the nearest palette entry, so an additive
+sprite can land on a different index than a true-colour render would choose. That
+is inherent to 16 colours and is what the §13 error measurement already covers.
 
 ### 4.2 Deriving the palettes
 
@@ -188,10 +218,15 @@ Reasonable 68060 figures, caches warm and the texture resident:
 
 | Inner loop | Cycles/pixel | Notes |
 | --- | --- | --- |
-| `drawrecUV` opaque | 4–6 | shift, mask, or, load, store |
-| `drawrecUVL` via ramp LUT | 6–8 | one lookup replaces the RGB maths |
+| `drawrecUVS` opaque | 4–6 | shift, mask, compare, load, store |
+| `drawrecUVSA` alpha blend | 6–8 | one per-call 256-byte table |
+| `drawrecUVRGB` / `drawrecUVM` additive | 4–6 | one pair-table lookup, same cost as an opaque copy |
 | `MotionBlur` via mix LUT | 8–10 | two loads plus one lookup |
 | Worst observed mix | ~12 | |
+
+The additive paths cost no more than the opaque copy in the indexed model,
+because they too are a single pair-table lookup (§4.1); the pair tables'
+palette dependence is a rebuild cost at scene changes, not a per-pixel cost.
 
 Full-frame, fully-covered estimates:
 
@@ -219,9 +254,10 @@ matters where the line is drawn.
 
 - **C2P.** Register allocation and `ror`/`and`/`or` chains are the whole point of
   the Kalms routines; this is ASM by definition.
-- **Inner raster loops** — `drawrecUV`, `drawrecUVL`, `MotionBlur`, the particle
-  and flare blits. These are load/lookup/store loops where a C compiler emits
-  register spills that cost more than the loop body.
+- **Inner raster loops** — `drawrecUVS`/`drawrecUVSA`, `drawrecUVRGB`,
+  `drawrecUVM` and `MotionBlur`, plus the particle and flare blits. These are
+  load/lookup/store loops where a C compiler emits register spills that cost more
+  than the loop body. The two additive loops need the per-scene table of §4.1.
 - **The audio mixer.** Four-channel Paula output driven from an 8 kHz mono
   software mix is short and entirely register work.
 - **Copper list and palette writes**, including the fade animation.
@@ -306,8 +342,8 @@ mechanism already supports suspend/resume.
 
 | Risk | Severity | Note |
 | --- | --- | --- |
-| Indexed conversion breaks a per-pixel colour effect not listed in §4.1 | Medium | Enumerate every write to `kPixel->r/g/b` and the pixel buffer before starting |
-| Palette quality on photographic textures at 16 colours | Medium | Per-scene palettes and the offline error check mitigate it; expect visible banding on gradients |
+| Indexed conversion breaks a per-pixel colour effect not listed in §4.1 | **Realised, resolved** | The enumeration was done (§15): the additive operators `drawrecUVRGB` and `drawrecUVM` were missing from §4.1. They do reduce to a palette-index pair table, but one that must be rebuilt on palette change, so §4.1 was corrected. No blocker. |
+| Palette quality on photographic textures at 16 colours | Medium | Measured in §13; per-scene palettes keep the mean error near 10/255 |
 | Fades that are not a global scale | Low | Bake intermediate palettes |
 | Aspect ratio dissatisfaction | Low | Decide from a side-by-side capture; 320×184 is available |
 | ASM maintenance and regression | Medium | Bounded by the headless oracle (§7) |
@@ -325,20 +361,25 @@ from captures, scene by scene, at the palette-selection stage.
    12 palettes and render side-by-side comparisons against the source frames.
    This is cheap, needs no Amiga, and decides whether the artistic target is
    acceptable before any port work begins. **If this step fails, the port should
-   not proceed.** — **Executed; see [step 1 results](#13-step-1-results-palette-study-executed).**
-2. **ASM raster core in ARGB**, validated bit-for-bit against `verify.cpp`'s
-   hashes. No Amiga required.
-3. **C2P bring-up** with a simple routine at 320×200 4 planes; get the picture on
+   not proceed.** — **Executed; see [step 1 results](#13-step-1-results--palette-study-executed).**
+2. **Colour-path enumeration.** Enumerate every framebuffer and `kPixel` writer
+   and every call site, so the indexed design is closed before code is written.
+   — **Executed; see [§15](#15-colour-path-enumeration-executed).** It corrected
+   §4.1 and reduced the raster core to four loops.
+3. **ASM raster core in ARGB**, validated bit-for-bit against `verify.cpp`'s
+   hashes. No Amiga required. Implement only the four reachable writers of §15.
+4. **C2P bring-up** with a simple routine at 320×200 4 planes; get the picture on
    an AGA screen and confirm the display path end to end.
-4. **Swap in Kalms**, 68060 variant, and measure at a fixed scene.
-5. **Indexed renderer and palette switching** per part, with the Copper fade
-   animation.
-6. **Host integration**: screen, copper, input, quit, assets, audio.
-7. **Measure on real hardware** and optimise only the slowest part, expected to
+5. **Swap in Kalms**, 68060 variant, and measure at a fixed scene.
+6. **Indexed renderer and palette switching** per part, with the Copper fade
+   animation and the per-scene additive table of §4.1.
+7. **Host integration**: screen, copper, input, quit, assets, audio.
+8. **Measure on real hardware** and optimise only the slowest part, expected to
    be the metaball particle pass in part 11.
 
-Steps 1 and 2 decide the project, and both can be completed before any
-Amiga-specific host code exists.
+Steps 1 to 3 decide the project, and all three can be completed before any
+Amiga-specific host code exists. Steps 1 and 2 are done and required no
+toolchain; step 3 is the first to need one.
 
 ## 11. Host tooling: macOS Apple Silicon
 
@@ -600,3 +641,50 @@ the model, not 100+**, with a **stable 50 fps** as the target and the original
 bottleneck, and the port presents on vblank — but the margin is smaller than §6
 implied, and part 11's metaball pass remains the first candidate for optimisation,
 exactly as the plan anticipated.
+
+## 15. Colour-path enumeration (executed)
+
+The §9 risk list made this a prerequisite for the port: enumerate every write to
+`kPixel->r/g/b` and to the pixel buffer before starting, so the indexed
+conversion is designed against the paths that actually run. It was carried out
+statically against `native-sdl2/src/engine.cpp`, and it changed §4.1.
+
+**Framebuffer writers.** Every assignment to the chunky buffer, by method:
+
+| Line | Method | Operation |
+| --- | --- | --- |
+| 1246 | `MotionBlur` | average current and previous frame, `>> 1` |
+| 1522 | `drawrecUV` | opaque copy — **unreachable** |
+| 1603 | `drawrecUVL` | additive + clamp — **unreachable** |
+| 1675 | `drawrecUVM` | additive + clamp 255 |
+| 1770 | `drawrecUVRGB` | additive + clamp 0–255 |
+| 1832 | `drawrecUVS` | opaque copy, index −1 transparent |
+| 1907 | `drawrecUVSA` | alpha blend, then `drawrecUVS` |
+
+**Reachability from the script effects.** Following the call graph from the
+effect handlers in `kEffectX::rendah` to the raster primitives:
+
+- `Sprit`, `Sprit3D` → `draw()` → `drawrecUVRGB`
+- `Ground`, `Tunnel` → `SetzoomP`/`Setzoom3D` → `drawrecUVSA` → `drawrecUVS`
+- `Flare3D`, `Particle` → `flare3D`/`drawflare` → `drawrecUVM`
+- `MotionBlur` → `MotionBlur`
+- `Twirl` → `findtwirl` (writes `kPixel` shading, consumed by `drawrecUVRGB`)
+
+`drawrecUV` and `drawrecUVL` appear nowhere in this graph. They are the residual
+of the original Java class and are preserved in the transcription, but the Amiga
+port does not need them and the ASM raster core should not implement them.
+
+**kPixel writers.** Only `colorclip` (per block, from `helpfade`) and `findtwirl`
+(per block) write `kPixel->r/g/b`. Both run once per 16×16 block, i.e. 627 blocks
+for a full 520×300 context, so an indexed port quantises there, not per pixel.
+
+**Consequence.** Four reachable per-pixel loops must be carried into the indexed
+design — the opaque copy (`drawrecUVS`), the alpha blend (`drawrecUVSA`), the
+additive copy (`drawrecUVRGB`/`drawrecUVM`) and the frame average (`MotionBlur`).
+All four reduce to a small pair table over palette indices, as §4.1 now shows, but
+those tables are palette-dependent and must be rebuilt when the scene palette
+changes. The first draft of §4.1 named the wrong two operators and missed the
+additive one, which is the model used by the sprites and the particle passes;
+§4.1 has been rebuilt accordingly. This enumeration is what makes the §7
+assembly work well-defined, and it is why the step-3 ARGB core can be written
+against a known, closed set of four loops rather than an open-ended one.
