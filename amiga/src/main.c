@@ -7,6 +7,7 @@
  * reports, so the tokeniser can be compared against evidence/diagnostic.json.
  */
 #include "amiga_platform.h"
+#include "agart.h"
 #include "kscript.h"
 #include "objects.h"
 
@@ -17,6 +18,26 @@
 int render_check_run(void); /* amiga/src/render_check.c */
 int c2p_check_run(void);    /* amiga/src/c2p_check.c */
 int aga_preview_run(jworld *w, int tick, const char *path); /* aga_preview.c */
+int aga_native_run(const char *pack_path);                  /* aga_native.c */
+
+/* Native indexed assets (milestone N1): load the CPIX pack the offline tool
+ * produced and report what the runtime sees, so the loader is exercised on the
+ * real target before any rendering code depends on it. */
+static int check_native_assets(const char *path) {
+    AgartPart *part = agart_load(path);
+    int i;
+    uint32_t sum = 0;
+    if (!part) { printf("native assets FAIL %s\n", path); return 1; }
+    for (i = 0; i < AGART_PALETTE_SIZE; ++i) sum = sum * 31u + part->palette[i];
+    printf("assets: %d textures, palette %08lx\n", part->count, (unsigned long)sum);
+    for (i = 0; i < part->count; ++i)
+        printf("  %-12s %s %4ux%-4u stride %u\n", part->textures[i].name,
+               part->textures[i].role ? "additive" : "opaque  ",
+               part->textures[i].width, part->textures[i].height,
+               part->textures[i].stride);
+    agart_free(part);
+    return 0;
+}
 
 static int check_asset(AmigaPlatform *platform) {
     AmigaImage *image = platform->load_image(platform->user, "Images/CARE.gif.png");
@@ -106,6 +127,16 @@ int main(int argc, char **argv) {
     amiga_file_host_init(&host, root);
     platform = amiga_file_host_platform(&host);
     setvbuf(stdout, NULL, _IONBF, 0);
+    if (!strcmp(mode, "native")) {
+        const char *path = argc > 3 ? argv[3] : "amiga/build/native-assets/assets.cpix";
+        return check_native_assets(path);
+    }
+    if (!strcmp(mode, "aga")) {
+        /* The native AGA presenter loads the CPIX pack itself and imports no PNG
+         * or script, so it takes the short path above the oracle's checks. */
+        const char *pack = argc > 3 ? argv[3] : "CP:assets/assets.cpix";
+        return aga_native_run(pack);
+    }
     failed |= check_asset(&platform);
     failed |= check_script(&platform, &script);
     /* The screen mode builds its own world below, so skip the throwaway one. */
