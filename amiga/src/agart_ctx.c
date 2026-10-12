@@ -111,6 +111,8 @@ static void blit_block(AgartContext *c, const AgartTexture *t,
                        const uint8_t blend[16][16], const AgartTables *tables,
                        uint8_t colour) {
     int w, h, du, dv, rowdu, rowdv, px, py;
+    int wrap256 = op == OP_ADD_BLOCK && t->expanded &&
+                  t->width == 256 && t->height == 256;
     if (x0 < c->clip.x1) x0 = c->clip.x1;
     if (y0 < c->clip.y1) y0 = c->clip.y1;
     if (x1 > c->clip.x2) x1 = c->clip.x2;
@@ -138,8 +140,9 @@ static void blit_block(AgartContext *c, const AgartTexture *t,
                  * These textures are kept at 256x256 by build_assets.py. */
                 tu &= 0xff;
                 tv &= 0xff;
+                if (wrap256) src = t->expanded[(tv << 8) | tu];
             }
-            if (tu >= 0 && tu < t->width && tv >= 0 && tv < t->height)
+            if (!wrap256 && tu >= 0 && tu < t->width && tv >= 0 && tv < t->height)
                 src = agart_texel(t, (unsigned)tu, (unsigned)tv);
             if (op == OP_COPY) {
                 if (src != AGART_KEY_INDEX) dst[x] = src;

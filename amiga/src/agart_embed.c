@@ -22,7 +22,7 @@ AgartPart *agart_load_embedded(void) {
     /* The pack is complete by construction, so the bound is just the distance
      * between the two labels; the parser still validates every entry offset
      * against it, so a corrupt link-time blob would be rejected. */
-    return agart_load_memory(agart_pack, (size_t)(agart_pack_end - agart_pack));
+    return agart_load_borrowed_memory(agart_pack, (size_t)(agart_pack_end - agart_pack));
 }
 
 #else

@@ -70,6 +70,7 @@ typedef struct AgartTexture {
     uint16_t width, height;
     uint16_t stride;
     const uint8_t *pixels;      /* points into the loaded pack */
+    uint8_t *expanded;          /* one index per texel, allocated at load time */
 } AgartTexture;
 
 /* The loaded pack: the global palette as AGA 12-bit registers plus every indexed
@@ -92,6 +93,9 @@ AgartPart *agart_load(const char *path);
  * embedded build, where the pack is linked into the executable. */
 AgartPart *agart_load_memory(uint8_t *blob, size_t size);
 
+/* Parses a read-only embedded pack. The caller retains ownership of `blob`. */
+AgartPart *agart_load_borrowed_memory(uint8_t *blob, size_t size);
+
 /* The embedded pack, when the executable was built with the blob linked in
  * (build.sh EMBED=1). Returns NULL otherwise. */
 AgartPart *agart_load_embedded(void);
@@ -104,6 +108,7 @@ const AgartTexture *agart_find(const AgartPart *part, const char *name);
 
 /* Reads one packed texel: index 0..15 of pixel (x, y), high nibble first. */
 static inline uint8_t agart_texel(const AgartTexture *t, unsigned x, unsigned y) {
+    if (t->expanded) return t->expanded[(size_t)y * t->width + x];
     const uint8_t b = t->pixels[(size_t)y * t->stride + (x >> 1)];
     return (uint8_t)((x & 1u) ? (b & 0x0Fu) : (b >> 4));
 }

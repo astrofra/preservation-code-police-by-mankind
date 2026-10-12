@@ -177,9 +177,11 @@ zone doivent pouvoir être ignorés ou réutiliser un buffer précédent.
 ## 7. Routines critiques
 
 Le C reste la référence fonctionnelle. Les noyaux chauds peuvent recevoir une
-implémentation assembleur 68020/68060 derrière la même interface :
+implémentation assembleur 68020/68060 derrière la même interface. Le premier
+noyau est maintenant intégré :
 
-1. C2P 4 plans, largeur 320, stride variable ;
+1. C2P 4 plans, largeur 320, stride variable — routine Kalms 68020+ sur Amiga,
+   avec repli C ;
 2. copie/blit transparent d’indices ;
 3. blend et addition indexés ;
 4. remplissage de scanlines ;
@@ -195,8 +197,10 @@ Chaque routine assembleur doit fournir :
 - une vérification des registres préservés selon l’ABI Amiga.
 
 L’assembleur ne doit pas être introduit pour masquer un mauvais format de
-données. Le premier gain attendu vient du passage à l’indexé et au fixe ; le
-C2P optimisé vient ensuite.
+données. Le passage à l’indexé et au fixe reste le premier gain ; les blits
+indexés sont le prochain noyau à remplacer si le profilage sur machine réelle
+le justifie. Le C2P Kalms est validé par le même vecteur indépendant que le
+repli C.
 
 ## 8. Organisation des backends
 

@@ -85,6 +85,23 @@ static AgartPart *agart_parse(uint8_t *bytes, size_t length, int owns) {
             return NULL;
         }
     }
+    for (i = 0; i < count; ++i) {
+        AgartTexture *t = &part->textures[i];
+        size_t pixels = (size_t)t->width * t->height;
+        size_t y;
+        t->expanded = (uint8_t *)malloc(pixels);
+        if (!t->expanded) { agart_free(part); return NULL; }
+        for (y = 0; y < t->height; ++y) {
+            size_t x;
+            const uint8_t *src = t->pixels + y * t->stride;
+            uint8_t *dst = t->expanded + y * t->width;
+            for (x = 0; x < t->width; x += 2u) {
+                uint8_t packed = src[x >> 1];
+                dst[x] = (uint8_t)(packed >> 4);
+                if (x + 1u < t->width) dst[x + 1u] = (uint8_t)(packed & 0x0Fu);
+            }
+        }
+    }
     return part;
 }
 
@@ -111,8 +128,14 @@ AgartPart *agart_load_memory(uint8_t *blob, size_t size) {
     return agart_parse(blob, size, 1);
 }
 
+AgartPart *agart_load_borrowed_memory(uint8_t *blob, size_t size) {
+    return agart_parse(blob, size, 0);
+}
+
 void agart_free(AgartPart *part) {
+    int i;
     if (!part) return;
+    for (i = 0; i < part->count; ++i) free(part->textures[i].expanded);
     free(part->textures);
     if (part->owns_blob) free(part->blob);
     free(part);

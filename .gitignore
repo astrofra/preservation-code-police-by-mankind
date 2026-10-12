@@ -24,6 +24,7 @@ amiga/build/assets_pack.s
 amiga/build/assets_pack.o
 amiga/build/68020/assets_pack.s
 amiga/build/68020/assets_pack.o
+amiga/build/68020/c2p4_kalms.o
 amiga/build/ctx_smoke
 amiga/build/fix_check
 amiga/build/fix_floor_check

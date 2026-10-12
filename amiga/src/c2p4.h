@@ -6,10 +6,10 @@
  * plane 0 holds logical bit 0, plane 3 holds bit 3; bit 7 is the leftmost pixel
  * of each destination byte; only the low nibble of every source byte is used.
  *
- * This portable C version is the correctness oracle and a fallback. A vasm
- * assembly version (external Kalms adaptation) can replace it at link time; the
- * differential test in amiga/validate_c2p.py checks either against a Python
- * reference.
+ * This portable C version is the correctness oracle and a fallback. The Amiga
+ * build selects the 68020+ Kalms transpose for widths divisible by 32; the
+ * differential test in amiga/validate_c2p.py checks both host and m68k paths
+ * against a Python reference.
  */
 #ifndef C2P4_H
 #define C2P4_H
@@ -22,7 +22,9 @@
 /* Converts one viewport. chunky is width*height bytes (low nibble significant);
  * planes[p] receives width/8 bytes per row. width must be a non-zero multiple
  * of 8; chunky_stride >= width and plane_stride >= width/8 allow row padding.
- * Returns 0 on success, non-zero on invalid arguments. */
+ * The Amiga assembly path additionally relies on the renderer's invariant that
+ * source bytes are already in 0..15. Returns 0 on success, non-zero on invalid
+ * arguments. */
 int c2p4_byte4(const uint8_t *chunky, size_t width, size_t height,
                size_t chunky_stride, uint8_t *planes[C2P4_PLANES],
                size_t plane_stride);

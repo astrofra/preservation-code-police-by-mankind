@@ -17,6 +17,11 @@ export PATH
 build="$project/build/$cpu"
 mkdir -p "$build"
 
+# The portable C converter remains the host/reference implementation. On the
+# Amiga target, use the four-plane Kalms transpose for the 320-pixel viewport.
+kalms="$build/c2p4_kalms.o"
+m68k-amigaos-as "$project/src/c2p4_kalms.S" -o "$kalms"
+
 common="$project/src/main.c $project/src/amiga_platform.c $project/src/kscript.c
     $project/src/renderer.c $project/src/render_check.c $project/src/objects.c
     $project/src/c2p4.c $project/src/c2p_check.c $project/src/aga_quant.c
@@ -24,6 +29,7 @@ common="$project/src/main.c $project/src/amiga_platform.c $project/src/kscript.c
     $project/src/agart_ctx.c $project/src/aga_native.c $project/src/agart_embed.c
     $project/src/agart_fix.c $project/src/agart_trig.c $project/src/agart_gen.c
     $project/src/agart_proj.c $project/src/aga_scene.c"
+asm_flags="-DAGART_KALMS $kalms"
 
 # EMBED=1 links the CPIX pack into the AGA binary as read-only data, so the
 # target performs no asset I/O (milestone N1b). The pack must exist; build it with
@@ -47,14 +53,14 @@ printf '> m68k-amigaos-gcc -m%s (headless)%s\n' "$cpu" " $runtime"
 m68k-amigaos-gcc -std=c99 -m"$cpu" -O2 -Wall -Wextra -Werror -fno-common \
     -ffp-contract=off -Wno-unused-function \
     -I "$root/native-sdl2/vendor/stb" -I "$project/src" \
-    $common -o "$build/code-police" "$runtime" -lm
+    $common -o "$build/code-police" "$runtime" -lm $asm_flags
 
 # The AGA binary opens a real 320x200 four-plane screen; run it under FS-UAE.
 printf '> m68k-amigaos-gcc -m%s -DAGA_SCREEN%s\n' "$cpu" " $runtime"
 m68k-amigaos-gcc -std=c99 -m"$cpu" -O2 -fno-common -ffp-contract=off \
     -Wno-unused-function -DAGA_SCREEN $embed_flags \
     -I "$root/native-sdl2/vendor/stb" -I "$project/src" \
-    $common -o "$build/code-police-aga" "$runtime" -lm
+    $common -o "$build/code-police-aga" "$runtime" -lm $asm_flags
 
 # The checked-in FS-UAE configuration boots this folder directly. Keep its
 # executable in sync with the freshly built one; otherwise FS-UAE silently
