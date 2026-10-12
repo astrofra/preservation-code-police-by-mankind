@@ -1,5 +1,6 @@
 /* Code Police — the object graph (C). See objects.h. */
 #include "objects.h"
+#include "agart_trig.h"
 
 #include <math.h>
 #include <stdio.h>
@@ -75,6 +76,15 @@ static double field_atof(const char *data, int len, int index, const char *sep) 
     return r;
 }
 
+/* Conversion is startup-only. Once the graph is built, the native indexed
+ * backend reads the fixed shadow fields and never calls this helper. */
+static fix16 fix_from_double(double value) {
+    double scaled = value * 65536.0;
+    if (scaled >= 2147483647.0) return (fix16)0x7fffffff;
+    if (scaled <= -2147483648.0) return (fix16)0x80000000;
+    return (fix16)scaled;
+}
+
 static int field_atoi(const char *data, int len, int index, const char *sep) {
     char *v = field_str(data, len, index, sep);
     int r = v ? atoi(v) : 0;
@@ -92,15 +102,26 @@ static jtable *table_create(const char *data, int len) {
     if (t->lengthtable < 1) { t->lengthtable = 0; return t; }
     t->datetable = (double *)calloc((size_t)t->lengthtable, sizeof(double));
     t->floattable = (double *)calloc((size_t)t->lengthtable, sizeof(double));
-    if (!t->datetable || !t->floattable) return t; /* partial; harmless at 0 */
+    t->fix_datetable = (fix16 *)calloc((size_t)t->lengthtable, sizeof(fix16));
+    t->fix_floattable = (fix16 *)calloc((size_t)t->lengthtable, sizeof(fix16));
+    if (!t->datetable || !t->floattable || !t->fix_datetable || !t->fix_floattable)
+        return t; /* partial; harmless at 0 */
     for (i = 0; i < (int)t->lengthtable; ++i) {
         char *entry = field_str(data, len, 1 + i, "|");
         if (entry) {
             KsStr es = {entry, (int)strlen(entry)};
             KsStr d = ks_find_into(es.data, es.len, 0, ",");
             KsStr f = ks_find_into(es.data, es.len, 1, ",");
-            if (d.data) { t->datetable[i] = parse_double(&d); ks_str_free(d); }
-            if (f.data) { t->floattable[i] = parse_double(&f); ks_str_free(f); }
+            if (d.data) {
+                t->datetable[i] = parse_double(&d);
+                t->fix_datetable[i] = fix_from_double(t->datetable[i]);
+                ks_str_free(d);
+            }
+            if (f.data) {
+                t->floattable[i] = parse_double(&f);
+                t->fix_floattable[i] = fix_from_double(t->floattable[i]);
+                ks_str_free(f);
+            }
             free(entry);
         }
     }
@@ -274,6 +295,48 @@ static double param_doubleout(jparam *p, jworld *w, double d) {
     }
 }
 
+/* Fixed version of kTable.spline. It deliberately mirrors table_spline rather
+ * than using a cheaper linear interpolation: the native scene must retain the
+ * shape of the authored curves while avoiding a double division per parameter. */
+static fix16 table_spline_fix(const jtable *t, fix16 d) {
+    jint n = t->lengthtable - 1;
+    jint n2, n3, n4, n5, n6, n7, n8;
+    fix16 d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14;
+    if (t->lengthtable <= 0 || !t->fix_datetable || !t->fix_floattable) return 0;
+    if (d <= t->fix_datetable[0]) return t->fix_floattable[0];
+    n2 = 0; n3 = n; n4 = (n2 + n3) >> 1; n5 = n3;
+    if (d >= t->fix_datetable[n5]) return t->fix_floattable[n5];
+    n5 = n4; n6 = n4 + 1;
+    while (!(d >= t->fix_datetable[n5]) || !(d < t->fix_datetable[n6])) {
+        if (d < t->fix_datetable[n5]) n3 = n4; else n2 = n4;
+        n5 = (n4 = (n2 + n3) >> 1);
+        n6 = n4 + 1;
+    }
+    n7 = (n4 == 0) ? n5 : (n5 - 1);
+    n8 = ((n4 + 1) == n) ? n6 : (n6 + 1);
+    d2 = t->fix_datetable[n5];
+    d3 = t->fix_datetable[n6];
+    d4 = d3 - d2;
+    d5 = fix16_div(t->fix_floattable[n6] - t->fix_floattable[n7],
+                   t->fix_datetable[n6] - t->fix_datetable[n7]);
+    d6 = fix16_div(t->fix_floattable[n8] - t->fix_floattable[n5],
+                   t->fix_datetable[n8] - d2);
+    d7 = d5;
+    d8 = t->fix_floattable[n5];
+    d9 = t->fix_floattable[n6];
+    d10 = d4;
+    d11 = fix16_mul(d10, d10);
+    d12 = fix16_div(-fix16_mul(d10, d6) - fix16_mul(d7 << 1, d10) +
+                    3 * (d9 - d8), d11);
+    d13 = fix16_div(d6 - fix16_mul(d12 << 1, d10) - d7,
+                    3 * d11);
+    d11 = d - d2;
+    d9 = fix16_mul(d11, d11);
+    d14 = fix16_mul(d9, d11);
+    d10 = fix16_mul(d13, d14) + fix16_mul(d12, d9) + fix16_mul(d7, d11) + d8;
+    return d10;
+}
+
 /* Resolves an object parameter to its typed pointer. */
 static void *param_out(jparam *p, jworld *w) {
     if (p->code == PARAM_OBJ) return p->obj ? p->obj : &w->root;
@@ -283,6 +346,27 @@ static void *param_out(jparam *p, jworld *w) {
 /* Public wrappers, so the native indexed scene can evaluate the same parameters
  * and resolve the same object pointers without duplicating the switch. */
 double jparam_doubleout(jparam *p, jworld *w, double d) { return param_doubleout(p, w, d); }
+fix16 jparam_fixout(jparam *p, jworld *w, fix16 d) {
+    uint64_t a, b, random53;
+    fix16 unit;
+    switch (p->code) {
+    case PARAM_COS: return p->fa + fix16_mul(fix16_cos(fix16_mul(p->fb, d)), p->fc);
+    case PARAM_SIN: return p->fa + fix16_mul(fix16_sin(fix16_mul(p->fb, d)), p->fc);
+    case PARAM_CTE: return p->fa;
+    case PARAM_RND:
+        /* Match Java Random.nextDouble's two state advances, then keep its top
+         * 16 fractional bits. The native path does not need the 53-bit tail. */
+        a = jr_next(&w->random, 26);
+        b = jr_next(&w->random, 27);
+        random53 = (a << 27) + b;
+        unit = (fix16)(random53 >> 37);
+        return p->fa + fix16_mul(unit, p->fb - p->fa);
+    case PARAM_SPL:
+        return table_spline_fix((const jtable *)p->obj, d - p->fa);
+    case PARAM_AFF: return p->fa + fix16_mul(p->fb, d);
+    default: return 0;
+    }
+}
 void *jparam_out(jparam *p, jworld *w) { return param_out(p, w); }
 
 /* ---- effect ---- */
@@ -546,6 +630,10 @@ jworld *jworld_create(const KsScript *script, const AmigaPlatform *platform) {
         c->O2 = field_atof(d->data, d->len, 5, "|");
         c->O3 = field_atof(d->data, d->len, 6, "|");
         c->FOV = field_atof(d->data, d->len, 7, "|");
+        c->fX = fix_from_double(c->X); c->fY = fix_from_double(c->Y);
+        c->fZ = fix_from_double(c->Z); c->fO1 = fix_from_double(c->O1);
+        c->fO2 = fix_from_double(c->O2); c->fO3 = fix_from_double(c->O3);
+        c->fFOV = fix_from_double(c->FOV);
         w->cameras[w->camera_count] = c;
         w->camera_names[w->camera_count] = name ? name : strdup("?");
         ++w->camera_count;
@@ -688,6 +776,9 @@ jworld *jworld_create(const KsScript *script, const AmigaPlatform *platform) {
                 } else {
                     p->code = PARAM_CTE; p->a = 0.0;
                 }
+                p->fa = fix_from_double(p->a);
+                p->fb = fix_from_double(p->b);
+                p->fc = fix_from_double(p->c);
                 free(kw);
                 e->params[k - 1] = p;
             }
@@ -771,7 +862,14 @@ void jworld_free(jworld *w) {
     int i, j, k;
     if (!w) return;
     for (i = 0; i < w->texture_count; ++i) { if (w->textures[i]) { free(w->textures[i]->pixels); free(w->textures[i]); } free(w->texture_names[i]); }
-    for (i = 0; i < w->table_count; ++i) { if (w->tables[i]) { free(w->tables[i]->datetable); free(w->tables[i]->floattable); free(w->tables[i]); } free(w->table_names[i]); }
+    for (i = 0; i < w->table_count; ++i) {
+        if (w->tables[i]) {
+            free(w->tables[i]->datetable); free(w->tables[i]->floattable);
+            free(w->tables[i]->fix_datetable); free(w->tables[i]->fix_floattable);
+            free(w->tables[i]);
+        }
+        free(w->table_names[i]);
+    }
     for (i = 0; i < w->camera_count; ++i) { free(w->cameras[i]); free(w->camera_names[i]); }
     for (i = 0; i < w->particle_count; ++i) { free_particle(w->particles[i]); free(w->particle_names[i]); }
     for (i = 0; i < w->rect_count; ++i) { if (w->rects[i]) rcr_free(w->rects[i]); free(w->rect_names[i]); }

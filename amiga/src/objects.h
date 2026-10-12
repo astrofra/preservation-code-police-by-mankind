@@ -13,6 +13,7 @@
 #include "java_random.h"
 #include "kscript.h"
 #include "amiga_platform.h"
+#include "agart_fix.h"
 
 #define MAX_NAME 64
 
@@ -25,10 +26,13 @@ typedef struct jtable {
     jint lengthtable;
     double *datetable;
     double *floattable;
+    fix16 *fix_datetable;
+    fix16 *fix_floattable;
 } jtable;
 
 typedef struct jcamera {
     double X, Y, Z, O1, O2, O3, FOV;
+    fix16 fX, fY, fZ, fO1, fO2, fO3, fFOV;
 } jcamera;
 
 typedef struct jparticle {
@@ -47,6 +51,7 @@ enum {
 typedef struct jparam {
     int code;              /* PARAM_* */
     double a, b, c;
+    fix16 fa, fb, fc;      /* native scene coefficients, prepared at load time */
     int obj_kind;          /* 1 texture, 2 camera, 3 particle, 4 rect, 5 root */
     void *obj;
 } jparam;
@@ -118,6 +123,10 @@ void jworld_rendah(jworld *w, jpart *part, jint n, int *last_part_played);
 /* The parameter evaluation and object resolution the effects use, exposed so the
  * native indexed scene (aga_scene.c) can drive the same effect tree. */
 double jparam_doubleout(jparam *p, jworld *w, double d);
+/* Fixed-point counterpart used exclusively by the native indexed scene. It
+ * consumes the same Java RNG stream as jparam_doubleout for PARAM_RND, but does
+ * not enter libm or perform a floating-point operation. */
+fix16 jparam_fixout(jparam *p, jworld *w, fix16 d);
 void *jparam_out(jparam *p, jworld *w);
 
 /* Renders one whole-script frame: reseed to 100000+tick, pick the part, run it,

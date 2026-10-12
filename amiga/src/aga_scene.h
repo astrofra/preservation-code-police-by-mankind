@@ -21,6 +21,7 @@ typedef struct AgartScene {
     const AgartPart *pack;
     AgartTables tables;
     AgartColourLut lut;
+    uint8_t *blend_lut;          /* 256 alpha tables, built once at startup */
     AgartContext ctx;
     uint8_t *front;              /* current frame indices */
     uint8_t *back;               /* previous frame, for motion blur */

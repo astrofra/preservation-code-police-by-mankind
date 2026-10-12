@@ -7,8 +7,8 @@
  */
 #include "aga_scene.h"
 #include "agart_proj.h"
+#include "agart_trig.h"
 
-#include <math.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -19,8 +19,11 @@ enum {
     FX_SETCAMCOORD = 10, FX_SETCAMTARGET = 11, FX_EVESOUND = 12
 };
 
-#define F(x) ((fix16)((int64_t)llround(x * 65536.0)))
 #define CLAMP255(v) ((int)((v) < 0 ? 0 : (v) > 255 ? 255 : (v)))
+
+static fix16 tick_fix(jint tick) {
+    return (fix16)((int64_t)tick << FIX16_SHIFT);
+}
 
 static const AgartTexture *tex_of(jworld *w, const AgartPart *pack, const void *obj) {
     int i;
@@ -34,33 +37,61 @@ static void fill_clip(const AgartScene *s, AgartBox *box) {
     box->x2 = s->width; box->y2 = s->height;
 }
 
+/* Alpha is quantised to the same byte the original effect exposes. Keeping all
+ * 256 tables in Fast RAM removes a 16x16x16 colour-distance search from every
+ * sprite draw. The returned table is read-only for the whole scene lifetime. */
+static const uint8_t (*scene_blend(const AgartScene *s, int alpha))[16] {
+    if (alpha < 0) alpha = 0;
+    if (alpha > 255) alpha = 255;
+    return (const uint8_t (*)[16])(s->blend_lut + (size_t)alpha * 16u * 16u);
+}
+
 /* The fade helper an effect carries (helpfade): pairs of (depth, colour). */
-static void fade_set(AgartFade *hf, jworld *w, jeffect *e, int first, jint d2) {
-    hf->Frd1 = F(jparam_doubleout(e->params[first + 0], w, (double)d2));
-    hf->Frv1 = F(jparam_doubleout(e->params[first + 1], w, (double)d2));
-    hf->Frd2 = F(jparam_doubleout(e->params[first + 2], w, (double)d2));
-    hf->Frv2 = F(jparam_doubleout(e->params[first + 3], w, (double)d2));
-    hf->Fgd1 = F(jparam_doubleout(e->params[first + 4], w, (double)d2));
-    hf->Fgv1 = F(jparam_doubleout(e->params[first + 5], w, (double)d2));
-    hf->Fgd2 = F(jparam_doubleout(e->params[first + 6], w, (double)d2));
-    hf->Fgv2 = F(jparam_doubleout(e->params[first + 7], w, (double)d2));
-    hf->Fbd1 = F(jparam_doubleout(e->params[first + 8], w, (double)d2));
-    hf->Fbv1 = F(jparam_doubleout(e->params[first + 9], w, (double)d2));
-    hf->Fbd2 = F(jparam_doubleout(e->params[first + 10], w, (double)d2));
-    hf->Fbv2 = F(jparam_doubleout(e->params[first + 11], w, (double)d2));
+static void fade_set(AgartFade *hf, jworld *w, jeffect *e, int first, fix16 time) {
+    hf->Frd1 = jparam_fixout(e->params[first + 0], w, time);
+    hf->Frv1 = jparam_fixout(e->params[first + 1], w, time);
+    hf->Frd2 = jparam_fixout(e->params[first + 2], w, time);
+    hf->Frv2 = jparam_fixout(e->params[first + 3], w, time);
+    hf->Fgd1 = jparam_fixout(e->params[first + 4], w, time);
+    hf->Fgv1 = jparam_fixout(e->params[first + 5], w, time);
+    hf->Fgd2 = jparam_fixout(e->params[first + 6], w, time);
+    hf->Fgv2 = jparam_fixout(e->params[first + 7], w, time);
+    hf->Fbd1 = jparam_fixout(e->params[first + 8], w, time);
+    hf->Fbv1 = jparam_fixout(e->params[first + 9], w, time);
+    hf->Fbd2 = jparam_fixout(e->params[first + 10], w, time);
+    hf->Fbv2 = jparam_fixout(e->params[first + 11], w, time);
 }
 
 /* A camera parameter is one of the object pointers; read it in fixed point. */
 static void read_cam(jworld *w, jcamera *cam, AgartCamera *out) {
-    out->X = F(cam->X); out->Y = F(cam->Y); out->Z = F(cam->Z);
-    out->O1 = F(cam->O1); out->O2 = F(cam->O2); out->O3 = F(cam->O3);
-    out->FOV = F(cam->FOV);
+    out->X = cam->fX; out->Y = cam->fY; out->Z = cam->fZ;
+    out->O1 = cam->fO1; out->O2 = cam->fO2; out->O3 = cam->fO3;
+    out->FOV = cam->fFOV;
     (void)w;
+}
+
+/* Fixed counterpart of kCamera.setTarget. The extra turns keep the same
+ * orientation convention as the Java port; angles are allowed to wrap because
+ * the fixed trig helpers reduce them before evaluation. */
+static void camera_target_fix(jcamera *cam, fix16 x, fix16 y, fix16 z,
+                              fix16 target_x, fix16 target_y, fix16 target_z,
+                              fix16 fov, fix16 roll) {
+    fix16 dx = target_x - x, dy = target_y - y, dz = target_z - z;
+    fix16 heading, forward, pitch;
+    if (dz == 0) dz = 1;
+    heading = fix16_atan2(dx, dz);
+    heading += dz > 0 ? FIX16_TWO_PI : FIX16_PI;
+    forward = fix16_mul(dz, fix16_cos(heading)) + fix16_mul(dx, fix16_sin(heading));
+    if (forward == 0) forward = 1;
+    pitch = fix16_atan2(dy, forward);
+    pitch += forward > 0 ? FIX16_TWO_PI : FIX16_PI;
+    cam->fX = x; cam->fY = y; cam->fZ = z;
+    cam->fFOV = fov; cam->fO1 = roll; cam->fO3 = heading; cam->fO2 = -pitch;
 }
 
 /* The generator effects (ground, tunnel, twirl): project the camera, fill a block
  * grid, then draw it with the block shading colour (drawrecUVRGB). */
-static void scene_generator(AgartScene *s, jworld *w, jeffect *e, jint d2) {
+static void scene_generator(AgartScene *s, jworld *w, jeffect *e, fix16 time) {
     int mx = (s->width + 15) / 16, my = (s->height + 15) / 16;
     AgartFade hf;
     AgartBox box;
@@ -71,36 +102,36 @@ static void scene_generator(AgartScene *s, jworld *w, jeffect *e, jint d2) {
         jcamera *cam = (jcamera *)jparam_out(e->params[0], w);
         read_cam(w, cam, &ac);
         agart_position3d_fix(&ac, &box, mx, my, s->rays);
-        fade_set(&hf, w, e, 7, d2);
+        fade_set(&hf, w, e, 7, time);
         agart_floor_fix(s->rays, mx, my, ac.X, ac.Y, ac.Z,
-                        F(jparam_doubleout(e->params[1], w, (double)d2)),
-                        F(jparam_doubleout(e->params[2], w, (double)d2)),
-                        F(jparam_doubleout(e->params[5], w, (double)d2)),
-                        F(jparam_doubleout(e->params[6], w, (double)d2)),
+                        jparam_fixout(e->params[1], w, time),
+                        jparam_fixout(e->params[2], w, time),
+                        jparam_fixout(e->params[5], w, time),
+                        jparam_fixout(e->params[6], w, time),
                         &hf, &s->lut, s->blocks);
         t = tex_of(w, s->pack, jparam_out(e->params[3], w));
     } else if (e->keffectcode == FX_TUNNEL) {
         jcamera *cam = (jcamera *)jparam_out(e->params[0], w);
         read_cam(w, cam, &ac);
         agart_position3d_fix(&ac, &box, mx, my, s->rays);
-        fade_set(&hf, w, e, 5, d2);
+        fade_set(&hf, w, e, 5, time);
         agart_tunnel_fix(s->rays, mx, my, ac.Z,
-                         F(jparam_doubleout(e->params[1], w, (double)d2)),
-                         F(jparam_doubleout(e->params[2], w, (double)d2)),
+                         jparam_fixout(e->params[1], w, time),
+                         jparam_fixout(e->params[2], w, time),
                          &hf, &s->lut, s->blocks);
         t = tex_of(w, s->pack, jparam_out(e->params[3], w));
     } else { /* twirl: no camera, PosX/PosY come from parameters 0 and 1. */
-        ac.X = F(jparam_doubleout(e->params[0], w, (double)d2));
-        ac.Y = F(jparam_doubleout(e->params[1], w, (double)d2));
+        ac.X = jparam_fixout(e->params[0], w, time);
+        ac.Y = jparam_fixout(e->params[1], w, time);
         ac.Z = 0; ac.O1 = 0; ac.O2 = 0; ac.O3 = 0; ac.FOV = 0;
         agart_position3d_fix(&ac, &box, mx, my, s->rays);
         agart_twirl_fix(s->rays, mx, my, ac.X, ac.Y,
-                        F(jparam_doubleout(e->params[2], w, (double)d2)),
-                        F(jparam_doubleout(e->params[3], w, (double)d2)),
-                        F(jparam_doubleout(e->params[4], w, (double)d2)),
-                        F(jparam_doubleout(e->params[5], w, (double)d2)),
-                        F(jparam_doubleout(e->params[6], w, (double)d2)),
-                        F(jparam_doubleout(e->params[7], w, (double)d2)),
+                        jparam_fixout(e->params[2], w, time),
+                        jparam_fixout(e->params[3], w, time),
+                        jparam_fixout(e->params[4], w, time),
+                        jparam_fixout(e->params[5], w, time),
+                        jparam_fixout(e->params[6], w, time),
+                        jparam_fixout(e->params[7], w, time),
                         &s->lut, s->blocks);
         t = tex_of(w, s->pack, jparam_out(e->params[8], w));
     }
@@ -112,32 +143,30 @@ static void scene_generator(AgartScene *s, jworld *w, jeffect *e, jint d2) {
 }
 
 /* Effect dispatcher, mirroring effect_rendah but in the indexed world. */
-static void scene_effect(AgartScene *s, jworld *w, jeffect *e, jint n) {
-    jint d2 = n;
+static void scene_effect(AgartScene *s, jworld *w, jeffect *e, fix16 time) {
     switch (e->keffectcode) {
     case FX_SPRIT: { /* 2D sprite: SetzoomP, alpha blend */
         const AgartTexture *t = tex_of(w, s->pack, jparam_out(e->params[0], w));
-        double alpha = jparam_doubleout(e->params[6], w, (double)d2);
+        fix16 alpha = jparam_fixout(e->params[6], w, time);
         if (t) {
             AgartBox clip, out;
             fix16 u[4], v[4];
-            uint8_t blend[16][16];
             AgartUV uv[4];
             fill_clip(s, &clip);
             if (agart_setzoomp_fix(
-                    F(jparam_doubleout(e->params[1], w, (double)d2)),
-                    F(jparam_doubleout(e->params[2], w, (double)d2)),
-                    F(jparam_doubleout(e->params[3], w, (double)d2)),
-                    F(jparam_doubleout(e->params[4], w, (double)d2)),
+                    jparam_fixout(e->params[1], w, time),
+                    jparam_fixout(e->params[2], w, time),
+                    jparam_fixout(e->params[3], w, time),
+                    jparam_fixout(e->params[4], w, time),
                     t->width, t->height, &clip, &out, u, v)) {
-                agart_blend_build(blend, s->pack, CLAMP255((int)alpha));
                 s->ctx.rect.x1 = out.x1; s->ctx.rect.y1 = out.y1;
                 s->ctx.rect.x2 = out.x2; s->ctx.rect.y2 = out.y2;
                 uv[0].u = u[0]; uv[0].v = v[0];
                 uv[1].u = u[1]; uv[1].v = v[1];
                 uv[2].u = u[2]; uv[2].v = v[2];
                 uv[3].u = u[3]; uv[3].v = v[3];
-                agart_blit_alpha(&s->ctx, t, uv, blend);
+                agart_blit_alpha(&s->ctx, t, uv,
+                                 scene_blend(s, CLAMP255((int)(alpha >> 16))));
                 ++s->draws;
             }
         }
@@ -145,29 +174,28 @@ static void scene_effect(AgartScene *s, jworld *w, jeffect *e, jint n) {
     }
     case FX_SPRIT3D: { /* 3D sprite: Setzoom3D, alpha blend */
         const AgartTexture *t = tex_of(w, s->pack, jparam_out(e->params[6], w));
-        double alpha = jparam_doubleout(e->params[8], w, (double)d2);
+        fix16 alpha = jparam_fixout(e->params[8], w, time);
         if (t) {
             AgartBox clip, out;
             fix16 u[4], v[4];
-            uint8_t blend[16][16];
             AgartUV uv[4];
             fill_clip(s, &clip);
             if (agart_setzoom3d_fix(
-                    F(jparam_doubleout(e->params[0], w, (double)d2)),
-                    F(jparam_doubleout(e->params[1], w, (double)d2)),
-                    F(jparam_doubleout(e->params[2], w, (double)d2)),
-                    F(jparam_doubleout(e->params[3], w, (double)d2)),
-                    F(jparam_doubleout(e->params[4], w, (double)d2)),
-                    F(jparam_doubleout(e->params[5], w, (double)d2)),
+                    jparam_fixout(e->params[0], w, time),
+                    jparam_fixout(e->params[1], w, time),
+                    jparam_fixout(e->params[2], w, time),
+                    jparam_fixout(e->params[3], w, time),
+                    jparam_fixout(e->params[4], w, time),
+                    jparam_fixout(e->params[5], w, time),
                     t->width, t->height, &clip, &out, u, v)) {
-                agart_blend_build(blend, s->pack, CLAMP255((int)alpha));
                 s->ctx.rect.x1 = out.x1; s->ctx.rect.y1 = out.y1;
                 s->ctx.rect.x2 = out.x2; s->ctx.rect.y2 = out.y2;
                 uv[0].u = u[0]; uv[0].v = v[0];
                 uv[1].u = u[1]; uv[1].v = v[1];
                 uv[2].u = u[2]; uv[2].v = v[2];
                 uv[3].u = u[3]; uv[3].v = v[3];
-                agart_blit_alpha(&s->ctx, t, uv, blend);
+                agart_blit_alpha(&s->ctx, t, uv,
+                                 scene_blend(s, CLAMP255((int)(alpha >> 16))));
                 ++s->draws;
             }
         }
@@ -176,7 +204,7 @@ static void scene_effect(AgartScene *s, jworld *w, jeffect *e, jint n) {
     case FX_GROUND:
     case FX_TUNNEL:
     case FX_TWIRL:
-        scene_generator(s, w, e, d2);
+        scene_generator(s, w, e, time);
         break;
     case FX_FLARE3D: {
         const AgartTexture *t = tex_of(w, s->pack, jparam_out(e->params[6], w));
@@ -186,12 +214,12 @@ static void scene_effect(AgartScene *s, jworld *w, jeffect *e, jint n) {
             AgartUV uv[4];
             fill_clip(s, &clip);
             if (agart_setzoom3d_fix(
-                    F(jparam_doubleout(e->params[0], w, (double)d2)),
-                    F(jparam_doubleout(e->params[1], w, (double)d2)),
-                    F(jparam_doubleout(e->params[2], w, (double)d2)),
-                    F(jparam_doubleout(e->params[3], w, (double)d2)),
-                    F(jparam_doubleout(e->params[4], w, (double)d2)),
-                    F(jparam_doubleout(e->params[5], w, (double)d2)),
+                    jparam_fixout(e->params[0], w, time),
+                    jparam_fixout(e->params[1], w, time),
+                    jparam_fixout(e->params[2], w, time),
+                    jparam_fixout(e->params[3], w, time),
+                    jparam_fixout(e->params[4], w, time),
+                    jparam_fixout(e->params[5], w, time),
                     t->width, t->height, &clip, &out, u, v)) {
                 s->ctx.rect.x1 = out.x1; s->ctx.rect.y1 = out.y1;
                 s->ctx.rect.x2 = out.x2; s->ctx.rect.y2 = out.y2;
@@ -210,8 +238,36 @@ static void scene_effect(AgartScene *s, jworld *w, jeffect *e, jint n) {
         agart_motion_blur(&s->ctx, &s->tables);
         ++s->draws;
         break;
+    case FX_SETCAMCOORD: {
+        jcamera *cam = (jcamera *)jparam_out(e->params[0], w);
+        if (cam) {
+            cam->fX = jparam_fixout(e->params[1], w, time);
+            cam->fY = jparam_fixout(e->params[2], w, time);
+            cam->fZ = jparam_fixout(e->params[3], w, time);
+            cam->fO1 = jparam_fixout(e->params[4], w, time);
+            cam->fO2 = jparam_fixout(e->params[5], w, time);
+            cam->fO3 = jparam_fixout(e->params[6], w, time);
+            cam->fFOV = jparam_fixout(e->params[7], w, time);
+        }
+        break;
+    }
+    case FX_SETCAMTARGET: {
+        jcamera *cam = (jcamera *)jparam_out(e->params[0], w);
+        if (cam) {
+            camera_target_fix(cam,
+                jparam_fixout(e->params[1], w, time),
+                jparam_fixout(e->params[2], w, time),
+                jparam_fixout(e->params[3], w, time),
+                jparam_fixout(e->params[4], w, time),
+                jparam_fixout(e->params[5], w, time),
+                jparam_fixout(e->params[6], w, time),
+                jparam_fixout(e->params[7], w, time),
+                jparam_fixout(e->params[8], w, time));
+        }
+        break;
+    }
     default:
-        break;   /* setrect, particle, camera and sound are handled elsewhere. */
+        break;   /* setrect, particle and sound remain later milestones. */
     }
 }
 
@@ -225,11 +281,22 @@ AgartScene *aga_scene_create(const AgartPart *pack, int width, int height) {
     max_blocks = ((width + 15) / 16 + 1) * ((height + 15) / 16 + 1);
     s->front = (uint8_t *)calloc((size_t)width * height, 1);
     s->back = (uint8_t *)calloc((size_t)width * height, 1);
+    s->blend_lut = (uint8_t *)malloc(256u * 16u * 16u);
     s->rays = (fix16 *)calloc((size_t)max_blocks * 3, sizeof(fix16));
     s->blocks = (AgartBlock *)calloc((size_t)max_blocks, sizeof(AgartBlock));
-    if (!s->front || !s->back || !s->rays || !s->blocks) { aga_scene_free(s); return NULL; }
+    if (!s->front || !s->back || !s->blend_lut || !s->rays || !s->blocks) {
+        aga_scene_free(s);
+        return NULL;
+    }
     s->max_blocks = max_blocks;
     agart_tables_build(&s->tables, pack);
+    {
+        int alpha;
+        for (alpha = 0; alpha < 256; ++alpha)
+            agart_blend_build((uint8_t (*)[16])(s->blend_lut +
+                              (size_t)alpha * 16u * 16u),
+                              pack, alpha);
+    }
     agart_colour_lut_build(&s->lut, pack->palette_rgb);
     /* The frame is drawn into `back`; `front` holds the previous frame for motion
      * blur. After each frame they swap, so `front` always holds the last result. */
@@ -247,6 +314,7 @@ void aga_scene_free(AgartScene *s) {
     if (!s) return;
     free(s->front);
     free(s->back);
+    free(s->blend_lut);
     free(s->rays);
     free(s->blocks);
     free(s);
@@ -262,7 +330,8 @@ int aga_scene_frame(AgartScene *s, jworld *w, jint tick) {
     part = jworld_part(w, tick);
     {
         jint n2 = (tick - part->time_length) + part->time_start;
-        for (i = 0; i < part->nb_effect; ++i) scene_effect(s, w, part->effects[i], n2);
+        for (i = 0; i < part->nb_effect; ++i)
+            scene_effect(s, w, part->effects[i], tick_fix(n2));
     }
     /* Present: swap front/back so the just-drawn buffer becomes `front` (the one a
      * host displays and, next tick, the motion-blur source), as rcr_create_image
