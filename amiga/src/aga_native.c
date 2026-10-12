@@ -12,6 +12,7 @@
  */
 #include "agart.h"
 #include "agart_ctx.h"
+#include "aga_scene.h"
 
 #include <stdio.h>
 
@@ -145,7 +146,48 @@ int aga_native_run(const char *pack_path) {
     return 0;
 }
 
+/* Plays the whole demo through the indexed scene on the AGA screen (milestone
+ * N4). The object graph is passed in already built; every frame is rendered by
+ * aga_scene_frame into the scene's index buffer and C2P'd to the bitplanes. */
+int aga_play_run(jworld *w, const char *pack_path, int start_tick) {
+    AgartPart *pack;
+    AgartScene *scene;
+    int tick, drawn = 0;
+    long frames = 0;
+    FILE *m;
+    pack = agart_load_embedded();
+    if (!pack) pack = agart_load(pack_path);
+    if (!pack) { printf("play: cannot load %s\n", pack_path); return 1; }
+    if (!open_screen()) { agart_free(pack); return 1; }
+    LoadRGB4(&g_screen->ViewPort, (UWORD *)pack->palette, 16);
+    scene = aga_scene_create(pack, SW, SH);
+    if (!scene) { close_screen(); agart_free(pack); return 1; }
+    m = fopen("CP:ran.txt", "w");
+    if (m) { fprintf(m, "play: start tick %d\n", start_tick); fclose(m); }
+    for (tick = start_tick; tick <= w->end_date; tick += 2) {
+        if (SetSignal(0L, SIGBREAKF_CTRL_C) & SIGBREAKF_CTRL_C) break;
+        aga_scene_frame(scene, w, (jint)tick);
+        drawn += scene->draws;
+        c2p4_byte4(scene->front, SW, SH, SW, (uint8_t **)g_planes, g_plane_stride);
+        WaitTOF();
+        ++frames;
+        if ((frames % 200) == 0) {
+            m = fopen("CP:ran.txt", "w");
+            if (m) { fprintf(m, "play: tick %d, %ld frames, %d draws\n", tick, frames, drawn); fclose(m); }
+        }
+    }
+    m = fopen("CP:ran.txt", "w");
+    if (m) { fprintf(m, "play: done tick %d, %ld frames, %d draws\n", tick, frames, drawn); fclose(m); }
+    aga_scene_free(scene);
+    close_screen();
+    agart_free(pack);
+    return 0;
+}
+
 #else
 /* Host build: there is no AGA screen. */
 int aga_native_run(const char *pack_path) { (void)pack_path; return 0; }
+int aga_play_run(jworld *w, const char *pack_path, int start_tick) {
+    (void)w; (void)pack_path; (void)start_tick; return 0;
+}
 #endif

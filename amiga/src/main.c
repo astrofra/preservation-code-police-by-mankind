@@ -19,6 +19,7 @@ int render_check_run(void); /* amiga/src/render_check.c */
 int c2p_check_run(void);    /* amiga/src/c2p_check.c */
 int aga_preview_run(jworld *w, int tick, const char *path); /* aga_preview.c */
 int aga_native_run(const char *pack_path);                  /* aga_native.c */
+int aga_play_run(jworld *w, const char *pack_path, int start_tick); /* aga_native.c */
 
 /* Native indexed assets (milestone N1): load the CPIX pack the offline tool
  * produced and report what the runtime sees, so the loader is exercised on the
@@ -136,6 +137,18 @@ int main(int argc, char **argv) {
          * or script, so it takes the short path above the oracle's checks. */
         const char *pack = argc > 3 ? argv[3] : "CP:assets/assets.cpix";
         return aga_native_run(pack);
+    }
+    if (!strcmp(mode, "play")) {
+        /* The indexed scene interpreter drives the real object graph on the AGA
+         * screen. Parse the script, build the graph, then play from the given tick
+         * (default: part 1, the first scene with visible content). */
+        const char *pack = argc > 3 ? argv[3] : "CP:assets/assets.cpix";
+        int start = argc > 4 ? atoi(argv[4]) : 760;
+        jworld *w;
+        if (check_script(&platform, &script)) return 1;
+        w = jworld_create(script, &platform);
+        if (!w) return 1;
+        return aga_play_run(w, pack, start);
     }
     failed |= check_asset(&platform);
     failed |= check_script(&platform, &script);
