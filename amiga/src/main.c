@@ -15,6 +15,8 @@
 #include <string.h>
 
 int render_check_run(void); /* amiga/src/render_check.c */
+int c2p_check_run(void);    /* amiga/src/c2p_check.c */
+int aga_preview_run(jworld *w, int tick, const char *path); /* aga_preview.c */
 
 static int check_asset(AmigaPlatform *platform) {
     AmigaImage *image = platform->load_image(platform->user, "Images/CARE.gif.png");
@@ -106,6 +108,19 @@ int main(int argc, char **argv) {
     if (!strcmp(mode, "render")) {
         printf("--- renderer differential ---\n");
         failed |= render_check_run();
+    }
+    if (!strcmp(mode, "c2p")) {
+        failed |= c2p_check_run();
+    }
+    if (!strcmp(mode, "preview") && script) {
+        jworld *w = jworld_create(script, &platform);
+        if (w) {
+            failed |= aga_preview_run(w, 6000, "amiga/build/preview-6000.ppm");
+            failed |= aga_preview_run(w, 20000, "amiga/build/preview-20000.ppm");
+            jworld_free(w);
+        } else {
+            failed |= 1;
+        }
     }
     ks_free(script);
     return failed;
