@@ -9,21 +9,26 @@ native-sdl2/build*/
 wasm/build/
 wasm/node_modules/
 
-# Generated Amiga build outputs. The linked m68k binaries under
-# amiga/build/<cpu>/ are kept (they are the artefact of a milestone), but the
-# offline asset blobs, the emulator hard-dir and the host test binaries are not.
+# Generated Amiga build outputs. Only the 68020 m68k binaries under
+# amiga/build/68020/ are kept (the stock-A1200 milestone artefact); every other
+# CPU's build, the offline asset blobs, the emulator hard-dir, the generated
+# FS-UAE configs and the host test binaries are not checked in.
+amiga/build/68040/
+amiga/build/68060/
 amiga/build/native-assets/
 amiga/build/hd/
 amiga/build/*.fs-uae
 amiga/build/*.ppm
 amiga/build/*.png
+amiga/build/assets_pack.s
+amiga/build/assets_pack.o
+amiga/build/68020/assets_pack.s
+amiga/build/68020/assets_pack.o
 amiga/build/ctx_smoke
 amiga/build/fix_check
 amiga/build/fix_floor_check
 amiga/build/fix_gen_check
 amiga/build/fix_trig_check
-amiga/build/68020/assets_pack.s
-amiga/build/68020/assets_pack.o
 
 # Runtime marker the headless binary writes when run from the repo root.
 CP:ran.txt
