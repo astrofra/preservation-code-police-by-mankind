@@ -91,6 +91,10 @@ The complete build-and-launch shortcut is:
 Use `BUILD=0 ./amiga/run-fs-uae.sh` to launch the existing binaries without
 rebuilding.
 
+The target architecture and performance contract for the native indexed
+runtime are documented in
+[`documentation/amiga-native-runtime.md`](../documentation/amiga-native-runtime.md).
+
 ### The two known divergences
 
 Ticks 11050 and 11070 (part 10, the particle passage) differ. The state dump in
