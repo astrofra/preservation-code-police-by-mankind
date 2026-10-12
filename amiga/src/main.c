@@ -12,6 +12,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int render_check_run(void); /* amiga/src/render_check.c */
+
 static int check_asset(AmigaPlatform *platform) {
     AmigaImage *image = platform->load_image(platform->user, "Images/CARE.gif.png");
     if (!image) { printf("asset FAIL\n"); return 1; }
@@ -60,5 +62,9 @@ int main(int argc, char **argv) {
     platform = amiga_file_host_platform(&host);
     failed |= check_asset(&platform);
     failed |= check_script(&platform);
+    if (argc > 2 && argv[2][0] == 'r') {
+        printf("--- renderer differential ---\n");
+        failed |= render_check_run();
+    }
     return failed;
 }
