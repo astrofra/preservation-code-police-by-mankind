@@ -238,7 +238,13 @@ def main():
     for name in sorted(roles):
         role = roles[name]
         src = Image.open(assets / "Images" / (images[name] + ".png")).convert("RGBA")
-        if cap and (src.width > cap[0] or src.height > cap[1]):
+        # The original drawrecUVRGB address calculation wraps procedural
+        # textures on an 8-bit 256-pixel grid. Ground/tunnel/twirl therefore
+        # require their authored dimensions (normally 256x256); shrinking
+        # them to the display cap makes most UVs miss the texture and turns
+        # whole 16x16 blocks into flat lighting colours. Opaque sprites are
+        # still reduced to the actual AGA display size below.
+        if cap and role == 0 and (src.width > cap[0] or src.height > cap[1]):
             src.thumbnail(cap, Image.LANCZOS)
         arr = np.asarray(src).astype(np.uint32)
         rgb = arr[:, :, :3].astype(np.uint8)

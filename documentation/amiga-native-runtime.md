@@ -93,6 +93,12 @@ Les textures doivent être préparées pour leur usage réel :
 - les sprites et flares sont réduits à leur taille maximale d’affichage ;
 - les textures répétées peuvent être découpées en tuiles plus petites.
 
+Exception importante : les textures procédurales utilisées par Ground, Tunnel
+et Twirl conservent leur grille 256×256 lorsque le moteur original adresse
+leurs UV sur huit bits. Les réduire à 200×200 ne représente pas une optimisation
+valide : les UV hors de cette zone deviennent des blocs uniformes au lieu de
+reboucler dans la texture.
+
 La réduction doit être faite hors ligne, avec une comparaison visuelle et un
 rapport de taille. Une réduction aveugle qui change la géométrie apparente ou
 les coordonnées UV est refusée.

@@ -50,8 +50,20 @@ fi
 
 if [ "${BUILD:-1}" = "1" ]; then
     # The indexed pack is derived offline from the verified engine's frame dumps.
-    # Build it only when missing; it is 560 KiB and slow to regenerate.
-    if [ ! -f "$pack" ]; then
+    # Rebuild it when the converter, script or source images changed. Keeping a
+    # stale embedded pack here is particularly confusing: the executable can be
+    # freshly compiled while FS-UAE still shows the old 200x200 procedural
+    # textures.
+    assets_stale=0
+    if [ ! -f "$pack" ] || [ "$project/tools/build_assets.py" -nt "$pack" ] || \
+       [ "$root/native-sdl2/assets/scene.txt" -nt "$pack" ]; then
+        assets_stale=1
+    elif find "$root/native-sdl2/assets/Images" -type f -newer "$pack" -print -quit |
+         grep -q .; then
+        assets_stale=1
+    fi
+    if [ "${REBUILD_ASSETS:-0}" = "1" ]; then assets_stale=1; fi
+    if [ "$assets_stale" = "1" ]; then
         if [ ! -d "$frames" ]; then
             echo "error: no frame dumps in $frames;" >&2
             echo "       run ./native-sdl2/tools/amiga-aga-palette.sh first" >&2

@@ -132,6 +132,13 @@ static void blit_block(AgartContext *c, const AgartTexture *t,
             int32_t tu = cu >> 16, tv = cv >> 16;
             uint8_t src = 0;
             int x = x0 + px;
+            if (op == OP_ADD_BLOCK) {
+                /* drawrecUVRGB addresses its procedural textures with the
+                 * original 8-bit wrap: (v & 0xff) * 256 + (u & 0xff).
+                 * These textures are kept at 256x256 by build_assets.py. */
+                tu &= 0xff;
+                tv &= 0xff;
+            }
             if (tu >= 0 && tu < t->width && tv >= 0 && tv < t->height)
                 src = agart_texel(t, (unsigned)tu, (unsigned)tv);
             if (op == OP_COPY) {
