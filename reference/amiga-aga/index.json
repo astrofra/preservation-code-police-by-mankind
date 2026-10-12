@@ -1,0 +1,182 @@
+{
+  "date": "2026-10-12",
+  "source": "Derived headlessly from the verified C++ engine (native-sdl2/tools/dump_frames.cpp); not an Amiga or emulator output",
+  "method": "median-cut seeded k-means, snapped to AGA 12-bit colour registers",
+  "engine_seed": 888,
+  "frame_sampling": "native-sdl2/tools/dump_frames.cpp (verified engine, seed 888)",
+  "logical_dimensions": [
+    520,
+    300
+  ],
+  "palette_file": "palettes.json",
+  "captures": [
+    {
+      "file": "compare/part-00-sample-tick-00200.png",
+      "part": 0,
+      "tick": 200,
+      "label": "sample",
+      "note": "Source frame over its 16-colour AGA quantisation, plus the 16-swatch palette strip."
+    },
+    {
+      "file": "compare/part-00-worst-tick-00000.png",
+      "part": 0,
+      "tick": 0,
+      "label": "worst-frame",
+      "note": "Source frame over its 16-colour AGA quantisation, plus the 16-swatch palette strip."
+    },
+    {
+      "file": "compare/part-01-sample-tick-00920.png",
+      "part": 1,
+      "tick": 920,
+      "label": "sample",
+      "note": "Source frame over its 16-colour AGA quantisation, plus the 16-swatch palette strip."
+    },
+    {
+      "file": "compare/part-01-worst-tick-00760.png",
+      "part": 1,
+      "tick": 760,
+      "label": "worst-frame",
+      "note": "Source frame over its 16-colour AGA quantisation, plus the 16-swatch palette strip."
+    },
+    {
+      "file": "compare/part-02-sample-tick-01920.png",
+      "part": 2,
+      "tick": 1920,
+      "label": "sample",
+      "note": "Source frame over its 16-colour AGA quantisation, plus the 16-swatch palette strip."
+    },
+    {
+      "file": "compare/part-02-worst-tick-01640.png",
+      "part": 2,
+      "tick": 1640,
+      "label": "worst-frame",
+      "note": "Source frame over its 16-colour AGA quantisation, plus the 16-swatch palette strip."
+    },
+    {
+      "file": "compare/part-03-sample-tick-02920.png",
+      "part": 3,
+      "tick": 2920,
+      "label": "sample",
+      "note": "Source frame over its 16-colour AGA quantisation, plus the 16-swatch palette strip."
+    },
+    {
+      "file": "compare/part-03-worst-tick-02440.png",
+      "part": 3,
+      "tick": 2440,
+      "label": "worst-frame",
+      "note": "Source frame over its 16-colour AGA quantisation, plus the 16-swatch palette strip."
+    },
+    {
+      "file": "compare/part-04-sample-tick-03680.png",
+      "part": 4,
+      "tick": 3680,
+      "label": "sample",
+      "note": "Source frame over its 16-colour AGA quantisation, plus the 16-swatch palette strip."
+    },
+    {
+      "file": "compare/part-04-worst-tick-03480.png",
+      "part": 4,
+      "tick": 3480,
+      "label": "worst-frame",
+      "note": "Source frame over its 16-colour AGA quantisation, plus the 16-swatch palette strip."
+    },
+    {
+      "file": "compare/part-05-sample-tick-04080.png",
+      "part": 5,
+      "tick": 4080,
+      "label": "sample",
+      "note": "Source frame over its 16-colour AGA quantisation, plus the 16-swatch palette strip."
+    },
+    {
+      "file": "compare/part-05-worst-tick-04040.png",
+      "part": 5,
+      "tick": 4040,
+      "label": "worst-frame",
+      "note": "Source frame over its 16-colour AGA quantisation, plus the 16-swatch palette strip."
+    },
+    {
+      "file": "compare/part-06-sample-tick-05240.png",
+      "part": 6,
+      "tick": 5240,
+      "label": "sample",
+      "note": "Source frame over its 16-colour AGA quantisation, plus the 16-swatch palette strip."
+    },
+    {
+      "file": "compare/part-06-worst-tick-05040.png",
+      "part": 6,
+      "tick": 5040,
+      "label": "worst-frame",
+      "note": "Source frame over its 16-colour AGA quantisation, plus the 16-swatch palette strip."
+    },
+    {
+      "file": "compare/part-07-sample-tick-07040.png",
+      "part": 7,
+      "tick": 7040,
+      "label": "sample",
+      "note": "Source frame over its 16-colour AGA quantisation, plus the 16-swatch palette strip."
+    },
+    {
+      "file": "compare/part-07-worst-tick-07160.png",
+      "part": 7,
+      "tick": 7160,
+      "label": "worst-frame",
+      "note": "Source frame over its 16-colour AGA quantisation, plus the 16-swatch palette strip."
+    },
+    {
+      "file": "compare/part-08-sample-tick-08520.png",
+      "part": 8,
+      "tick": 8520,
+      "label": "sample",
+      "note": "Source frame over its 16-colour AGA quantisation, plus the 16-swatch palette strip."
+    },
+    {
+      "file": "compare/part-08-worst-tick-08840.png",
+      "part": 8,
+      "tick": 8840,
+      "label": "worst-frame",
+      "note": "Source frame over its 16-colour AGA quantisation, plus the 16-swatch palette strip."
+    },
+    {
+      "file": "compare/part-09-sample-tick-10040.png",
+      "part": 9,
+      "tick": 10040,
+      "label": "sample",
+      "note": "Source frame over its 16-colour AGA quantisation, plus the 16-swatch palette strip."
+    },
+    {
+      "file": "compare/part-09-worst-tick-10320.png",
+      "part": 9,
+      "tick": 10320,
+      "label": "worst-frame",
+      "note": "Source frame over its 16-colour AGA quantisation, plus the 16-swatch palette strip."
+    },
+    {
+      "file": "compare/part-10-sample-tick-11520.png",
+      "part": 10,
+      "tick": 11520,
+      "label": "sample",
+      "note": "Source frame over its 16-colour AGA quantisation, plus the 16-swatch palette strip."
+    },
+    {
+      "file": "compare/part-10-worst-tick-12160.png",
+      "part": 10,
+      "tick": 12160,
+      "label": "worst-frame",
+      "note": "Source frame over its 16-colour AGA quantisation, plus the 16-swatch palette strip."
+    },
+    {
+      "file": "compare/part-11-sample-tick-17200.png",
+      "part": 11,
+      "tick": 17200,
+      "label": "sample",
+      "note": "Source frame over its 16-colour AGA quantisation, plus the 16-swatch palette strip."
+    },
+    {
+      "file": "compare/part-11-worst-tick-12280.png",
+      "part": 11,
+      "tick": 12280,
+      "label": "worst-frame",
+      "note": "Source frame over its 16-colour AGA quantisation, plus the 16-swatch palette strip."
+    }
+  ]
+}

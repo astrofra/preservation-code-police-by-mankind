@@ -133,7 +133,8 @@ headlessly and dumps frames as PPM at chosen ticks; the reference captures under
    a small bonus for rare saturated colours so sprite accents and title glows are
    not dropped.
 3. Run median-cut (or k-means seeded from median-cut) down to 16 colours.
-4. Store one 16-entry palette per part — 12 palettes, 576 bytes total.
+4. Store one 16-entry palette per part — 12 palettes, 384 bytes total (16 × 12 ×
+   2 bytes, since AGA colour registers are 12-bit words).
 5. Verify by re-rendering the sampled frames, quantising to the palette, and
    measuring mean and maximum per-channel error against the ARGB source. The
    repository already depends on Pillow for screenshot comparison
@@ -142,6 +143,8 @@ headlessly and dumps frames as PPM at chosen ticks; the reference captures under
 Twelve palettes is a deliberate choice over one global palette: the script has
 genuinely different looks (title, tunnels, particles, the 100-second finale) and
 per-scene palettes cost nothing to switch.
+
+**This procedure was executed; see [§13](#13-step-1-results--palette-study-executed).**
 
 ### 4.3 Fades and tints
 
@@ -322,7 +325,7 @@ from captures, scene by scene, at the palette-selection stage.
    12 palettes and render side-by-side comparisons against the source frames.
    This is cheap, needs no Amiga, and decides whether the artistic target is
    acceptable before any port work begins. **If this step fails, the port should
-   not proceed.**
+   not proceed.** — **Executed; see [step 1 results](#13-step-1-results-palette-study-executed).**
 2. **ASM raster core in ARGB**, validated bit-for-bit against `verify.cpp`'s
    hashes. No Amiga required.
 3. **C2P bring-up** with a simple routine at 320×200 4 planes; get the picture on
@@ -444,14 +447,16 @@ Concretely, the first spike is:
 
 ### 11.4 Host-side helpers
 
-Beyond the emulator and the compilers, four small tools cover the workflow, and
-three of them are already satisfied by the repository's Python stack.
+Beyond the emulator and the compilers, four small tools cover the workflow. All
+are satisfied by the repository's Python stack; the three step-1 tools were built
+and run for §13.
 
 | Need | Tool | State |
 | --- | --- | --- |
-| Colour histograms, median-cut, per-channel error | numpy + Pillow, or a small C tool | **present** (2.3.5 / 12.1.0) |
-| Palette derivation from headless PPM dumps | `native-sdl2/tools/verify.cpp` | **present**, already writes PPM |
-| Side-by-side palette captures | Pillow | **present**, used by `wasm/check-presentation.py` |
+| Colour histograms, median-cut, k-means, AGA-snapped error | `native-sdl2/tools/amiga_palette.py` | **present and executed** |
+| Palette derivation from headless frame dumps | `native-sdl2/tools/dump_frames.cpp` (reuses the verified engine; 12 parts, part-labelled PPM) | **present and executed** |
+| End-to-end driver | `native-sdl2/tools/amiga-aga-palette.sh` | **present and executed** |
+| Side-by-side palette captures | Pillow, in the same tool | **present**, mirroring `wasm/check-presentation.py` |
 | Reading/writing ADF and HDF images | `amitools` (`xdftool`, `rdbtool`) via pip | **absent**, one `pip install amitools` away and macOS-friendly |
 | Assembling the ASM core | vasm + vlink | absent, source build |
 
@@ -489,3 +494,109 @@ requirement and the user must supply their own Kickstart.
   cadence policy this study reuses.
 - [iOS audio unlock](ios-audio-unlock.md): an example of a host-only change that
   left the verified engine untouched, which is the model proposed here.
+
+## 13. Step 1 results — palette study (executed)
+
+**Verdict: the artistic target is acceptable, so the port proceeds.** The
+16-colour look was produced from the verified engine's own output and inspected
+scene by scene. The result is a deliberate, readable 16-colour rendition; the
+photographic sources band, as predicted, but never become unrecognisable.
+
+**What was run.** The headless export was reproduced without any Amiga:
+
+- `native-sdl2/tools/dump_frames.cpp` — a new exporter that reuses the verified
+  engine exactly as `verify.cpp` does. It walks the 12 script parts, reseeds
+  `JavaRandom` to 100,000 + tick before each frame, calls the same `frameAt()`,
+  and writes PPMs named `tick-TTTTT-part-NN.ppm`. 555 frames were captured at
+  every 40th tick (≈ 4 per second) over the 222 s cycle.
+- `native-sdl2/tools/amiga_palette.py` — the derivation: a pixel-frequency
+  histogram per part with a saturation bonus, median-cut to 16 colours, k-means
+  refinement, then a snap to the AGA 12-bit register space (4 bits per channel).
+  It also derives a single global palette for the whole demo and can split a part
+  into temporal segments, and it measures the error of the AGA-snapped palette,
+  which is the number the Copper list will actually show.
+- `native-sdl2/tools/amiga-aga-palette.sh` — the end-to-end driver, mirroring
+  `verify.sh`.
+
+```sh
+./native-sdl2/tools/amiga-aga-palette.sh          # one palette per part
+SEGMENTS=4 ./native-sdl2/tools/amiga-aga-palette.sh   # four temporal palettes per part
+```
+
+Outputs: `reference/amiga-aga/palettes.json` (palettes, RGB and AGA register
+words, statistics), `reference/amiga-aga/compare/*.png` (source over quantised,
+plus a 16-swatch strip) and `evidence/amiga-aga/palettes.json` (curated summary).
+
+**Result.** One palette per part is clearly worth it. Against a single global
+palette, per-scene palettes cut the mean per-channel error on every part that has
+content, in several cases by nearly half:
+
+| Part | Mean abs. channel error, per-scene | … against one global palette | PSNR (per-scene) |
+| --- | --- | --- | --- |
+| 1 | 0.47 | 0.94 | 41.5 dB |
+| 2 | 6.26 | 9.85 | 26.7 dB |
+| 3 | 9.65 | 17.31 | 26.5 dB |
+| 6 | 14.29 | 19.73 | 23.1 dB |
+| 7 | 10.85 | 18.44 | 25.5 dB |
+| 8 | 10.31 | 13.94 | 24.4 dB |
+| 9 | 12.66 | 16.99 | 24.0 dB |
+| 10 | 13.54 | 16.48 | 23.4 dB |
+| 11 | 10.62 | 12.81 | 24.8 dB |
+
+Parts 3–11 hold 13,000–70,000 distinct colours per frame and are 85–100 %
+covered, so every one of them is a genuinely hard quantisation; the per-scene
+palettes nevertheless keep the mean channel error near 10/255. The twelve AGA
+palettes total 384 bytes (12 × 16 × 2).
+
+**Temporal segmentation was evaluated and is not needed.** Splitting a part into
+2, 4 or 8 contiguous palettes and adding their Copper-list switch cost changes the
+mean error by less than 1.5 % (part 11, the 100-second finale, moves from 10.62 to
+10.51). One palette per part is the right granularity; the §4.3 palette animation
+covers the fades within a part.
+
+**One factual correction to §6.** The assumed fill fractions were optimistic for
+the opening and pessimistic elsewhere. Measured on the source frames:
+
+- **Part 0 (0–4 s) is black.** It is the load/setup window: its first frames
+  contain about 250 non-black pixels. The scene starts drawing in part 1. The
+  quantiser legitimately returns an all-black palette with a 0.28/255 error; it
+  costs nothing and needs no special case.
+- Part 1 (the "touchload" logo) is only ~7 % covered, not 25 %.
+- Parts 3–11 are the opposite extreme: 85–100 % covered, essentially full-screen
+  raster work for most of the cycle, not the "~60 % mixed" the budget assumed.
+
+The performance consequence is discussed in §14.
+
+**Reproducibility.** Median-cut is deterministic and k-means is seeded from it
+with no random restarts, so repeated runs are byte-identical. `SEGMENTS` and the
+tick `STRIDE` are the only knobs.
+
+## 14. Corrected screen statistics and performance consequence
+
+The measured fill fractions replace the §6 estimates. The relevant figure for the
+Amiga is not the *average* fill but the *worst* part, because the port must hold
+frame rate everywhere.
+
+| Part | Mean fill | Max fill | Distinct colours (mean) | Dominant work |
+| --- | --- | --- | --- | --- |
+| 0 | 0 % | 0 % | 2 | none (black) |
+| 1 | 7 % | 8 % | 25 | sprites |
+| 2 | 53 % | 57 % | 21,165 | ground + sprites |
+| 3 | 100 % | 100 % | 70,184 | full-screen twirl / motion blur |
+| 4 | 88 % | 100 % | 25,305 | ground |
+| 5 | 83 % | 86 % | 13,427 | ground |
+| 6 | 99 % | 100 % | 60,157 | full-screen twirl |
+| 7 | 96 % | 100 % | 17,847 | full-screen tunnel |
+| 8 | 85 % | 100 % | 43,525 | mixed ground/tunnel/twirl |
+| 9 | 98 % | 100 % | 24,416 | tunnel |
+| 10 | 96 % | 100 % | 22,482 | tunnel |
+| 11 | 98 % | 100 % | 17,424 | metaball particles + tunnel |
+
+Reading the §6 budget against this table, the port spends most of its time in the
+"full-screen, heavy blend" row (11–16 ms total, ~60 fps by the cycle model) rather
+than the "mixed, ~60 % fill" row, so the honest planning figure is **~60 fps on
+the model, not 100+**, with a **stable 50 fps** as the target and the original
+42 fps as the comfortable floor. The conclusion is unchanged — the CPU is not the
+bottleneck, and the port presents on vblank — but the margin is smaller than §6
+implied, and part 11's metaball pass remains the first candidate for optimisation,
+exactly as the plan anticipated.

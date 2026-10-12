@@ -36,3 +36,14 @@ The image-producing source is the Java reactivation milestone following
 `7a503ae`; the commit that first adds this index and these files records its
 exact source version. Reproduction is documented in
 [java-reactivation.md](../documentation/java-reactivation.md).
+
+## Amiga AGA palette study
+
+`amiga-aga/` holds the step-1 palette study for the
+[Amiga AGA feasibility](../documentation/amiga-aga-feasibility.md). These are
+**derived** images, not captures from hardware or an emulator: each PNG stacks a
+source frame from the verified C++ engine over its 16-colour AGA quantisation,
+with the 16-swatch palette below. `amiga-aga/palettes.json` holds the twelve
+16-entry palettes (RGB, AGA register words and quantisation statistics);
+`amiga-aga/index.json` identifies each capture. Reproduce with
+`./native-sdl2/tools/amiga-aga-palette.sh`.

@@ -431,3 +431,38 @@ or altered scripts, and still match all 11,101 reference frames. English control
 new captures, source hashes and the rebuilt ZIP are verified. Earlier GUI captures
 remain intact. The local preview is updated; the user must replace the hosted
 site contents with the new package to apply the changes online.
+
+## 2026-10-12 — Amiga AGA feasibility, step 1 executed
+
+The Amiga AGA 68060 study (`documentation/amiga-aga-feasibility.md`) made its
+palette study the decisive first step. It was executed today on this machine,
+with no Amiga and no emulator, using only the verified engine and the existing
+Python stack.
+
+A new headless exporter, `native-sdl2/tools/dump_frames.cpp`, reuses the verified
+engine exactly as `verify.cpp` does (seed 888 at init, 100,000 + tick before each
+frame) and writes part-labelled PPMs. 555 frames at every 40th tick cover the
+whole 222 s cycle. `native-sdl2/tools/amiga_palette.py` derives the palettes:
+pixel-frequency histogram with a saturation bonus, median-cut to 16 colours,
+k-means refinement, then a snap to the AGA 12-bit register space.
+`native-sdl2/tools/amiga-aga-palette.sh` drives it end to end. The palettes and
+source-vs-quantised captures are in `reference/amiga-aga/`; the curated summary is
+`evidence/amiga-aga/palettes.json`.
+
+Result: the artistic target is acceptable, so the port proceeds. One palette per
+part cuts the mean per-channel error roughly in half against a single palette for
+the whole demo (for example part 3, 9.65 vs 17.31, and part 7, 10.85 vs 18.44), and
+temporal segmentation (2–8 palettes inside a part) changes the error by under
+1.5 %, so one palette per part is the right granularity. The twelve palettes total
+384 bytes.
+
+Two corrections to the study's estimates came out of the measurement. Part 0
+(0–4 s) is a black load/setup window — it contains about 250 non-black pixels, and
+the scene starts drawing in part 1 — so its legitimate palette is all black. And
+parts 3–11 are 85–100 % covered, not the "~60 % mixed" the performance budget
+assumed, so the honest planning figure is nearer 60 fps on the cycle model than
+100+, which is recorded in the document's new §14.
+
+Nothing was installed for this step and no toolchain was built. The next steps in
+the plan (the ASM raster core, then C2P) still require vasm and an AmigaOS C++
+cross-compiler, which remain absent.
