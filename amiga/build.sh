@@ -22,7 +22,8 @@ common="$project/src/main.c $project/src/amiga_platform.c $project/src/kscript.c
     $project/src/c2p4.c $project/src/c2p_check.c $project/src/aga_quant.c
     $project/src/aga_preview.c $project/src/amiga_screen.c $project/src/agart.c
     $project/src/agart_ctx.c $project/src/aga_native.c $project/src/agart_embed.c
-    $project/src/agart_fix.c $project/src/agart_trig.c $project/src/agart_gen.c"
+    $project/src/agart_fix.c $project/src/agart_trig.c $project/src/agart_gen.c
+    $project/src/agart_proj.c $project/src/aga_scene.c"
 
 # EMBED=1 links the CPIX pack into the AGA binary as read-only data, so the
 # target performs no asset I/O (milestone N1b). The pack must exist; build it with

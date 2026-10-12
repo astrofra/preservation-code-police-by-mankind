@@ -114,12 +114,20 @@ falls through to `drawrecUVS`) and `drawrecUVM`.
 | --- | --- | --- | --- |
 | `drawrecUVS` | `drawrecUVSA` (alpha 255) | opaque texel copy, index −1 transparent | `dst[i] = tex[uv]`, one compare |
 | `drawrecUVSA` | `Setzoom3D`, `SetzoomP` | alpha `n`/255 then `drawrecUVS`: `(dst*(255−n) + src*n) >> 8` per channel | `dst[i] = blend[src][dst]` per call |
-| `drawrecUVRGB` | `draw()` (Sprit, Sprit3D) | `clamp(tex_ch + dst_ch)` per channel, clamped 0–255 | `dst[i] = add[src][dst]`, palette-dependent |
+| `drawrecUVRGB` | `draw()` (Ground, Tunnel, Twirl) | `clamp(tex_ch + pixel_ch)` per channel, clamped 0–255, where pixel is the per-block shading colour | `dst[i] = add[src][block]`, palette-dependent |
 | `drawrecUVM` | `flare3D()` (particles, flares) | `clamp(tex_ch + dst_ch)`, clamped 255 only | `dst[i] = add255[src][dst]`, palette-dependent |
 | `findtwirl` colour | `findtwirl()` (twirl scenes) | per block `r = n*26`, `g = n*24`, `b = n*23` into `kPixel` | quantise once per 16×16 block |
 | `MotionBlur` | `MotionBlur` effect | `((a & 0xFCFCFF) + (b & 0xFCFCFF)) >> 1` | `dst[i] = mix[a][b]`, palette-dependent |
 | `drawrecUV` | — **never called** | texel copy | not required |
 | `drawrecUVL` | — **never called** | add scalar to R,G,B, clamp | not required |
+
+Note the two additive loops differ, which an earlier revision of this table got
+backwards. `drawrecUVRGB` (the generator path: `Ground`, `Tunnel`, `Twirl`) adds
+the *per-block shading colour* to the texel and overwrites the destination, so its
+pair table is `add[src][block]` with one block index per 16×16 cell.
+`drawrecUVM` (the `Flare3D` and particle path) adds the *destination pixel* to the
+texel, so its pairing is the true pair table `add[src][dst]`. Both are palette
+dependent.
 
 `findtwirl` is the odd one out: it does not touch the framebuffer at all. It
 writes a shading colour into each `kPixel` of a render context, and that colour
@@ -728,8 +736,8 @@ statically against `native-sdl2/src/engine.cpp`, and it changed §4.1.
 **Reachability from the script effects.** Following the call graph from the
 effect handlers in `kEffectX::rendah` to the raster primitives:
 
-- `Sprit`, `Sprit3D` → `draw()` → `drawrecUVRGB`
-- `Ground`, `Tunnel` → `SetzoomP`/`Setzoom3D` → `drawrecUVSA` → `drawrecUVS`
+- `Sprit`, `Sprit3D` → `SetzoomP`/`Setzoom3D` → `drawrecUVSA` → `drawrecUVS`
+- `Ground`, `Tunnel`, `Twirl` → `draw()` → `drawrecUVRGB`
 - `Flare3D`, `Particle` → `flare3D`/`drawflare` → `drawrecUVM`
 - `MotionBlur` → `MotionBlur`
 - `Twirl` → `findtwirl` (writes `kPixel` shading, consumed by `drawrecUVRGB`)

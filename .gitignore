@@ -24,3 +24,11 @@ amiga/build/fix_gen_check
 amiga/build/fix_trig_check
 amiga/build/68020/assets_pack.s
 amiga/build/68020/assets_pack.o
+
+# Runtime marker the headless binary writes when run from the repo root.
+CP:ran.txt
+amiga/build/aga_scene_smoke
+amiga/build/fix_proj_check
+amiga/build/scene-*.ppm
+amiga/build/scene-*.png
+amiga/build/ref-*.png

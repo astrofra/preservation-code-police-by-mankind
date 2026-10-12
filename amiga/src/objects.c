@@ -280,6 +280,11 @@ static void *param_out(jparam *p, jworld *w) {
     return p->obj;
 }
 
+/* Public wrappers, so the native indexed scene can evaluate the same parameters
+ * and resolve the same object pointers without duplicating the switch. */
+double jparam_doubleout(jparam *p, jworld *w, double d) { return param_doubleout(p, w, d); }
+void *jparam_out(jparam *p, jworld *w) { return param_out(p, w); }
+
 /* ---- effect ---- */
 
 static void effect_rendah(jworld *w, jeffect *e, jint n) {

@@ -25,6 +25,7 @@
 #include <stddef.h>
 #include <stdint.h>
 #include "agart.h"
+#include "agart_gen.h"
 
 /* A rectangle in screen coordinates, half-open [x1, x2) x [y1, y2). */
 typedef struct AgartRect {
@@ -73,6 +74,22 @@ void agart_blit_alpha(AgartContext *c, const AgartTexture *t, const AgartUV *uv,
                       const uint8_t blend[16][16]);
 void agart_blit_add(AgartContext *c, const AgartTexture *t, const AgartUV *uv,
                     const AgartTables *tables);
+/* The generator path (ground/tunnel/twirl): drawrecUVRGB writes
+ * dst = clamp(tex + block), where block is the per-16x16 shading colour the
+ * generator computed. It overwrites the destination and does not read it, unlike
+ * agart_blit_add. block_index is the palette index of that shading colour. */
+void agart_blit_add_block(AgartContext *c, const AgartTexture *t, const AgartUV *uv,
+                          const AgartTables *tables, uint8_t block_index);
+/* The generator grid: mx by my nodes, each 16x16 block's four corners taken from
+ * the node grid, the shading index from the block's own node. agart_grid_colour is
+ * the drawrecUVRGB path (ground/tunnel/twirl), agart_grid_alpha the drawrecUVSA
+ * path with a per-node alpha. */
+void agart_grid_colour(AgartContext *c, const AgartTexture *t,
+                       const AgartBlock *grid, int mx, int my,
+                       const AgartTables *tables);
+void agart_grid_alpha(AgartContext *c, const AgartTexture *t,
+                      const AgartBlock *grid, int mx, int my,
+                      const uint8_t blend[16][16]);
 /* Averages the context's rect with the previous frame's buffer, as the engine's
  * MotionBlur does (Chunk and Chunk2 at the same offset, not a spatial shift). */
 void agart_motion_blur(AgartContext *c, const AgartTables *tables);

@@ -115,6 +115,11 @@ jpart *jworld_part(jworld *w, jint n);
 /* kPartX.rendah: run every effect in the part at local time n2. */
 void jworld_rendah(jworld *w, jpart *part, jint n, int *last_part_played);
 
+/* The parameter evaluation and object resolution the effects use, exposed so the
+ * native indexed scene (aga_scene.c) can drive the same effect tree. */
+double jparam_doubleout(jparam *p, jworld *w, double d);
+void *jparam_out(jparam *p, jworld *w);
+
 /* Renders one whole-script frame: reseed to 100000+tick, pick the part, run it,
  * then swap the chunky buffer, matching kraycasting::frameAt. */
 void jworld_frame(jworld *w, jint tick);
