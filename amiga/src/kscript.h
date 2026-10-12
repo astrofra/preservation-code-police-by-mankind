@@ -36,6 +36,15 @@ typedef struct KsScript {
     int part_count;      /* real parts, excluding the trailing sentinel */
     int end_pref;        /* 1 when <KEND> is "loop" */
     KsPart *parts;
+
+    /* Retained raw declaration strings, so objects.c can build the graph. */
+    KsStr *decl_images;
+    KsStr *decl_sounds;
+    KsStr *decl_tables;
+    KsStr *decl_tice;
+    KsStr *decl_cams;
+    KsStr *decl_rects;
+    KsStr *decl_parts;
 } KsScript;
 
 /* Primitives, ported verbatim from kraycasting. */
@@ -51,5 +60,8 @@ void ks_str_array_free(KsStr *array, int count);
 /* Parses the whole script text. Returns NULL on allocation failure. */
 KsScript *ks_parse(const char *text, int len);
 void ks_free(KsScript *script);
+
+/* Trims leading/trailing whitespace in place, returning a new view. */
+KsStr ks_trim(const KsStr *s);
 
 #endif /* KSCRIPT_H */

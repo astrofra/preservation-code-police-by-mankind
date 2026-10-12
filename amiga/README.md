@@ -44,7 +44,35 @@ which `stb_image`'s zlib overflows, so `build.sh` passes `-s 256` (KiB).
    (`6b2dfccf12eaa45a` for `Images/CARE.gif.png`), so the file path, the PNG
    decode and the `0xFF000000 | rgb` pixel convention are confirmed on the
    target before any engine code is written.
-2. **Engine link** — port the script parser and the renderer core to C and
-   compare frame hashes against the C++ oracle (`verify.cpp`).
-3. **AGA host** — a real screen, Copper palette, the four-plane Kalms C2P
+2. **Script parser — done.** `amiga/src/kscript.{h,c}` ports the tokeniser.
+   `python3 amiga/validate.py` confirms it matches `evidence/diagnostic.json`
+   on every field.
+3. **Renderer core — done.** `amiga/src/renderer.{h,c}` ports the context, the
+   rasterisation primitives and the field generators.
+   `python3 amiga/compare_render.py` shows 7/7 paths bit-exact against the
+   verified C++ engine.
+4. **Object graph and whole-script frames — done.** `amiga/src/objects.{h,c}`
+   builds textures, tables, cameras, particles, rectangles and the effect tree,
+   and renders real frames of the whole 222 s script. `python3
+   amiga/compare_frames.py` compares all 11,101 frames' hashes against the
+   oracle in `native-sdl2/build/reference.bin`: **11,099 of 11,101 match**
+   (99.982 %), including camera maths, particle simulation and every effect.
+5. **AGA host** — a real screen, Copper palette, the four-plane Kalms C2P
    (`c2p4_kalms.S`), and input/quit.
+
+### The two known divergences
+
+Ticks 11050 and 11070 (part 10, the particle passage) differ. The state dump in
+`native-sdl2/tools/frame_state.cpp` and the port's own dump show the particle
+systems' `ave` sums and `pos[0]` are identical; the divergence is sub-ULP in
+`popu3`'s positions and reaches the pixel hash on exactly those two frames. It
+does not propagate: every frame before and after matches. It is recorded rather
+than hidden, and is the next precision bug to chase.
+
+### How the port is verified
+
+The same C sources build for the host (fast: the whole 11,101-frame cycle runs
+in a few seconds) and for m68k. The differential checks run the host build, and
+`compare_render.py --m68k` and `compare_frames.py --m68k` spot-check the real
+m68k binary under `vamos`. This keeps the object graph, effect dispatch, camera
+maths and particle simulation identical across both, since they share one source.

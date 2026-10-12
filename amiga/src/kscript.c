@@ -126,6 +126,20 @@ KsStr *ks_split_stag(const char *text, int len, const char *tag, int *count) {
 
 void ks_str_free(KsStr s) { free(s.data); }
 
+KsStr ks_trim(const KsStr *s) {
+    KsStr r = {s->data, s->len};
+    while (r.len > 0 && (r.data[0] == ' ' || r.data[0] == '\t' ||
+                         r.data[0] == '\r' || r.data[0] == '\n')) {
+        ++r.data; --r.len;
+    }
+    while (r.len > 0) {
+        char c = r.data[r.len - 1];
+        if (c != ' ' && c != '\t' && c != '\r' && c != '\n') break;
+        --r.len;
+    }
+    return r;
+}
+
 void ks_str_array_free(KsStr *array, int count) {
     int i;
     if (!array) return;
@@ -196,12 +210,19 @@ KsScript *ks_parse(const char *text, int len) {
     script->table_count = n_table;
     script->ticle_count = n_tice;
     script->camera_count = n_cam;
+    script->decl_images = kimages;
+    script->decl_sounds = ksounds;
+    script->decl_tables = ktable;
+    script->decl_tice = ktice;
+    script->decl_cams = kcam;
+    script->decl_rects = krect;
 
     if (n_script >= 1) {
         KsStr *kend;
         int n_kend = 0;
         kparts = ks_split_stag(kscript[0].data, kscript[0].len, "KPART", &n_parts);
         script->part_count = n_parts;
+        script->decl_parts = kparts;
         script->parts = (KsPart *)calloc((size_t)n_parts + 1, sizeof(KsPart));
         for (i = 0; i < n_parts && script->parts; ++i) {
             KsStr *fx;
@@ -229,7 +250,6 @@ KsScript *ks_parse(const char *text, int len) {
             script->parts[i].sound_count = n_snd;
             ks_str_array_free(sounds, n_snd);
         }
-        ks_str_array_free(kparts, n_parts);
         kend = ks_split_stag(kscript[0].data, kscript[0].len, "KEND", &n_kend);
         if (n_kend >= 1) {
             /* The engine trims, lower-cases and compares to "loop". */
@@ -253,18 +273,22 @@ KsScript *ks_parse(const char *text, int len) {
         ks_str_array_free(kend, n_kend);
     }
 
-    ks_str_array_free(kimages, n_images);
-    ks_str_array_free(ksounds, n_sounds);
-    ks_str_array_free(krect, n_rect);
-    ks_str_array_free(ktable, n_table);
+    /* kimages/ksounds/krect/ktable/ktice/kcam/kparts are retained in the
+     * script (decl_*), so they are freed by ks_free, not here. Only the
+     * KSCRIPT wrapper string is transient. */
     ks_str_array_free(kscript, n_script);
-    ks_str_array_free(ktice, n_tice);
-    ks_str_array_free(kcam, n_cam);
     return script;
 }
 
 void ks_free(KsScript *script) {
     if (!script) return;
+    ks_str_array_free(script->decl_images, script->image_count);
+    ks_str_array_free(script->decl_sounds, script->sound_count);
+    ks_str_array_free(script->decl_tables, script->table_count);
+    ks_str_array_free(script->decl_tice, script->ticle_count);
+    ks_str_array_free(script->decl_cams, script->camera_count);
+    ks_str_array_free(script->decl_rects, script->rect_count);
+    ks_str_array_free(script->decl_parts, script->part_count);
     free(script->parts);
     free(script);
 }

@@ -102,6 +102,8 @@ void rcr_init_rect(rcontext *rc, rcontext *parent, double d, double d2, double d
     rc->RC_RootContext = parent->RC_RootContext;
     rc->PretableX = parent->RC_RootContext->PretableX;
     rc->PretableY = parent->RC_RootContext->PretableY;
+    /* The C++ constructor allocates the grid before SetRect indexes it. */
+    rc->Pretable = alloc_pretable(rc->PretableX, rc->PretableY);
     rcr_setrect(rc, parent, d, d2, d3, d4);
 }
 
@@ -193,6 +195,31 @@ static void drawrec_uvs(rcontext *rc, texture *tx, kpixel *p2, kpixel *p3, kpixe
 static void drawrec_uvsa(rcontext *rc, texture *tx, kpixel *p2, kpixel *p3, kpixel *p4, kpixel *p5, jint n);
 static void drawrec_uvm(rcontext *rc, texture *tx, kpixel *p2, kpixel *p3, kpixel *p4, kpixel *p5);
 static void drawrec_uvrgb(rcontext *rc, texture *tx, kpixel *p2, kpixel *p3, kpixel *p4, kpixel *p5);
+
+/* raycasting.draw — rasterise a texture over the context's UV grid. */
+void rcs_draw(rcaster *rcs, texture *tx, rcontext *rc) {
+    jint n = jsub(rc->ClipX2, rc->ClipX1);
+    jint n2 = jsub(rc->ClipY2, rc->ClipY1);
+    jint n5 = 0;
+    if (!rc->drawable) return;
+    while (n5 < n2) {
+        jint n3 = (jadd(n5, 16) < n2) ? 16 : jsub(n2, n5);
+        jint n6 = 0;
+        while (n6 < n) {
+            jint n4 = (jadd(n6, 16) < n) ? 16 : jsub(n, n6);
+            jint bx = jshr(n6, 4), by = jshr(n5, 4);
+            kpixel *p00 = rc->Pretable[bx + jmul(by, rc->PretableX)];
+            kpixel *p10 = rc->Pretable[jadd(bx, 1) + jmul(by, rc->PretableX)];
+            kpixel *p01 = rc->Pretable[bx + jmul(jadd(by, 1), rc->PretableX)];
+            kpixel *p11 = rc->Pretable[jadd(bx, 1) + jmul(jadd(by, 1), rc->PretableX)];
+            rcr_setsub(rcs->OneRec, rc, jadd(n6, rc->ClipX1), jadd(n5, rc->ClipY1),
+                       jadd(jadd(n6, n4), rc->ClipX1), jadd(jadd(n5, n3), rc->ClipY1));
+            drawrec_uvrgb(rcs->OneRec, tx, p00, p10, p01, p11);
+            n6 = jadd(n6, 16);
+        }
+        n5 = jadd(n5, 16);
+    }
+}
 
 /* raycasting.MotionBlur */
 void rcs_motion_blur(rcaster *rcs, rcontext *rc) {

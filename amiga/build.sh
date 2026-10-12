@@ -21,7 +21,7 @@ set -- -std=c99 -m"$cpu" -O2 -Wall -Wextra -Werror -fno-common -ffp-contract=off
     -Wno-unused-function \
     -I "$root/native-sdl2/vendor/stb" -I "$project/src" \
     "$project/src/main.c" "$project/src/amiga_platform.c" "$project/src/kscript.c" \
-    "$project/src/renderer.c" "$project/src/render_check.c" \
+    "$project/src/renderer.c" "$project/src/render_check.c" "$project/src/objects.c" \
     -o "$build/code-police" -lm
 
 printf '> m68k-amigaos-gcc -m%s%s\n' "$cpu" " $runtime"

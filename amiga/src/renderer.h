@@ -82,5 +82,7 @@ void rcs_findtwirl(rcaster *rcs, double d, double d2, double d3, double d4,
                    double d5, double d6, rcontext *rc);
 /* raycasting.colorclip */
 void rcs_colorclip(rcaster *rcs, helpfade *hf, kpixel *px, double d);
+/* raycasting.draw: rasterise a texture over the context's UV grid. */
+void rcs_draw(rcaster *rcs, texture *tx, rcontext *rc);
 
 #endif /* RENDERER_H */
