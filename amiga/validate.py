@@ -19,7 +19,7 @@ ASSETS = ROOT / "native-sdl2" / "assets"
 
 def run():
     result = subprocess.run(
-        ["vamos", "-C", "20", "-s", "256", str(BINARY), "native-sdl2/assets"],
+        ["vamos", "-C", "20", "-s", "256", "-m", "8192", str(BINARY), "native-sdl2/assets"],
         cwd=ROOT, capture_output=True, text=True, timeout=120,
     )
     if result.returncode != 0:
@@ -36,11 +36,10 @@ def parse(text):
     keys = ("images", "sounds", "tables", "ticles", "cams", "rects", "parts", "loop")
     script = {k: int(v) for k, v in zip(keys, header.groups())}
     parts = []
-    for line in re.finditer(r"part (\d+): len=(\d+) start=(\d+) sounds=(\d+) effects=(\d+) codes=([\d,]*)", text):
+    for line in re.finditer(r"part (\d+): len=(\d+) start=(\d+) sounds=(\d+) effects=(\d+)", text):
         parts.append(dict(index=int(line.group(1)), length=int(line.group(2)),
                           start=int(line.group(3)), sounds=int(line.group(4)),
-                          effects=int(line.group(5)),
-                          codes=[int(c) for c in line.group(6).split(",") if c]))
+                          effects=int(line.group(5))))
     script["parts_detail"] = parts
     return script
 

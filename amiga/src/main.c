@@ -12,6 +12,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int render_check_run(void); /* amiga/src/render_check.c */
 
@@ -46,18 +47,18 @@ static int check_script(AmigaPlatform *platform, KsScript **out) {
     return 0;
 }
 
-static int check_graph(const KsScript *script, const AmigaPlatform *platform) {
+static int check_graph(const KsScript *script, const AmigaPlatform *platform, int render_frames) {
     jworld *w = jworld_create(script, platform);
     int i;
     if (!w) { printf("graph FAIL\n"); return 1; }
     printf("graph: textures=%d tables=%d cams=%d particles=%d rects=%d parts=%d "
            "end_date=%d\n", w->texture_count, w->table_count, w->camera_count,
            w->particle_count, w->rect_count, w->part_count - 1, w->end_date);
-    /* Render whole-script frames sequentially, as verify.cpp does (every 2 ticks
-     * from 0), so the frame at tick T is drawn after T/2 earlier frames and the
-     * persistent object state matches the oracle. Only the chosen ticks are
-     * printed, to keep the comparison output small. */
-    {
+    if (render_frames) {
+        /* Render the whole 222 s cycle sequentially, as verify.cpp does (every
+         * 2 ticks), so frame T is drawn after T/2 earlier frames and the
+         * persistent object state matches the oracle. Print every frame's hash
+         * for comparison with native-sdl2/build/reference.bin. */
         int wanted[14];
         jint t;
         for (i = 0; i < 12; ++i) wanted[i] = i * 2000;
@@ -68,32 +69,18 @@ static int check_graph(const KsScript *script, const AmigaPlatform *platform) {
                    (unsigned long long)jworld_hash(w));
             for (i = 0; i < 14; ++i) {
                 if (wanted[i] == (int)t) {
-                    {
-                        jpart *part = jworld_part(w, t);
-                        int k;
-                        printf("tick %ld part", (long)t);
-                        for (k = 0; k < w->part_count - 1; ++k)
-                            if (w->parts[k] == part) printf(" %d", k);
-                        for (k = 0; k < w->camera_count; ++k) {
-                            jcamera *c = w->cameras[k];
-                            printf(" cam %s %.10g %.10g %.10g %.10g %.10g %.10g %.10g",
-                                   w->camera_names[k], c->X, c->Y, c->Z, c->O1, c->O2,
-                                   c->O3, c->FOV);
-                        }
-                        for (k = 0; k < w->particle_count; ++k) {
-                            jparticle *p = w->particles[k];
-                            printf(" par %s ave %.10g %.10g %.10g p0 %.10g %.10g %.10g",
-                                   w->particle_names[k], p->aveX, p->aveY, p->aveZ,
-                                   p->posx[0], p->posy[0], p->posz[0]);
-                        }
-                        for (k = 0; k < w->rect_count; ++k) {
-                            rcontext *r = w->rects[k];
-                            printf(" rect %s %ld %ld %ld %ld %d", w->rect_names[k],
-                                   (long)r->ClipX1, (long)r->ClipY1, (long)r->ClipX2,
-                                   (long)r->ClipY2, r->drawable);
-                        }
-                        printf("\n");
+                    jpart *part = jworld_part(w, t);
+                    int k;
+                    printf("tick %ld part", (long)t);
+                    for (k = 0; k < w->part_count - 1; ++k)
+                        if (w->parts[k] == part) printf(" %d", k);
+                    for (k = 0; k < w->particle_count; ++k) {
+                        jparticle *p = w->particles[k];
+                        printf(" par %s ave %.10g %.10g %.10g p0 %.10g %.10g %.10g",
+                               w->particle_names[k], p->aveX, p->aveY, p->aveZ,
+                               p->posx[0], p->posy[0], p->posz[0]);
                     }
+                    printf("\n");
                 }
             }
         }
@@ -107,6 +94,7 @@ int main(int argc, char **argv) {
     AmigaPlatform platform;
     KsScript *script = NULL;
     const char *root = argc > 1 ? argv[1] : "native-sdl2/assets";
+    const char *mode = argc > 2 ? argv[2] : "";
     int failed = 0;
 
     amiga_file_host_init(&host, root);
@@ -114,8 +102,8 @@ int main(int argc, char **argv) {
     setvbuf(stdout, NULL, _IONBF, 0);
     failed |= check_asset(&platform);
     failed |= check_script(&platform, &script);
-    if (!failed && script) failed |= check_graph(script, &platform);
-    if (argc > 2 && argv[2][0] == 'r') {
+    if (!failed && script) failed |= check_graph(script, &platform, !strcmp(mode, "frames"));
+    if (!strcmp(mode, "render")) {
         printf("--- renderer differential ---\n");
         failed |= render_check_run();
     }

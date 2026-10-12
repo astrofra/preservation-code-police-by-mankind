@@ -64,10 +64,10 @@ def build_host():
 def port_hashes(use_m68k):
     if use_m68k:
         cmd = ["vamos", "-C", "20", "-s", "256", "-m", "8192", str(M68K_BIN),
-               "native-sdl2/assets"]
+               "native-sdl2/assets", "frames"]
     else:
         build_host()
-        cmd = [str(HOST_BIN), "native-sdl2/assets"]
+        cmd = [str(HOST_BIN), "native-sdl2/assets", "frames"]
     result = subprocess.run(cmd, cwd=ROOT, capture_output=True, text=True, timeout=7200)
     return {int(m.group(1)): int(m.group(2), 16)
             for m in re.finditer(r"^frame (\d+) ([0-9a-f]+)$", result.stdout, re.MULTILINE)}
