@@ -57,8 +57,30 @@ which `stb_image`'s zlib overflows, so `build.sh` passes `-s 256` (KiB).
    amiga/compare_frames.py` compares all 11,101 frames' hashes against the
    oracle in `native-sdl2/build/reference.bin`: **11,099 of 11,101 match**
    (99.982 %), including camera maths, particle simulation and every effect.
-5. **AGA host** — a real screen, Copper palette, the four-plane Kalms C2P
-   (`c2p4_kalms.S`), and input/quit.
+5. **AGA display path — done.** `amiga/src/c2p4.{h,c}` converts the chunky
+   buffer to four AGA bitplanes (checked against an independent Python
+   reference by `validate_c2p.py`), `aga_quant.{h,c}` quantises the engine's
+   ARGB output to a 16-colour palette, `aga_palette.h` embeds the derived
+   palettes, and `aga_preview.c` writes real frames as 16-colour PPMs. The two
+   committed PNGs in `reference/amiga-aga/preview/` are the demo in exactly 16
+   colours.
+6. **AGA host — done (compiles; run under FS-UAE).** `amiga/src/amiga_screen.c`
+   opens a 320x200 four-bitplane AGA screen, quantises and downscales each frame
+   to it, loads the part's palette with `LoadRGB4`, converts with the C2P and
+   presents on `WaitTOF`. `build.sh` produces two m68k binaries: the headless
+   one (runs under `vamos` for the validators) and `code-police-aga` (the screen
+   host). `vamos` has no `graphics.library`, so the AGA binary needs FS-UAE.
+
+## Running the AGA build
+
+The headless binary is what the validators use (`vamos` needs `-m 8192` and
+`-s 256`). The AGA binary must run under FS-UAE with a Kickstart ROM:
+
+```sh
+CPU=68020 ./amiga/build.sh RUN=0            # builds code-police and code-police-aga
+# then boot an A1200/AGA config with code-police-aga on a disk or hard dir,
+# passing the assets directory as its argument.
+```
 
 ### The two known divergences
 

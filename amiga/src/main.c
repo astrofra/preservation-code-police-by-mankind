@@ -122,6 +122,11 @@ int main(int argc, char **argv) {
             failed |= 1;
         }
     }
+    if (!strcmp(mode, "screen") && script) {
+        jworld *w = jworld_create(script, &platform);
+        if (w) { failed |= amiga_screen_run(w); jworld_free(w); }
+        else failed |= 1;
+    }
     ks_free(script);
     return failed;
 }

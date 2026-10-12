@@ -40,11 +40,21 @@ def reference():
     return [fnv(bytes(p)) for p in planes]
 
 
+def build_host():
+    HOST_BIN.parent.mkdir(parents=True, exist_ok=True)
+    src = ROOT / "amiga" / "src"
+    sources = sorted(str(p) for p in src.glob("*.c"))
+    subprocess.run(["cc", "-std=c99", "-O2", "-Wno-unused-function",
+                    "-I", str(ROOT / "native-sdl2" / "vendor" / "stb"), "-I", str(src),
+                    *sources, "-o", str(HOST_BIN), "-lm"], check=True)
+
+
 def port(use_m68k):
     if use_m68k:
         cmd = ["vamos", "-C", "20", "-s", "256", "-m", "8192", str(M68K_BIN),
                "native-sdl2/assets", "c2p"]
     else:
+        build_host()
         cmd = [str(HOST_BIN), "native-sdl2/assets", "c2p"]
     result = subprocess.run(cmd, cwd=ROOT, capture_output=True, text=True, timeout=600)
     return [int(m.group(2), 16) for m in re.finditer(r"^c2p plane (\d+) ([0-9a-f]+)$",

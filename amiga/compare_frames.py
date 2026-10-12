@@ -53,12 +53,11 @@ def oracle_hashes():
 def build_host():
     HOST_BIN.parent.mkdir(parents=True, exist_ok=True)
     src = ROOT / "amiga" / "src"
+    sources = sorted(str(p) for p in src.glob("*.c"))
     subprocess.run(
         ["cc", "-std=c99", "-O2", "-Wno-unused-function",
          "-I", str(ROOT / "native-sdl2" / "vendor" / "stb"), "-I", str(src),
-         str(src / "main.c"), str(src / "amiga_platform.c"), str(src / "kscript.c"),
-         str(src / "renderer.c"), str(src / "render_check.c"), str(src / "objects.c"),
-         "-o", str(HOST_BIN), "-lm"], check=True)
+         *sources, "-o", str(HOST_BIN), "-lm"], check=True)
 
 
 def port_hashes(use_m68k):
