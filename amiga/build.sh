@@ -20,7 +20,7 @@ mkdir -p "$build"
 set -- -std=c99 -m"$cpu" -O2 -Wall -Wextra -Werror -fno-common -ffp-contract=off \
     -Wno-unused-function \
     -I "$root/native-sdl2/vendor/stb" -I "$project/src" \
-    "$project/src/main.c" "$project/src/amiga_platform.c" \
+    "$project/src/main.c" "$project/src/amiga_platform.c" "$project/src/kscript.c" \
     -o "$build/code-police"
 
 printf '> m68k-amigaos-gcc -m%s%s\n' "$cpu" " $runtime"
@@ -31,5 +31,5 @@ file "$build/code-police"
 if [ "${RUN:-1}" = "1" ]; then
     # Ki-stack: zlib inside stb_image needs far more than the AmigaOS default.
     printf '\n> vamos -C 20 -s 256 (cwd=%s)\n' "$root"
-    ( cd "$root" && vamos -C 20 -s 256 "$build/code-police" native-sdl2/assets Images/CARE.gif.png )
+    ( cd "$root" && vamos -C 20 -s 256 "$build/code-police" native-sdl2/assets )
 fi
