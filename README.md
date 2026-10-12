@@ -89,6 +89,9 @@ commands, preservation correspondence, validation and remaining limitations.
 - `original/`: unchanged user-supplied ZIP, extracted release and saved Pouët page.
 - `documentation/quick-diagnosis.md`: findings, limitations and suggested next steps.
 - `documentation/diagnostic-log.md`: dated investigation log.
+- `documentation/ios-audio-unlock.md`: iOS Safari sound fix and its verification.
+- `documentation/amiga-aga-feasibility.md`: analytic study for an Amiga AGA 68060
+  port with chunky-to-planar.
 - `evidence/`: SHA-256 manifest, class/media/script inventories, original bytecode
   disassembly and a reproducible inspection script.
 - `reverse/`: independent CFR and Procyon reconstructions, retained unchanged.

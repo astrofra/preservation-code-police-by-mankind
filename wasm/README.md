@@ -109,4 +109,6 @@ real time, checks its loop, samples actual Web Audio output and returns home.
 Reports: [`evidence/wasm/`](../evidence/wasm/).
 Captures: [`reference/wasm/`](../reference/wasm/).
 See [technical notes](../documentation/wasm-reactivation.md) for the actual
-tested browser versions, timing adaptation and remaining platform limits.
+tested browser versions, timing adaptation and remaining platform limits, and
+[iOS audio unlock](../documentation/ios-audio-unlock.md) for the Safari/iOS
+sound fix.

@@ -11,6 +11,7 @@ try {
   await page.goto(process.argv[2]||'http://localhost:8000/');
   await page.waitForFunction(()=>document.documentElement.dataset.state==='ready');
   await page.click('#start');
+  await page.waitForFunction(()=>codePolice.SDL2?.audio?.scriptProcessorNode);
   await page.evaluate(()=>{
     window.audioProof={peak:0,callbacks:0};
     const node=codePolice.SDL2.audio.scriptProcessorNode, original=node.onaudioprocess;

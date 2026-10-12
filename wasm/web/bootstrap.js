@@ -72,6 +72,54 @@ async function enterFullscreen() {
   catch { $('player-status').textContent = 'The browser did not allow fullscreen. You can keep watching in this page.'; }
   layout();
 }
+// iOS never starts an AudioContext running and only unlocks it inside a user
+// gesture. Build it here, resume it and finish the unlock with a silent source
+// before SDL opens its device, so the ScriptProcessorNode is created on a
+// running context instead of a suspended one.
+async function unlockAudio() {
+  const AudioContextClass = globalThis.AudioContext || globalThis.webkitAudioContext;
+  if (!AudioContextClass) return false;
+  // A playback session stays audible with the ring/silent switch engaged and
+  // stops other apps from ducking it (AudioSession API, iOS 16.4+).
+  if (navigator.audioSession) {
+    try { navigator.audioSession.type = 'playback'; } catch {}
+  }
+  const SDL2 = runtime.SDL2 || (runtime.SDL2 = {});
+  if (!SDL2.audioContext) SDL2.audioContext = new AudioContextClass();
+  const context = SDL2.audioContext;
+  try { await context.resume(); } catch {}
+  try {
+    const silence = context.createBuffer(1, 1, context.sampleRate);
+    const source = context.createBufferSource();
+    source.buffer = silence;
+    source.connect(context.destination);
+    source.start(0);
+  } catch {}
+  return context.state === 'running';
+}
+// Some browsers refuse resume() outside a touch event. If the context is still
+// suspended once Start has run, the first tap on the picture becomes that event.
+function watchAudio() {
+  if (failed || !$('sound').checked || !runtime.SDL2 || !runtime.SDL2.audioContext) return;
+  const context = runtime.SDL2.audioContext;
+  const resume = () => {
+    if (context.state === 'running') return true;
+    context.resume().catch(() => {});
+    return false;
+  };
+  window.setTimeout(() => {
+    if (resume()) return;
+    $('player-status').textContent = 'Tap the picture to enable sound.';
+    const retry = () => {
+      if (!resume()) return;
+      $('player-status').textContent = '';
+      $('stage').removeEventListener('pointerdown', retry);
+      $('stage').removeEventListener('touchstart', retry);
+    };
+    $('stage').addEventListener('pointerdown', retry);
+    $('stage').addEventListener('touchstart', retry);
+  }, 800);
+}
 function start(event) {
   event.preventDefault();
   if (!runtime || failed || playing || !readSize()) return;
@@ -81,15 +129,22 @@ function start(event) {
   window.scrollTo(0, 0);
   $('player-status').textContent = '';
   layout();
-  // Both operations occur inside the single user gesture, with no awaited fetch.
+  // Fullscreen and the audio unlock begin inside this single user gesture; the
+  // unlock is the only awaited step and it fetches nothing.
   if ($('fullscreen').checked) enterFullscreen();
-  if (!runtime._cp_start($('sound').checked ? 0 : 1)) { home(); return; }
-  screen.focus({preventScroll: true});
-  document.documentElement.dataset.state = 'playing';
+  const sound = $('sound').checked;
+  Promise.resolve(sound ? unlockAudio() : false).then(() => {
+    if (!playing) return;
+    if (!runtime._cp_start(sound ? 0 : 1)) { home(); return; }
+    screen.focus({preventScroll: true});
+    document.documentElement.dataset.state = 'playing';
+    watchAudio();
+  });
 }
 function home() {
   if (!playing) return;
   runtime._cp_stop(); playing = false;
+  $('player-status').textContent = '';
   if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
   $('home').hidden = false; $('player').hidden = true;
   document.body.classList.remove('playing');

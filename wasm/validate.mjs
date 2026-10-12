@@ -129,6 +129,9 @@ try {
       const button = await page.locator('#start').boundingBox();
       await page.mouse.move(button.x+button.width/2,button.y+button.height/2);
       await page.mouse.down(); assert.equal((await status(page)).starts,0); await page.mouse.up();
+      // The host unlocks Web Audio inside the Start gesture before opening the
+      // SDL device; wait for that asynchronous step before wrapping the node.
+      await page.waitForFunction(()=>codePolice.SDL2?.audio?.scriptProcessorNode);
       await page.evaluate(()=>{
         window.audioProof={peak:0,callbacks:0};
         const node=codePolice.SDL2.audio.scriptProcessorNode, original=node.onaudioprocess;

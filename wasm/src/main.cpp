@@ -21,6 +21,16 @@ EM_JS(void, resumeAudio, (), {
         if (Module.onDemoError) Module.onDemoError('Audio: ' + error.message);
     });
 });
+// 0 no context, 1 running, 2 suspended, 3 closed. iOS starts suspended and only
+// resumes inside a user gesture, so this is reported even when audio is muted.
+EM_JS(int, audioState, (), {
+    var context = Module['SDL2'] && Module['SDL2'].audioContext;
+    if (!context) return 0;
+    if (context.state === 'running') return 1;
+    if (context.state === 'suspended') return 2;
+    if (context.state === 'closed') return 3;
+    return 4;
+});
 void require(bool ok, const char* operation) {
     if (!ok) throw std::runtime_error(std::string(operation) + ": " + SDL_GetError());
 }
@@ -143,7 +153,8 @@ EMSCRIPTEN_KEEPALIVE const char* cp_status() {
     std::ostringstream out;
     out << "{\"running\":" << app->running << ",\"suspended\":" << app->suspended
         << ",\"frames\":" << app->frames << ",\"tick\":" << app->tick
-        << ",\"starts\":" << app->starts << ",\"audio\":" << (app->device != 0) << '}';
+        << ",\"starts\":" << app->starts << ",\"audio\":" << (app->device != 0)
+        << ",\"audioState\":" << audioState() << '}';
     app->text = out.str(); return app->text.c_str();
 }
 // Deterministic diagnostics are explicitly invoked by the verifier, never by the UI.

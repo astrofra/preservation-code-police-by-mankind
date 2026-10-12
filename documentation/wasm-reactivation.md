@@ -72,6 +72,9 @@ gesture; all original play/loop/stop commands and PCM samples remain in the
 shared mixer. ScriptProcessorNode is deprecated but supported by the tested
 browsers; an AudioWorklet migration would be a separate host change. No audio
 files are rewritten for the browser. Pausing/returning home silences the device.
+The Start gesture first creates, resumes and unlocks the AudioContext, then
+opens the SDL device on that running context; see
+[iOS audio unlock](ios-audio-unlock.md).
 
 ## Build and validation provenance
 
@@ -114,6 +117,10 @@ The installed Playwright WebKit mac14 ARM64 build exits with a **bus error befor
 opening any page**. This is a test-runner limitation, not a passing WebKit test.
 Physical Safari, iOS/Android devices and their audio/fullscreen policies remain
 untested. Desktop Chrome/Firefox and emulated touch/HiDPI are the verified scope.
+A later report of missing sound on iOS was traced to the AudioContext being
+created suspended and is addressed separately in
+[iOS audio unlock](ios-audio-unlock.md); that fix is confirmed on one physical
+iPhone, and the automated scope above is otherwise unchanged.
 
 A separate real-time Chrome run completed the full script and observed its wrap
 after approximately **222 seconds**, with **9,407 rendered frames**, nonzero
