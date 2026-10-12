@@ -133,7 +133,7 @@ This does not validate Java's decoders, live rendering or mixing.
 From the repository root, with the skill installed at the indicated local path:
 
 ```sh
-python3 /Users/fra/.codex/skills/reactivate-maeda-java/scripts/inspect_classes.py original/mkd_codepolice > evidence/classes.json
+python3 "$HOME/.codex/skills/reactivate-maeda-java/scripts/inspect_classes.py" original/mkd_codepolice > evidence/classes.json
 javap -classpath original/mkd_codepolice -p -c original/mkd_codepolice/*.class > evidence/bytecode/all-classes.txt
 python3 evidence/inspect_original.py
 ```

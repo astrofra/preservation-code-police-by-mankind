@@ -206,6 +206,21 @@ the variant these routines are best optimised for, since 320×200/16 is the
 canonical AGA demoscene target. A simple routine such as McGavin's is adequate
 for bring-up at ~6 cycles/pixel.
 
+**A 4-plane Kalms adaptation already exists.** The upstream Kalms source ships
+`c2p1x1_4_c5_bm.s` (4 planes, Public Domain) under `bitmap/` in
+[Kalmalyzer/kalms-c2p](https://github.com/Kalmalyzer/kalms-c2p), so the 4-plane
+case does not have to be written from scratch. A sibling Amiga project,
+OS-MAGI-80, carries a ready adaptation: `src/graphics/c2p4_kalms.S` converts a
+byte-per-pixel chunky buffer to four separate bitplanes, keeps the upstream
+non-modulo transpose and pipelined stores, and changes only the assembler
+syntax (GNU), the calling convention (C ABI), and the plane/stride pointers. Its
+upstream original and provenance are vendored unchanged next to it. Its contract
+is exactly this port's target: **source bytes must be colours 0..15 and width
+must be a non-zero multiple of 32**. It is exercised by byte-exact host vectors
+and by real 68020 assembly loops under the Musashi emulator, and it is the
+default converter in that project. Two further backends accompany it (a pair-LUT
+and a table-free five-stage merge) if Kalms ever needs replacing.
+
 **Options, briefly.** Blitter-only is still not viable: the blitter cannot
 transpose bitplanes, so it would need four masked passes and it steals the chip
 bus. Akiko is CD32-only and not present on an A1200/A4000. Kalms remains the
@@ -302,6 +317,20 @@ ASM core is the single most valuable process decision in this port.
 input and quit, and a vertical-blank wait. A small framework such as ACE or a
 hand-written `graphics.library` layer fits; the engine does not care which.
 
+**This host layer already exists, in three-plane form.** The preserved Karate
+source archive (`original/karate_fighter/`, see §16) contains
+`karateSRC/objects/ChunkyStartup.asm`, a linkable 68020+ module that opens an
+8-bit AGA (or Cybergraphics) screen, runs a triple buffer, provides
+`Allocatechunkyforscreen()`, `ScreenRefresh(UBYTE*)`, `ListenEnd()` (mouse
+buttons or Escape to quit) and a stable 50 Hz clock from `timer.device`, and is
+documented as MuForce-clean and multitasking-legal. `ScreenRefresh` is where its
+C2P call lives; the module is written to call a Kalms C2P by function pointer, so
+the converter is a link-time choice, not a hard dependency. Its depth is
+hard-coded to 8 planes, so a 4-plane port changes that constant and the C2P
+entry, and reuses the rest. It is written for phxass syntax rather than vasm, and
+its public interface is vbcc's `__reg()` style, both of which are mechanical
+changes.
+
 **Pixel format and the indexed conversion.** This is the substantive change.
 The engine's `Array<jint>` pixel buffers, the ARGB constants (`0xFF000000 | …`)
 and the per-pixel RGB maths must become 8-bit indices plus lookup tables, as in
@@ -309,18 +338,23 @@ and the per-pixel RGB maths must become 8-bit indices plus lookup tables, as in
 keep it as the oracle and write a parallel indexed renderer in ASM — which is
 precisely the two-stage plan in §7 and is the recommended route.
 
-**C++ runtime.** Still the largest hidden cost if any engine code is compiled:
+**C++ runtime.** This was the largest hidden cost if any engine code is compiled.
+It was measured directly (§16) by compiling the real `engine.cpp` for
+`m68k-amigaos`, `-m68060 -std=c++11 -O2`:
 
-| Feature used | AmigaOS classic status | Mitigation |
+| Feature used | Measured status on the m68k toolchain | Mitigation |
 | --- | --- | --- |
-| `std::shared_ptr` (`Ref<T>`) everywhere | Available, heavy; refcount traffic | Non-atomic intrusive pointer behind the `Ref<T>` typedef |
-| Exceptions (`throw std::runtime_error`) | Usually disabled on m68k | Error returns or a fatal handler for the few sites |
-| `std::function` in `Sound::event` | Heavy | Function pointer plus user data |
-| `std::mutex` in the mixer | No threads in the host | Compile the lock to a no-op |
-| `std::sqrt`/`atan2`/`sin`/`cos` | Fine on a full 68060 FPU | Keep; move to fixed point only if profiled |
-| `std::chrono`, `<fstream>` | Not the desktop API | `timer.device`; embedded resource blob |
+| `std::shared_ptr` (`Ref<T>`) everywhere | Compiles and links | Non-atomic intrusive pointer behind the `Ref<T>` typedef if refcount traffic shows up |
+| Exceptions (`throw std::runtime_error`) | Compiles with `-fexceptions` | Keep, or a fatal handler for the few sites |
+| `std::function` in `Sound::event` | Compiles and links | Function pointer plus user data if it profiles hot |
+| `std::mutex` in the mixer | **Does not compile** — the one hard failure | No threads in the host; compile the lock to a no-op (§16) |
+| `std::sqrt`/`atan2`/`sin`/`cos` | Compiles (soft-float by default; FPU with the right flags) | Keep; move to fixed point only if profiled |
+| `std::chrono` | Not the desktop API | `timer.device`; `clockOffset` already models suspend/resume |
+| `<fstream>` | Compiles and links | Embedded resource blob or `dos.library` load |
 
-bebbo-amiga-gcc is the established toolchain for this target.
+The AmigaPorts `m68k-amigaos-gcc` (the maintained name for what this study
+earlier called bebbo-amiga-gcc) is the established toolchain and is already
+installed here; see §11.3.
 
 **Assets.** 65 external files become an embedded blob or a disk load. At 16
 colours the decoded texture set is about **1.8 MiB as 8-bit chunky** if every
@@ -368,18 +402,22 @@ from captures, scene by scene, at the palette-selection stage.
    §4.1 and reduced the raster core to four loops.
 3. **ASM raster core in ARGB**, validated bit-for-bit against `verify.cpp`'s
    hashes. No Amiga required. Implement only the four reachable writers of §15.
-4. **C2P bring-up** with a simple routine at 320×200 4 planes; get the picture on
-   an AGA screen and confirm the display path end to end.
-5. **Swap in Kalms**, 68060 variant, and measure at a fixed scene.
+   The toolchain for this is installed and the engine already compiles for
+   `m68k` (§11.3, §16.3).
+4. **C2P bring-up** at 320×200 4 planes; get the picture on an AGA screen and
+   confirm the display path end to end. Adopt the four-plane Kalms adaptation
+   of §16.2 rather than writing a converter.
+5. **Swap in the 68060 pipeline** and measure at a fixed scene.
 6. **Indexed renderer and palette switching** per part, with the Copper fade
    animation and the per-scene additive table of §4.1.
-7. **Host integration**: screen, copper, input, quit, assets, audio.
+7. **Host integration**: screen, copper, input, quit, assets, audio. Adapt the
+   Karate presenter of §16.1 from 8 planes to 4.
 8. **Measure on real hardware** and optimise only the slowest part, expected to
    be the metaball particle pass in part 11.
 
 Steps 1 to 3 decide the project, and all three can be completed before any
 Amiga-specific host code exists. Steps 1 and 2 are done and required no
-toolchain; step 3 is the first to need one.
+toolchain; step 3 now has its toolchain present.
 
 ## 11. Host tooling: macOS Apple Silicon
 
@@ -398,6 +436,8 @@ here is recalled from memory.
 | Pillow | 12.1.0 | already a repository dependency for screenshot checks |
 | numpy | 2.3.5 | available for histogram and quantisation work |
 | git | Apple Git 2.39.3 | for the toolchain sources below |
+| `lha` | **installed**, Homebrew | unpacks the preserved Karate `.lha` archives |
+| `amitools` 0.8.1 (`xdftool`, `rdbtool`), `vamos` | **installed** via pipx under `$HOME/.local/bin` | ADF/HDF editing and headless AmigaOS API execution |
 
 FS-UAE being a **Homebrew formula rather than a cask** is convenient: it is a
 native arm64 binary and it is fully scriptable from the command line, which is
@@ -405,6 +445,11 @@ what the automated verification path in §7 wants. There is no GUI launcher
 installed and none is required. `~/Documents/FS-UAE/` already exists with the
 standard tree (`Kickstarts`, `Hard Drives`, `Floppies`, `Configurations`,
 `Save States`, ...), so the ROM path below is conventional, not invented.
+
+`amitools` and `vamos` matter twice over: they create and edit ADF/HDF images
+from Python and run AmigaOS CLI programs without booting a full emulator, which
+is what a headless assemble-inject-boot-compare loop needs, and they are the
+same tools the sibling OS-MAGI-80 project standardised on (§16).
 
 **Kickstart ROMs.** FS-UAE ships only the free AROS ROM
 (`aros-amiga-m68k-rom.bin`); no copyrighted Kickstart is bundled. The 3.0 and
@@ -445,52 +490,56 @@ Two caveats, stated plainly:
   possible if a specific WinUAE/UAE version is ever needed, but it is not a
   prerequisite.
 
-### 11.3 Cross-toolchain: the real gap
+### 11.3 Cross-toolchain: present and validated
 
-The hot core is assembly and the rest is C++, so two toolchains are needed and
-**neither is installed yet**.
+The hot core is assembly and the rest is C++, so two toolchains are needed.
+**Both are already installed on this machine, outside `PATH`**, and the C++
+side has been validated by compiling the real engine. This section supersedes
+the earlier "the real gap" wording; the gap is closed.
 
-**68060 assembly — vasm + vlink.** Homebrew has no formula (`brew search vasm`,
-`vbcc` and `vlink` return nothing relevant). The toolchain is built from source,
-which is a few minutes of work with the C compiler already present:
+A maintained **AmigaPorts `m68k-amigaos-gcc`** suite (the same toolchain this
+study earlier called bebbo-amiga-gcc, which is one of its ancestors) lives under
+`$HOME/.local/m68k-amigaos`, built from a source tree at
+`$HOME/dev/toolchains/m68k-amigaos-gcc`. Add its `bin` to `PATH` to use it. It
+provides, all verified by running them:
+
+| Component | Version | Use here |
+| --- | --- | --- |
+| `m68k-amigaos-gcc` / `-g++` | 16.2.0b | compiles the C++ engine and a future host |
+| `m68k-amigaos-{ld,as,nm,objdump,size,strip}` (binutils) | 2.46 | links AmigaOS hunk executables; disassembly and size inspection |
+| `vasmm68k_mot` | 2.0b | the `68060` assembler for the C2P and the raster cores |
+| `vobjdump`, `gdb`, `lha`, `fd2pragma`, `sfdc` | bundled | object inspection, debugging, archives, headers |
+
+The NDK (3.2) headers are under `$HOME/.local/m68k-amigaos/m68k-amigaos/`,
+including `ndk-include/` (the system API prototypes) and the three C runtimes
+(`libnix`, `clib2`, `ixemul`). No `m68k-elf-gcc` is needed; the AmigaOS-native
+toolchain is the one to build on.
+
+**The engine has been compiled for the target.** The §7 assumption — "compile
+`engine.cpp` for m68k" — is no longer untested. With
 
 ```sh
-# vasm is distributed by its author at http://sun.hasenbraten.de/vasm/
-tar xf vasm.tar.gz && cd vasm
-make CPU=68060
-# vasm and vlink are then single static binaries, no runtime dependencies
+export PATH="$HOME/.local/m68k-amigaos/bin:$PATH"
+m68k-amigaos-g++ -std=c++11 -m68060 -O2 -fexceptions -ffp-contract=off \
+    -I native-sdl2/src -I native-sdl2/vendor/stb -c native-sdl2/src/engine.cpp
 ```
 
-vasm is the standard modern 68k assembler and its `68060` backend is exactly
-what the C2P routines and the raster inner loops need. The Kalms routines ship
-as vasm-compatible source in the demoscene convention, so no translation is
-required.
+the real, verified renderer compiles clean for the 68060: **166,824 bytes of
+text, 4,892 bytes of data, no errors**. `std::shared_ptr`, `std::function`,
+exceptions and `<fstream>` all compile and link, and a smoke object links into a
+real `AmigaOS loadseg()ble executable`. The only hard failure in the whole
+source is `std::mutex` in `assets.hpp`/`assets.cpp`, exactly the shim §8
+already lists: this libstdc++ has no thread support, and the mixer's lock should
+become a no-op because the host has no threads.
 
-**C++ — the choice is not obvious, and it should be prototyped early.**
-
-| Route | Availability | Assessment |
-| --- | --- | --- |
-| `m68k-elf-gcc` (Homebrew, bottled, 16.2.0, GPL-3.0-or-later) | **not installed**, one `brew install` away | A bare-metal ELF toolchain from GCC upstream, with no AmigaOS libc, startup code or `amiga.lib`. Useful for assembler object tests and for checking what the compiler does with the engine's inner loops; **not** a way to produce an AmigaOS executable. |
-| **bebbo-amiga-gcc** (source, gcc 6.5 / 13.4) | not installed | The standard AmigaOS m68k cross-compiler. Produces real AmigaOS hunk executables and links against `amiga.lib`, `proto/`, `graphics.library` stubs. **The realistic toolchain for this port.** |
-| vbcc | not installed | Lighter, C-focused, weaker C++ support than gcc. A fallback if gcc's m68k code generation disappoints. |
-
-The practical consequence is that the §7 assumption — "compile `engine.cpp`
-for m68k" — must be validated on a tiny translation unit before any port work
-is planned around it. The engine uses `std::shared_ptr` throughout, `std::function`,
-`std::mutex`, exceptions and `<fstream>` (see §8); the shims in §8 exist precisely
-because a stock AmigaOS toolchain does not offer all of that out of the box.
-Concretely, the first spike is:
-
-1. `brew install m68k-elf-gcc` for a fast, disposable check of what the compiler
-   does with a `std::shared_ptr` and a table-driven inner loop.
-2. Build bebbo-amiga-gcc and repeat, against the real target runtime.
-3. Only then decide how much of the engine is compiled versus rewritten in ASM.
+The remaining mechanical items are therefore small and known: the mutex shim,
+`timer.device` in place of `std::chrono`, and the resource loader in place of
+`<fstream>`. None of them is an unknown.
 
 ### 11.4 Host-side helpers
 
-Beyond the emulator and the compilers, four small tools cover the workflow. All
-are satisfied by the repository's Python stack; the three step-1 tools were built
-and run for §13.
+Beyond the emulator and the toolchain, the workflow is covered end to end, and
+the step-1 tools were built and run for §13.
 
 | Need | Tool | State |
 | --- | --- | --- |
@@ -498,26 +547,33 @@ and run for §13.
 | Palette derivation from headless frame dumps | `native-sdl2/tools/dump_frames.cpp` (reuses the verified engine; 12 parts, part-labelled PPM) | **present and executed** |
 | End-to-end driver | `native-sdl2/tools/amiga-aga-palette.sh` | **present and executed** |
 | Side-by-side palette captures | Pillow, in the same tool | **present**, mirroring `wasm/check-presentation.py` |
-| Reading/writing ADF and HDF images | `amitools` (`xdftool`, `rdbtool`) via pip | **absent**, one `pip install amitools` away and macOS-friendly |
-| Assembling the ASM core | vasm + vlink | absent, source build |
+| Reading/writing ADF and HDF images | `amitools` (`xdftool`, `rdbtool`) via pipx | **present** (0.8.1) |
+| Headless AmigaOS API execution | `vamos` via pipx | **present** |
+| Assembling the ASM core | `vasmm68k_mot` + VLink (AmigaPorts) | **present** (vasm 2.0b) |
 
 `amitools` is worth calling out because it is the piece that makes a scripted
 workflow pleasant: it creates and edits ADF/HDF images, injects a built
 executable, and reads the resulting filesystem back, all from Python. Together
 with FS-UAE's command line this gives a headless loop — assemble, inject, boot,
 capture the framebuffer, compare — without touching a GUI. That loop is exactly
-what the staged plan in §10 needs for steps 3 to 7, and it reuses the comparison
+what the staged plan in §10 needs for steps 4 to 7, and it reuses the comparison
 discipline the WebAssembly host already established.
 
 ### 11.5 Legal and provenance note
 
 The Kickstart 3.0/3.1 ROMs are copyrighted and are not redistributable. They
 stay on the development machine, are never committed to the repository, and are
-never bundled into a package. This mirrors the position the repository already
-takes for the original Java release: original bytes are preserved and hash-pinned
-under `original/`, but third-party rights are not asserted over them. If a
-distribution is ever contemplated, the executable must be separated from the ROM
-requirement and the user must supply their own Kickstart.
+never bundled into a package. The same rule applies to the two external Amiga
+references in §16: the Karate archive under `original/` and the sibling
+OS-MAGI-80 project are used as references from their own locations and are not
+copied into this repository. The Kalms C2P transpose itself is Public Domain;
+the Karate sources are offered for reuse by their author; OS-MAGI-80 is MIT and
+its adaptations would be attributed if any were adopted. This mirrors the
+position the repository already takes for the original Java release: original
+bytes are preserved and hash-pinned under `original/`, but third-party rights
+are not asserted over them. If a distribution is ever contemplated, the
+executable must be separated from the ROM requirement and the user must supply
+their own Kickstart.
 
 ## 12. References
 
@@ -535,6 +591,14 @@ requirement and the user must supply their own Kickstart.
   cadence policy this study reuses.
 - [iOS audio unlock](ios-audio-unlock.md): an example of a host-only change that
   left the verified engine untouched, which is the model proposed here.
+- `original/karate_fighter/KarateScript1SRC.lha` and `karatescript12.lha`: the
+  Amiga Karate 1.0 source and the KarateScript 1.2 distribution, the ancestor of
+  this engine (§16.1).
+- OS-MAGI-80 (`$HOME/dev/OS-MAGI-80`): a sibling Amiga project whose
+  `src/graphics/c2p4_kalms.S` is the four-plane Kalms adaptation of §16.2, with
+  the upstream Kalms Public Domain source vendored in `third_party/kalms-c2p/`.
+- AmigaPorts `m68k-amigaos-gcc` (toolchain at `$HOME/.local/m68k-amigaos`): the
+  cross-compiler used for the §11.3 and §16.3 compilation of the engine.
 
 ## 13. Step 1 results — palette study (executed)
 
@@ -688,3 +752,95 @@ additive one, which is the model used by the sprites and the particle passes;
 §4.1 has been rebuilt accordingly. This enumeration is what makes the §7
 assembly work well-defined, and it is why the step-3 ARGB core can be written
 against a known, closed set of four loops rather than an open-ended one.
+
+## 16. Reusable Amiga foundation and toolchain validation
+
+Three findings change how the port should be built, and each was verified on
+this machine rather than recalled. They are recorded here because they are the
+starting point for the assembly and host work, not background.
+
+### 16.1 Code Police is a descendant of the Amiga Karate engine
+
+The preserved user-supplied archive `original/karate_fighter/` holds two LHa
+containers: `KarateScript1SRC.lha`, the complete Amiga C and assembly source of
+**Karate 1.0** (2004), and `karatescript12.lha`, the **KarateScript 1.2**
+distribution (2005) with its plugins and tutorials. The distribution names the
+engine "Karate Demo-Script Fighter" and credits **m4nkind**, the same group as
+Code Police, with the author's address on the sources. The script format is the
+same one this repository already preserves: `<KSCRIPT>`, `<KPART>`, `<KCAM>`,
+`<KIMG>`. Code Police's browser/Java demo is therefore the descendant of this
+Amiga engine, which means the archive is not merely similar prior art — it is
+the same lineage, and the author states plainly that its code may be reused.
+
+Relevant to this port:
+
+- `karateSRC/objects/ChunkyStartup.asm` — the 8-bit AGA host and C2P presenter
+  described in §8, with triple buffering, quit handling and a 50 Hz
+  `timer.device` clock.
+- `karateSRC/objects/c2p1x1_8_c5_bm.s` and `kalmscpu5blit0_{128,200,240,256}` —
+  Kalms' routines, wired for 8 planes and specific heights.
+- `karateSRC/objects/KMakeColorTable.i` — builds a palette pair table
+  `pal[X][Y] = quantise(clamp(pal[X] + pal[Y]))` plus a 15-to-8-bit remap LUT.
+  This is the exact §4.1 additive pair table, written in 2001, and it confirms
+  that the indexed-design correction in §4.1 follows the engine's own design
+  rather than inventing one.
+- `karateSRC/objects/Kcaster.i` — `DrawCasterTable`, the raycasting ancestor of
+  the ground/tunnel/twirl effects.
+
+**The one mismatch to resolve is depth.** Karate is hard-wired to 8 bitplanes
+and 256 colours (`BIDTAG_Depth,8`) and renders natively in 8-bit palette
+indices; this port's target is 4 bitplanes and 16 colours. There is no 4-plane
+C2P in the Karate archive.
+
+### 16.2 A 4-plane Kalms C2P already exists
+
+The depth mismatch above is closed by a sibling Amiga project, OS-MAGI-80 (MIT
+licensed), whose `src/graphics/` directory carries a four-plane Kalms
+adaptation. `c2p4_kalms.S` converts a byte-per-pixel chunky buffer to four
+separate bitplanes, retaining the upstream non-modulo transpose and pipelined
+store order and changing only assembler syntax, the C ABI, and the plane/stride
+pointers. Its upstream original (`c2p1x1_4_c5_bm.s`, Public Domain) and its
+provenance are vendored unchanged in that project's `third_party/kalms-c2p/`.
+The routine's contract — source bytes must be colours 0..15, width a non-zero
+multiple of 32 — is exactly this port's target. It is verified by byte-exact
+host vectors and by real 68020 assembly loops under the Musashi emulator, and it
+is that project's selected runtime converter. Two alternative backends (a pair
+LUT and a five-stage table-free merge) ship alongside it.
+
+So the two halves of the low-level foundation now have concrete sources: the
+presentation host and the indexed pair-table idea from the Karate archive
+(§16.1), and the four-plane Kalms converter from OS-MAGI-80. Neither is
+committed here; both are external references to be adapted, and the Kalms
+transpose is Public Domain while the host module is offered for reuse by its
+author.
+
+### 16.3 The toolchain is installed, and the engine compiles
+
+The cross-toolchain this study once listed as "the real gap" is present on the
+machine and has been exercised (§11.3). An AmigaPorts `m68k-amigaos` suite lives
+at `$HOME/.local/m68k-amigaos`, off `PATH`: `m68k-amigaos-g++` 16.2.0b, binutils
+2.46, `vasmm68k_mot` 2.0b, and the NDK 3.2 headers. `amitools` 0.8.1 and `vamos`
+are installed through pipx for ADF/HDF work and headless AmigaOS execution.
+
+The decisive check, which the study had deferred to "a tiny translation unit",
+was run against the real engine. `native-sdl2/src/engine.cpp` compiles clean for
+`-m68060 -std=c++11 -O2 -fexceptions` (166,824 bytes of text), and links into a
+real AmigaOS hunk executable. The single compilation failure in the whole
+source is `std::mutex` in the asset layer, which §8 already schedules for a
+no-op shim. `shared_ptr`, `std::function`, exceptions and `<fstream>` are all
+supported.
+
+### 16.4 What this means for the plan
+
+- Step 3 (the ASM raster core) is no longer gated on installing a toolchain.
+  vasm 2.0b and an AmigaOS C++ compiler are usable today, and the ARGB core can
+  be assembled and linked on this machine.
+- Step 4 (C2P bring-up) has a ready 4-plane Kalms adaptation to adopt directly,
+  rather than a routine to write.
+- Step 7 (host integration) has a reusable triple-buffered AGA presenter to
+  adapt from the same lineage, with only its plane count and C2P entry to
+  change.
+- The next verification milestone is executable, not analytical: build the
+  engine for m68k with the mutex shim, place it on an ADF with `amitools`, run it
+  under FS-UAE, and compare frames against the `verify.cpp` oracle. Everything
+  needed for that loop is already installed.

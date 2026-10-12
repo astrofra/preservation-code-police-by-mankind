@@ -494,3 +494,42 @@ closed set of four loops to implement.
 This changes the step list: the colour-path enumeration is now step 2, the ASM
 raster core is step 3 and is the first step that needs vasm and an AmigaOS C++
 cross-compiler, still absent.
+
+## 2026-10-12 — Amiga foundation and toolchain (study §16)
+
+Three things were inspected and recorded in the study's new §16, and all three
+were verified rather than assumed.
+
+First, the two LHa archives the user supplied under `original/karate_fighter/`
+are the Amiga ancestor of this engine: `KarateScript1SRC.lha` is the full Karate
+1.0 C and assembly source, and `karatescript12.lha` is the KarateScript 1.2
+distribution. Both are by m4nkind, the same group as Code Police, and carry the
+same script tags. The source offers a reusable AGA presentation host
+(`ChunkyStartup.asm`, triple-buffered, 50 Hz, with its C2P call pluggable), the
+Kalms eight-plane C2P, a raycasting core, and `KMakeColorTable`, which builds the
+same palette pair table the study's §4.1 derived independently. The mismatch is
+depth: Karate is eight-plane, this port is four-plane.
+
+Second, a sibling Amiga project, OS-MAGI-80, supplies the missing four-plane
+converter: `src/graphics/c2p4_kalms.S`, an adaptation of the upstream Kalms
+`c2p1x1_4_c5_bm.s` (Public Domain, vendored unchanged with provenance). Its
+contract matches this port exactly (colours 0..15, width a multiple of 32) and
+it is byte-exact tested.
+
+Third, and most useful, the m68k cross-toolchain the study had called "the real
+gap" is already installed on this machine, off `PATH`: AmigaPorts
+`m68k-amigaos-g++` 16.2.0b, binutils 2.46, `vasmm68k_mot` 2.0b and the NDK 3.2
+headers under `.local`, plus `amitools` and `vamos` via pipx. The study's
+deferred spike was then run for real: `native-sdl2/src/engine.cpp` compiles clean
+for `-m68060 -std=c++11 -O2 -fexceptions` (about 167 KB of text) and links into a
+real AmigaOS hunk executable. The only failure anywhere in the source is
+`std::mutex` in the asset layer, which §8 already schedules for a no-op shim.
+`shared_ptr`, `std::function`, exceptions and `<fstream>` all compile.
+
+Consequences recorded: step 3 is no longer gated on installing a toolchain, step
+4 has a ready four-plane C2P to adopt, and step 7 has a presenter to adapt. The
+next milestone is executable rather than analytical — build the engine for m68k
+with the mutex shim, put it on an ADF with `amitools`, run it under FS-UAE and
+compare frames against `verify.cpp`. No private paths or personal data were
+recorded in the repository; external references are cited by relative or
+`$HOME`-based location only.
