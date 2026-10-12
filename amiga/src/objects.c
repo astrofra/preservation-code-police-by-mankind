@@ -485,10 +485,12 @@ static int add_texture(jworld *w, const AmigaPlatform *platform, const char *nam
     tx->Modulo = img->width; tx->Height = img->height;
     count = img->width * img->height;
     tx->pixels = (int32_t *)malloc((size_t)count * sizeof(int32_t));
+    if (!tx->pixels) { printf("texture alloc FAIL %s (%d px)\n", name, count); return -1; }
     for (i = 0; i < count; ++i) tx->pixels[i] = (int32_t)img->pixels[i];
     w->textures[w->texture_count] = tx;
     w->texture_names[w->texture_count] = strdup(name);
     ++w->texture_count;
+    { FILE *m = fopen("CP:ran.txt", "w"); if (m) { fprintf(m, "texture %d/%d %s %dx%d\n", w->texture_count, 0, name, (int)tx->Modulo, (int)tx->Height); fclose(m); } }
     platform->free_image(platform->user, img);
     return 0;
 }
@@ -502,6 +504,7 @@ jworld *jworld_create(const KsScript *script, const AmigaPlatform *platform) {
     rcr_init_root(&w->root, 520, 300);
     rcs_init(&w->rcs, &w->root);
 
+    printf("graph stage: start\n");
     w->textures = (jtexture **)calloc((size_t)script->image_count + 1, sizeof(jtexture *));
     w->texture_names = (char **)calloc((size_t)script->image_count + 1, sizeof(char *));
     for (i = 0; i < script->image_count; ++i) {
@@ -509,7 +512,10 @@ jworld *jworld_create(const KsScript *script, const AmigaPlatform *platform) {
         char *file = field_str(script->decl_images[i].data, script->decl_images[i].len, 1, "|");
         if (name && file) add_texture(w, platform, name, file);
         free(name); free(file);
+        amiga_screen_set_progress(5 + (i + 1) * 45 /
+            (script->image_count ? script->image_count : 1));
     }
+    printf("graph stage: textures=%d\n", w->texture_count);
 
     w->tables = (struct jtable **)calloc((size_t)script->table_count + 1, sizeof(void *));
     w->table_names = (char **)calloc((size_t)script->table_count + 1, sizeof(char *));
@@ -518,6 +524,8 @@ jworld *jworld_create(const KsScript *script, const AmigaPlatform *platform) {
         w->tables[w->table_count] = table_create(script->decl_tables[i].data, script->decl_tables[i].len);
         w->table_names[w->table_count] = name ? name : strdup("?");
         ++w->table_count;
+        amiga_screen_set_progress(50 + (i + 1) * 25 /
+            (script->table_count ? script->table_count : 1));
     }
 
     w->cameras = (struct jcamera **)calloc((size_t)script->camera_count + 1, sizeof(void *));
@@ -569,6 +577,7 @@ jworld *jworld_create(const KsScript *script, const AmigaPlatform *platform) {
     }
 
     /* parts */
+    printf("graph stage: before parts\n");
     w->part_count = script->part_count + 1;
     w->parts = (jpart **)calloc((size_t)script->part_count + 1, sizeof(jpart *));
     for (i = 0; i < script->part_count; ++i) {
@@ -691,6 +700,8 @@ jworld *jworld_create(const KsScript *script, const AmigaPlatform *platform) {
                           v = field_str(dd[0].data, dd[0].len, 1, ","); part->time_start = v?atoi(v):0; free(v); }
           ks_str_array_free(dd, n_d); }
         w->parts[i] = part;
+        amiga_screen_set_progress(75 + (i + 1) * 25 /
+            (script->part_count ? script->part_count : 1));
     }
     /* The engine keeps a sentinel part at index NBPart whose TimeLength is the
      * total; kScript.part() compares against it, so it must exist. */
@@ -705,6 +716,7 @@ jworld *jworld_create(const KsScript *script, const AmigaPlatform *platform) {
       w->parts[script->part_count]->time_length = n;
       w->end_date = n; }
     w->end_pref = script->end_pref;
+    printf("graph stage: done\n");
     return w;
 }
 

@@ -77,10 +77,19 @@ The headless binary is what the validators use (`vamos` needs `-m 8192` and
 `-s 256`). The AGA binary must run under FS-UAE with a Kickstart ROM:
 
 ```sh
-CPU=68020 ./amiga/build.sh RUN=0            # builds code-police and code-police-aga
+RUN=0 CPU=68020 ./amiga/build.sh            # builds code-police and code-police-aga
 # then boot an A1200/AGA config with code-police-aga on a disk or hard dir,
 # passing the assets directory as its argument.
 ```
+
+The complete build-and-launch shortcut is:
+
+```sh
+./amiga/run-fs-uae.sh
+```
+
+Use `BUILD=0 ./amiga/run-fs-uae.sh` to launch the existing binaries without
+rebuilding.
 
 ### The two known divergences
 

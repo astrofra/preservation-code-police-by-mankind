@@ -37,6 +37,13 @@ m68k-amigaos-gcc -std=c99 -m"$cpu" -O2 -fno-common -ffp-contract=off \
     -I "$root/native-sdl2/vendor/stb" -I "$project/src" \
     $common -o "$build/code-police-aga" "$runtime" -lm
 
+# The checked-in FS-UAE configuration boots this folder directly. Keep its
+# executable in sync with the freshly built one; otherwise FS-UAE silently
+# runs a stale screen host from an earlier bring-up attempt.
+if [ -d "$project/build/hd" ]; then
+    cp "$build/code-police-aga" "$project/build/hd/code-police-aga"
+fi
+
 file "$build/code-police" "$build/code-police-aga"
 
 if [ "${RUN:-1}" = "1" ]; then

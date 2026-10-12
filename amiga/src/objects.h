@@ -121,8 +121,12 @@ void jworld_frame(jworld *w, jint tick);
 /* FNV-1a of the front buffer, matching verify.cpp's frame hash. */
 uint64_t jworld_hash(jworld *w);
 
-/* The AGA screen host (amiga_screen.c): opens the screen and plays the whole
- * script, or is a no-op on the host build. */
+/* The AGA screen host (amiga_screen.c): opens the screen with a visible
+ * loading message, then plays the whole script. These are no-ops on host. */
+int amiga_screen_open_loading(void);
+void amiga_screen_set_message(const char *message);
+void amiga_screen_set_progress(int percent);
+void amiga_screen_close(void);
 int amiga_screen_run(jworld *w);
 
 #endif /* OBJECTS_H */

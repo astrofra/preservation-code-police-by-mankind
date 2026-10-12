@@ -99,12 +99,18 @@ int main(int argc, char **argv) {
     const char *mode = argc > 2 ? argv[2] : "";
     int failed = 0;
 
+#ifdef AGA_SCREEN
+    { FILE *m = fopen("CP:ran.txt", "w");
+      if (m) { fprintf(m, "main entered, argc=%d argv1=%s\n", argc, root); fclose(m); } }
+#endif
     amiga_file_host_init(&host, root);
     platform = amiga_file_host_platform(&host);
     setvbuf(stdout, NULL, _IONBF, 0);
     failed |= check_asset(&platform);
     failed |= check_script(&platform, &script);
-    if (!failed && script) failed |= check_graph(script, &platform, !strcmp(mode, "frames"));
+    /* The screen mode builds its own world below, so skip the throwaway one. */
+    if (!failed && script && strcmp(mode, "screen"))
+        failed |= check_graph(script, &platform, !strcmp(mode, "frames"));
     if (!strcmp(mode, "render")) {
         printf("--- renderer differential ---\n");
         failed |= render_check_run();
@@ -123,9 +129,23 @@ int main(int argc, char **argv) {
         }
     }
     if (!strcmp(mode, "screen") && script) {
-        jworld *w = jworld_create(script, &platform);
+        jworld *w;
+#ifdef AGA_SCREEN
+        if (!amiga_screen_open_loading()) {
+            failed |= 1;
+            w = NULL;
+        } else {
+            amiga_screen_set_message("Building scene graph...");
+            w = jworld_create(script, &platform);
+        }
+#else
+        w = jworld_create(script, &platform);
+#endif
+#ifdef AGA_SCREEN
+        if (w) amiga_screen_set_message("Scene ready. Rendering...");
+#endif
         if (w) { failed |= amiga_screen_run(w); jworld_free(w); }
-        else failed |= 1;
+        else { amiga_screen_close(); failed |= 1; }
     }
     ks_free(script);
     return failed;
